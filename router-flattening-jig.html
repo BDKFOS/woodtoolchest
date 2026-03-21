@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Router Flattening Jig Guide | How to Build and Use One | WoodToolChest</title>
+  <meta name="description" content="Learn how to build and use a router flattening jig for slabs, cutting boards, and glue-ups. Practical setup tips, materials, sizing, and mistakes to avoid.">
+  <link rel="canonical" href="https://www.woodtoolchest.com/router-flattening-jig.html">
+
+  <style>
+    :root {
+      --bg: #f7f3ec;
+      --surface: #fffdf8;
+      --text: #1f1a17;
+      --muted: #6b625a;
+      --line: #ddd3c7;
+      --accent: #7a4b22;
+      --accent-dark: #5f3919;
+      --max: 860px;
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--accent-dark);
+    }
+
+    a:hover {
+      color: var(--accent);
+    }
+
+    .site-header {
+      background: #2b2018;
+      color: #fff;
+      padding: 18px 20px;
+      border-bottom: 1px solid #1d1510;
+    }
+
+    .site-header-inner,
+    .container,
+    .footer-inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .brand {
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .brand:hover {
+      color: #f1e4d7;
+    }
+
+    .hero {
+      padding: 42px 0 24px;
+    }
+
+    .eyebrow {
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 10px;
+    }
+
+    h1, h2, h3 {
+      line-height: 1.2;
+      margin-top: 0;
+      color: #1e1814;
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      margin-bottom: 14px;
+    }
+
+    h2 {
+      font-size: 1.7rem;
+      margin-bottom: 14px;
+      margin-top: 42px;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      margin-top: 26px;
+    }
+
+    p {
+      margin: 0 0 18px;
+    }
+
+    .intro {
+      font-size: 1.05rem;
+      color: #2b241f;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      margin: 24px 0;
+    }
+
+    .toc ul,
+    .checklist,
+    .steps,
+    .related-links {
+      padding-left: 20px;
+      margin: 0;
+    }
+
+    .toc li,
+    .checklist li,
+    .steps li,
+    .related-links li {
+      margin-bottom: 10px;
+    }
+
+    .quick-answer {
+      border-left: 5px solid var(--accent);
+      padding: 18px 18px 18px 20px;
+      background: #f4ece3;
+      border-radius: 12px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .tip-box,
+    .warning-box {
+      padding: 16px 18px;
+      border-radius: 12px;
+      margin: 18px 0;
+    }
+
+    .tip-box {
+      background: #efe7dc;
+      border: 1px solid #d7c8b7;
+    }
+
+    .warning-box {
+      background: #f7ebe6;
+      border: 1px solid #e3c2b7;
+    }
+
+    .related {
+      margin-top: 48px;
+    }
+
+    .related a {
+      font-weight: 600;
+    }
+
+    .footer {
+      margin-top: 56px;
+      padding: 28px 20px 40px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      background: #f3ede4;
+    }
+
+    @media (max-width: 700px) {
+      h1 {
+        font-size: 1.9rem;
+      }
+
+      h2 {
+        font-size: 1.45rem;
+      }
+
+      .card {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="brand" href="/">WoodToolChest</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <p class="eyebrow">Jigs & Builds</p>
+      <h1>Router Flattening Jig Guide</h1>
+      <p class="intro">
+        A router flattening jig is one of the most useful shop builds you can make if you work with
+        cutting boards, slabs, glue-ups, or twisted stock that is too wide for your planer. It is not
+        fancy, but it solves a real problem fast.
+      </p>
+    </section>
+
+    <section class="card quick-answer">
+      <h2>What is a router flattening jig?</h2>
+      <p>
+        A router flattening jig is a sled system that lets a router move back and forth over a workpiece
+        at a fixed height so you can remove high spots and flatten the surface. It is especially useful
+        for wide panels, end grain cutting boards, warped glue-ups, and pieces that are too big or too
+        awkward for a planer.
+      </p>
+    </section>
+
+    <section class="card toc">
+      <h2>On this page</h2>
+      <ul>
+        <li><a href="#why-build-one">Why build one</a></li>
+        <li><a href="#best-use-cases">Best use cases</a></li>
+        <li><a href="#materials">Simple materials list</a></li>
+        <li><a href="#sizing">How big to make it</a></li>
+        <li><a href="#build">How to build a router flattening jig</a></li>
+        <li><a href="#use">How to use it correctly</a></li>
+        <li><a href="#mistakes">Common mistakes to avoid</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </section>
+
+    <section id="why-build-one">
+      <h2>Why build a router flattening jig?</h2>
+      <p>
+        If you do any kind of real woodworking, eventually you run into stock that is wider than your planer,
+        twisted enough to be annoying, or delicate enough that you do not want to force it through another machine.
+        That is where this jig shines.
+      </p>
+      <p>
+        It is especially handy when flattening:
+      </p>
+      <ul class="checklist">
+        <li>end grain cutting boards</li>
+        <li>small slab tops</li>
+        <li>edge grain glue-ups</li>
+        <li>warped panels</li>
+        <li>workpieces that would be sketchy or awkward to plane</li>
+      </ul>
+
+      <div class="tip-box">
+        <strong>Practical truth:</strong> a router flattening jig is slower than a wide planer or drum sander,
+        but for a small shop it can save a project that would otherwise be a pain.
+      </div>
+    </section>
+
+    <section id="best-use-cases">
+      <h2>Best use cases for a router flattening jig</h2>
+
+      <h3>1. Cutting boards</h3>
+      <p>
+        This is one of the best reasons to build one. End grain boards can be rough on planer knives,
+        and wide glue-ups often need just enough flattening to clean up before sanding.
+      </p>
+
+      <h3>2. Wide panels and tabletops</h3>
+      <p>
+        If the panel is wider than your planer, a router jig gives you a clean way to flatten it in sections
+        without fighting machine limits.
+      </p>
+
+      <h3>3. Slabs and live-edge pieces</h3>
+      <p>
+        A flattening jig works well when the piece is uneven, cupped, or simply too big for your normal setup.
+      </p>
+
+      <h3>4. Small shop work</h3>
+      <p>
+        If you do not have a jointer and your planer capacity is limited, this jig fills a huge gap in the shop.
+      </p>
+    </section>
+
+    <section id="materials">
+      <h2>Simple materials list</h2>
+      <p>
+        You can build a good router flattening jig from basic shop materials. It does not need to be expensive.
+      </p>
+
+      <div class="card">
+        <h3>Basic build materials</h3>
+        <ul class="checklist">
+          <li>MDF or plywood for the base and rails</li>
+          <li>straight boards or laminated strips for rigid side rails</li>
+          <li>a router sled platform sized for your router base</li>
+          <li>screws and glue</li>
+          <li>shims for leveling the workpiece</li>
+          <li>a spoil board or sacrificial surface underneath</li>
+        </ul>
+      </div>
+
+      <p>
+        MDF is often the easiest choice because it starts flat and is cheap, but plywood holds up better around moisture.
+        Either can work if the parts are straight and supported well.
+      </p>
+    </section>
+
+    <section id="sizing">
+      <h2>How big should a router flattening jig be?</h2>
+      <p>
+        Build it around the largest workpiece you actually expect to flatten, not the biggest imaginary slab
+        you might touch once in three years.
+      </p>
+
+      <div class="card">
+        <h3>A good sizing rule</h3>
+        <p>
+          Make the jig a little wider and a little longer than your common projects. For most small shops,
+          that means enough room for cutting boards, medium glue-ups, and occasional bench parts.
+        </p>
+      </div>
+
+      <p>
+        If it is too small, it becomes limiting fast. If it is too large, it gets heavy, awkward, and takes up
+        space you probably do not have. A right-sized jig is much more useful than a giant one you hate moving.
+      </p>
+    </section>
+
+    <section id="build">
+      <h2>How to build a router flattening jig</h2>
+
+      <ol class="steps">
+        <li>
+          <strong>Build a flat base.</strong> Start with a stable platform or work surface that supports the entire setup.
+          This can be a dedicated base or a temporary assembly on top of a bench.
+        </li>
+        <li>
+          <strong>Add two straight side rails.</strong> These rails need to be parallel, level with each other, and rigid.
+          If the rails sag or twist, your results will follow them.
+        </li>
+        <li>
+          <strong>Make the router sled.</strong> The sled rides on the rails and holds the router centered and stable.
+          It should slide smoothly but not slop around.
+        </li>
+        <li>
+          <strong>Check for clearance.</strong> Make sure the router bit can reach the workpiece while the router stays secure
+          on the sled.
+        </li>
+        <li>
+          <strong>Test on scrap first.</strong> Before putting a real project underneath, run the sled over scrap and make sure
+          the cut pattern is even.
+        </li>
+      </ol>
+
+      <div class="warning-box">
+        <strong>Big mistake:</strong> do not assume your bench is automatically flat enough to reference from. If the support
+        surface is off, you can flatten a board into the wrong shape.
+      </div>
+    </section>
+
+    <section id="use">
+      <h2>How to use a router flattening jig correctly</h2>
+
+      <h3>Secure and shim the workpiece</h3>
+      <p>
+        Before you cut anything, the board must be stable. Shim low corners and weak spots so the piece cannot rock.
+        If the board moves, your flattening pass will lie to you.
+      </p>
+
+      <h3>Take shallow passes</h3>
+      <p>
+        Do not hog off too much at once. Light passes are easier on the router, easier on the bit, and leave a better surface.
+      </p>
+
+      <h3>Overlap each pass</h3>
+      <p>
+        Move slowly and overlap your cuts so you do not leave ridges. Once one face is flat enough, flip the piece and reference
+        from the flattened side.
+      </p>
+
+      <h3>Expect sanding afterward</h3>
+      <p>
+        A flattening jig gets the surface flat, not finish-ready. You will still need sanding or further cleanup depending on the bit and pass depth.
+      </p>
+
+      <div class="tip-box">
+        <strong>Helpful habit:</strong> mark the surface with pencil before routing. That makes it easy to see low spots and know when the whole face has been touched.
+      </div>
+    </section>
+
+    <section id="mistakes">
+      <h2>Common mistakes to avoid</h2>
+      <ul class="checklist">
+        <li>building the rails from stock that is not straight</li>
+        <li>making the jig bigger than your shop can comfortably handle</li>
+        <li>not shimming the board securely before cutting</li>
+        <li>taking passes that are too deep</li>
+        <li>assuming one face is flat before flipping the workpiece</li>
+        <li>ignoring dust collection; flattening creates a lot of chips fast</li>
+      </ul>
+
+      <p>
+        Most flattening jig frustration comes from setup problems, not the router itself. If the rails are true and the board is stable,
+        the process gets much easier.
+      </p>
+    </section>
+
+    <section id="faq">
+      <h2>Router flattening jig FAQ</h2>
+
+      <h3>Can I build one out of MDF?</h3>
+      <p>
+        Yes. MDF works well for a flattening jig because it is flat and easy to work with. Just keep in mind that it does not love moisture
+        and edges can wear faster than plywood.
+      </p>
+
+      <h3>Is a plunge router better than a fixed base router for this?</h3>
+      <p>
+        A plunge router is usually more convenient for this type of work, especially when setting bit depth and making controlled starts.
+        A fixed base can still work if the setup is solid.
+      </p>
+
+      <h3>Can a router flattening jig replace a planer?</h3>
+      <p>
+        Not really. It is a useful shop solution, but it is slower and messier. Think of it as a problem-solving tool, not a full replacement
+        for every surfacing job.
+      </p>
+
+      <h3>Is this good for flattening cutting boards?</h3>
+      <p>
+        Yes. It is one of the best reasons to build one, especially for wide or end grain boards.
+      </p>
+    </section>
+
+    <section class="related">
+      <h2>Related guides</h2>
+      <ul class="related-links">
+        <li><a href="/how-to-flatten-a-cutting-board.html">How to Flatten a Cutting Board</a></li>
+        <li><a href="/plunge-vs-fixed-base-router.html">Plunge vs Fixed Base Router</a></li>
+        <li><a href="/dust-collection-for-beginners.html">Dust Collection for Beginners</a></li>
+        <li><a href="/small-workshop-layout-guide.html">Small Workshop Layout Guide</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p><strong>WoodToolChest</strong> gives practical woodworking guides, shop setup advice, and tool help for real-world builds.</p>
+      <p class="muted">© 2026 WoodToolChest</p>
+    </div>
+  </footer>
+</body>
+</html>
