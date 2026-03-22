@@ -44,10 +44,20 @@
     }
 
     .header {
-      background: #2b2018;
       color: white;
-      padding: 20px;
+      padding: 22px 20px;
       border-bottom: 1px solid #1d1510;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0) 45%),
+        repeating-linear-gradient(
+          to bottom,
+          rgba(255,255,255,0.035) 0px,
+          rgba(255,255,255,0.035) 1px,
+          rgba(0,0,0,0) 1px,
+          rgba(0,0,0,0) 42px
+        ),
+        linear-gradient(135deg, #3a281d 0%, #2b2018 45%, #241a14 100%);
+      box-shadow: inset 0 -1px 0 rgba(255,255,255,0.04);
     }
 
     .container {
@@ -55,13 +65,109 @@
       margin: 0 auto;
     }
 
+    .brand-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.02)),
+        linear-gradient(135deg, #9f6a37, #7a4b22);
+      border: 1px solid rgba(255,255,255,0.14);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
+      flex: 0 0 34px;
+    }
+
+    .brand-mark-bars {
+      display: flex;
+      gap: 3px;
+      align-items: flex-end;
+    }
+
+    .brand-mark-bars span {
+      display: block;
+      width: 5px;
+      border-radius: 2px;
+      background: rgba(255,255,255,0.88);
+      box-shadow: inset 0 -1px 0 rgba(0,0,0,0.15);
+    }
+
+    .brand-mark-bars span:nth-child(1) {
+      height: 12px;
+    }
+
+    .brand-mark-bars span:nth-child(2) {
+      height: 16px;
+    }
+
+    .brand-mark-bars span:nth-child(3) {
+      height: 10px;
+    }
+
+    .brand-text-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
     .brand {
-      font-size: 1.6rem;
+      font-size: 1.55rem;
       font-weight: 700;
+      letter-spacing: 0.01em;
+      line-height: 1;
+    }
+
+    .brand-sub {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.72);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      line-height: 1.1;
     }
 
     .hero {
-      padding: 52px 0 30px;
+      padding: 56px 0 34px;
+    }
+
+    .hero-panel {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top right, rgba(122,75,34,0.10), transparent 35%),
+        linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0));
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 34px 30px;
+      box-shadow: 0 14px 34px rgba(32, 22, 16, 0.05);
+    }
+
+    .hero-panel::after {
+      content: "";
+      position: absolute;
+      right: -40px;
+      top: -10px;
+      width: 240px;
+      height: 240px;
+      background:
+        repeating-linear-gradient(
+          135deg,
+          rgba(122,75,34,0.07) 0px,
+          rgba(122,75,34,0.07) 10px,
+          rgba(122,75,34,0.02) 10px,
+          rgba(122,75,34,0.02) 20px
+        );
+      border-radius: 28px;
+      transform: rotate(8deg);
+      pointer-events: none;
+      opacity: 0.5;
     }
 
     .eyebrow {
@@ -82,6 +188,9 @@
     h1 {
       font-size: 2.6rem;
       margin-bottom: 14px;
+      max-width: 760px;
+      position: relative;
+      z-index: 1;
     }
 
     h2 {
@@ -103,6 +212,8 @@
       font-size: 1.08rem;
       color: #2b241f;
       max-width: 760px;
+      position: relative;
+      z-index: 1;
     }
 
     .section {
@@ -114,6 +225,7 @@
       border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: 24px;
+      box-shadow: 0 8px 24px rgba(32, 22, 16, 0.03);
     }
 
     .grid {
@@ -123,10 +235,18 @@
     }
 
     .card {
-      background: var(--surface);
+      background: linear-gradient(180deg, #fffdf8, #fbf7f1);
       border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: 18px;
+      box-shadow: 0 6px 18px rgba(32, 22, 16, 0.03);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(32, 22, 16, 0.06);
+      border-color: #ccbba8;
     }
 
     .card h3 {
@@ -167,6 +287,25 @@
       .hero {
         padding-top: 40px;
       }
+
+      .hero-panel {
+        padding: 26px 22px;
+      }
+
+      .hero-panel::after {
+        width: 150px;
+        height: 150px;
+        right: -30px;
+        top: 10px;
+      }
+
+      .brand {
+        font-size: 1.4rem;
+      }
+
+      .brand-sub {
+        font-size: 0.72rem;
+      }
     }
   </style>
 </head>
@@ -174,17 +313,31 @@
 
   <header class="header">
     <div class="container">
-      <div class="brand">WoodToolChest</div>
+      <div class="brand-row">
+        <div class="brand-mark" aria-hidden="true">
+          <div class="brand-mark-bars">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <div class="brand-text-wrap">
+          <div class="brand">WoodToolChest</div>
+          <div class="brand-sub">Practical Woodworking</div>
+        </div>
+      </div>
     </div>
   </header>
 
   <main class="container">
     <section class="hero">
-      <p class="eyebrow">Practical Woodworking</p>
-      <h1>Woodworking Guides for Real Shops</h1>
-      <p class="intro">
-        WoodToolChest is built for practical woodworking; small shops, real constraints, useful jigs, better tool decisions, and straightforward advice you can actually use while building.
-      </p>
+      <div class="hero-panel">
+        <p class="eyebrow">Practical Woodworking</p>
+        <h1>Woodworking Guides for Real Shops</h1>
+        <p class="intro">
+          WoodToolChest is built for practical woodworking; small shops, real constraints, useful jigs, better tool decisions, and straightforward advice you can actually use while building.
+        </p>
+      </div>
     </section>
 
     <section class="section">
