@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Cutting Board Design Generator | Random Wood & Pattern Ideas | WoodToolChest</title>
+  <meta name="description" content="Generate random cutting board ideas with wood combinations, pattern styles, sizes, and build details for your next woodworking project.">
+  <link rel="canonical" href="https://www.woodtoolchest.com/cutting-board-design-generator.html">
+
+  <style>
+    :root {
+      --bg: #f7f3ec;
+      --surface: #fffdf8;
+      --text: #1f1a17;
+      --muted: #6b625a;
+      --line: #ddd3c7;
+      --accent: #7a4b22;
+      --accent-dark: #5f3919;
+      --radius: 16px;
+      --max: 860px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 32px 16px 48px;
+    }
+
+    .page-wrap {
+      width: min(var(--max), 100%);
+      margin: 0 auto;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 18px;
+      color: var(--accent-dark);
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    .back-link:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .container {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+
+    h1, h2 {
+      line-height: 1.2;
+      margin-top: 0;
+      color: #1e1814;
+    }
+
+    h1 {
+      font-size: 2.1rem;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      margin-bottom: 14px;
+    }
+
+    p {
+      margin: 0 0 18px;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 22px 0 22px;
+    }
+
+    button {
+      appearance: none;
+      border: none;
+      background: var(--accent);
+      color: white;
+      font-size: 16px;
+      padding: 12px 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    button:hover {
+      background: var(--accent-dark);
+    }
+
+    .result {
+      background: #fbf7f1;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 22px;
+      min-height: 220px;
+    }
+
+    .result p {
+      margin-bottom: 12px;
+    }
+
+    .label {
+      font-weight: 700;
+      color: #3d3128;
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .info-section {
+      margin-top: 38px;
+    }
+
+    .related-tools {
+      margin-top: 38px;
+      padding-top: 6px;
+    }
+
+    .related-tools ul {
+      padding-left: 20px;
+      margin: 0;
+    }
+
+    .related-tools li {
+      margin-bottom: 10px;
+    }
+
+    .related-tools a {
+      color: var(--accent-dark);
+      text-decoration: none;
+    }
+
+    .related-tools a:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid var(--line);
+      margin: 34px 0;
+    }
+
+    @media (max-width: 700px) {
+      body {
+        padding: 20px 12px 32px;
+      }
+
+      .container {
+        padding: 22px;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .button-row {
+        flex-direction: column;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-wrap">
+    <a class="back-link" href="/">← Back to WoodToolChest</a>
+
+    <div class="container">
+      <h1>Cutting Board Design Generator</h1>
+      <p>
+        Generate random cutting board ideas with wood combinations, pattern styles, sizes, and build details for your next project.
+      </p>
+
+      <div class="button-row">
+        <button type="button" onclick="generateDesign()">Generate Design</button>
+        <button type="button" onclick="generateDesign()">Regenerate</button>
+      </div>
+
+      <div class="result" id="result" aria-live="polite">
+        <p><span class="label">Wood Combination:</span> Maple + Walnut</p>
+        <p><span class="label">Pattern:</span> End Grain Checkerboard</p>
+        <p><span class="label">Size:</span> 16 x 10 inches</p>
+        <p><span class="label">Juice Groove:</span> Yes</p>
+        <p><span class="label">Handles:</span> No</p>
+        <p><span class="label">Build Note:</span> Strong contrast woods with a classic end grain look and a practical medium size.</p>
+      </div>
+
+      <div class="info-section">
+        <hr>
+
+        <h2>How this generator helps</h2>
+        <p>
+          Sometimes the hardest part of a woodworking project is simply deciding what to build. This cutting board design generator gives you a fast starting point you can actually use in the shop.
+        </p>
+        <p>
+          Click the button to get a random combination of wood species, board style, size, and a couple of optional details. You can use the result exactly as-is, or tweak it into something that fits your tools, scraps, or customer requests.
+        </p>
+
+        <hr>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <p><strong>Is this generator for edge grain or end grain boards?</strong><br>
+        It can suggest either. Some outputs are simple edge grain layouts, while others lean into end grain patterns.</p>
+
+        <p><strong>Can I use this for scrap wood ideas?</strong><br>
+        Yes. It works well as a quick idea generator when you have a few good species on hand and want a direction.</p>
+
+        <p><strong>Does this replace actual build planning?</strong><br>
+        No. It is a starting point. You should still adjust dimensions, species, and details based on movement, glue-up strategy, food safety, and tool limitations.</p>
+      </div>
+
+      <div class="related-tools">
+        <hr>
+        <h2>Related Woodworking Guides</h2>
+        <ul>
+          <li><a href="/how-to-flatten-a-cutting-board.html">How to Flatten a Cutting Board</a></li>
+          <li><a href="/router-flattening-jig.html">Router Flattening Jig Guide</a></li>
+          <li><a href="/small-workshop-layout-guide.html">Small Workshop Layout Guide</a></li>
+          <li><a href="/workbench-height-guide.html">Workbench Height Guide</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function randomItem(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    function generateDesign() {
+      const woodCombos = [
+        "Maple + Walnut",
+        "Maple + Cherry",
+        "Walnut + Cherry",
+        "Maple + Ash",
+        "Walnut + Ash",
+        "Cherry + Ash",
+        "Oak + Walnut",
+        "Maple + Oak"
+      ];
+
+      const patterns = [
+        "Striped Edge Grain",
+        "End Grain Checkerboard",
+        "Brick Pattern",
+        "Herringbone-Inspired Layout",
+        "Simple Edge Grain",
+        "Wide-Narrow Stripe Mix"
+      ];
+
+      const sizes = [
+        "12 x 8 inches",
+        "14 x 10 inches",
+        "16 x 10 inches",
+        "18 x 12 inches",
+        "20 x 14 inches"
+      ];
+
+      const groove = ["Yes", "No"];
+      const handles = ["Yes", "No"];
+
+      const notes = [
+        "A clean, practical layout that should be approachable for most small shops.",
+        "Good contrast and visual pop without getting too complicated.",
+        "A strong candidate if you want something giftable and easy to batch.",
+        "A nice balance between visual interest and realistic build effort.",
+        "Simple enough to execute cleanly, but still polished enough to feel intentional.",
+        "A good direction when you want a functional board that still looks premium."
+      ];
+
+      const design = {
+        wood: randomItem(woodCombos),
+        pattern: randomItem(patterns),
+        size: randomItem(sizes),
+        groove: randomItem(groove),
+        handles: randomItem(handles),
+        note: randomItem(notes)
+      };
+
+      document.getElementById("result").innerHTML = `
+        <p><span class="label">Wood Combination:</span> ${design.wood}</p>
+        <p><span class="label">Pattern:</span> ${design.pattern}</p>
+        <p><span class="label">Size:</span> ${design.size}</p>
+        <p><span class="label">Juice Groove:</span> ${design.groove}</p>
+        <p><span class="label">Handles:</span> ${design.handles}</p>
+        <p><span class="label">Build Note:</span> ${design.note}</p>
+      `;
+    }
+  </script>
+
+</body>
+</html>
