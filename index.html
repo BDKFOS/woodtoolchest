@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>WoodToolChest | For Woodworkers, By Woodworkers</title>
-  <meta name="description" content="Practical woodworking guides, shop setup advice, and useful tools for real builds. Explore cutting board tools, workshop setup guides, router jig help, and more.">
+  <meta name="description" content="Useful woodworking tools and practical guides for real shop builds. Explore cutting board tools, flattening help, workshop setup advice, and more.">
   <link rel="canonical" href="https://www.woodtoolchest.com/">
 
   <style>
@@ -208,20 +208,12 @@
     }
 
     h3 {
-      font-size: 1.1rem;
+      font-size: 1.08rem;
       margin-bottom: 10px;
     }
 
     p {
       margin: 0 0 18px;
-    }
-
-    .intro {
-      font-size: 1.08rem;
-      color: #2b241f;
-      max-width: 760px;
-      position: relative;
-      z-index: 1;
     }
 
     .tagline {
@@ -240,9 +232,18 @@
       z-index: 1;
     }
 
+    .intro {
+      font-size: 1.08rem;
+      color: #2b241f;
+      max-width: 760px;
+      position: relative;
+      z-index: 1;
+      margin-top: 14px;
+    }
+
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
+      grid-template-columns: 1.02fr 0.98fr;
       gap: 18px;
       margin-top: 24px;
       position: relative;
@@ -262,7 +263,7 @@
     }
 
     .shop-preview {
-      height: 230px;
+      height: 240px;
       border-radius: 14px;
       border: 1px solid #d7cab9;
       background:
@@ -272,12 +273,42 @@
       overflow: hidden;
     }
 
+    .preview-bench {
+      position: absolute;
+      left: 26px;
+      right: 26px;
+      bottom: 36px;
+      height: 14px;
+      border-radius: 8px;
+      background: linear-gradient(180deg, #d7aa7d, #b88358);
+      border: 1px solid #9b6d48;
+    }
+
+    .preview-bench::before,
+    .preview-bench::after {
+      content: "";
+      position: absolute;
+      width: 10px;
+      top: 12px;
+      bottom: -34px;
+      border-radius: 6px;
+      background: #7d5131;
+    }
+
+    .preview-bench::before {
+      left: 24px;
+    }
+
+    .preview-bench::after {
+      right: 24px;
+    }
+
     .preview-board {
       position: absolute;
-      left: 30px;
-      bottom: 58px;
-      width: 178px;
-      height: 84px;
+      left: 34px;
+      bottom: 54px;
+      width: 170px;
+      height: 82px;
       border-radius: 16px 16px 12px 12px;
       border: 1px solid rgba(0,0,0,0.08);
       box-shadow:
@@ -309,79 +340,68 @@
       pointer-events: none;
     }
 
-    .preview-shelf {
+    .preview-rack {
       position: absolute;
-      right: 26px;
-      top: 28px;
-      width: 72px;
-      height: 126px;
-      border-radius: 12px;
-      background:
-        repeating-linear-gradient(
-          to bottom,
-          #caa27b 0px,
-          #caa27b 20px,
-          #966947 20px,
-          #966947 24px
-        );
+      right: 34px;
+      top: 26px;
+      width: 92px;
+      height: 122px;
+      border-radius: 14px;
       border: 1px solid #8b6547;
+      background:
+        linear-gradient(180deg, #caa27b, #966947);
+      overflow: hidden;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.15);
     }
 
-    .preview-bench {
-      position: absolute;
-      left: 24px;
-      right: 24px;
-      bottom: 36px;
-      height: 14px;
-      border-radius: 8px;
-      background: linear-gradient(180deg, #d7aa7d, #b88358);
-      border: 1px solid #9b6d48;
-    }
-
-    .preview-bench::before,
-    .preview-bench::after {
+    .preview-rack::before {
       content: "";
       position: absolute;
-      width: 10px;
-      top: 12px;
-      bottom: -34px;
-      border-radius: 6px;
-      background: #7d5131;
+      left: 0;
+      right: 0;
+      top: 18px;
+      height: 3px;
+      background: rgba(95,57,25,0.30);
+      box-shadow:
+        0 22px 0 0 rgba(95,57,25,0.30),
+        0 44px 0 0 rgba(95,57,25,0.30),
+        0 66px 0 0 rgba(95,57,25,0.30);
     }
 
-    .preview-bench::before {
-      left: 24px;
-    }
-
-    .preview-bench::after {
-      right: 24px;
-    }
-
-    .stats {
+    .start-links {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 12px;
-      margin-top: 12px;
+      margin-top: 14px;
     }
 
-    .stat {
+    .start-link {
+      display: block;
       border: 1px solid #d7cab9;
       border-radius: 14px;
-      padding: 14px;
+      padding: 14px 15px;
       background: #fffaf3;
+      box-shadow: 0 6px 18px rgba(32, 22, 16, 0.03);
+      transition: transform 0.12s ease, border-color 0.12s ease;
     }
 
-    .stat-value {
+    .start-link:hover {
+      text-decoration: none;
+      transform: translateY(-1px);
+      border-color: #ccb59b;
+    }
+
+    .start-link strong {
       display: block;
-      font-size: 1.35rem;
-      font-weight: 700;
       color: #2b2018;
-      margin-bottom: 2px;
+      margin-bottom: 4px;
+      font-size: 1rem;
     }
 
-    .stat-label {
+    .start-link span {
+      display: block;
       color: var(--muted);
       font-size: 0.92rem;
+      line-height: 1.5;
     }
 
     .section {
@@ -411,7 +431,7 @@
     }
 
     .card-visual {
-      height: 110px;
+      height: 118px;
       border-radius: 12px;
       border: 1px solid #d7cab9;
       background: linear-gradient(180deg, #f8f2ea, #eee2d2);
@@ -428,35 +448,40 @@
     }
 
     .card-visual.tool::before {
-      left: 16px;
-      right: 16px;
-      top: 24px;
-      height: 18px;
-      border-radius: 8px;
-      background: linear-gradient(180deg, #d7aa7d, #b88358);
+      left: 18px;
+      right: 18px;
+      top: 26px;
+      height: 22px;
+      border-radius: 10px;
+      background:
+        linear-gradient(90deg,
+          #f0ddb9 0%, #f0ddb9 26%,
+          #5b3c27 26%, #5b3c27 38%,
+          #b56f51 38%, #b56f51 54%,
+          #f0ddb9 54%, #f0ddb9 70%,
+          #5b3c27 70%, #5b3c27 82%,
+          #b56f51 82%, #b56f51 100%);
       border: 1px solid #9b6d48;
-      box-shadow:
-        0 24px 0 0 rgba(95,57,25,0.12);
+      box-shadow: 0 26px 0 0 rgba(95,57,25,0.10);
     }
 
     .card-visual.guide::before {
       left: 18px;
       right: 18px;
-      top: 18px;
-      bottom: 18px;
+      top: 16px;
+      bottom: 16px;
       border-radius: 10px;
       background:
         linear-gradient(180deg, #fffaf3, #f3e8d8);
       border: 1px solid #d7cab9;
-      box-shadow:
-        inset 0 -1px 0 rgba(255,255,255,0.4);
+      box-shadow: inset 0 -1px 0 rgba(255,255,255,0.4);
     }
 
     .card-visual.guide::after {
       content: "";
       position: absolute;
-      left: 28px;
-      right: 28px;
+      left: 30px;
+      right: 30px;
       top: 34px;
       height: 4px;
       border-radius: 999px;
@@ -479,9 +504,9 @@
     .card-visual.shop::after {
       content: "";
       position: absolute;
-      left: 26px;
-      right: 26px;
-      top: 46px;
+      left: 24px;
+      right: 24px;
+      top: 48px;
       height: 18px;
       border-radius: 8px;
       background: linear-gradient(180deg, #d7aa7d, #b88358);
@@ -502,6 +527,10 @@
       font-weight: 700;
       color: #2c221a;
       box-shadow: 0 6px 18px rgba(32, 22, 16, 0.03);
+    }
+
+    .link-item:hover {
+      text-decoration: none;
     }
 
     .link-item span {
@@ -529,8 +558,7 @@
     @media (max-width: 920px) {
       .hero-grid,
       .cards-grid,
-      .two-col,
-      .stats {
+      .two-col {
         grid-template-columns: 1fr;
       }
     }
@@ -550,12 +578,19 @@
       }
 
       .shop-preview {
-        height: 250px;
+        height: 260px;
       }
 
       .preview-board {
-        width: 145px;
-        height: 72px;
+        width: 140px;
+        height: 68px;
+        left: 22px;
+      }
+
+      .preview-rack {
+        width: 76px;
+        height: 110px;
+        right: 22px;
       }
     }
   </style>
@@ -583,7 +618,7 @@
         <p class="eyebrow">Woodworking guides and tools</p>
         <h1>Practical woodworking help for real shop builds</h1>
         <p class="tagline">For Woodworkers, By Woodworkers.</p>
-        <p class="subtagline">New guides and useful tools added regularly for cutting boards, shop setup, router jigs, and small-shop workflow.</p>
+        <p class="subtagline">Useful tools and practical guides for cutting boards, shop setup, router work, and small-shop workflow.</p>
         <p class="intro">
           WoodToolChest is built for woodworkers who want clear answers, useful visuals, and tools they can actually use in the shop. Whether you are flattening a cutting board, planning a compact workshop, or looking for your next build, the goal is simple: practical help without the fluff.
         </p>
@@ -591,7 +626,7 @@
         <div class="hero-grid">
           <div class="hero-card">
             <div class="shop-preview" aria-hidden="true">
-              <div class="preview-shelf"></div>
+              <div class="preview-rack"></div>
               <div class="preview-board"></div>
               <div class="preview-bench"></div>
             </div>
@@ -599,23 +634,23 @@
 
           <div class="hero-card">
             <h3>Start here</h3>
-            <p>Use the generators when you want ideas fast, then jump into the guides when you want clean explanations and visual walkthroughs.</p>
+            <p>Use a tool when you want a quick next move, or jump into the guides when you want a clearer explanation and visual help.</p>
 
-            <div class="stats">
-              <div class="stat">
-                <span class="stat-value">3</span>
-                <span class="stat-label">Interactive tools</span>
-              </div>
+            <div class="start-links">
+              <a class="start-link" href="/cutting-board-design-generator.html">
+                <strong>Try a tool</strong>
+                <span>Generate cutting board ideas and quick project inspiration.</span>
+              </a>
 
-              <div class="stat">
-                <span class="stat-value">6</span>
-                <span class="stat-label">Practical guides</span>
-              </div>
+              <a class="start-link" href="/best-woods-for-cutting-boards.html">
+                <strong>Read a guide</strong>
+                <span>Start with wood choices, flattening help, and practical small-shop setup.</span>
+              </a>
 
-              <div class="stat">
-                <span class="stat-value">1</span>
-                <span class="stat-label">Goal: useful every visit</span>
-              </div>
+              <a class="start-link" href="/how-to-flatten-a-cutting-board.html">
+                <strong>Most useful first read</strong>
+                <span>How to Flatten a Cutting Board</span>
+              </a>
             </div>
           </div>
         </div>
@@ -664,17 +699,12 @@
             Wood Project Idea Generator
             <span>Get a random, realistic woodworking idea with difficulty, wood type, and estimated time.</span>
           </a>
-
-          <a class="link-item" href="/router-flattening-jig.html">
-            Router Flattening Jig Guide
-            <span>Learn how to build and use a flattening jig for slabs, cutting boards, and wider glue-ups.</span>
-          </a>
         </div>
       </div>
 
       <div>
         <div class="section-header">
-          <h2>Latest guides</h2>
+          <h2>Popular guides</h2>
         </div>
 
         <div class="link-list">
@@ -683,14 +713,14 @@
             <span>A beginner-friendly guide to maple, walnut, cherry, and the woods worth avoiding.</span>
           </a>
 
-          <a class="link-item" href="/how-to-prevent-tearout-when-planing.html">
-            How to Prevent Tearout When Planing
-            <span>Learn how to read grain, take lighter passes, and avoid ugly tearout before it starts.</span>
-          </a>
-
           <a class="link-item" href="/how-to-flatten-a-cutting-board.html">
             How to Flatten a Cutting Board
             <span>Practical methods for edge grain and end grain boards using routers, planers, or sanding.</span>
+          </a>
+
+          <a class="link-item" href="/how-to-prevent-tearout-when-planing.html">
+            How to Prevent Tearout When Planing
+            <span>Learn how to read grain, take lighter passes, and avoid ugly tearout before it starts.</span>
           </a>
         </div>
       </div>
@@ -702,6 +732,11 @@
       </div>
 
       <div class="link-list">
+        <a class="link-item" href="/router-flattening-jig.html">
+          Router Flattening Jig Guide
+          <span>Learn how to build and use a flattening jig for slabs, cutting boards, and wider glue-ups.</span>
+        </a>
+
         <a class="link-item" href="/dust-collection-for-beginners.html">
           Dust Collection for Beginners
           <span>A practical small-shop guide to shop vacs, dust collectors, and what matters most first.</span>
