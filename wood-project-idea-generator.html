@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Wood Project Idea Generator | Random Woodworking Project Ideas | WoodToolChest</title>
+  <meta name="description" content="Generate random woodworking project ideas with build type, difficulty, wood suggestion, estimated time, and a practical shop note.">
+  <link rel="canonical" href="https://www.woodtoolchest.com/wood-project-idea-generator.html">
+
+  <style>
+    :root {
+      --bg: #f7f3ec;
+      --surface: #fffdf8;
+      --text: #1f1a17;
+      --muted: #6b625a;
+      --line: #ddd3c7;
+      --accent: #7a4b22;
+      --accent-dark: #5f3919;
+      --max: 860px;
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--accent-dark);
+    }
+
+    a:hover {
+      color: var(--accent);
+    }
+
+    .site-header {
+      background: #2b2018;
+      color: #fff;
+      padding: 18px 20px;
+      border-bottom: 1px solid #1d1510;
+    }
+
+    .site-header-inner,
+    .container,
+    .footer-inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .brand {
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .brand:hover {
+      color: #f1e4d7;
+    }
+
+    .hero {
+      padding: 42px 0 24px;
+    }
+
+    .eyebrow {
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 10px;
+    }
+
+    h1, h2, h3 {
+      line-height: 1.2;
+      margin-top: 0;
+      color: #1e1814;
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      margin-bottom: 14px;
+    }
+
+    h2 {
+      font-size: 1.7rem;
+      margin-bottom: 14px;
+      margin-top: 42px;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      margin-top: 26px;
+    }
+
+    p {
+      margin: 0 0 18px;
+    }
+
+    .intro {
+      font-size: 1.05rem;
+      color: #2b241f;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      margin: 24px 0;
+    }
+
+    .quick-answer {
+      border-left: 5px solid var(--accent);
+      padding: 18px 18px 18px 20px;
+      background: #f4ece3;
+      border-radius: 12px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .tip-box,
+    .warning-box,
+    .info-box {
+      padding: 16px 18px;
+      border-radius: 12px;
+      margin: 18px 0;
+    }
+
+    .tip-box {
+      background: #efe7dc;
+      border: 1px solid #d7c8b7;
+    }
+
+    .warning-box {
+      background: #f7ebe6;
+      border: 1px solid #e3c2b7;
+    }
+
+    .info-box {
+      background: #f3efe8;
+      border: 1px solid #ddd3c7;
+    }
+
+    .checklist,
+    .related-links {
+      padding-left: 20px;
+      margin: 0;
+    }
+
+    .checklist li,
+    .related-links li {
+      margin-bottom: 10px;
+    }
+
+    .generate-button {
+      appearance: none;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(180deg, #8a572b, #6f431f);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 14px 18px;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(79, 47, 22, 0.18);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .generate-button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(79, 47, 22, 0.24);
+    }
+
+    .generator-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      margin-top: 22px;
+    }
+
+    .result-block {
+      background: linear-gradient(180deg, #fffdf8, #faf5ee);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      min-height: 110px;
+    }
+
+    .result-label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .result-value {
+      font-size: 1.02rem;
+      color: #231d19;
+    }
+
+    .visual-preview {
+      margin-top: 22px;
+      background: #fbf7f1;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .preview-label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .project-visual {
+      min-height: 120px;
+      border-radius: 14px;
+      border: 1px solid #d7cab9;
+      background: linear-gradient(180deg, #f6efe6, #efe3d5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-shape {
+      position: relative;
+      background: #8a5a34;
+      border: 2px solid rgba(0,0,0,0.08);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.18);
+    }
+
+    .project-shape::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          rgba(255,255,255,0.10) 0px,
+          rgba(255,255,255,0.10) 8px,
+          rgba(0,0,0,0.03) 8px,
+          rgba(0,0,0,0.03) 16px
+        );
+      opacity: 0.55;
+      pointer-events: none;
+    }
+
+    .project-caption {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .footer {
+      margin-top: 56px;
+      padding: 28px 20px 40px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      background: #f3ede4;
+    }
+
+    @media (max-width: 700px) {
+      h1 {
+        font-size: 1.9rem;
+      }
+
+      h2 {
+        font-size: 1.45rem;
+      }
+
+      .card {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="brand" href="/">WoodToolChest</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <p class="eyebrow">Generators &amp; Planning Tools</p>
+      <h1>Wood Project Idea Generator</h1>
+      <p class="intro">
+        Need something useful to build but do not want to overthink it? This woodworking project generator gives you
+        a random project type, difficulty, wood suggestion, estimated time, and a practical shop note to help you get moving.
+      </p>
+    </section>
+
+    <section class="card quick-answer">
+      <h2>Quick answer</h2>
+      <p>
+        Click the generator to get a realistic woodworking project idea. It is designed to spark small-shop builds,
+        beginner-friendly practice, and practical weekend projects instead of random nonsense.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Generate a project idea</h2>
+      <p>
+        Use this when you want a build idea fast, want to practice a skill, or just need a nudge toward your next shop session.
+      </p>
+
+      <button class="generate-button" onclick="generateProject()">Generate Project Idea</button>
+
+      <div class="generator-grid">
+        <div class="result-block">
+          <span class="result-label">Project</span>
+          <div class="result-value" id="project">Cutting board</div>
+        </div>
+
+        <div class="result-block">
+          <span class="result-label">Difficulty</span>
+          <div class="result-value" id="difficulty">Beginner</div>
+        </div>
+
+        <div class="result-block">
+          <span class="result-label">Wood Suggestion</span>
+          <div class="result-value" id="wood">Maple + walnut</div>
+        </div>
+
+        <div class="result-block">
+          <span class="result-label">Estimated Time</span>
+          <div class="result-value" id="time">Half day</div>
+        </div>
+
+        <div class="result-block">
+          <span class="result-label">Shop Note</span>
+          <div class="result-value" id="note">Focus on clean glue-up and simple joinery.</div>
+        </div>
+      </div>
+
+      <div class="visual-preview">
+        <span class="preview-label">Visual Preview</span>
+        <div class="project-visual" id="project-visual">
+          <div class="project-shape" id="project-shape" style="width: 170px; height: 110px; border-radius: 12px;"></div>
+        </div>
+        <p class="project-caption" id="project-caption">A simple board-style project shape to match the current build suggestion.</p>
+      </div>
+
+      <div class="tip-box">
+        <strong>Good use for this tool:</strong> click a few times, pick the idea that feels realistic for your tools and time,
+        then commit to that one instead of spending the whole night deciding what to build.
+      </div>
+    </section>
+
+    <section>
+      <h2>What kinds of projects are included?</h2>
+      <p>
+        The generator leans toward practical woodworking builds that make sense in a home shop. That includes small furniture,
+        jigs, shop helpers, utility pieces, and skill-building projects.
+      </p>
+
+      <ul class="checklist">
+        <li>cutting boards and serving boards</li>
+        <li>mallets and bench accessories</li>
+        <li>simple jigs and shop fixtures</li>
+        <li>small shelves, stools, and utility builds</li>
+        <li>storage projects that improve workflow</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Why this is useful</h2>
+      <p>
+        A lot of shop momentum gets lost in indecision. A simple idea generator helps narrow the options and turns
+        “I should build something” into an actual next step.
+      </p>
+
+      <div class="info-box">
+        <strong>Best mindset:</strong> do not treat the result like a command. Treat it like a prompt. If one click gives you a
+        better version of an idea you already had, that is still a win.
+      </div>
+    </section>
+
+    <section>
+      <h2>How to use the result well</h2>
+
+      <h3>Match it to your current energy</h3>
+      <p>
+        If the generator gives you a medium or advanced project and you are tired, scale it down. A simpler build you finish is more useful
+        than a more impressive one you abandon.
+      </p>
+
+      <h3>Use the wood suggestion as a starting point</h3>
+      <p>
+        The listed wood is there to make the project feel concrete. You can swap species based on what you already have in the shop.
+      </p>
+
+      <h3>Pay attention to the shop note</h3>
+      <p>
+        The note is there to point you toward the real challenge; glue-up, layout, milling, repeatability, or surface cleanup.
+      </p>
+    </section>
+
+    <section>
+      <h2>Related guides</h2>
+      <ul class="related-links">
+        <li><a href="/cutting-board-design-generator.html">Cutting Board Design Generator</a></li>
+        <li><a href="/best-woods-for-cutting-boards.html">Best Woods for Cutting Boards</a></li>
+        <li><a href="/how-to-prevent-tearout-when-planing.html">How to Prevent Tearout When Planing</a></li>
+        <li><a href="/small-workshop-layout-guide.html">Small Workshop Layout Guide</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p><strong>WoodToolChest</strong> gives practical woodworking guides, shop setup advice, and tool help for real-world builds.</p>
+      <p class="muted">© 2026 WoodToolChest</p>
+    </div>
+  </footer>
+
+  <script>
+    const projectOptions = [
+      {
+        project: "Cutting board",
+        difficulty: "Beginner",
+        wood: "Maple + walnut",
+        time: "Half day",
+        note: "Focus on clean glue-up and simple milling.",
+        shape: "board",
+        caption: "A flat rectangular board shape fits a cutting board or serving board style project."
+      },
+      {
+        project: "Wooden mallet",
+        difficulty: "Beginner",
+        wood: "Maple, ash, or hickory",
+        time: "2 to 4 hours",
+        note: "Pay attention to head alignment and handle fit.",
+        shape: "mallet",
+        caption: "A blocky mallet head with a centered handle suits a quick shop build."
+      },
+      {
+        project: "Router jig",
+        difficulty: "Intermediate",
+        wood: "Plywood + hardwood runners",
+        time: "Half day to full day",
+        note: "Prioritize repeatability and square reference surfaces.",
+        shape: "jig",
+        caption: "A long, low rectangular layout works well for a practical jig or sled."
+      },
+      {
+        project: "Small wall shelf",
+        difficulty: "Beginner",
+        wood: "Pine, poplar, or maple",
+        time: "Half day",
+        note: "Keep layout simple and check for level early.",
+        shape: "shelf",
+        caption: "A clean shelf-like shape keeps the idea grounded and easy to picture."
+      },
+      {
+        project: "Shop stool",
+        difficulty: "Intermediate",
+        wood: "Construction lumber, ash, or maple",
+        time: "Full day",
+        note: "Strength and joinery matter more than decorative details.",
+        shape: "stool",
+        caption: "A low bench or stool silhouette suggests a compact utility build."
+      },
+      {
+        project: "Clamp rack",
+        difficulty: "Beginner",
+        wood: "Plywood or hardwood scraps",
+        time: "2 to 3 hours",
+        note: "Build around the clamps you actually own.",
+        shape: "rack",
+        caption: "A taller upright panel shape works for a wall rack or simple organizer."
+      },
+      {
+        project: "Workbench accessory tray",
+        difficulty: "Beginner",
+        wood: "Maple, birch plywood, or scrap hardwood",
+        time: "1 to 2 hours",
+        note: "Keep it simple and sized to your actual bench tools.",
+        shape: "tray",
+        caption: "A shallow tray shape fits quick bench organization projects."
+      },
+      {
+        project: "Shooting board",
+        difficulty: "Intermediate",
+        wood: "Plywood + stable hardwood fence",
+        time: "Half day",
+        note: "Accuracy matters more than fancy materials.",
+        shape: "jig",
+        caption: "A long precision-oriented platform shape matches a shooting board style build."
+      }
+    ];
+
+    const shapeEl = document.getElementById("project-shape");
+    const captionEl = document.getElementById("project-caption");
+
+    function renderShape(shape) {
+      if (shape === "board") {
+        shapeEl.style.width = "170px";
+        shapeEl.style.height = "110px";
+        shapeEl.style.borderRadius = "12px";
+      } else if (shape === "mallet") {
+        shapeEl.style.width = "160px";
+        shapeEl.style.height = "78px";
+        shapeEl.style.borderRadius = "10px";
+        shapeEl.style.clipPath = "polygon(0 15%, 78% 15%, 78% 0, 100% 0, 100% 100%, 78% 100%, 78% 85%, 0 85%)";
+      } else if (shape === "jig") {
+        shapeEl.style.width = "210px";
+        shapeEl.style.height = "68px";
+        shapeEl.style.borderRadius = "8px";
+        shapeEl.style.clipPath = "none";
+      } else if (shape === "shelf") {
+        shapeEl.style.width = "190px";
+        shapeEl.style.height = "70px";
+        shapeEl.style.borderRadius = "8px";
+        shapeEl.style.clipPath = "polygon(0 78%, 100% 78%, 100% 100%, 0 100%)";
+      } else if (shape === "stool") {
+        shapeEl.style.width = "170px";
+        shapeEl.style.height = "120px";
+        shapeEl.style.borderRadius = "10px";
+        shapeEl.style.clipPath = "polygon(12% 18%, 88% 18%, 100% 34%, 88% 34%, 78% 100%, 66% 100%, 72% 46%, 28% 46%, 34% 100%, 22% 100%, 12% 34%, 0 34%)";
+      } else if (shape === "rack") {
+        shapeEl.style.width = "115px";
+        shapeEl.style.height = "145px";
+        shapeEl.style.borderRadius = "8px";
+        shapeEl.style.clipPath = "none";
+      } else if (shape === "tray") {
+        shapeEl.style.width = "185px";
+        shapeEl.style.height = "70px";
+        shapeEl.style.borderRadius = "20px";
+        shapeEl.style.clipPath = "none";
+      } else {
+        shapeEl.style.width = "170px";
+        shapeEl.style.height = "110px";
+        shapeEl.style.borderRadius = "12px";
+        shapeEl.style.clipPath = "none";
+      }
+    }
+
+    function generateProject() {
+      const choice = projectOptions[Math.floor(Math.random() * projectOptions.length)];
+
+      document.getElementById("project").textContent = choice.project;
+      document.getElementById("difficulty").textContent = choice.difficulty;
+      document.getElementById("wood").textContent = choice.wood;
+      document.getElementById("time").textContent = choice.time;
+      document.getElementById("note").textContent = choice
