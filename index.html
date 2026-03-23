@@ -4,25 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>WoodToolChest | Practical Woodworking Guides, Tools, and Shop Setup</title>
-  <meta name="description" content="Practical woodworking guides, shop setup advice, and useful generators for real-world builds. Built for beginners and small shop woodworkers.">
+  <title>WoodToolChest | For Woodworkers, By Woodworkers</title>
+  <meta name="description" content="Practical woodworking guides, shop setup advice, and useful tools for real builds. Explore cutting board tools, workshop setup guides, router jig help, and more.">
   <link rel="canonical" href="https://www.woodtoolchest.com/">
 
   <style>
     :root {
       --bg: #f7f3ec;
       --surface: #fffdf8;
+      --surface-2: #fbf7f1;
       --text: #1f1a17;
       --muted: #6b625a;
       --line: #ddd3c7;
       --accent: #7a4b22;
       --accent-dark: #5f3919;
-      --max: 1000px;
-      --radius: 16px;
+      --max: 1080px;
+      --radius: 18px;
+      --shadow: 0 10px 28px rgba(32, 22, 16, 0.05);
     }
 
     * {
       box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -43,9 +49,9 @@
       text-decoration: underline;
     }
 
-    .header {
-      color: white;
-      padding: 22px 20px;
+    .site-header {
+      color: #fff;
+      padding: 20px;
       border-bottom: 1px solid #1d1510;
       background:
         linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0) 45%),
@@ -60,7 +66,9 @@
       box-shadow: inset 0 -1px 0 rgba(255,255,255,0.04);
     }
 
-    .container {
+    .site-header-inner,
+    .container,
+    .footer-inner {
       width: min(var(--max), calc(100% - 32px));
       margin: 0 auto;
     }
@@ -72,9 +80,9 @@
     }
 
     .brand-mark {
-      width: 34px;
-      height: 34px;
-      border-radius: 10px;
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
       background:
         linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.02)),
         linear-gradient(135deg, #9f6a37, #7a4b22);
@@ -83,7 +91,7 @@
       align-items: center;
       justify-content: center;
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
-      flex: 0 0 34px;
+      flex: 0 0 38px;
     }
 
     .brand-mark-bars {
@@ -94,23 +102,15 @@
 
     .brand-mark-bars span {
       display: block;
-      width: 5px;
+      width: 6px;
       border-radius: 2px;
       background: rgba(255,255,255,0.88);
       box-shadow: inset 0 -1px 0 rgba(0,0,0,0.15);
     }
 
-    .brand-mark-bars span:nth-child(1) {
-      height: 12px;
-    }
-
-    .brand-mark-bars span:nth-child(2) {
-      height: 16px;
-    }
-
-    .brand-mark-bars span:nth-child(3) {
-      height: 10px;
-    }
+    .brand-mark-bars span:nth-child(1) { height: 13px; }
+    .brand-mark-bars span:nth-child(2) { height: 18px; }
+    .brand-mark-bars span:nth-child(3) { height: 11px; }
 
     .brand-text-wrap {
       display: flex;
@@ -119,14 +119,20 @@
     }
 
     .brand {
-      font-size: 1.55rem;
+      font-size: 1.75rem;
       font-weight: 700;
-      letter-spacing: 0.01em;
+      color: #fff;
       line-height: 1;
+      text-decoration: none;
+    }
+
+    .brand:hover {
+      color: #f1e4d7;
+      text-decoration: none;
     }
 
     .brand-sub {
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       color: rgba(255,255,255,0.72);
       text-transform: uppercase;
       letter-spacing: 0.08em;
@@ -134,7 +140,7 @@
     }
 
     .hero {
-      padding: 56px 0 34px;
+      padding: 34px 0 26px;
     }
 
     .hero-panel {
@@ -144,18 +150,19 @@
         radial-gradient(circle at top right, rgba(122,75,34,0.10), transparent 35%),
         linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0));
       border: 1px solid var(--line);
-      border-radius: 24px;
+      border-radius: 26px;
       padding: 34px 30px;
-      box-shadow: 0 14px 34px rgba(32, 22, 16, 0.05);
+      box-shadow: var(--shadow);
+      margin-bottom: 26px;
     }
 
     .hero-panel::after {
       content: "";
       position: absolute;
-      right: -40px;
-      top: -10px;
-      width: 240px;
-      height: 240px;
+      right: -34px;
+      top: -6px;
+      width: 250px;
+      height: 250px;
       background:
         repeating-linear-gradient(
           135deg,
@@ -167,7 +174,7 @@
       border-radius: 28px;
       transform: rotate(8deg);
       pointer-events: none;
-      opacity: 0.5;
+      opacity: 0.45;
     }
 
     .eyebrow {
@@ -177,16 +184,18 @@
       text-transform: uppercase;
       color: var(--accent);
       margin: 0 0 10px;
+      position: relative;
+      z-index: 1;
     }
 
     h1, h2, h3 {
-      color: #1e1814;
       line-height: 1.2;
       margin-top: 0;
+      color: #1e1814;
     }
 
     h1 {
-      font-size: 2.6rem;
+      font-size: 2.85rem;
       margin-bottom: 14px;
       max-width: 760px;
       position: relative;
@@ -194,9 +203,8 @@
     }
 
     h2 {
-      font-size: 1.8rem;
+      font-size: 1.85rem;
       margin-bottom: 16px;
-      margin-top: 0;
     }
 
     h3 {
@@ -216,114 +224,354 @@
       z-index: 1;
     }
 
-    .section {
-      margin-bottom: 46px;
+    .tagline {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #3a2b1f;
+      margin: 10px 0 8px;
+      position: relative;
+      z-index: 1;
     }
 
-    .section-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 24px;
-      box-shadow: 0 8px 24px rgba(32, 22, 16, 0.03);
-    }
-
-    .grid {
-      display: grid;
-      gap: 16px;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    }
-
-    .card {
-      background: linear-gradient(180deg, #fffdf8, #fbf7f1);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 18px;
-      box-shadow: 0 6px 18px rgba(32, 22, 16, 0.03);
-      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 24px rgba(32, 22, 16, 0.06);
-      border-color: #ccbba8;
-    }
-
-    .card h3 {
-      margin-top: 0;
-    }
-
-    .card p {
+    .subtagline {
       color: var(--muted);
+      margin-bottom: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 18px;
+      margin-top: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.75);
+      border: 1px solid rgba(221,211,199,0.95);
+      border-radius: 18px;
+      padding: 18px;
+      backdrop-filter: blur(2px);
+    }
+
+    .hero-card p:last-child {
       margin-bottom: 0;
     }
 
-    .simple-list {
-      margin: 0;
-      padding-left: 20px;
+    .shop-preview {
+      height: 230px;
+      border-radius: 14px;
+      border: 1px solid #d7cab9;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.45), rgba(255,255,255,0)),
+        linear-gradient(0deg, #eadfce 0 44px, #f6f0e7 44px 100%);
+      position: relative;
+      overflow: hidden;
     }
 
-    .simple-list li {
-      margin-bottom: 10px;
+    .preview-board {
+      position: absolute;
+      left: 30px;
+      bottom: 58px;
+      width: 178px;
+      height: 84px;
+      border-radius: 16px 16px 12px 12px;
+      border: 1px solid rgba(0,0,0,0.08);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.22),
+        0 10px 22px rgba(36,26,20,0.10);
+      background:
+        linear-gradient(90deg,
+          #f0ddb9 0%, #f0ddb9 18%,
+          #5b3c27 18%, #5b3c27 33%,
+          #b56f51 33%, #b56f51 49%,
+          #f0ddb9 49%, #f0ddb9 67%,
+          #5b3c27 67%, #5b3c27 83%,
+          #b56f51 83%, #b56f51 100%);
+      overflow: hidden;
+    }
+
+    .preview-board::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          rgba(255,255,255,0.06) 0px,
+          rgba(255,255,255,0.06) 3px,
+          rgba(0,0,0,0.02) 3px,
+          rgba(0,0,0,0.02) 8px
+        );
+      pointer-events: none;
+    }
+
+    .preview-shelf {
+      position: absolute;
+      right: 26px;
+      top: 28px;
+      width: 72px;
+      height: 126px;
+      border-radius: 12px;
+      background:
+        repeating-linear-gradient(
+          to bottom,
+          #caa27b 0px,
+          #caa27b 20px,
+          #966947 20px,
+          #966947 24px
+        );
+      border: 1px solid #8b6547;
+    }
+
+    .preview-bench {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 36px;
+      height: 14px;
+      border-radius: 8px;
+      background: linear-gradient(180deg, #d7aa7d, #b88358);
+      border: 1px solid #9b6d48;
+    }
+
+    .preview-bench::before,
+    .preview-bench::after {
+      content: "";
+      position: absolute;
+      width: 10px;
+      top: 12px;
+      bottom: -34px;
+      border-radius: 6px;
+      background: #7d5131;
+    }
+
+    .preview-bench::before {
+      left: 24px;
+    }
+
+    .preview-bench::after {
+      right: 24px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .stat {
+      border: 1px solid #d7cab9;
+      border-radius: 14px;
+      padding: 14px;
+      background: #fffaf3;
+    }
+
+    .stat-value {
+      display: block;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #2b2018;
+      margin-bottom: 2px;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .section {
+      margin-bottom: 28px;
+    }
+
+    .section-header {
+      margin-bottom: 14px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: 0 8px 24px rgba(32, 22, 16, 0.03);
+    }
+
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .card-visual {
+      height: 110px;
+      border-radius: 12px;
+      border: 1px solid #d7cab9;
+      background: linear-gradient(180deg, #f8f2ea, #eee2d2);
+      margin-bottom: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-visual.tool::before,
+    .card-visual.guide::before,
+    .card-visual.shop::before {
+      content: "";
+      position: absolute;
+    }
+
+    .card-visual.tool::before {
+      left: 16px;
+      right: 16px;
+      top: 24px;
+      height: 18px;
+      border-radius: 8px;
+      background: linear-gradient(180deg, #d7aa7d, #b88358);
+      border: 1px solid #9b6d48;
+      box-shadow:
+        0 24px 0 0 rgba(95,57,25,0.12);
+    }
+
+    .card-visual.guide::before {
+      left: 18px;
+      right: 18px;
+      top: 18px;
+      bottom: 18px;
+      border-radius: 10px;
+      background:
+        linear-gradient(180deg, #fffaf3, #f3e8d8);
+      border: 1px solid #d7cab9;
+      box-shadow:
+        inset 0 -1px 0 rgba(255,255,255,0.4);
+    }
+
+    .card-visual.guide::after {
+      content: "";
+      position: absolute;
+      left: 28px;
+      right: 28px;
+      top: 34px;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(122,75,34,0.26);
+      box-shadow:
+        0 14px 0 0 rgba(122,75,34,0.20),
+        0 28px 0 0 rgba(122,75,34,0.16);
+    }
+
+    .card-visual.shop::before {
+      left: 14px;
+      right: 14px;
+      top: 14px;
+      bottom: 14px;
+      border-radius: 12px;
+      border: 2px dashed rgba(122,75,34,0.28);
+      background: rgba(255,255,255,0.12);
+    }
+
+    .card-visual.shop::after {
+      content: "";
+      position: absolute;
+      left: 26px;
+      right: 26px;
+      top: 46px;
+      height: 18px;
+      border-radius: 8px;
+      background: linear-gradient(180deg, #d7aa7d, #b88358);
+      border: 1px solid #9b6d48;
+    }
+
+    .link-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .link-item {
+      display: block;
+      background: linear-gradient(180deg, #fffdf8, #fbf7f1);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      font-weight: 700;
+      color: #2c221a;
+      box-shadow: 0 6px 18px rgba(32, 22, 16, 0.03);
+    }
+
+    .link-item span {
+      display: block;
+      color: var(--muted);
+      font-weight: 400;
+      font-size: 0.92rem;
+      margin-top: 6px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
     }
 
     .footer {
-      margin-top: 60px;
-      padding: 30px 20px 40px;
+      margin-top: 56px;
+      padding: 28px 20px 40px;
       border-top: 1px solid var(--line);
-      background: #f3ede4;
       color: var(--muted);
+      background: #f3ede4;
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .cards-grid,
+      .two-col,
+      .stats {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 700px) {
       h1 {
-        font-size: 2.05rem;
+        font-size: 2.1rem;
       }
 
       h2 {
         font-size: 1.5rem;
       }
 
-      .hero {
-        padding-top: 40px;
+      .hero-panel,
+      .card {
+        padding: 20px;
       }
 
-      .hero-panel {
-        padding: 26px 22px;
+      .shop-preview {
+        height: 250px;
       }
 
-      .hero-panel::after {
-        width: 150px;
-        height: 150px;
-        right: -30px;
-        top: 10px;
-      }
-
-      .brand {
-        font-size: 1.4rem;
-      }
-
-      .brand-sub {
-        font-size: 0.72rem;
+      .preview-board {
+        width: 145px;
+        height: 72px;
       }
     }
   </style>
 </head>
 <body>
-
-  <header class="header">
-    <div class="container">
+  <header class="site-header">
+    <div class="site-header-inner">
       <div class="brand-row">
         <div class="brand-mark" aria-hidden="true">
           <div class="brand-mark-bars">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
           </div>
         </div>
         <div class="brand-text-wrap">
-          <div class="brand">WoodToolChest</div>
-          <div class="brand-sub">Practical Woodworking</div>
+          <a class="brand" href="/">WoodToolChest</a>
+          <div class="brand-sub">Practical woodworking guides, tools, and shop setup</div>
         </div>
       </div>
     </div>
@@ -332,107 +580,152 @@
   <main class="container">
     <section class="hero">
       <div class="hero-panel">
-        <p class="eyebrow">Practical Woodworking</p>
-        <h1>Woodworking Guides for Real Shops</h1>
+        <p class="eyebrow">Woodworking guides and tools</p>
+        <h1>Practical woodworking help for real shop builds</h1>
+        <p class="tagline">For Woodworkers, By Woodworkers.</p>
+        <p class="subtagline">New guides and useful tools added regularly for cutting boards, shop setup, router jigs, and small-shop workflow.</p>
         <p class="intro">
-          WoodToolChest is built for practical woodworking; small shops, real constraints, useful jigs, better tool decisions, and straightforward advice you can actually use while building.
-        </p>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-card">
-        <h2>Start Here</h2>
-        <p>
-          These are the first core guides and tools on the site. They focus on common small-shop problems, practical setup decisions, and high-value woodworking basics.
+          WoodToolChest is built for woodworkers who want clear answers, useful visuals, and tools they can actually use in the shop. Whether you are flattening a cutting board, planning a compact workshop, or looking for your next build, the goal is simple: practical help without the fluff.
         </p>
 
-        <div class="grid">
-          <article class="card">
-            <h3><a href="/router-flattening-jig.html">Router Flattening Jig Guide</a></h3>
-            <p>How to build and use one of the most useful jigs for slabs, glue-ups, and cutting boards.</p>
-          </article>
+        <div class="hero-grid">
+          <div class="hero-card">
+            <div class="shop-preview" aria-hidden="true">
+              <div class="preview-shelf"></div>
+              <div class="preview-board"></div>
+              <div class="preview-bench"></div>
+            </div>
+          </div>
 
-          <article class="card">
-            <h3><a href="/how-to-flatten-a-cutting-board.html">How to Flatten a Cutting Board</a></h3>
-            <p>Practical ways to flatten edge grain and end grain boards safely and cleanly.</p>
-          </article>
+          <div class="hero-card">
+            <h3>Start here</h3>
+            <p>Use the generators when you want ideas fast, then jump into the guides when you want clean explanations and visual walkthroughs.</p>
 
-          <article class="card">
-            <h3><a href="/workbench-height-guide.html">Workbench Height Guide</a></h3>
-            <p>Choose a bench height that matches how you actually work in the shop.</p>
-          </article>
+            <div class="stats">
+              <div class="stat">
+                <span class="stat-value">3</span>
+                <span class="stat-label">Interactive tools</span>
+              </div>
 
-          <article class="card">
-            <h3><a href="/dust-collection-for-beginners.html">Dust Collection for Beginners</a></h3>
-            <p>A simple small-shop guide to shop vacs, dust collectors, and realistic setup choices.</p>
-          </article>
+              <div class="stat">
+                <span class="stat-value">6</span>
+                <span class="stat-label">Practical guides</span>
+              </div>
 
-          <article class="card">
-            <h3><a href="/small-workshop-layout-guide.html">Small Workshop Layout Guide</a></h3>
-            <p>Make a compact shop work better with smarter layout, storage, and tool placement.</p>
-          </article>
-
-          <article class="card">
-            <h3><a href="/cutting-board-design-generator.html">Cutting Board Design Generator</a></h3>
-            <p>Generate random cutting board ideas with wood combinations, pattern styles, sizes, and build details.</p>
-          </article>
+              <div class="stat">
+                <span class="stat-value">1</span>
+                <span class="stat-label">Goal: useful every visit</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="section">
-      <div class="section-card">
-        <h2>Latest Guides & Tools</h2>
-        <ul class="simple-list">
-          <li><a href="/cutting-board-design-generator.html">Cutting Board Design Generator</a></li>
-          <li><a href="/router-flattening-jig.html">Router Flattening Jig Guide</a></li>
-          <li><a href="/how-to-flatten-a-cutting-board.html">How to Flatten a Cutting Board</a></li>
-          <li><a href="/workbench-height-guide.html">Workbench Height Guide</a></li>
-          <li><a href="/dust-collection-for-beginners.html">Dust Collection for Beginners</a></li>
-          <li><a href="/small-workshop-layout-guide.html">Small Workshop Layout Guide</a></li>
-        </ul>
+      <div class="section-header">
+        <h2>Explore by type</h2>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-visual tool"></div>
+          <h3>Interactive tools</h3>
+          <p>Generate cutting board ideas, woodworking project ideas, and quick inspiration when you want something practical to build or test.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-visual guide"></div>
+          <h3>Build guides</h3>
+          <p>Step-by-step help for flattening boards, choosing woods, and working through real project decisions without overcomplicating them.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-visual shop"></div>
+          <h3>Shop setup advice</h3>
+          <p>Layout, dust collection, workbench height, and other practical setup topics for garage shops and compact woodworking spaces.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section two-col">
+      <div>
+        <div class="section-header">
+          <h2>Tools</h2>
+        </div>
+
+        <div class="link-list">
+          <a class="link-item" href="/cutting-board-design-generator.html">
+            Cutting Board Design Generator
+            <span>Generate cutting board ideas with visual previews, wood choices, and pattern inspiration.</span>
+          </a>
+
+          <a class="link-item" href="/wood-project-idea-generator.html">
+            Wood Project Idea Generator
+            <span>Get a random, realistic woodworking idea with difficulty, wood type, and estimated time.</span>
+          </a>
+
+          <a class="link-item" href="/router-flattening-jig.html">
+            Router Flattening Jig Guide
+            <span>Learn how to build and use a flattening jig for slabs, cutting boards, and wider glue-ups.</span>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-header">
+          <h2>Latest guides</h2>
+        </div>
+
+        <div class="link-list">
+          <a class="link-item" href="/best-woods-for-cutting-boards.html">
+            Best Woods for Cutting Boards
+            <span>A beginner-friendly guide to maple, walnut, cherry, and the woods worth avoiding.</span>
+          </a>
+
+          <a class="link-item" href="/how-to-prevent-tearout-when-planing.html">
+            How to Prevent Tearout When Planing
+            <span>Learn how to read grain, take lighter passes, and avoid ugly tearout before it starts.</span>
+          </a>
+
+          <a class="link-item" href="/how-to-flatten-a-cutting-board.html">
+            How to Flatten a Cutting Board
+            <span>Practical methods for edge grain and end grain boards using routers, planers, or sanding.</span>
+          </a>
+        </div>
       </div>
     </section>
 
     <section class="section">
-      <div class="section-card">
-        <h2>What You’ll Find Here</h2>
-
-        <p><strong>Shop Setup</strong><br>
-        Workbench design, layout, dust collection, and making a small workshop work better.</p>
-
-        <p><strong>Jigs &amp; Builds</strong><br>
-        Practical builds that solve real problems in the shop.</p>
-
-        <p><strong>Tool Guidance</strong><br>
-        Clear advice on tools, setups, and tradeoffs without the noise.</p>
-
-        <p><strong>Project Help</strong><br>
-        Straightforward answers to common woodworking problems.</p>
-
-        <p><strong>Generators &amp; Planning Tools</strong><br>
-        Simple woodworking tools that help spark ideas and speed up build decisions.</p>
+      <div class="section-header">
+        <h2>More practical shop guides</h2>
       </div>
-    </section>
 
-    <section class="section">
-      <div class="section-card">
-        <h2>About WoodToolChest</h2>
-        <p>
-          This site is focused on practical woodworking for beginners and small-shop builders. The goal is not to publish fluff or generic filler. The goal is to create genuinely useful guides and tools that help with real decisions and real shop problems.
-        </p>
+      <div class="link-list">
+        <a class="link-item" href="/dust-collection-for-beginners.html">
+          Dust Collection for Beginners
+          <span>A practical small-shop guide to shop vacs, dust collectors, and what matters most first.</span>
+        </a>
+
+        <a class="link-item" href="/small-workshop-layout-guide.html">
+          Small Workshop Layout Guide
+          <span>Plan a better garage or compact shop layout with cleaner workflow, storage, and open space.</span>
+        </a>
+
+        <a class="link-item" href="/workbench-height-guide.html">
+          Workbench Height Guide
+          <span>Choose a bench height that actually fits your work style, body, and type of woodworking.</span>
+        </a>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="container">
-      <p><strong>WoodToolChest</strong></p>
-      <p>Practical woodworking guides, tools, and shop setup advice.</p>
-      <p>© 2026 WoodToolChest</p>
+    <div class="footer-inner">
+      <p><strong>WoodToolChest</strong> gives practical woodworking guides, shop setup advice, and tool help for real-world builds.</p>
+      <p>For Woodworkers, By Woodworkers.</p>
+      <p class="muted">© 2026 WoodToolChest</p>
     </div>
   </footer>
-
 </body>
 </html>
