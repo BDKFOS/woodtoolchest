@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Cutting Board Design Generator | Random Wood & Pattern Ideas | WoodToolChest</title>
-  <meta name="description" content="Generate cutting board ideas based on the lumber you actually have, with suggested wood combinations, dimensions, patterns, and build details.">
+  <meta name="description" content="Generate cutting board ideas based on the lumber you actually have, with suggested wood combinations, dimensions, patterns, build details, and a visual preview of the board.">
   <link rel="canonical" href="https://www.woodtoolchest.com/cutting-board-design-generator.html">
 
   <style>
@@ -13,6 +13,7 @@
       --bg: #f7f3ec;
       --surface: #fffdf8;
       --surface-2: #fbf7f1;
+      --surface-3: #f4ede4;
       --text: #1f1a17;
       --muted: #6b625a;
       --line: #ddd3c7;
@@ -20,6 +21,7 @@
       --accent-dark: #5f3919;
       --radius: 16px;
       --max: 980px;
+      --shadow: 0 8px 24px rgba(0,0,0,0.06);
     }
 
     * {
@@ -58,7 +60,7 @@
       border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: 28px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      box-shadow: var(--shadow);
     }
 
     h1, h2, h3 {
@@ -90,13 +92,165 @@
       max-width: 760px;
     }
 
+    .hero-visual-card,
     .input-card,
     .result-card,
-    .info-card {
+    .info-card,
+    .visual-guide-card {
       background: var(--surface-2);
       border: 1px solid var(--line);
       border-radius: 14px;
       padding: 20px;
+    }
+
+    .hero-visual-card {
+      margin: 26px 0 0;
+    }
+
+    .hero-visual-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.9fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .hero-preview-wrap,
+    .hero-caption-wrap {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .preview-stage {
+      background: linear-gradient(180deg, #efe7db 0%, #e8ddcf 100%);
+      border: 1px solid #d8cab9;
+      border-radius: 14px;
+      padding: 18px;
+      min-height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .preview-board-shell {
+      width: min(100%, 420px);
+      aspect-ratio: 1.35 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .preview-board {
+      width: 100%;
+      height: 100%;
+      border-radius: 18px;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid rgba(60, 42, 29, 0.32);
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.15),
+        0 12px 22px rgba(72, 49, 29, 0.16);
+      background: #dbcab1;
+    }
+
+    .preview-board::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,0.08), rgba(0,0,0,0.04)),
+        repeating-linear-gradient(
+          90deg,
+          rgba(255,255,255,0.05) 0 2px,
+          rgba(255,255,255,0) 2px 18px
+        );
+      pointer-events: none;
+      mix-blend-mode: soft-light;
+    }
+
+    .preview-segment {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+    }
+
+    .preview-checker-cell,
+    .preview-brick-cell,
+    .preview-chaos-piece {
+      position: absolute;
+      border: 1px solid rgba(80, 58, 40, 0.12);
+    }
+
+    .juice-groove {
+      position: absolute;
+      inset: 12px;
+      border: 4px solid rgba(92, 64, 40, 0.22);
+      border-radius: 14px;
+      pointer-events: none;
+    }
+
+    .handle-cutout {
+      position: absolute;
+      width: 58px;
+      height: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-radius: 999px;
+      background: rgba(70, 48, 31, 0.18);
+      box-shadow: inset 0 1px 4px rgba(0,0,0,0.08);
+      pointer-events: none;
+    }
+
+    .handle-left {
+      left: 12px;
+    }
+
+    .handle-right {
+      right: 12px;
+    }
+
+    .hero-caption-wrap h3 {
+      margin-bottom: 10px;
+    }
+
+    .mini-specs {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .mini-spec {
+      background: var(--surface-3);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px;
+    }
+
+    .mini-spec strong {
+      display: block;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #6a594c;
+      margin-bottom: 4px;
+    }
+
+    .pattern-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .pattern-chip {
+      background: #f3ebdf;
+      border: 1px solid var(--line);
+      color: #4d3d30;
+      border-radius: 999px;
+      padding: 7px 11px;
+      font-size: 0.92rem;
     }
 
     .input-card {
@@ -242,8 +396,237 @@
       color: #352a22;
     }
 
+    .inline-board-preview {
+      margin-top: 18px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .inline-board-preview h3 {
+      margin-bottom: 8px;
+    }
+
+    .inline-board-canvas {
+      margin-top: 12px;
+      background: linear-gradient(180deg, #efe7db 0%, #e8ddcf 100%);
+      border: 1px solid #d8cab9;
+      border-radius: 14px;
+      padding: 14px;
+    }
+
+    .inline-board-frame {
+      width: min(100%, 520px);
+      max-width: 100%;
+      margin: 0 auto;
+      aspect-ratio: 1.45 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .inline-board {
+      width: 100%;
+      height: 100%;
+      border-radius: 18px;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid rgba(60, 42, 29, 0.32);
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.15),
+        0 12px 22px rgba(72, 49, 29, 0.16);
+      background: #dbcab1;
+    }
+
+    .inline-preview-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .inline-preview-pill {
+      background: #f3ebdf;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 7px 11px;
+      color: #4d3d30;
+      font-size: 0.92rem;
+    }
+
     .info-section {
       margin-top: 38px;
+    }
+
+    .visual-guides-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin: 20px 0 0;
+    }
+
+    .visual-guide-card {
+      background: white;
+    }
+
+    .guide-image {
+      background: linear-gradient(180deg, #f0e7db 0%, #e7dbca 100%);
+      border: 1px solid #d8cab9;
+      border-radius: 12px;
+      height: 170px;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+
+    .guide-image.pattern-stripes::before,
+    .guide-image.pattern-checker::before,
+    .guide-image.pattern-endgrain::before {
+      content: "";
+      position: absolute;
+      inset: 16px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: inset 0 0 0 2px rgba(77, 57, 41, 0.16);
+    }
+
+    .guide-image.pattern-stripes::before {
+      background:
+        linear-gradient(90deg,
+          #d8c3a5 0% 18%,
+          #5a3a29 18% 34%,
+          #9b5d42 34% 52%,
+          #d8c3a5 52% 68%,
+          #5a3a29 68% 83%,
+          #c8ab7c 83% 100%);
+    }
+
+    .guide-image.pattern-checker::before {
+      background:
+        linear-gradient(45deg,
+          #d8c3a5 25%,
+          transparent 25% 75%,
+          #d8c3a5 75%),
+        linear-gradient(45deg,
+          #d8c3a5 25%,
+          transparent 25% 75%,
+          #d8c3a5 75%);
+      background-color: #5a3a29;
+      background-size: 56px 56px;
+      background-position: 0 0, 28px 28px;
+    }
+
+    .guide-image.pattern-endgrain::before {
+      background:
+        linear-gradient(90deg,
+          #d8c3a5 0 20%,
+          #5a3a29 20% 40%,
+          #9b5d42 40% 60%,
+          #e7dcc6 60% 80%,
+          #c8ab7c 80% 100%);
+      filter: saturate(1.05);
+    }
+
+    .guide-image.pattern-endgrain::after {
+      content: "";
+      position: absolute;
+      inset: 16px;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          rgba(255,255,255,0.06) 0 2px,
+          rgba(255,255,255,0) 2px 14px
+        ),
+        repeating-linear-gradient(
+          0deg,
+          rgba(0,0,0,0.05) 0 2px,
+          rgba(0,0,0,0) 2px 14px
+        );
+      border-radius: 12px;
+      pointer-events: none;
+      mix-blend-mode: soft-light;
+    }
+
+    .guide-image .dimension-line-horizontal,
+    .guide-image .dimension-line-vertical {
+      position: absolute;
+      background: rgba(84, 62, 43, 0.7);
+      border-radius: 999px;
+    }
+
+    .guide-image .dimension-line-horizontal {
+      left: 26px;
+      right: 26px;
+      bottom: 16px;
+      height: 2px;
+    }
+
+    .guide-image .dimension-line-vertical {
+      top: 26px;
+      bottom: 26px;
+      right: 16px;
+      width: 2px;
+    }
+
+    .guide-image .dimension-text-horizontal,
+    .guide-image .dimension-text-vertical {
+      position: absolute;
+      font-size: 11px;
+      color: #4d3d30;
+      background: rgba(255,255,255,0.75);
+      padding: 2px 6px;
+      border-radius: 999px;
+    }
+
+    .guide-image .dimension-text-horizontal {
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 20px;
+    }
+
+    .guide-image .dimension-text-vertical {
+      right: 21px;
+      top: 50%;
+      transform: translateY(-50%) rotate(-90deg);
+      transform-origin: center;
+    }
+
+    .guide-image .groove-demo,
+    .guide-image .handle-demo {
+      position: absolute;
+      inset: 28px;
+      border-radius: 14px;
+      pointer-events: none;
+    }
+
+    .guide-image .groove-demo {
+      border: 4px solid rgba(92, 64, 40, 0.2);
+    }
+
+    .guide-image .handle-demo::before,
+    .guide-image .handle-demo::after {
+      content: "";
+      position: absolute;
+      width: 50px;
+      height: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-radius: 999px;
+      background: rgba(70, 48, 31, 0.18);
+    }
+
+    .guide-image .handle-demo::before {
+      left: -2px;
+    }
+
+    .guide-image .handle-demo::after {
+      right: -2px;
+    }
+
+    .guide-caption {
+      color: var(--muted);
+      font-size: 0.96rem;
     }
 
     .related-tools {
@@ -287,7 +670,9 @@
         display: none;
       }
 
-      .result-grid {
+      .result-grid,
+      .visual-guides-grid,
+      .hero-visual-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -312,6 +697,14 @@
       button {
         width: 100%;
       }
+
+      .preview-stage {
+        min-height: 220px;
+      }
+
+      .guide-image {
+        height: 155px;
+      }
     }
   </style>
 </head>
@@ -326,429 +719,25 @@
         Enter the lumber you actually have and generate a realistic cutting board idea based on your available stock, including suggested wood combinations, pattern style, finished dimensions, and build details.
       </p>
 
-      <div class="input-card">
-        <h2>Your Lumber</h2>
-        <p>
-          Add the boards you have on hand. Use rough real-world dimensions in inches. The generator will use your stock to suggest a cutting board that makes sense.
-        </p>
+      <div class="hero-visual-card">
+        <div class="hero-visual-grid">
+          <div class="hero-preview-wrap">
+            <h2 style="margin-bottom:10px;">Live design preview</h2>
+            <p style="margin-bottom:14px; color: var(--muted);">
+              This visual updates when you generate a design, so users can actually see the kind of board their stock is pointing toward.
+            </p>
 
-        <div class="row-grid header-row">
-          <div>Wood Species</div>
-          <div>Length (in)</div>
-          <div>Width (in)</div>
-          <div>Thickness (in)</div>
-          <div>Quantity</div>
-        </div>
-
-        <div class="row-grid">
-          <div>
-            <label for="species1">Board 1</label>
-            <select id="species1">
-              <option value="">Select wood</option>
-              <option>Maple</option>
-              <option>Walnut</option>
-              <option>Cherry</option>
-              <option>Oak</option>
-              <option>Ash</option>
-            </select>
-          </div>
-          <div>
-            <label for="length1">Length</label>
-            <input id="length1" type="number" min="0" step="0.25" placeholder="24">
-          </div>
-          <div>
-            <label for="width1">Width</label>
-            <input id="width1" type="number" min="0" step="0.25" placeholder="2.5">
-          </div>
-          <div>
-            <label for="thickness1">Thickness</label>
-            <input id="thickness1" type="number" min="0" step="0.25" placeholder="1">
-          </div>
-          <div>
-            <label for="qty1">Qty</label>
-            <input id="qty1" type="number" min="1" step="1" placeholder="3">
-          </div>
-        </div>
-
-        <div class="row-grid">
-          <div>
-            <label for="species2">Board 2</label>
-            <select id="species2">
-              <option value="">Select wood</option>
-              <option>Maple</option>
-              <option>Walnut</option>
-              <option>Cherry</option>
-              <option>Oak</option>
-              <option>Ash</option>
-            </select>
-          </div>
-          <div>
-            <label for="length2">Length</label>
-            <input id="length2" type="number" min="0" step="0.25" placeholder="24">
-          </div>
-          <div>
-            <label for="width2">Width</label>
-            <input id="width2" type="number" min="0" step="0.25" placeholder="2">
-          </div>
-          <div>
-            <label for="thickness2">Thickness</label>
-            <input id="thickness2" type="number" min="0" step="0.25" placeholder="1">
-          </div>
-          <div>
-            <label for="qty2">Qty</label>
-            <input id="qty2" type="number" min="1" step="1" placeholder="2">
-          </div>
-        </div>
-
-        <div class="row-grid">
-          <div>
-            <label for="species3">Board 3</label>
-            <select id="species3">
-              <option value="">Select wood</option>
-              <option>Maple</option>
-              <option>Walnut</option>
-              <option>Cherry</option>
-              <option>Oak</option>
-              <option>Ash</option>
-            </select>
-          </div>
-          <div>
-            <label for="length3">Length</label>
-            <input id="length3" type="number" min="0" step="0.25" placeholder="18">
-          </div>
-          <div>
-            <label for="width3">Width</label>
-            <input id="width3" type="number" min="0" step="0.25" placeholder="1.5">
-          </div>
-          <div>
-            <label for="thickness3">Thickness</label>
-            <input id="thickness3" type="number" min="0" step="0.25" placeholder="1">
-          </div>
-          <div>
-            <label for="qty3">Qty</label>
-            <input id="qty3" type="number" min="1" step="1" placeholder="2">
-          </div>
-        </div>
-
-        <div class="row-grid">
-          <div>
-            <label for="species4">Board 4</label>
-            <select id="species4">
-              <option value="">Select wood</option>
-              <option>Maple</option>
-              <option>Walnut</option>
-              <option>Cherry</option>
-              <option>Oak</option>
-              <option>Ash</option>
-            </select>
-          </div>
-          <div>
-            <label for="length4">Length</label>
-            <input id="length4" type="number" min="0" step="0.25" placeholder="18">
-          </div>
-          <div>
-            <label for="width4">Width</label>
-            <input id="width4" type="number" min="0" step="0.25" placeholder="2">
-          </div>
-          <div>
-            <label for="thickness4">Thickness</label>
-            <input id="thickness4" type="number" min="0" step="0.25" placeholder="1">
-          </div>
-          <div>
-            <label for="qty4">Qty</label>
-            <input id="qty4" type="number" min="1" step="1" placeholder="1">
-          </div>
-        </div>
-
-        <p class="helper-text">
-          Tip: you do not need perfectly exact numbers. This tool is meant to help you generate realistic ideas from the stock you already have.
-        </p>
-      </div>
-
-      <div class="button-row">
-        <button type="button" onclick="generateDesign()">Generate Design</button>
-        <button type="button" onclick="generateDesign()">Regenerate</button>
-      </div>
-
-      <div class="result-card" id="result" aria-live="polite">
-        <h2>Your suggested cutting board</h2>
-        <p>Enter your lumber above and click <strong>Generate Design</strong> to get a stock-aware cutting board idea.</p>
-      </div>
-
-      <div class="info-section">
-        <hr>
-
-        <h2>How this generator works</h2>
-        <p>
-          This tool uses the wood species, lengths, widths, thicknesses, and quantities you enter to suggest a cutting board that fits your stock more realistically. It looks at your shortest usable length, your total available strip width, and your material thickness to recommend a board style and approximate finished dimensions.
-        </p>
-        <p>
-          It is not meant to replace a full cut list or exact yield calculation. Instead, it gives you a strong starting point that makes more sense than a totally random board idea.
-        </p>
-
-        <hr>
-
-        <h2>Frequently Asked Questions</h2>
-
-        <p><strong>Does this calculate exact yield?</strong><br>
-        No. It gives a helpful planning suggestion based on your input, but you should still account for milling, saw kerf, snipe, cleanup cuts, and glue-up waste.</p>
-
-        <p><strong>Can this suggest end grain boards?</strong><br>
-        Yes, but it will lean more toward end grain when your thickness and stock mix make that idea more realistic.</p>
-
-        <p><strong>What if I only have one species?</strong><br>
-        The generator can still give you a good single-species board idea with dimensions and a suitable pattern direction.</p>
-      </div>
-
-      <div class="related-tools">
-        <hr>
-        <h2>Related Woodworking Guides</h2>
-        <ul>
-          <li><a href="/how-to-flatten-a-cutting-board.html">How to Flatten a Cutting Board</a></li>
-          <li><a href="/router-flattening-jig.html">Router Flattening Jig Guide</a></li>
-          <li><a href="/small-workshop-layout-guide.html">Small Workshop Layout Guide</a></li>
-          <li><a href="/workbench-height-guide.html">Workbench Height Guide</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    const woodColors = {
-      "Maple": "#d8c3a5",
-      "Walnut": "#5a3a29",
-      "Cherry": "#9b5d42",
-      "Oak": "#c8ab7c",
-      "Ash": "#e7dcc6"
-    };
-
-    function randomItem(arr) {
-      return arr[Math.floor(Math.random() * arr.length)];
-    }
-
-    function clamp(value, min, max) {
-      return Math.max(min, Math.min(max, value));
-    }
-
-    function roundDownQuarter(num) {
-      return Math.floor(num * 4) / 4;
-    }
-
-    function getRows() {
-      const rows = [];
-
-      for (let i = 1; i <= 4; i++) {
-        const species = document.getElementById(`species${i}`).value.trim();
-        const length = parseFloat(document.getElementById(`length${i}`).value);
-        const width = parseFloat(document.getElementById(`width${i}`).value);
-        const thickness = parseFloat(document.getElementById(`thickness${i}`).value);
-        const qty = parseInt(document.getElementById(`qty${i}`).value, 10);
-
-        if (
-          species &&
-          !isNaN(length) && length > 0 &&
-          !isNaN(width) && width > 0 &&
-          !isNaN(thickness) && thickness > 0 &&
-          !isNaN(qty) && qty > 0
-        ) {
-          rows.push({
-            species,
-            length,
-            width,
-            thickness,
-            qty
-          });
-        }
-      }
-
-      return rows;
-    }
-
-    function formatThickness(value) {
-      const rounded = Math.round(value * 100) / 100;
-      return `${rounded}"`;
-    }
-
-    function buildSwatches(speciesList) {
-      return speciesList.map(species => {
-        const color = woodColors[species] || "#cccccc";
-        return `
-          <div class="swatch">
-            <span class="swatch-color" style="background:${color};"></span>
-            <span>${species}</span>
-          </div>
-        `;
-      }).join("");
-    }
-
-    function generateDesign() {
-      const result = document.getElementById("result");
-      const rows = getRows();
-
-      if (rows.length === 0) {
-        result.innerHTML = `
-          <h2>Your suggested cutting board</h2>
-          <p>Please enter at least one valid lumber row with species, length, width, thickness, and quantity.</p>
-        `;
-        return;
-      }
-
-      const speciesTotals = {};
-      let shortestLength = Infinity;
-      let avgThicknessAccumulator = 0;
-      let totalBoards = 0;
-
-      rows.forEach(row => {
-        shortestLength = Math.min(shortestLength, row.length);
-
-        if (!speciesTotals[row.species]) {
-          speciesTotals[row.species] = {
-            widthTotal: 0,
-            boardCount: 0,
-            thicknesses: []
-          };
-        }
-
-        speciesTotals[row.species].widthTotal += row.width * row.qty;
-        speciesTotals[row.species].boardCount += row.qty;
-
-        for (let i = 0; i < row.qty; i++) {
-          speciesTotals[row.species].thicknesses.push(row.thickness);
-          avgThicknessAccumulator += row.thickness;
-          totalBoards += 1;
-        }
-      });
-
-      const uniqueSpecies = Object.keys(speciesTotals);
-      const avgThickness = avgThicknessAccumulator / totalBoards;
-
-      const speciesByWidth = uniqueSpecies
-        .map(species => ({
-          species,
-          widthTotal: speciesTotals[species].widthTotal
-        }))
-        .sort((a, b) => b.widthTotal - a.widthTotal);
-
-      const chosenSpecies = uniqueSpecies.length >= 2
-        ? [speciesByWidth[0].species, speciesByWidth[1].species]
-        : [speciesByWidth[0].species];
-
-      const chosenWidthCapacity = chosenSpecies.reduce((sum, species) => {
-        return sum + speciesTotals[species].widthTotal;
-      }, 0);
-
-      const safeLength = roundDownQuarter(shortestLength * 0.82);
-      const safeWidth = roundDownQuarter(chosenWidthCapacity * 0.7);
-
-      let suggestedLength = clamp(safeLength, 10, 24);
-      let suggestedWidth = clamp(safeWidth, 6, 18);
-
-      if (suggestedWidth > suggestedLength - 2) {
-        suggestedWidth = Math.max(6, roundDownQuarter(suggestedLength - 2));
-      }
-
-      let finishedThickness = avgThickness >= 1.5 ? 1.5 : avgThickness >= 1.1 ? 1.0 : 0.75;
-      finishedThickness = Math.round(finishedThickness * 100) / 100;
-
-      let patternPool = [];
-      if (avgThickness >= 1.25 && uniqueSpecies.length >= 2) {
-        patternPool = [
-          "End Grain Checkerboard",
-          "Brick Pattern",
-          "Striped End Grain",
-          "High-Contrast End Grain"
-        ];
-      } else if (uniqueSpecies.length >= 2) {
-        patternPool = [
-          "Striped Edge Grain",
-          "Wide-Narrow Stripe Mix",
-          "Simple Contrast Edge Grain",
-          "Clean Two-Wood Layout"
-        ];
-      } else {
-        patternPool = [
-          "Single-Species Edge Grain",
-          "Clean Minimal Edge Grain",
-          "Simple Shop Board",
-          "Straight Strip Layout"
-        ];
-      }
-
-      const pattern = randomItem(patternPool);
-
-      const groove = suggestedWidth >= 10 ? randomItem(["Yes", "No"]) : "No";
-      const handles = suggestedLength >= 16 ? randomItem(["Yes", "No"]) : "No";
-
-      const vibePool = uniqueSpecies.length >= 2
-        ? ["Bold contrast", "Gift-friendly", "Clean and modern", "Classic hardwood mix", "Practical small-shop build"]
-        : ["Minimal and clean", "Simple shop staple", "Single-species classic", "Utility-focused build", "Clean everyday board"];
-
-      const vibe = randomItem(vibePool);
-
-      let buildReason = "";
-      if (uniqueSpecies.length >= 2 && avgThickness >= 1.25) {
-        buildReason = "Your stock supports a more visual board idea, and your thickness makes an end grain style more realistic.";
-      } else if (uniqueSpecies.length >= 2) {
-        buildReason = "You have enough mixed stock to create contrast, but an edge grain layout is the cleaner fit for your material.";
-      } else if (avgThickness >= 1.25) {
-        buildReason = "You have enough thickness for a sturdier board, but a simple single-species design is the most natural fit for this stock.";
-      } else {
-        buildReason = "Your material points toward a straightforward edge grain board that should waste less stock and be easier to build cleanly.";
-      }
-
-      const woodComboText = chosenSpecies.join(" + ");
-      const swatches = buildSwatches(chosenSpecies);
-
-      const approxUsableWidth = roundDownQuarter(chosenWidthCapacity);
-      const approxUsableLength = roundDownQuarter(shortestLength);
-
-      result.innerHTML = `
-        <h2>Your suggested cutting board</h2>
-        <p>Based on the stock you entered, here is a realistic board idea to start from.</p>
-
-        <div class="swatches">
-          ${swatches}
-        </div>
-
-        <div class="result-grid">
-          <div class="result-item">
-            <span class="result-label">Wood Combination</span>
-            <div class="result-value">${woodComboText}</div>
+            <div class="preview-stage">
+              <div class="preview-board-shell">
+                <div class="preview-board" id="heroBoardPreview" aria-label="Cutting board preview">
+                  <div class="juice-groove" style="display:none;"></div>
+                  <div class="handle-cutout handle-left" style="display:none;"></div>
+                  <div class="handle-cutout handle-right" style="display:none;"></div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div class="result-item">
-            <span class="result-label">Pattern</span>
-            <div class="result-value">${pattern}</div>
-          </div>
-
-          <div class="result-item">
-            <span class="result-label">Suggested Finished Size</span>
-            <div class="result-value">${suggestedLength}" x ${suggestedWidth}" x ${formatThickness(finishedThickness)}</div>
-          </div>
-
-          <div class="result-item">
-            <span class="result-label">Juice Groove</span>
-            <div class="result-value">${groove}</div>
-          </div>
-
-          <div class="result-item">
-            <span class="result-label">Handles</span>
-            <div class="result-value">${handles}</div>
-          </div>
-
-          <div class="result-item">
-            <span class="result-label">Build Vibe</span>
-            <div class="result-value">${vibe}</div>
-          </div>
-        </div>
-
-        <div class="lead-note">
-          <p><strong>Why this fits your stock:</strong> Your shortest entered board supports about ${approxUsableLength}" of usable length, and the selected wood mix gives you about ${approxUsableWidth}" of total available strip width before normal milling and cleanup losses.</p>
-          <p><strong>Build note:</strong> ${buildReason}</p>
-        </div>
-      `;
-    }
-  </script>
-
-</body>
-</html>
+          <div class="hero-caption-wrap">
+            <h3>What this preview shows</h3>
+           
