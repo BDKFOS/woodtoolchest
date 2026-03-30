@@ -12,13 +12,14 @@
     :root {
       --bg: #f7f3ec;
       --surface: #fffdf8;
-      --surface-2: #fbf7f1;
       --text: #1f1a17;
       --muted: #6b625a;
       --line: #ddd3c7;
       --accent: #7a4b22;
       --accent-dark: #5f3919;
-      --max: 920px;
+      --accent-soft: #c89c73;
+      --header-line: rgba(255,255,255,0.10);
+      --max: 860px;
       --radius: 16px;
       --shadow: 0 10px 28px rgba(32, 22, 16, 0.05);
     }
@@ -50,20 +51,48 @@
     }
 
     .site-header {
+      position: relative;
       color: #fff;
-      padding: 20px;
-      border-bottom: 1px solid #1d1510;
+      padding: 18px 20px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0) 45%),
+        radial-gradient(circle at top left, rgba(201, 148, 98, 0.22), transparent 30%),
+        radial-gradient(circle at 88% 18%, rgba(255,255,255,0.08), transparent 16%),
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0) 45%),
+        linear-gradient(135deg, #3a291e 0%, #2b2018 54%, #221913 100%);
+      box-shadow:
+        inset 0 -1px 0 rgba(255,255,255,0.04),
+        0 8px 20px rgba(24, 17, 12, 0.14);
+      overflow: hidden;
+    }
+
+    .site-header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.03) 50%, transparent 100%),
         repeating-linear-gradient(
-          to bottom,
-          rgba(255,255,255,0.035) 0px,
-          rgba(255,255,255,0.035) 1px,
-          rgba(0,0,0,0) 1px,
-          rgba(0,0,0,0) 42px
-        ),
-        linear-gradient(135deg, #3a281d 0%, #2b2018 45%, #241a14 100%);
-      box-shadow: inset 0 -1px 0 rgba(255,255,255,0.04);
+          90deg,
+          rgba(255,255,255,0.025) 0px,
+          rgba(255,255,255,0.025) 1px,
+          transparent 1px,
+          transparent 120px
+        );
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .site-header::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      top: -140px;
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.08), rgba(255,255,255,0));
+      pointer-events: none;
     }
 
     .site-header-inner,
@@ -71,59 +100,96 @@
     .footer-inner {
       width: min(var(--max), calc(100% - 32px));
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header-shell {
+      display: grid;
+      gap: 14px;
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
     }
 
     .brand-row {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
+      min-width: 0;
     }
 
     .brand-mark {
-      width: 34px;
-      height: 34px;
-      border-radius: 10px;
+      width: 58px;
+      height: 58px;
+      border-radius: 17px;
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.02)),
-        linear-gradient(135deg, #9f6a37, #7a4b22);
+        linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.03)),
+        linear-gradient(135deg, #b77a44 0%, #8b572e 46%, #6c421f 100%);
       border: 1px solid rgba(255,255,255,0.14);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
-      flex: 0 0 34px;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.15),
+        inset 0 -12px 20px rgba(0,0,0,0.12),
+        0 10px 22px rgba(0,0,0,0.16);
+      flex: 0 0 58px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .brand-mark-bars {
-      display: flex;
-      gap: 3px;
-      align-items: flex-end;
+    .brand-mark::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          180deg,
+          rgba(255,255,255,0.055) 0px,
+          rgba(255,255,255,0.055) 1px,
+          rgba(0,0,0,0) 1px,
+          rgba(0,0,0,0) 7px
+        );
+      opacity: 0.24;
+      pointer-events: none;
     }
 
-    .brand-mark-bars span {
+    .brand-mark svg {
       display: block;
-      width: 5px;
-      border-radius: 2px;
-      background: rgba(255,255,255,0.88);
-      box-shadow: inset 0 -1px 0 rgba(0,0,0,0.15);
+      position: relative;
+      z-index: 1;
+      filter: drop-shadow(0 1px 0 rgba(0,0,0,0.12));
     }
-
-    .brand-mark-bars span:nth-child(1) { height: 12px; }
-    .brand-mark-bars span:nth-child(2) { height: 16px; }
-    .brand-mark-bars span:nth-child(3) { height: 10px; }
 
     .brand-text-wrap {
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 5px;
+      min-width: 0;
+    }
+
+    .brand-line {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
     }
 
     .brand {
-      font-size: 1.55rem;
+      font-size: 2rem;
       font-weight: 700;
-      text-decoration: none;
       color: #fff;
       line-height: 1;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     .brand:hover {
@@ -131,12 +197,159 @@
       text-decoration: none;
     }
 
-    .brand-sub {
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.72);
-      text-transform: uppercase;
+    .brand-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.07);
+      color: rgba(255,255,255,0.82);
+      font-size: 0.67rem;
+      font-weight: 700;
       letter-spacing: 0.08em;
-      line-height: 1.1;
+      text-transform: uppercase;
+      line-height: 1;
+      backdrop-filter: blur(4px);
+    }
+
+    .brand-sub {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.74);
+      text-transform: uppercase;
+      letter-spacing: 0.11em;
+      line-height: 1.2;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .main-nav a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.88);
+      font-size: 0.94rem;
+      font-weight: 700;
+      line-height: 1;
+      text-decoration: none;
+      transition: transform 0.12s ease, background 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+      backdrop-filter: blur(4px);
+    }
+
+    .main-nav a:hover {
+      text-decoration: none;
+      color: #fff;
+      background: rgba(255,255,255,0.10);
+      border-color: rgba(255,255,255,0.18);
+      transform: translateY(-1px);
+    }
+
+    .main-nav a.nav-cta {
+      background: linear-gradient(180deg, rgba(201,148,98,0.30), rgba(201,148,98,0.16));
+      border-color: rgba(255,255,255,0.18);
+      color: #fff;
+    }
+
+    .main-nav a.nav-cta:hover {
+      background: linear-gradient(180deg, rgba(201,148,98,0.42), rgba(201,148,98,0.22));
+    }
+
+    .header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 13px 16px;
+      border: 1px solid var(--header-line);
+      border-radius: 18px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+      backdrop-filter: blur(6px);
+    }
+
+    .header-bar-copy {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+      color: rgba(255,255,255,0.86);
+      font-size: 0.96rem;
+      line-height: 1.45;
+    }
+
+    .header-bar-copy strong {
+      color: #fff;
+    }
+
+    .header-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      box-shadow: 0 0 0 4px rgba(200,156,115,0.12);
+      flex: 0 0 7px;
+    }
+
+    .header-bar-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .header-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-weight: 700;
+      line-height: 1;
+      text-decoration: none;
+      transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+    }
+
+    .header-button:hover {
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+
+    .header-button-primary {
+      background: linear-gradient(180deg, #c89462, #af7340);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.18);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.16);
+    }
+
+    .header-button-primary:hover {
+      background: linear-gradient(180deg, #d19e6d, #b77843);
+      color: #fff;
+    }
+
+    .header-button-secondary {
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.92);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .header-button-secondary:hover {
+      background: rgba(255,255,255,0.10);
+      color: #fff;
     }
 
     .hero {
@@ -147,34 +360,15 @@
       position: relative;
       overflow: hidden;
       background:
-        radial-gradient(circle at top right, rgba(122,75,34,0.10), transparent 35%),
-        linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0));
+        linear-gradient(90deg, rgba(255,253,248,0.98) 0%, rgba(255,253,248,0.95) 42%, rgba(255,253,248,0.88) 70%, rgba(255,253,248,0.82) 100%),
+        url("images/guides/best-woods-cutting-boards.jpg");
+      background-size: cover;
+      background-position: center right;
       border: 1px solid var(--line);
       border-radius: 24px;
       padding: 30px;
       box-shadow: var(--shadow);
       margin-bottom: 24px;
-    }
-
-    .hero-panel::after {
-      content: "";
-      position: absolute;
-      right: -34px;
-      top: -6px;
-      width: 230px;
-      height: 230px;
-      background:
-        repeating-linear-gradient(
-          135deg,
-          rgba(122,75,34,0.07) 0px,
-          rgba(122,75,34,0.07) 10px,
-          rgba(122,75,34,0.02) 10px,
-          rgba(122,75,34,0.02) 20px
-        );
-      border-radius: 28px;
-      transform: rotate(8deg);
-      pointer-events: none;
-      opacity: 0.45;
     }
 
     .eyebrow {
@@ -202,13 +396,15 @@
     }
 
     h2 {
-      font-size: 1.72rem;
-      margin: 0 0 14px;
+      font-size: 1.7rem;
+      margin-bottom: 14px;
+      margin-top: 42px;
     }
 
     h3 {
-      font-size: 1.18rem;
-      margin: 0 0 10px;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      margin-top: 26px;
     }
 
     p {
@@ -218,53 +414,10 @@
     .intro {
       font-size: 1.05rem;
       color: #2b241f;
-      max-width: 760px;
+      max-width: 700px;
       position: relative;
       z-index: 1;
       margin-bottom: 0;
-    }
-
-    .hero-summary {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      margin-top: 24px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .summary-card {
-      background: rgba(255,255,255,0.75);
-      border: 1px solid rgba(221,211,199,0.95);
-      border-radius: 18px;
-      padding: 18px;
-      backdrop-filter: blur(2px);
-    }
-
-    .summary-card p:last-child,
-    .card p:last-child {
-      margin-bottom: 0;
-    }
-
-    .mini-points {
-      display: grid;
-      gap: 12px;
-    }
-
-    .mini-point {
-      border: 1px solid #d7cab9;
-      border-radius: 14px;
-      padding: 14px;
-      background: #fffaf3;
-    }
-
-    .mini-point h3 {
-      margin: 0 0 8px;
-      font-size: 1rem;
-    }
-
-    .section {
-      margin: 30px 0;
     }
 
     .card {
@@ -317,62 +470,43 @@
       border: 1px solid #e3c2b7;
     }
 
-    .subcard-grid {
+    .wood-visual {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 14px;
-      margin: 18px 0 0;
+      margin: 22px 0 6px;
     }
 
-    .subcard-grid.three-up {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    .subcard-grid.four-up {
-      grid-template-columns: repeat(4, 1fr);
-    }
-
-    .subcard {
-      border: 1px solid #d8c9b8;
-      border-radius: 14px;
-      background: #fffaf3;
-      padding: 16px;
-    }
-
-    .subcard h3 {
-      font-size: 1rem;
-      margin-bottom: 8px;
-    }
-
-    .related-links {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px;
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .related-links li {
-      margin-bottom: 0;
-    }
-
-    .related-links a {
-      display: block;
-      background: linear-gradient(180deg, #fffdf8, #fbf7f1);
+    .wood-card {
       border: 1px solid var(--line);
       border-radius: 14px;
-      padding: 16px;
-      font-weight: 700;
-      color: #2c221a;
-      box-shadow: 0 6px 18px rgba(32, 22, 16, 0.03);
+      overflow: hidden;
+      background: #fffdf8;
     }
 
-    .related-links a span {
-      display: block;
-      color: var(--muted);
-      font-weight: 400;
-      font-size: 0.92rem;
-      margin-top: 6px;
+    .wood-swatch {
+      height: 90px;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+    }
+
+    .wood-swatch::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          rgba(255,255,255,0.06) 0px,
+          rgba(255,255,255,0.06) 3px,
+          rgba(0,0,0,0.02) 3px,
+          rgba(0,0,0,0.02) 8px
+        );
+      pointer-events: none;
+    }
+
+    .wood-card-body {
+      padding: 14px;
     }
 
     .footer {
@@ -383,13 +517,16 @@
       background: #f3ede4;
     }
 
-    @media (max-width: 860px) {
-      .hero-summary,
-      .subcard-grid,
-      .subcard-grid.three-up,
-      .subcard-grid.four-up,
-      .related-links {
-        grid-template-columns: 1fr;
+    @media (max-width: 980px) {
+      .header-top,
+      .header-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .main-nav,
+      .header-bar-actions {
+        justify-content: flex-start;
       }
     }
 
@@ -406,21 +543,127 @@
       .hero-panel {
         padding: 20px;
       }
+
+      .site-header {
+        padding: 16px 18px 18px;
+      }
+
+      .site-header-inner,
+      .container,
+      .footer-inner {
+        width: min(var(--max), calc(100% - 24px));
+      }
+
+      .brand-row {
+        gap: 12px;
+      }
+
+      .brand-mark {
+        width: 50px;
+        height: 50px;
+        flex-basis: 50px;
+        border-radius: 15px;
+      }
+
+      .brand-mark svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      .brand {
+        font-size: 1.62rem;
+      }
+
+      .brand-pill {
+        font-size: 0.62rem;
+      }
+
+      .brand-sub {
+        font-size: 0.69rem;
+        letter-spacing: 0.09em;
+      }
+
+      .main-nav {
+        width: 100%;
+      }
+
+      .main-nav a {
+        min-height: 38px;
+        padding: 9px 12px;
+        font-size: 0.88rem;
+      }
+
+      .header-bar {
+        padding: 12px;
+        gap: 12px;
+      }
+
+      .header-bar-copy {
+        font-size: 0.9rem;
+      }
+
+      .header-bar-actions {
+        width: 100%;
+      }
+
+      .header-button {
+        flex: 1 1 auto;
+      }
+
+      .hero-panel {
+        background-position: center center;
+        background:
+          linear-gradient(180deg, rgba(255,253,248,0.97) 0%, rgba(255,253,248,0.93) 52%, rgba(255,253,248,0.88) 100%),
+          url("images/guides/best-woods-cutting-boards.jpg");
+        background-size: cover;
+      }
     }
   </style>
 </head>
 <body>
   <header class="site-header">
     <div class="site-header-inner">
-      <div class="brand-row">
-        <div class="brand-mark" aria-hidden="true">
-          <div class="brand-mark-bars">
-            <span></span><span></span><span></span>
+      <div class="header-shell">
+        <div class="header-top">
+          <div class="brand-row">
+            <div class="brand-mark" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <rect x="3" y="8" width="6" height="13" rx="1.6" fill="rgba(255,255,255,0.96)"></rect>
+                <rect x="11" y="4" width="6" height="17" rx="1.6" fill="rgba(255,255,255,0.84)"></rect>
+                <rect x="19" y="10" width="6" height="11" rx="1.6" fill="rgba(255,255,255,0.68)"></rect>
+                <path d="M11 10.5H17" stroke="rgba(90,54,27,0.22)" stroke-width="1.2" stroke-linecap="round"></path>
+                <path d="M3 13.5H9" stroke="rgba(90,54,27,0.18)" stroke-width="1.2" stroke-linecap="round"></path>
+                <path d="M19 14.5H25" stroke="rgba(90,54,27,0.16)" stroke-width="1.2" stroke-linecap="round"></path>
+              </svg>
+            </div>
+
+            <div class="brand-text-wrap">
+              <div class="brand-line">
+                <a class="brand" href="/">WoodToolChest</a>
+                <span class="brand-pill">Built for real shops</span>
+              </div>
+              <div class="brand-sub">Practical woodworking guides, tools, and shop setup</div>
+            </div>
           </div>
+
+          <nav class="main-nav" aria-label="Primary">
+            <a href="/">Home</a>
+            <a href="/cutting-board-design-generator.html">Tools</a>
+            <a href="/how-to-flatten-a-cutting-board.html">Guides</a>
+            <a class="nav-cta" href="/wood-movement-calculator.html">Newest Tool</a>
+          </nav>
         </div>
-        <div class="brand-text-wrap">
-          <a class="brand" href="/">WoodToolChest</a>
-          <div class="brand-sub">Practical woodworking guides, tools, and shop setup</div>
+
+        <div class="header-bar">
+          <div class="header-bar-copy">
+            <span class="header-dot" aria-hidden="true"></span>
+            <span><strong>Clear woodworking help for real shops.</strong> Useful tools, clear guides, and straightforward advice for real build decisions.</span>
+          </div>
+
+          <div class="header-bar-actions">
+            <a class="header-button header-button-primary" href="/cutting-board-design-generator.html">Try a tool</a>
+            <a class="header-button header-button-secondary" href="/wood-project-idea-generator.html">Get a project idea</a>
+          </div>
         </div>
       </div>
     </div>
@@ -435,27 +678,6 @@
           If you are building your first cutting board, wood choice matters more than a lot of beginners expect.
           You want a wood that is durable, reasonably stable, workable in a home shop, and a good fit for food-contact builds.
         </p>
-
-        <div class="hero-summary">
-          <div class="summary-card">
-            <h3>What makes a good cutting board wood</h3>
-            <p>The best woods for beginner cutting boards usually combine durability, easy availability, and a look that still feels clean after the glue-up is done.</p>
-          </div>
-
-          <div class="summary-card">
-            <div class="mini-points">
-              <div class="mini-point">
-                <h3>Best all-around base</h3>
-                <p class="muted">Maple is hard to beat as the main body wood for a first board.</p>
-              </div>
-
-              <div class="mini-point">
-                <h3>Best contrast woods</h3>
-                <p class="muted">Walnut and cherry make simple patterns look better without making the build chaotic.</p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -472,6 +694,7 @@
       <h2>On this page</h2>
       <ul>
         <li><a href="#top-choices">Top woods to use</a></li>
+        <li><a href="#wood-visual-guide">Quick visual wood guide</a></li>
         <li><a href="#woods-to-avoid">Woods to avoid</a></li>
         <li><a href="#best-combos">Good wood combinations</a></li>
         <li><a href="#what-beginners-should-buy">What beginners should buy first</a></li>
@@ -479,27 +702,10 @@
       </ul>
     </section>
 
-    <section id="top-choices" class="section">
+    <section id="top-choices">
       <h2>Top woods to use for cutting boards</h2>
 
-      <div class="subcard-grid three-up">
-        <div class="subcard">
-          <h3>Maple</h3>
-          <p class="muted">Light, durable, widely available, and one of the easiest main woods to build around.</p>
-        </div>
-
-        <div class="subcard">
-          <h3>Walnut</h3>
-          <p class="muted">A dark contrast wood that makes simple boards look more intentional fast.</p>
-        </div>
-
-        <div class="subcard">
-          <h3>Cherry</h3>
-          <p class="muted">Warm, refined, and a nice middle ground when you want softer contrast than walnut.</p>
-        </div>
-      </div>
-
-      <h3 style="margin-top:22px;">Maple</h3>
+      <h3>Maple</h3>
       <p>
         Maple is one of the most common cutting board woods for a reason. It is hard, durable, widely available, and usually
         straightforward to work with. It also gives you a clean, light base color that pairs well with darker accent woods.
@@ -523,36 +729,56 @@
       </div>
     </section>
 
-    <section id="woods-to-avoid" class="section">
+    <section id="wood-visual-guide">
+      <h2>Quick visual wood guide</h2>
+      <p>
+        These are not photo-real species references, but they give a fast visual sense of the common cutting board woods beginners
+        usually compare.
+      </p>
+
+      <div class="wood-visual">
+        <div class="wood-card">
+          <div class="wood-swatch" style="background: linear-gradient(135deg, #f0ddb9, #e7cf9d);"></div>
+          <div class="wood-card-body">
+            <h3>Maple</h3>
+            <p class="muted">Light, clean, durable, and easy to pair with darker woods.</p>
+          </div>
+        </div>
+
+        <div class="wood-card">
+          <div class="wood-swatch" style="background: linear-gradient(135deg, #7a5736, #4f3421);"></div>
+          <div class="wood-card-body">
+            <h3>Walnut</h3>
+            <p class="muted">Dark contrast wood that makes patterns and stripes pop.</p>
+          </div>
+        </div>
+
+        <div class="wood-card">
+          <div class="wood-swatch" style="background: linear-gradient(135deg, #c78663, #9c5e41);"></div>
+          <div class="wood-card-body">
+            <h3>Cherry</h3>
+            <p class="muted">Warm tone that ages beautifully and adds a softer contrast.</p>
+          </div>
+        </div>
+
+        <div class="wood-card">
+          <div class="wood-swatch" style="background: linear-gradient(135deg, #ebdcc2, #d8c3a0);"></div>
+          <div class="wood-card-body">
+            <h3>Ash</h3>
+            <p class="muted">Sometimes used visually, but less common for a first cutting board choice.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="woods-to-avoid">
       <h2>Woods to avoid</h2>
       <p>
         Not every piece of wood in the shop belongs in a cutting board. Some woods are simply too soft, too open-grained,
         or just not worth the uncertainty.
       </p>
 
-      <div class="subcard-grid four-up">
-        <div class="subcard">
-          <h3>Softwoods</h3>
-          <p class="muted">Usually too soft for the main board body if you want long-term durability.</p>
-        </div>
-
-        <div class="subcard">
-          <h3>Very open grain</h3>
-          <p class="muted">Often less appealing when you want a cleaner, simpler cutting surface.</p>
-        </div>
-
-        <div class="subcard">
-          <h3>Mystery wood</h3>
-          <p class="muted">If you cannot identify it confidently, it does not belong in a food-contact build.</p>
-        </div>
-
-        <div class="subcard">
-          <h3>Anything that feels like a gamble</h3>
-          <p class="muted">A first board is not the place to be clever with questionable material choices.</p>
-        </div>
-      </div>
-
-      <ul class="checklist" style="margin-top:18px;">
+      <ul class="checklist">
         <li>softwoods like pine or fir for the main board body</li>
         <li>very open-grained woods if you want a cleaner, more practical surface</li>
         <li>mystery wood or reclaimed material you cannot identify confidently</li>
@@ -564,30 +790,13 @@
       </div>
     </section>
 
-    <section id="best-combos" class="section">
+    <section id="best-combos">
       <h2>Good wood combinations for patterned boards</h2>
       <p>
         A lot of the nicest-looking beginner boards come from simple combinations, not complicated ones.
       </p>
 
-      <div class="subcard-grid three-up">
-        <div class="subcard">
-          <h3>Maple + Walnut</h3>
-          <p class="muted">Strong contrast and probably the easiest first combination to love.</p>
-        </div>
-
-        <div class="subcard">
-          <h3>Maple + Cherry</h3>
-          <p class="muted">A softer and warmer look that still feels clean and practical.</p>
-        </div>
-
-        <div class="subcard">
-          <h3>Maple + Walnut + Cherry</h3>
-          <p class="muted">Balanced contrast and color variation without getting too busy.</p>
-        </div>
-      </div>
-
-      <ul class="checklist" style="margin-top:18px;">
+      <ul class="checklist">
         <li>maple + walnut for strong contrast</li>
         <li>maple + cherry for a warmer, softer look</li>
         <li>maple + walnut + cherry for balanced contrast and color variation</li>
@@ -598,7 +807,7 @@
       </p>
     </section>
 
-    <section id="what-beginners-should-buy" class="section">
+    <section id="what-beginners-should-buy">
       <h2>What beginners should buy first</h2>
       <p>
         If you are buying wood for your first board, keep it simple. A practical first purchase is maple for the bulk of the board
@@ -606,7 +815,7 @@
       </p>
     </section>
 
-    <section id="faq" class="section">
+    <section id="faq">
       <h2>FAQ</h2>
 
       <h3>Is maple the best wood for a cutting board?</h3>
@@ -638,33 +847,13 @@
       </p>
     </section>
 
-    <section class="section">
+    <section>
       <h2>Related guides</h2>
       <ul class="related-links">
-        <li>
-          <a href="/cutting-board-design-generator.html">
-            Cutting Board Design Generator
-            <span>Use it to test wood combinations and get quick design inspiration before glue-up.</span>
-          </a>
-        </li>
-        <li>
-          <a href="/how-to-flatten-a-cutting-board.html">
-            How to Flatten a Cutting Board
-            <span>Helpful once your glue-up is done and you need a clean, flat final board.</span>
-          </a>
-        </li>
-        <li>
-          <a href="/router-flattening-jig.html">
-            Router Flattening Jig Guide
-            <span>A very practical option when the board is wide, awkward, or end grain.</span>
-          </a>
-        </li>
-        <li>
-          <a href="/wood-project-idea-generator.html">
-            Wood Project Idea Generator
-            <span>Good for keeping momentum when you want another build after your first board.</span>
-          </a>
-        </li>
+        <li><a href="/cutting-board-design-generator.html">Cutting Board Design Generator</a></li>
+        <li><a href="/how-to-flatten-a-cutting-board.html">How to Flatten a Cutting Board</a></li>
+        <li><a href="/router-flattening-jig.html">Router Flattening Jig Guide</a></li>
+        <li><a href="/wood-project-idea-generator.html">Wood Project Idea Generator</a></li>
       </ul>
     </section>
   </main>
