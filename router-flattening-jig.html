@@ -203,14 +203,12 @@
 
     h2 {
       font-size: 1.72rem;
-      margin-bottom: 14px;
-      margin-top: 42px;
+      margin: 0 0 14px;
     }
 
     h3 {
       font-size: 1.18rem;
-      margin-bottom: 10px;
-      margin-top: 26px;
+      margin: 0 0 10px;
     }
 
     p {
@@ -223,18 +221,19 @@
       max-width: 760px;
       position: relative;
       z-index: 1;
+      margin-bottom: 0;
     }
 
-    .hero-visuals {
+    .hero-summary {
       display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
+      grid-template-columns: 1fr 1fr;
       gap: 18px;
       margin-top: 24px;
       position: relative;
       z-index: 1;
     }
 
-    .visual-card {
+    .summary-card {
       background: rgba(255,255,255,0.75);
       border: 1px solid rgba(221,211,199,0.95);
       border-radius: 18px;
@@ -242,120 +241,9 @@
       backdrop-filter: blur(2px);
     }
 
-    .visual-card p:last-child {
+    .summary-card p:last-child,
+    .card p:last-child {
       margin-bottom: 0;
-    }
-
-    .diagram-label {
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--accent-dark);
-      margin-bottom: 8px;
-    }
-
-    .hero-diagram {
-      height: 220px;
-      border-radius: 14px;
-      border: 1px solid #d7cab9;
-      background: linear-gradient(180deg, #f9f4ec, #efe5d8);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-rail-top,
-    .hero-rail-bottom {
-      position: absolute;
-      left: 16px;
-      right: 16px;
-      height: 12px;
-      background: linear-gradient(180deg, #8b5b33, #6c4424);
-      border-radius: 999px;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.18);
-    }
-
-    .hero-rail-top {
-      top: 38px;
-    }
-
-    .hero-rail-bottom {
-      bottom: 38px;
-    }
-
-    .hero-workpiece {
-      position: absolute;
-      left: 56px;
-      right: 56px;
-      top: 96px;
-      height: 34px;
-      border-radius: 8px;
-      background: linear-gradient(180deg, #d7aa7d, #b88358);
-      border: 1px solid #9b6d48;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.18);
-    }
-
-    .hero-sled {
-      position: absolute;
-      left: 40px;
-      right: 40px;
-      top: 58px;
-      height: 100px;
-      border-radius: 16px;
-      border: 1px solid #b89473;
-      background: rgba(197,161,125,0.26);
-    }
-
-    .hero-router {
-      position: absolute;
-      left: 50%;
-      top: 76px;
-      transform: translateX(-50%);
-      width: 66px;
-      height: 66px;
-      border-radius: 50%;
-      background: linear-gradient(180deg, #7d5131, #5f3919);
-      border: 1px solid #4f2d14;
-      box-shadow: inset 0 2px 0 rgba(255,255,255,0.12);
-    }
-
-    .hero-router::before {
-      content: "";
-      position: absolute;
-      left: 15px;
-      right: 15px;
-      top: 12px;
-      height: 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.18);
-    }
-
-    .hero-pass {
-      position: absolute;
-      height: 4px;
-      border-radius: 999px;
-      background: rgba(122,75,34,0.42);
-    }
-
-    .hero-pass::after {
-      content: "";
-      position: absolute;
-      right: -2px;
-      top: -4px;
-      border-top: 6px solid transparent;
-      border-bottom: 6px solid transparent;
-      border-left: 9px solid rgba(122,75,34,0.42);
-    }
-
-    .hero-pass.pass-1 {
-      left: 116px;
-      right: 150px;
-      top: 62px;
-    }
-
-    .hero-pass.pass-2 {
-      left: 146px;
-      right: 122px;
-      top: 154px;
-      transform: rotate(180deg);
     }
 
     .mini-points {
@@ -375,19 +263,8 @@
       font-size: 1rem;
     }
 
-    .mini-meter {
-      height: 12px;
-      background: #ede1d3;
-      border-radius: 999px;
-      overflow: hidden;
-      margin: 8px 0 10px;
-      border: 1px solid #dbcab8;
-    }
-
-    .mini-meter-fill {
-      height: 100%;
-      border-radius: 999px;
-      background: linear-gradient(90deg, #b98d66, #7a4b22);
+    .section {
+      margin: 30px 0;
     }
 
     .card {
@@ -442,342 +319,27 @@
       border: 1px solid #e3c2b7;
     }
 
-    .inline-visual {
-      margin: 18px 0 20px;
-      border: 1px solid #d9ccbd;
-      border-radius: 16px;
-      background: linear-gradient(180deg, #faf5ee, #f2e9dc);
-      overflow: hidden;
-      box-shadow: 0 6px 18px rgba(32, 22, 16, 0.03);
-    }
-
-    .inline-visual-header {
-      padding: 12px 16px;
-      border-bottom: 1px solid #ddcfbf;
-      font-weight: 700;
-      color: #3d2a1c;
-      background: rgba(255,255,255,0.4);
-    }
-
-    .build-diagram,
-    .use-diagram,
-    .mistake-diagram {
-      position: relative;
-      min-height: 220px;
-      padding: 18px;
-      background: linear-gradient(180deg, #f8f2ea, #eee2d2);
-    }
-
-    .build-stage {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .build-box {
-      border: 1px solid #d8c9b8;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.42);
-      padding: 14px;
-      min-height: 168px;
-      position: relative;
-    }
-
-    .build-box h3 {
-      margin: 0 0 10px;
-      font-size: 1rem;
-      color: #3c2a1c;
-    }
-
-    .base-board {
-      position: absolute;
-      left: 16px;
-      right: 16px;
-      bottom: 18px;
-      height: 18px;
-      border-radius: 6px;
-      background: linear-gradient(180deg, #d8b08a, #b9865c);
-      border: 1px solid #9b6d48;
-    }
-
-    .rail-pair {
-      position: absolute;
-      left: 18px;
-      right: 18px;
-      top: 58px;
-      height: 64px;
-    }
-
-    .rail-pair::before,
-    .rail-pair::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      height: 10px;
-      border-radius: 999px;
-      background: linear-gradient(180deg, #8b5b33, #6c4424);
-    }
-
-    .rail-pair::before {
-      top: 0;
-    }
-
-    .rail-pair::after {
-      bottom: 0;
-    }
-
-    .sled-box {
-      position: absolute;
-      left: 28px;
-      right: 28px;
-      top: 70px;
-      height: 40px;
-      border-radius: 12px;
-      background: rgba(197,161,125,0.36);
-      border: 1px solid #b89473;
-    }
-
-    .router-dot {
-      position: absolute;
-      left: 50%;
-      top: 76px;
-      transform: translateX(-50%);
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: linear-gradient(180deg, #7d5131, #5f3919);
-      border: 1px solid #4f2d14;
-    }
-
-    .sizing-visual {
+    .subcard-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 14px;
-      margin-top: 18px;
+      margin: 18px 0 0;
     }
 
-    .size-card {
-      border: 1px solid var(--line);
-      border-radius: 16px;
+    .subcard-grid.three-up {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .subcard {
+      border: 1px solid #d8c9b8;
+      border-radius: 14px;
+      background: #fffaf3;
       padding: 16px;
-      background: linear-gradient(180deg, #fffdf8, #fbf7f1);
-      box-shadow: 0 6px 18px rgba(32, 22, 16, 0.03);
     }
 
-    .size-board {
-      height: 100px;
-      border-radius: 12px;
-      border: 1px solid #d7cab9;
-      background: linear-gradient(180deg, #f8f2ea, #eee2d2);
-      position: relative;
-      overflow: hidden;
-      margin-bottom: 12px;
-    }
-
-    .size-board .board-shape {
-      position: absolute;
-      left: 20%;
-      right: 20%;
-      top: 34px;
-      height: 30px;
-      border-radius: 8px;
-      background: linear-gradient(180deg, #d7aa7d, #b88358);
-      border: 1px solid #9b6d48;
-    }
-
-    .size-board.large .board-shape {
-      left: 8%;
-      right: 8%;
-    }
-
-    .size-board.small .board-shape {
-      left: 28%;
-      right: 28%;
-    }
-
-    .use-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-
-    .use-box {
-      border: 1px solid #d8c9b8;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.42);
-      padding: 14px;
-      min-height: 180px;
-      position: relative;
-    }
-
-    .use-box h3 {
-      margin: 0 0 10px;
+    .subcard h3 {
       font-size: 1rem;
-      color: #3c2a1c;
-    }
-
-    .shim-board {
-      position: absolute;
-      left: 18px;
-      right: 18px;
-      bottom: 26px;
-      height: 26px;
-      border-radius: 8px;
-      background: linear-gradient(180deg, #d7aa7d, #b88358);
-      border: 1px solid #9b6d48;
-      transform: rotate(-1.6deg);
-    }
-
-    .shim-piece {
-      position: absolute;
-      width: 26px;
-      height: 12px;
-      bottom: 16px;
-      background: #7d5131;
-      border-radius: 4px;
-    }
-
-    .shim-piece.one {
-      left: 28px;
-    }
-
-    .shim-piece.two {
-      right: 34px;
-    }
-
-    .pass-surface {
-      position: absolute;
-      left: 18px;
-      right: 18px;
-      top: 82px;
-      height: 28px;
-      border-radius: 8px;
-      background: linear-gradient(180deg, #d7aa7d, #b88358);
-      border: 1px solid #9b6d48;
-    }
-
-    .pass-line {
-      position: absolute;
-      left: 24px;
-      right: 24px;
-      height: 4px;
-      border-radius: 999px;
-      background: rgba(122,75,34,0.42);
-    }
-
-    .pass-line::after {
-      content: "";
-      position: absolute;
-      right: -2px;
-      top: -4px;
-      border-top: 6px solid transparent;
-      border-bottom: 6px solid transparent;
-      border-left: 9px solid rgba(122,75,34,0.42);
-    }
-
-    .pass-line.one {
-      top: 48px;
-    }
-
-    .pass-line.two {
-      top: 64px;
-      right: 34px;
-    }
-
-    .pass-line.three {
-      top: 80px;
-      right: 44px;
-    }
-
-    .mistake-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .mistake-box {
-      border: 1px solid #d8c9b8;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.42);
-      padding: 14px;
-      min-height: 178px;
-      position: relative;
-    }
-
-    .mistake-box h3 {
-      margin: 0 0 10px;
-      font-size: 1rem;
-      color: #3c2a1c;
-    }
-
-    .bad-rails::before,
-    .bad-rails::after {
-      content: "";
-      position: absolute;
-      left: 18px;
-      right: 18px;
-      height: 10px;
-      border-radius: 999px;
-      background: linear-gradient(180deg, #8b5b33, #6c4424);
-    }
-
-    .bad-rails::before {
-      top: 56px;
-      transform: rotate(-1.5deg);
-    }
-
-    .bad-rails::after {
-      top: 104px;
-      transform: rotate(2deg);
-    }
-
-    .bad-depth::before {
-      content: "";
-      position: absolute;
-      left: 18px;
-      right: 18px;
-      top: 92px;
-      height: 28px;
-      border-radius: 8px;
-      background: linear-gradient(180deg, #d7aa7d, #b88358);
-      border: 1px solid #9b6d48;
-      box-shadow: inset 0 -14px 0 rgba(95,57,25,0.22);
-    }
-
-    .bad-depth::after {
-      content: "";
-      position: absolute;
-      left: 54px;
-      right: 54px;
-      top: 56px;
-      height: 8px;
-      border-radius: 999px;
-      background: rgba(160,74,54,0.55);
-    }
-
-    .bad-shim::before {
-      content: "";
-      position: absolute;
-      left: 18px;
-      right: 18px;
-      bottom: 24px;
-      height: 26px;
-      border-radius: 8px;
-      background: linear-gradient(180deg, #d7aa7d, #b88358);
-      border: 1px solid #9b6d48;
-      transform: rotate(-4deg);
-    }
-
-    .bad-shim::after {
-      content: "";
-      position: absolute;
-      left: 28px;
-      width: 20px;
-      height: 10px;
-      bottom: 16px;
-      background: #7d5131;
-      border-radius: 4px;
+      margin-bottom: 8px;
     }
 
     .related {
@@ -824,11 +386,9 @@
     }
 
     @media (max-width: 860px) {
-      .hero-visuals,
-      .build-stage,
-      .sizing-visual,
-      .use-layout,
-      .mistake-grid,
+      .hero-summary,
+      .subcard-grid,
+      .subcard-grid.three-up,
       .related-links {
         grid-template-columns: 1fr;
       }
@@ -846,20 +406,6 @@
       .card,
       .hero-panel {
         padding: 20px;
-      }
-
-      .hero-diagram {
-        height: 240px;
-      }
-
-      .hero-sled {
-        left: 22px;
-        right: 22px;
-      }
-
-      .hero-workpiece {
-        left: 28px;
-        right: 28px;
       }
     }
   </style>
@@ -892,34 +438,21 @@
           fancy, but it solves a real problem fast.
         </p>
 
-        <div class="hero-visuals">
-          <div class="visual-card">
-            <div class="diagram-label">Visual: how a router flattening jig works</div>
-            <div class="hero-diagram" aria-hidden="true">
-              <div class="hero-rail-top"></div>
-              <div class="hero-rail-bottom"></div>
-              <div class="hero-sled"></div>
-              <div class="hero-router"></div>
-              <div class="hero-workpiece"></div>
-              <div class="hero-pass pass-1"></div>
-              <div class="hero-pass pass-2"></div>
-            </div>
-          </div>
-
-          <div class="visual-card">
+        <div class="hero-summary">
+          <div class="summary-card">
             <h3>Why this jig is so useful</h3>
             <p>It gives a small shop a practical way to flatten stock that is wider, rougher, or weirder than a planer wants to handle.</p>
+          </div>
 
+          <div class="summary-card">
             <div class="mini-points">
               <div class="mini-point">
                 <h3>Wide glue-ups</h3>
-                <div class="mini-meter"><div class="mini-meter-fill" style="width:88%;"></div></div>
                 <p class="muted">Great for cutting boards and panels that exceed planer capacity.</p>
               </div>
 
               <div class="mini-point">
                 <h3>Small shop value</h3>
-                <div class="mini-meter"><div class="mini-meter-fill" style="width:82%;"></div></div>
                 <p class="muted">A very practical workaround when you do not own bigger surfacing tools.</p>
               </div>
             </div>
@@ -952,7 +485,7 @@
       </ul>
     </section>
 
-    <section id="why-build-one">
+    <section id="why-build-one" class="section">
       <h2>Why build a router flattening jig?</h2>
       <p>
         If you do any kind of real woodworking, eventually you run into stock that is wider than your planer,
@@ -976,7 +509,7 @@
       </div>
     </section>
 
-    <section id="best-use-cases">
+    <section id="best-use-cases" class="section">
       <h2>Best use cases for a router flattening jig</h2>
 
       <h3>1. Cutting boards</h3>
@@ -1002,7 +535,7 @@
       </p>
     </section>
 
-    <section id="materials">
+    <section id="materials" class="section">
       <h2>Simple materials list</h2>
       <p>
         You can build a good router flattening jig from basic shop materials. It does not need to be expensive.
@@ -1026,7 +559,7 @@
       </p>
     </section>
 
-    <section id="sizing">
+    <section id="sizing" class="section">
       <h2>How big should a router flattening jig be?</h2>
       <p>
         Build it around the largest workpiece you actually expect to flatten, not the biggest imaginary slab
@@ -1040,19 +573,13 @@
           that means enough room for cutting boards, medium glue-ups, and occasional bench parts.
         </p>
 
-        <div class="sizing-visual" aria-hidden="true">
-          <div class="size-card">
-            <div class="size-board small">
-              <div class="board-shape"></div>
-            </div>
+        <div class="subcard-grid" style="margin-top:18px;">
+          <div class="subcard">
             <h3>Too small</h3>
             <p class="muted">Works for one narrow project, then becomes limiting almost immediately.</p>
           </div>
 
-          <div class="size-card">
-            <div class="size-board large">
-              <div class="board-shape"></div>
-            </div>
+          <div class="subcard">
             <h3>Right-sized</h3>
             <p class="muted">Big enough for common work, but still realistic to store and move around the shop.</p>
           </div>
@@ -1065,36 +592,27 @@
       </p>
     </section>
 
-    <section id="build">
+    <section id="build" class="section">
       <h2>How to build a router flattening jig</h2>
 
-      <div class="inline-visual" aria-hidden="true">
-        <div class="inline-visual-header">Visual: basic jig build layout</div>
-        <div class="build-diagram">
-          <div class="build-stage">
-            <div class="build-box">
-              <h3>1. Flat base</h3>
-              <div class="base-board"></div>
-            </div>
+      <div class="subcard-grid three-up">
+        <div class="subcard">
+          <h3>1. Flat base</h3>
+          <p class="muted">Start with a stable platform or work surface that supports the entire setup.</p>
+        </div>
 
-            <div class="build-box">
-              <h3>2. Add straight rails</h3>
-              <div class="base-board"></div>
-              <div class="rail-pair"></div>
-            </div>
+        <div class="subcard">
+          <h3>2. Straight rails</h3>
+          <p class="muted">The rails need to be parallel, level with each other, and rigid enough not to sag.</p>
+        </div>
 
-            <div class="build-box">
-              <h3>3. Add sled and router</h3>
-              <div class="base-board"></div>
-              <div class="rail-pair"></div>
-              <div class="sled-box"></div>
-              <div class="router-dot"></div>
-            </div>
-          </div>
+        <div class="subcard">
+          <h3>3. Router sled</h3>
+          <p class="muted">The sled should slide smoothly while holding the router centered and stable.</p>
         </div>
       </div>
 
-      <ol class="steps">
+      <ol class="steps" style="margin-top:18px;">
         <li>
           <strong>Build a flat base.</strong> Start with a stable platform or work surface that supports the entire setup.
           This can be a dedicated base or a temporary assembly on top of a bench.
@@ -1123,32 +641,22 @@
       </div>
     </section>
 
-    <section id="use">
+    <section id="use" class="section">
       <h2>How to use a router flattening jig correctly</h2>
 
-      <div class="inline-visual" aria-hidden="true">
-        <div class="inline-visual-header">Visual: secure the board, then overlap light passes</div>
-        <div class="use-diagram">
-          <div class="use-layout">
-            <div class="use-box">
-              <h3>Shim and stabilize first</h3>
-              <div class="shim-board"></div>
-              <div class="shim-piece one"></div>
-              <div class="shim-piece two"></div>
-            </div>
+      <div class="subcard-grid">
+        <div class="subcard">
+          <h3>Shim and stabilize first</h3>
+          <p class="muted">Before you cut anything, the board must be stable. Shim low corners and weak spots so the piece cannot rock.</p>
+        </div>
 
-            <div class="use-box">
-              <h3>Then overlap your passes</h3>
-              <div class="pass-line one"></div>
-              <div class="pass-line two"></div>
-              <div class="pass-line three"></div>
-              <div class="pass-surface"></div>
-            </div>
-          </div>
+        <div class="subcard">
+          <h3>Overlap your passes</h3>
+          <p class="muted">Move slowly and overlap your cuts so you do not leave ridges or miss low spots.</p>
         </div>
       </div>
 
-      <h3>Secure and shim the workpiece</h3>
+      <h3 style="margin-top:22px;">Secure and shim the workpiece</h3>
       <p>
         Before you cut anything, the board must be stable. Shim low corners and weak spots so the piece cannot rock.
         If the board moves, your flattening pass will lie to you.
@@ -1175,29 +683,27 @@
       </div>
     </section>
 
-    <section id="mistakes">
+    <section id="mistakes" class="section">
       <h2>Common mistakes to avoid</h2>
 
-      <div class="inline-visual" aria-hidden="true">
-        <div class="inline-visual-header">Visual: three common setup mistakes</div>
-        <div class="mistake-diagram">
-          <div class="mistake-grid">
-            <div class="mistake-box bad-rails">
-              <h3>Twisted or uneven rails</h3>
-            </div>
+      <div class="subcard-grid three-up">
+        <div class="subcard">
+          <h3>Twisted or uneven rails</h3>
+          <p class="muted">If the rails are off, the finished surface will follow their error.</p>
+        </div>
 
-            <div class="mistake-box bad-depth">
-              <h3>Too deep a pass</h3>
-            </div>
+        <div class="subcard">
+          <h3>Too deep a pass</h3>
+          <p class="muted">Aggressive cuts are harder on the router and leave a rougher result.</p>
+        </div>
 
-            <div class="mistake-box bad-shim">
-              <h3>Board not fully supported</h3>
-            </div>
-          </div>
+        <div class="subcard">
+          <h3>Board not fully supported</h3>
+          <p class="muted">If the workpiece rocks, the whole flattening process becomes unreliable.</p>
         </div>
       </div>
 
-      <ul class="checklist">
+      <ul class="checklist" style="margin-top:18px;">
         <li>building the rails from stock that is not straight</li>
         <li>making the jig bigger than your shop can comfortably handle</li>
         <li>not shimming the board securely before cutting</li>
@@ -1212,7 +718,7 @@
       </p>
     </section>
 
-    <section id="faq">
+    <section id="faq" class="section">
       <h2>Router flattening jig FAQ</h2>
 
       <h3>Can I build one out of MDF?</h3>
