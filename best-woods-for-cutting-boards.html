@@ -225,106 +225,25 @@
       z-index: 1;
     }
 
-    .hero-visuals {
-      display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
-      gap: 18px;
-      margin-top: 24px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .visual-card {
+    .hero-card {
       background: rgba(255,255,255,0.75);
       border: 1px solid rgba(221,211,199,0.95);
       border-radius: 18px;
       padding: 18px;
       backdrop-filter: blur(2px);
-    }
-
-    .visual-card p:last-child {
-      margin-bottom: 0;
-    }
-
-    .diagram-label {
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--accent-dark);
-      margin-bottom: 8px;
-    }
-
-    .hero-board-preview {
-      height: 220px;
-      border-radius: 14px;
-      border: 1px solid #d7cab9;
-      background: linear-gradient(180deg, #f9f4ec, #efe5d8);
+      margin-top: 24px;
       position: relative;
-      overflow: hidden;
+      z-index: 1;
     }
 
-    .board-preview {
-      position: absolute;
-      left: 28px;
-      right: 28px;
-      top: 82px;
-      height: 58px;
-      border-radius: 14px;
-      border: 1px solid #a87f5d;
-      background:
-        linear-gradient(90deg,
-          #f0ddb9 0%, #f0ddb9 18%,
-          #5b3c27 18%, #5b3c27 33%,
-          #b56f51 33%, #b56f51 49%,
-          #f0ddb9 49%, #f0ddb9 67%,
-          #5b3c27 67%, #5b3c27 83%,
-          #b56f51 83%, #b56f51 100%);
-      box-shadow:
-        inset 0 2px 0 rgba(255,255,255,0.16),
-        0 8px 18px rgba(59, 39, 24, 0.08);
-      transform: perspective(280px) rotateX(15deg);
-    }
-
-    .board-shadow {
-      position: absolute;
-      left: 42px;
-      right: 42px;
-      top: 150px;
-      height: 18px;
-      border-radius: 999px;
-      background: rgba(73, 45, 25, 0.12);
-      filter: blur(5px);
-    }
-
-    .wood-label {
-      position: absolute;
-      background: rgba(255,255,255,0.86);
-      border: 1px solid #d7cab9;
-      border-radius: 999px;
-      padding: 5px 10px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: #4b3524;
-      white-space: nowrap;
-    }
-
-    .wood-label.maple {
-      left: 34px;
-      top: 28px;
-    }
-
-    .wood-label.walnut {
-      left: 124px;
-      top: 48px;
-    }
-
-    .wood-label.cherry {
-      right: 36px;
-      top: 28px;
+    .hero-card p:last-child {
+      margin-bottom: 0;
     }
 
     .mini-points {
       display: grid;
       gap: 12px;
+      margin-top: 18px;
     }
 
     .mini-point {
@@ -337,21 +256,6 @@
     .mini-point h3 {
       margin: 0 0 8px;
       font-size: 1rem;
-    }
-
-    .mini-meter {
-      height: 12px;
-      background: #ede1d3;
-      border-radius: 999px;
-      overflow: hidden;
-      margin: 8px 0 10px;
-      border: 1px solid #dbcab8;
-    }
-
-    .mini-meter-fill {
-      height: 100%;
-      border-radius: 999px;
-      background: linear-gradient(90deg, #b98d66, #7a4b22);
     }
 
     .card {
@@ -404,176 +308,6 @@
       border: 1px solid #e3c2b7;
     }
 
-    .wood-visual {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 14px;
-      margin: 22px 0 6px;
-    }
-
-    .wood-card {
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      overflow: hidden;
-      background: #fffdf8;
-      box-shadow: 0 6px 18px rgba(32, 22, 16, 0.03);
-    }
-
-    .wood-swatch {
-      height: 90px;
-      border-bottom: 1px solid var(--line);
-      position: relative;
-    }
-
-    .wood-swatch::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        repeating-linear-gradient(
-          90deg,
-          rgba(255,255,255,0.06) 0px,
-          rgba(255,255,255,0.06) 3px,
-          rgba(0,0,0,0.02) 3px,
-          rgba(0,0,0,0.02) 8px
-        );
-      pointer-events: none;
-    }
-
-    .wood-card-body {
-      padding: 14px;
-    }
-
-    .inline-visual {
-      margin: 18px 0 20px;
-      border: 1px solid #d9ccbd;
-      border-radius: 16px;
-      background: linear-gradient(180deg, #faf5ee, #f2e9dc);
-      overflow: hidden;
-      box-shadow: 0 6px 18px rgba(32, 22, 16, 0.03);
-    }
-
-    .inline-visual-header {
-      padding: 12px 16px;
-      border-bottom: 1px solid #ddcfbf;
-      font-weight: 700;
-      color: #3d2a1c;
-      background: rgba(255,255,255,0.4);
-    }
-
-    .choice-layout,
-    .combo-layout,
-    .avoid-layout {
-      padding: 18px;
-      background: linear-gradient(180deg, #f8f2ea, #eee2d2);
-    }
-
-    .choice-layout,
-    .combo-layout,
-    .avoid-layout {
-      display: grid;
-      gap: 14px;
-    }
-
-    .choice-layout {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .combo-layout {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .avoid-layout {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-
-    .choice-box,
-    .combo-box,
-    .avoid-box {
-      border: 1px solid #d8c9b8;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.42);
-      padding: 14px;
-      position: relative;
-    }
-
-    .choice-box h3,
-    .combo-box h3,
-    .avoid-box h3 {
-      margin: 0 0 10px;
-      font-size: 1rem;
-      color: #3c2a1c;
-    }
-
-    .choice-visual,
-    .combo-visual,
-    .avoid-visual {
-      height: 100px;
-      border-radius: 12px;
-      border: 1px solid #d7cab9;
-      background: linear-gradient(180deg, #f8f2ea, #eee2d2);
-      margin-bottom: 12px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .choice-visual.maple {
-      background: linear-gradient(135deg, #f0ddb9, #e7cf9d);
-    }
-
-    .choice-visual.walnut {
-      background: linear-gradient(135deg, #7a5736, #4f3421);
-    }
-
-    .choice-visual.cherry {
-      background: linear-gradient(135deg, #c78663, #9c5e41);
-    }
-
-    .choice-visual::after,
-    .combo-visual::after,
-    .avoid-visual::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        repeating-linear-gradient(
-          90deg,
-          rgba(255,255,255,0.06) 0px,
-          rgba(255,255,255,0.06) 3px,
-          rgba(0,0,0,0.02) 3px,
-          rgba(0,0,0,0.02) 8px
-        );
-      pointer-events: none;
-    }
-
-    .combo-visual.two-tone {
-      background: linear-gradient(90deg, #f0ddb9 0 50%, #5b3c27 50% 100%);
-    }
-
-    .combo-visual.warm {
-      background: linear-gradient(90deg, #f0ddb9 0 50%, #b56f51 50% 100%);
-    }
-
-    .combo-visual.three-tone {
-      background: linear-gradient(90deg, #f0ddb9 0 33.33%, #5b3c27 33.33% 66.66%, #b56f51 66.66% 100%);
-    }
-
-    .avoid-visual.softwood {
-      background: linear-gradient(135deg, #e9d39a, #cfb26f);
-    }
-
-    .avoid-visual.opengrain {
-      background: linear-gradient(135deg, #d8b086, #b88658);
-    }
-
-    .avoid-visual.mystery {
-      background: linear-gradient(135deg, #9f8d7d, #6f6258);
-    }
-
-    .avoid-visual.gamble {
-      background: linear-gradient(135deg, #b67e68, #8d5143);
-    }
-
     .related-links {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -613,16 +347,6 @@
       background: #f3ede4;
     }
 
-    @media (max-width: 860px) {
-      .hero-visuals,
-      .choice-layout,
-      .combo-layout,
-      .avoid-layout,
-      .related-links {
-        grid-template-columns: 1fr;
-      }
-    }
-
     @media (max-width: 700px) {
       h1 {
         font-size: 1.95rem;
@@ -635,19 +359,6 @@
       .card,
       .hero-panel {
         padding: 20px;
-      }
-
-      .hero-board-preview {
-        height: 240px;
-      }
-
-      .board-preview {
-        left: 18px;
-        right: 18px;
-      }
-
-      .wood-label.walnut {
-        left: 94px;
       }
     }
   </style>
@@ -679,34 +390,19 @@
           You want a wood that is durable, reasonably stable, workable in a home shop, and a good fit for food-contact builds.
         </p>
 
-        <div class="hero-visuals">
-          <div class="visual-card">
-            <div class="diagram-label">Visual: a classic beginner-friendly cutting board mix</div>
-            <div class="hero-board-preview" aria-hidden="true">
-              <div class="wood-label maple">Maple</div>
-              <div class="wood-label walnut">Walnut</div>
-              <div class="wood-label cherry">Cherry</div>
-              <div class="board-preview"></div>
-              <div class="board-shadow"></div>
+        <div class="hero-card">
+          <h3>What makes a good cutting board wood</h3>
+          <p>The best woods for beginner cutting boards usually combine durability, easy availability, and a look that still feels clean after the glue-up is done.</p>
+
+          <div class="mini-points">
+            <div class="mini-point">
+              <h3>Best all-around base</h3>
+              <p class="muted">Maple is hard to beat as the main body wood for a first board.</p>
             </div>
-          </div>
 
-          <div class="visual-card">
-            <h3>What makes a good cutting board wood</h3>
-            <p>The best woods for beginner cutting boards usually combine durability, easy availability, and a look that still feels clean after the glue-up is done.</p>
-
-            <div class="mini-points">
-              <div class="mini-point">
-                <h3>Best all-around base</h3>
-                <div class="mini-meter"><div class="mini-meter-fill" style="width: 90%;"></div></div>
-                <p class="muted">Maple is hard to beat as the main body wood for a first board.</p>
-              </div>
-
-              <div class="mini-point">
-                <h3>Best contrast woods</h3>
-                <div class="mini-meter"><div class="mini-meter-fill" style="width: 84%;"></div></div>
-                <p class="muted">Walnut and cherry make simple patterns look better without making the build chaotic.</p>
-              </div>
+            <div class="mini-point">
+              <h3>Best contrast woods</h3>
+              <p class="muted">Walnut and cherry make simple patterns look better without making the build chaotic.</p>
             </div>
           </div>
         </div>
@@ -726,7 +422,6 @@
       <h2>On this page</h2>
       <ul>
         <li><a href="#top-choices">Top woods to use</a></li>
-        <li><a href="#wood-visual-guide">Quick visual wood guide</a></li>
         <li><a href="#woods-to-avoid">Woods to avoid</a></li>
         <li><a href="#best-combos">Good wood combinations</a></li>
         <li><a href="#what-beginners-should-buy">What beginners should buy first</a></li>
@@ -736,29 +431,6 @@
 
     <section id="top-choices">
       <h2>Top woods to use for cutting boards</h2>
-
-      <div class="inline-visual" aria-hidden="true">
-        <div class="inline-visual-header">Visual: three strong beginner choices</div>
-        <div class="choice-layout">
-          <div class="choice-box">
-            <h3>Maple</h3>
-            <div class="choice-visual maple"></div>
-            <p class="muted">Light, durable, and one of the easiest main woods to build around.</p>
-          </div>
-
-          <div class="choice-box">
-            <h3>Walnut</h3>
-            <div class="choice-visual walnut"></div>
-            <p class="muted">A dark contrast wood that makes simple striped boards look intentional fast.</p>
-          </div>
-
-          <div class="choice-box">
-            <h3>Cherry</h3>
-            <div class="choice-visual cherry"></div>
-            <p class="muted">Warm, refined, and a nice middle ground when you want softer contrast than walnut.</p>
-          </div>
-        </div>
-      </div>
 
       <h3>Maple</h3>
       <p>
@@ -784,83 +456,12 @@
       </div>
     </section>
 
-    <section id="wood-visual-guide">
-      <h2>Quick visual wood guide</h2>
-      <p>
-        These are not photo-real species references, but they give a fast visual sense of the common cutting board woods beginners
-        usually compare.
-      </p>
-
-      <div class="wood-visual">
-        <div class="wood-card">
-          <div class="wood-swatch" style="background: linear-gradient(135deg, #f0ddb9, #e7cf9d);"></div>
-          <div class="wood-card-body">
-            <h3>Maple</h3>
-            <p class="muted">Light, clean, durable, and easy to pair with darker woods.</p>
-          </div>
-        </div>
-
-        <div class="wood-card">
-          <div class="wood-swatch" style="background: linear-gradient(135deg, #7a5736, #4f3421);"></div>
-          <div class="wood-card-body">
-            <h3>Walnut</h3>
-            <p class="muted">Dark contrast wood that makes patterns and stripes pop.</p>
-          </div>
-        </div>
-
-        <div class="wood-card">
-          <div class="wood-swatch" style="background: linear-gradient(135deg, #c78663, #9c5e41);"></div>
-          <div class="wood-card-body">
-            <h3>Cherry</h3>
-            <p class="muted">Warm tone that ages beautifully and adds a softer contrast.</p>
-          </div>
-        </div>
-
-        <div class="wood-card">
-          <div class="wood-swatch" style="background: linear-gradient(135deg, #ebdcc2, #d8c3a0);"></div>
-          <div class="wood-card-body">
-            <h3>Ash</h3>
-            <p class="muted">Sometimes used visually, but less common for a first cutting board choice.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section id="woods-to-avoid">
       <h2>Woods to avoid</h2>
       <p>
         Not every piece of wood in the shop belongs in a cutting board. Some woods are simply too soft, too open-grained,
         or just not worth the uncertainty.
       </p>
-
-      <div class="inline-visual" aria-hidden="true">
-        <div class="inline-visual-header">Visual: wood categories that are riskier or less practical</div>
-        <div class="avoid-layout">
-          <div class="avoid-box">
-            <h3>Softwoods</h3>
-            <div class="avoid-visual softwood"></div>
-            <p class="muted">Usually too soft for the main board body if you want long-term durability.</p>
-          </div>
-
-          <div class="avoid-box">
-            <h3>Very open grain</h3>
-            <div class="avoid-visual opengrain"></div>
-            <p class="muted">Often less appealing when you want a cleaner, simpler cutting surface.</p>
-          </div>
-
-          <div class="avoid-box">
-            <h3>Mystery wood</h3>
-            <div class="avoid-visual mystery"></div>
-            <p class="muted">If you cannot identify it confidently, it does not belong in a food-contact build.</p>
-          </div>
-
-          <div class="avoid-box">
-            <h3>Anything that feels like a gamble</h3>
-            <div class="avoid-visual gamble"></div>
-            <p class="muted">A first board is not the place to be clever with questionable material choices.</p>
-          </div>
-        </div>
-      </div>
 
       <ul class="checklist">
         <li>softwoods like pine or fir for the main board body</li>
@@ -879,29 +480,6 @@
       <p>
         A lot of the nicest-looking beginner boards come from simple combinations, not complicated ones.
       </p>
-
-      <div class="inline-visual" aria-hidden="true">
-        <div class="inline-visual-header">Visual: three easy wood combinations that usually work well</div>
-        <div class="combo-layout">
-          <div class="combo-box">
-            <h3>Maple + Walnut</h3>
-            <div class="combo-visual two-tone"></div>
-            <p class="muted">Strong contrast and probably the easiest first combination to love.</p>
-          </div>
-
-          <div class="combo-box">
-            <h3>Maple + Cherry</h3>
-            <div class="combo-visual warm"></div>
-            <p class="muted">A softer and warmer look that still feels clean and practical.</p>
-          </div>
-
-          <div class="combo-box">
-            <h3>Maple + Walnut + Cherry</h3>
-            <div class="combo-visual three-tone"></div>
-            <p class="muted">Balanced contrast and color variation without getting too busy.</p>
-          </div>
-        </div>
-      </div>
 
       <ul class="checklist">
         <li>maple + walnut for strong contrast</li>
