@@ -203,14 +203,12 @@
 
     h2 {
       font-size: 1.72rem;
-      margin-bottom: 14px;
-      margin-top: 42px;
+      margin: 0 0 14px;
     }
 
     h3 {
       font-size: 1.18rem;
-      margin-bottom: 10px;
-      margin-top: 26px;
+      margin: 0 0 10px;
     }
 
     p {
@@ -223,27 +221,34 @@
       max-width: 760px;
       position: relative;
       z-index: 1;
+      margin-bottom: 0;
     }
 
-    .hero-card {
-      background: rgba(255,255,255,0.75);
-      border: 1px solid rgba(221,211,199,0.95);
-      border-radius: 18px;
-      padding: 18px;
-      backdrop-filter: blur(2px);
+    .hero-summary {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
       margin-top: 24px;
       position: relative;
       z-index: 1;
     }
 
-    .hero-card p:last-child {
+    .summary-card {
+      background: rgba(255,255,255,0.75);
+      border: 1px solid rgba(221,211,199,0.95);
+      border-radius: 18px;
+      padding: 18px;
+      backdrop-filter: blur(2px);
+    }
+
+    .summary-card p:last-child,
+    .card p:last-child {
       margin-bottom: 0;
     }
 
     .mini-points {
       display: grid;
       gap: 12px;
-      margin-top: 18px;
     }
 
     .mini-point {
@@ -256,6 +261,10 @@
     .mini-point h3 {
       margin: 0 0 8px;
       font-size: 1rem;
+    }
+
+    .section {
+      margin: 30px 0;
     }
 
     .card {
@@ -308,6 +317,33 @@
       border: 1px solid #e3c2b7;
     }
 
+    .subcard-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 18px 0 0;
+    }
+
+    .subcard-grid.three-up {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .subcard-grid.four-up {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .subcard {
+      border: 1px solid #d8c9b8;
+      border-radius: 14px;
+      background: #fffaf3;
+      padding: 16px;
+    }
+
+    .subcard h3 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
     .related-links {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -345,6 +381,16 @@
       border-top: 1px solid var(--line);
       color: var(--muted);
       background: #f3ede4;
+    }
+
+    @media (max-width: 860px) {
+      .hero-summary,
+      .subcard-grid,
+      .subcard-grid.three-up,
+      .subcard-grid.four-up,
+      .related-links {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 700px) {
@@ -390,19 +436,23 @@
           You want a wood that is durable, reasonably stable, workable in a home shop, and a good fit for food-contact builds.
         </p>
 
-        <div class="hero-card">
-          <h3>What makes a good cutting board wood</h3>
-          <p>The best woods for beginner cutting boards usually combine durability, easy availability, and a look that still feels clean after the glue-up is done.</p>
+        <div class="hero-summary">
+          <div class="summary-card">
+            <h3>What makes a good cutting board wood</h3>
+            <p>The best woods for beginner cutting boards usually combine durability, easy availability, and a look that still feels clean after the glue-up is done.</p>
+          </div>
 
-          <div class="mini-points">
-            <div class="mini-point">
-              <h3>Best all-around base</h3>
-              <p class="muted">Maple is hard to beat as the main body wood for a first board.</p>
-            </div>
+          <div class="summary-card">
+            <div class="mini-points">
+              <div class="mini-point">
+                <h3>Best all-around base</h3>
+                <p class="muted">Maple is hard to beat as the main body wood for a first board.</p>
+              </div>
 
-            <div class="mini-point">
-              <h3>Best contrast woods</h3>
-              <p class="muted">Walnut and cherry make simple patterns look better without making the build chaotic.</p>
+              <div class="mini-point">
+                <h3>Best contrast woods</h3>
+                <p class="muted">Walnut and cherry make simple patterns look better without making the build chaotic.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -429,10 +479,27 @@
       </ul>
     </section>
 
-    <section id="top-choices">
+    <section id="top-choices" class="section">
       <h2>Top woods to use for cutting boards</h2>
 
-      <h3>Maple</h3>
+      <div class="subcard-grid three-up">
+        <div class="subcard">
+          <h3>Maple</h3>
+          <p class="muted">Light, durable, widely available, and one of the easiest main woods to build around.</p>
+        </div>
+
+        <div class="subcard">
+          <h3>Walnut</h3>
+          <p class="muted">A dark contrast wood that makes simple boards look more intentional fast.</p>
+        </div>
+
+        <div class="subcard">
+          <h3>Cherry</h3>
+          <p class="muted">Warm, refined, and a nice middle ground when you want softer contrast than walnut.</p>
+        </div>
+      </div>
+
+      <h3 style="margin-top:22px;">Maple</h3>
       <p>
         Maple is one of the most common cutting board woods for a reason. It is hard, durable, widely available, and usually
         straightforward to work with. It also gives you a clean, light base color that pairs well with darker accent woods.
@@ -456,14 +523,36 @@
       </div>
     </section>
 
-    <section id="woods-to-avoid">
+    <section id="woods-to-avoid" class="section">
       <h2>Woods to avoid</h2>
       <p>
         Not every piece of wood in the shop belongs in a cutting board. Some woods are simply too soft, too open-grained,
         or just not worth the uncertainty.
       </p>
 
-      <ul class="checklist">
+      <div class="subcard-grid four-up">
+        <div class="subcard">
+          <h3>Softwoods</h3>
+          <p class="muted">Usually too soft for the main board body if you want long-term durability.</p>
+        </div>
+
+        <div class="subcard">
+          <h3>Very open grain</h3>
+          <p class="muted">Often less appealing when you want a cleaner, simpler cutting surface.</p>
+        </div>
+
+        <div class="subcard">
+          <h3>Mystery wood</h3>
+          <p class="muted">If you cannot identify it confidently, it does not belong in a food-contact build.</p>
+        </div>
+
+        <div class="subcard">
+          <h3>Anything that feels like a gamble</h3>
+          <p class="muted">A first board is not the place to be clever with questionable material choices.</p>
+        </div>
+      </div>
+
+      <ul class="checklist" style="margin-top:18px;">
         <li>softwoods like pine or fir for the main board body</li>
         <li>very open-grained woods if you want a cleaner, more practical surface</li>
         <li>mystery wood or reclaimed material you cannot identify confidently</li>
@@ -475,13 +564,30 @@
       </div>
     </section>
 
-    <section id="best-combos">
+    <section id="best-combos" class="section">
       <h2>Good wood combinations for patterned boards</h2>
       <p>
         A lot of the nicest-looking beginner boards come from simple combinations, not complicated ones.
       </p>
 
-      <ul class="checklist">
+      <div class="subcard-grid three-up">
+        <div class="subcard">
+          <h3>Maple + Walnut</h3>
+          <p class="muted">Strong contrast and probably the easiest first combination to love.</p>
+        </div>
+
+        <div class="subcard">
+          <h3>Maple + Cherry</h3>
+          <p class="muted">A softer and warmer look that still feels clean and practical.</p>
+        </div>
+
+        <div class="subcard">
+          <h3>Maple + Walnut + Cherry</h3>
+          <p class="muted">Balanced contrast and color variation without getting too busy.</p>
+        </div>
+      </div>
+
+      <ul class="checklist" style="margin-top:18px;">
         <li>maple + walnut for strong contrast</li>
         <li>maple + cherry for a warmer, softer look</li>
         <li>maple + walnut + cherry for balanced contrast and color variation</li>
@@ -492,7 +598,7 @@
       </p>
     </section>
 
-    <section id="what-beginners-should-buy">
+    <section id="what-beginners-should-buy" class="section">
       <h2>What beginners should buy first</h2>
       <p>
         If you are buying wood for your first board, keep it simple. A practical first purchase is maple for the bulk of the board
@@ -500,7 +606,7 @@
       </p>
     </section>
 
-    <section id="faq">
+    <section id="faq" class="section">
       <h2>FAQ</h2>
 
       <h3>Is maple the best wood for a cutting board?</h3>
@@ -532,7 +638,7 @@
       </p>
     </section>
 
-    <section>
+    <section class="section">
       <h2>Related guides</h2>
       <ul class="related-links">
         <li>
