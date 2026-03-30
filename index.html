@@ -51,14 +51,27 @@
 
     .site-header {
       color: #fff;
-      padding: 18px 20px;
+      padding: 20px 20px;
       border-bottom: 1px solid rgba(255,255,255,0.06);
       background:
+        radial-gradient(circle at top left, rgba(186, 128, 76, 0.18), transparent 28%),
         linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0)),
-        linear-gradient(135deg, #33241a 0%, #2b2018 58%, #241a14 100%);
+        linear-gradient(135deg, #35261b 0%, #2c2119 56%, #241a14 100%);
       box-shadow:
         inset 0 -1px 0 rgba(255,255,255,0.04),
         0 8px 20px rgba(24, 17, 12, 0.14);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .site-header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.03) 50%, transparent 100%);
+      pointer-events: none;
+      opacity: 0.45;
     }
 
     .site-header-inner,
@@ -66,60 +79,71 @@
     .footer-inner {
       width: min(var(--max), calc(100% - 32px));
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
 
     .brand-row {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
     }
 
     .brand-mark {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.16), rgba(255,255,255,0.02)),
-        linear-gradient(135deg, #9f6a37, #7a4b22);
+        linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.03)),
+        linear-gradient(135deg, #a96d3d 0%, #8a552a 48%, #6e431f 100%);
       border: 1px solid rgba(255,255,255,0.12);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.10);
-      flex: 0 0 36px;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.14),
+        inset 0 -10px 18px rgba(0,0,0,0.10),
+        0 8px 18px rgba(0,0,0,0.14);
+      flex: 0 0 50px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .brand-mark-bars {
-      display: flex;
-      gap: 3px;
-      align-items: flex-end;
+    .brand-mark::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          180deg,
+          rgba(255,255,255,0.05) 0px,
+          rgba(255,255,255,0.05) 1px,
+          rgba(0,0,0,0) 1px,
+          rgba(0,0,0,0) 8px
+        );
+      opacity: 0.22;
+      pointer-events: none;
     }
 
-    .brand-mark-bars span {
+    .brand-mark svg {
+      position: relative;
+      z-index: 1;
       display: block;
-      width: 5px;
-      border-radius: 2px;
-      background: rgba(255,255,255,0.90);
-      box-shadow: inset 0 -1px 0 rgba(0,0,0,0.15);
     }
-
-    .brand-mark-bars span:nth-child(1) { height: 12px; }
-    .brand-mark-bars span:nth-child(2) { height: 16px; }
-    .brand-mark-bars span:nth-child(3) { height: 10px; }
 
     .brand-text-wrap {
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      gap: 4px;
       min-width: 0;
     }
 
     .brand {
-      font-size: 1.62rem;
+      font-size: 2.05rem;
       font-weight: 700;
       color: #fff;
       line-height: 1;
-      letter-spacing: 0.01em;
+      letter-spacing: -0.02em;
       text-decoration: none;
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
@@ -132,11 +156,11 @@
     }
 
     .brand-sub {
-      font-size: 0.74rem;
-      color: rgba(255,255,255,0.72);
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.74);
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      line-height: 1.15;
+      letter-spacing: 0.11em;
+      line-height: 1.2;
     }
 
     .hero {
@@ -428,12 +452,28 @@
         padding: 16px 18px;
       }
 
+      .brand-row {
+        gap: 12px;
+      }
+
+      .brand-mark {
+        width: 44px;
+        height: 44px;
+        flex-basis: 44px;
+      }
+
+      .brand-mark svg {
+        width: 20px;
+        height: 20px;
+      }
+
       .brand {
-        font-size: 1.5rem;
+        font-size: 1.7rem;
       }
 
       .brand-sub {
-        font-size: 0.72rem;
+        font-size: 0.7rem;
+        letter-spacing: 0.09em;
       }
     }
   </style>
@@ -443,9 +483,11 @@
     <div class="site-header-inner">
       <div class="brand-row">
         <div class="brand-mark" aria-hidden="true">
-          <div class="brand-mark-bars">
-            <span></span><span></span><span></span>
-          </div>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="7" width="5" height="11" rx="1.5" fill="rgba(255,255,255,0.92)"></rect>
+            <rect x="9.5" y="4" width="5" height="14" rx="1.5" fill="rgba(255,255,255,0.82)"></rect>
+            <rect x="16" y="9" width="5" height="9" rx="1.5" fill="rgba(255,255,255,0.68)"></rect>
+          </svg>
         </div>
         <div class="brand-text-wrap">
           <a class="brand" href="/">WoodToolChest</a>
