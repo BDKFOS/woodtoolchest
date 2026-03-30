@@ -203,14 +203,12 @@
 
     h2 {
       font-size: 1.72rem;
-      margin-bottom: 14px;
-      margin-top: 42px;
+      margin: 0 0 14px;
     }
 
     h3 {
       font-size: 1.18rem;
-      margin-bottom: 10px;
-      margin-top: 26px;
+      margin: 0 0 10px;
     }
 
     p {
@@ -223,18 +221,19 @@
       max-width: 760px;
       position: relative;
       z-index: 1;
+      margin-bottom: 0;
     }
 
-    .hero-visuals {
+    .hero-summary {
       display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
+      grid-template-columns: 1fr 1fr;
       gap: 18px;
       margin-top: 24px;
       position: relative;
       z-index: 1;
     }
 
-    .visual-card {
+    .summary-card {
       background: rgba(255,255,255,0.75);
       border: 1px solid rgba(221,211,199,0.95);
       border-radius: 18px;
@@ -242,142 +241,9 @@
       backdrop-filter: blur(2px);
     }
 
-    .visual-card p:last-child {
+    .summary-card p:last-child,
+    .card p:last-child {
       margin-bottom: 0;
-    }
-
-    .diagram-label {
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--accent-dark);
-      margin-bottom: 8px;
-    }
-
-    .shop-diagram {
-      height: 230px;
-      border-radius: 14px;
-      border: 1px solid #d7cab9;
-      background: linear-gradient(180deg, #f9f4ec, #efe5d8);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .shop-floor {
-      position: absolute;
-      inset: 14px;
-      border-radius: 12px;
-      border: 2px solid #cdbca9;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.24), rgba(255,255,255,0.02)),
-        repeating-linear-gradient(
-          to right,
-          rgba(122,75,34,0.05) 0px,
-          rgba(122,75,34,0.05) 1px,
-          transparent 1px,
-          transparent 48px
-        ),
-        repeating-linear-gradient(
-          to bottom,
-          rgba(122,75,34,0.05) 0px,
-          rgba(122,75,34,0.05) 1px,
-          transparent 1px,
-          transparent 48px
-        );
-    }
-
-    .tool-block {
-      position: absolute;
-      border-radius: 12px;
-      border: 1px solid #8b6547;
-      background: linear-gradient(180deg, #d7aa7d, #b88358);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.16);
-    }
-
-    .tool-block.table-saw {
-      left: 102px;
-      top: 86px;
-      width: 112px;
-      height: 58px;
-    }
-
-    .tool-block.workbench {
-      left: 36px;
-      top: 28px;
-      width: 138px;
-      height: 44px;
-    }
-
-    .tool-block.storage {
-      right: 26px;
-      top: 24px;
-      width: 66px;
-      height: 138px;
-      background: linear-gradient(180deg, #caa27b, #966947);
-    }
-
-    .tool-block.cart {
-      right: 120px;
-      bottom: 28px;
-      width: 84px;
-      height: 42px;
-    }
-
-    .open-zone {
-      position: absolute;
-      left: 84px;
-      right: 118px;
-      top: 56px;
-      bottom: 34px;
-      border: 2px dashed rgba(122,75,34,0.34);
-      border-radius: 16px;
-      background: rgba(255,255,255,0.10);
-    }
-
-    .open-zone-label {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(255,255,255,0.82);
-      color: #4b3524;
-      border: 1px solid #d7cab9;
-      border-radius: 999px;
-      padding: 6px 10px;
-      font-size: 0.82rem;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .flow-arrow {
-      position: absolute;
-      height: 4px;
-      border-radius: 999px;
-      background: rgba(122,75,34,0.42);
-    }
-
-    .flow-arrow::after {
-      content: "";
-      position: absolute;
-      right: -2px;
-      top: -4px;
-      border-top: 6px solid transparent;
-      border-bottom: 6px solid transparent;
-      border-left: 9px solid rgba(122,75,34,0.42);
-    }
-
-    .flow-arrow.one {
-      left: 182px;
-      right: 120px;
-      top: 52px;
-    }
-
-    .flow-arrow.two {
-      left: 214px;
-      right: 82px;
-      top: 112px;
-      transform: rotate(90deg);
-      transform-origin: left center;
-      width: 76px;
     }
 
     .mini-points {
@@ -397,19 +263,8 @@
       font-size: 1rem;
     }
 
-    .mini-meter {
-      height: 12px;
-      background: #ede1d3;
-      border-radius: 999px;
-      overflow: hidden;
-      margin: 8px 0 10px;
-      border: 1px solid #dbcab8;
-    }
-
-    .mini-meter-fill {
-      height: 100%;
-      border-radius: 999px;
-      background: linear-gradient(90deg, #b98d66, #7a4b22);
+    .section {
+      margin: 30px 0;
     }
 
     .card {
@@ -423,7 +278,6 @@
 
     .toc ul,
     .checklist,
-    .steps,
     .related-links {
       padding-left: 20px;
       margin: 0;
@@ -431,7 +285,6 @@
 
     .toc li,
     .checklist li,
-    .steps li,
     .related-links li {
       margin-bottom: 10px;
     }
@@ -464,353 +317,31 @@
       border: 1px solid #e3c2b7;
     }
 
-    .inline-visual {
-      margin: 18px 0 20px;
-      border: 1px solid #d9ccbd;
-      border-radius: 16px;
-      background: linear-gradient(180deg, #faf5ee, #f2e9dc);
-      overflow: hidden;
-      box-shadow: 0 6px 18px rgba(32, 22, 16, 0.03);
-    }
-
-    .inline-visual-header {
-      padding: 12px 16px;
-      border-bottom: 1px solid #ddcfbf;
-      font-weight: 700;
-      color: #3d2a1c;
-      background: rgba(255,255,255,0.4);
-    }
-
-    .principles-layout,
-    .placement-layout,
-    .bench-layout,
-    .storage-layout,
-    .mistake-layout {
-      padding: 18px;
-      background: linear-gradient(180deg, #f8f2ea, #eee2d2);
-    }
-
-    .principles-layout {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .principle-box,
-    .placement-box,
-    .bench-box,
-    .storage-box,
-    .mistake-box {
-      border: 1px solid #d8c9b8;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.42);
-      padding: 14px;
-      position: relative;
-    }
-
-    .principle-box h3,
-    .placement-box h3,
-    .bench-box h3,
-    .storage-box h3,
-    .mistake-box h3 {
-      margin: 0 0 10px;
-      font-size: 1rem;
-      color: #3c2a1c;
-    }
-
-    .principle-icon,
-    .placement-visual,
-    .bench-visual,
-    .storage-visual,
-    .mistake-visual {
-      height: 96px;
-      border-radius: 12px;
-      border: 1px solid #d7cab9;
-      background: linear-gradient(180deg, #f8f2ea, #eee2d2);
-      margin-bottom: 12px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .principle-icon.center::before,
-    .principle-icon.edges::before,
-    .principle-icon.flow::before,
-    .principle-icon.multi::before,
-    .placement-visual.tablesaw::before,
-    .placement-visual.mobile::before,
-    .placement-visual.miter::before,
-    .placement-visual.router::before,
-    .bench-visual.center::before,
-    .bench-visual.wall::before,
-    .storage-visual.wall::before,
-    .storage-visual.lumber::before,
-    .storage-visual.daily::before,
-    .mistake-visual.station::before,
-    .mistake-visual.centerblock::before,
-    .mistake-visual.outfeed::before {
-      content: "";
-      position: absolute;
-    }
-
-    .principle-icon.center::before {
-      left: 18px;
-      right: 18px;
-      top: 18px;
-      bottom: 18px;
-      border-radius: 14px;
-      border: 2px dashed rgba(122,75,34,0.34);
-      background: rgba(255,255,255,0.12);
-    }
-
-    .principle-icon.edges::before {
-      left: 10px;
-      right: 10px;
-      top: 12px;
-      bottom: 12px;
-      border-radius: 12px;
-      background:
-        linear-gradient(90deg, #caa27b 0 18%, transparent 18% 82%, #caa27b 82% 100%),
-        linear-gradient(180deg, #caa27b 0 18%, transparent 18% 82%, #caa27b 82% 100%);
-      opacity: 0.92;
-    }
-
-    .principle-icon.flow::before {
-      left: 14px;
-      right: 14px;
-      top: 44px;
-      height: 4px;
-      border-radius: 999px;
-      background: rgba(122,75,34,0.42);
-    }
-
-    .principle-icon.flow::after {
-      content: "";
-      position: absolute;
-      right: 14px;
-      top: 40px;
-      border-top: 6px solid transparent;
-      border-bottom: 6px solid transparent;
-      border-left: 9px solid rgba(122,75,34,0.42);
-    }
-
-    .principle-icon.multi::before {
-      left: 18px;
-      right: 18px;
-      top: 28px;
-      height: 38px;
-      border-radius: 12px;
-      background: linear-gradient(180deg, #d7aa7d, #b88358);
-      border: 1px solid #9b6d48;
-      box-shadow:
-        inset 0 0 0 999px rgba(255,255,255,0.02),
-        0 0 0 12px rgba(255,255,255,0.10);
-    }
-
-    .placement-layout,
-    .storage-layout,
-    .mistake-layout {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .placement-visual.tablesaw::before {
-      left: 16px;
-      right: 16px;
-      top: 34px;
-      height: 28px;
-      border-radius: 10px;
-      background: linear-gradient(180deg, #d7aa7d, #b88358);
-      border: 1px solid #9b6d48;
-      box-shadow:
-        inset 0 0 0 2px rgba(255,255,255,0.08),
-        0 -18px 0 -10px rgba(122,75,34,0.20),
-        0 18px 0 -10px rgba(122,75,34,0.20);
-    }
-
-    .placement-visual.mobile::before {
-      left: 18px;
-      right: 18px;
-      top: 28px;
-      height: 34px;
-      border-radius: 10px;
-      background: linear-gradient(180deg, #caa27b, #966947);
-      border: 1px solid #8b6547;
-    }
-
-    .placement-visual.mobile::after {
-      content: "";
-      position: absolute;
-      left: 24px;
-      right: 24px;
-      bottom: 16px;
-      height: 10px;
-      background:
-        radial-gradient(circle at 10% 50%, #6b4a2d 0 4px, transparent 5px),
-        radial-gradient(circle at 90% 50%, #6b4a2d 0 4px, transparent 5px);
-    }
-
-    .placement-visual.miter::before {
-      left: 12px;
-      right: 12px;
-      top: 26px;
-      height: 42px;
-      border-radius: 10px;
-      background: linear-gradient(180deg, #caa27b, #966947);
-      border: 1px solid #8b6547;
-      box-shadow: inset 0 0 0 999px rgba(95,57,25,0.10);
-    }
-
-    .placement-visual.router::before {
-      left: 26px;
-      right: 26px;
-      top: 22px;
-      height: 52px;
-      border-radius: 12px;
-      background: linear-gradient(180deg, #d7aa7d, #b88358);
-      border: 1px solid #9b6d48;
-    }
-
-    .placement-visual.router::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 34px;
-      transform: translateX(-50%);
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: linear-gradient(180deg, #7d5131, #5f3919);
-      border: 1px solid #4f2d14;
-    }
-
-    .bench-layout {
+    .subcard-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 14px;
+      margin: 18px 0 0;
     }
 
-    .bench-visual.center::before,
-    .bench-visual.wall::before {
-      left: 14px;
-      right: 14px;
-      top: 14px;
-      bottom: 14px;
-      border-radius: 12px;
-      border: 2px solid #cdbca9;
-      background: rgba(255,255,255,0.10);
+    .subcard-grid.three-up {
+      grid-template-columns: repeat(3, 1fr);
     }
 
-    .bench-visual.center::after,
-    .bench-visual.wall::after {
-      content: "";
-      position: absolute;
-      width: 88px;
-      height: 28px;
-      border-radius: 8px;
-      background: linear-gradient(180deg, #d7aa7d, #b88358);
-      border: 1px solid #9b6d48;
-      top: 34px;
-      left: 50%;
-      transform: translateX(-50%);
+    .subcard-grid.four-up {
+      grid-template-columns: repeat(4, 1fr);
     }
 
-    .bench-visual.wall::after {
-      left: auto;
-      right: 18px;
-      transform: none;
+    .subcard {
+      border: 1px solid #d8c9b8;
+      border-radius: 14px;
+      background: #fffaf3;
+      padding: 16px;
     }
 
-    .storage-visual.wall::before {
-      left: 12px;
-      width: 36px;
-      top: 12px;
-      bottom: 12px;
-      border-radius: 8px;
-      background:
-        repeating-linear-gradient(
-          to bottom,
-          #caa27b 0px,
-          #caa27b 20px,
-          #966947 20px,
-          #966947 24px
-        );
-      border: 1px solid #8b6547;
-    }
-
-    .storage-visual.lumber::before {
-      left: 16px;
-      right: 16px;
-      top: 26px;
-      height: 12px;
-      border-radius: 999px;
-      background:
-        linear-gradient(180deg, #e7d6b8, #d7aa7d);
-      box-shadow:
-        0 16px 0 0 #caa27b,
-        0 32px 0 0 #ba6b4c;
-      border: 1px solid rgba(139,101,71,0.40);
-    }
-
-    .storage-visual.daily::before {
-      left: 16px;
-      right: 16px;
-      top: 18px;
-      height: 58px;
-      border-radius: 10px;
-      background:
-        linear-gradient(90deg,
-          #caa27b 0 25%,
-          #eee2d2 25% 27%,
-          #caa27b 27% 52%,
-          #eee2d2 52% 54%,
-          #caa27b 54% 79%,
-          #eee2d2 79% 81%,
-          #caa27b 81% 100%);
-      border: 1px solid #8b6547;
-    }
-
-    .mistake-visual.station::before {
-      left: 10px;
-      right: 10px;
-      top: 22px;
-      height: 50px;
-      border-radius: 10px;
-      background: linear-gradient(180deg, #caa27b, #966947);
-      border: 1px solid #8b6547;
-      box-shadow: inset 0 0 0 999px rgba(95,57,25,0.14);
-    }
-
-    .mistake-visual.centerblock::before {
-      left: 20px;
-      right: 20px;
-      top: 20px;
-      bottom: 20px;
-      border-radius: 12px;
-      background: linear-gradient(180deg, #d7aa7d, #b88358);
-      border: 1px solid #9b6d48;
-    }
-
-    .mistake-visual.outfeed::before {
-      left: 12px;
-      right: 12px;
-      top: 36px;
-      height: 22px;
-      border-radius: 8px;
-      background: linear-gradient(180deg, #d7aa7d, #b88358);
-      border: 1px solid #9b6d48;
-    }
-
-    .mistake-visual.outfeed::after {
-      content: "";
-      position: absolute;
-      right: 6px;
-      top: 16px;
-      width: 38px;
-      height: 4px;
-      border-radius: 999px;
-      background: rgba(168,74,54,0.55);
-      transform: rotate(-28deg);
+    .subcard h3 {
+      font-size: 1rem;
+      margin-bottom: 8px;
     }
 
     .related-links {
@@ -853,12 +384,10 @@
     }
 
     @media (max-width: 860px) {
-      .hero-visuals,
-      .principles-layout,
-      .placement-layout,
-      .bench-layout,
-      .storage-layout,
-      .mistake-layout,
+      .hero-summary,
+      .subcard-grid,
+      .subcard-grid.three-up,
+      .subcard-grid.four-up,
       .related-links {
         grid-template-columns: 1fr;
       }
@@ -876,24 +405,6 @@
       .card,
       .hero-panel {
         padding: 20px;
-      }
-
-      .shop-diagram {
-        height: 250px;
-      }
-
-      .tool-block.table-saw {
-        left: 78px;
-        width: 96px;
-      }
-
-      .tool-block.storage {
-        width: 56px;
-      }
-
-      .open-zone {
-        left: 62px;
-        right: 90px;
       }
     }
   </style>
@@ -926,36 +437,21 @@
           and protecting your open floor area.
         </p>
 
-        <div class="hero-visuals">
-          <div class="visual-card">
-            <div class="diagram-label">Visual: protect your open working zone</div>
-            <div class="shop-diagram" aria-hidden="true">
-              <div class="shop-floor"></div>
-              <div class="tool-block workbench"></div>
-              <div class="tool-block table-saw"></div>
-              <div class="tool-block storage"></div>
-              <div class="tool-block cart"></div>
-              <div class="open-zone">
-                <div class="open-zone-label">open work area</div>
-              </div>
-              <div class="flow-arrow one"></div>
-            </div>
-          </div>
-
-          <div class="visual-card">
+        <div class="hero-summary">
+          <div class="summary-card">
             <h3>What usually improves a small shop fastest</h3>
             <p>Most small-shop layout wins come from preserving clear movement and avoiding furniture or stations that eat more space than they earn.</p>
+          </div>
 
+          <div class="summary-card">
             <div class="mini-points">
               <div class="mini-point">
                 <h3>Open center value</h3>
-                <div class="mini-meter"><div class="mini-meter-fill" style="width: 92%;"></div></div>
                 <p class="muted">Assembly, breakdown, outfeed, and general breathing room all happen here.</p>
               </div>
 
               <div class="mini-point">
                 <h3>Wall storage value</h3>
-                <div class="mini-meter"><div class="mini-meter-fill" style="width: 84%;"></div></div>
                 <p class="muted">Using vertical space well takes pressure off the floor immediately.</p>
               </div>
             </div>
@@ -986,7 +482,7 @@
       </ul>
     </section>
 
-    <section id="what-matters">
+    <section id="what-matters" class="section">
       <h2>What matters most in a small workshop</h2>
       <p>
         In a compact shop, every square foot has to earn its keep. The goal is not just fitting everything in.
@@ -1009,39 +505,32 @@
       </div>
     </section>
 
-    <section id="layout-principles">
+    <section id="layout-principles" class="section">
       <h2>Core small workshop layout principles</h2>
 
-      <div class="inline-visual" aria-hidden="true">
-        <div class="inline-visual-header">Visual: four layout principles for compact shops</div>
-        <div class="principles-layout">
-          <div class="principle-box">
-            <h3>Protect the center</h3>
-            <div class="principle-icon center"></div>
-            <p class="muted">Keep usable floor space where real work actually happens.</p>
-          </div>
+      <div class="subcard-grid four-up">
+        <div class="subcard">
+          <h3>Protect the center</h3>
+          <p class="muted">Keep usable floor space where real work actually happens.</p>
+        </div>
 
-          <div class="principle-box">
-            <h3>Push lesser tools outward</h3>
-            <div class="principle-icon edges"></div>
-            <p class="muted">Walls and edges are often the best home for less-used stations.</p>
-          </div>
+        <div class="subcard">
+          <h3>Push lesser tools outward</h3>
+          <p class="muted">Walls and edges are often the best home for less-used stations.</p>
+        </div>
 
-          <div class="principle-box">
-            <h3>Think in workflow</h3>
-            <div class="principle-icon flow"></div>
-            <p class="muted">The smoother material moves, the less the shop fights you.</p>
-          </div>
+        <div class="subcard">
+          <h3>Think in workflow</h3>
+          <p class="muted">The smoother material moves, the less the shop fights you.</p>
+        </div>
 
-          <div class="principle-box">
-            <h3>Design for multi-use</h3>
-            <div class="principle-icon multi"></div>
-            <p class="muted">One zone often has to do more than one job in a small shop.</p>
-          </div>
+        <div class="subcard">
+          <h3>Design for multi-use</h3>
+          <p class="muted">One zone often has to do more than one job in a small shop.</p>
         </div>
       </div>
 
-      <h3>1. Protect your central work area</h3>
+      <h3 style="margin-top:22px;">1. Protect your central work area</h3>
       <p>
         If possible, keep a usable open area in the middle of the shop. That space becomes your assembly zone,
         breakdown zone, temporary outfeed space, and general breathing room.
@@ -1066,39 +555,32 @@
       </p>
     </section>
 
-    <section id="tool-placement">
+    <section id="tool-placement" class="section">
       <h2>How to place major tools in a small shop</h2>
 
-      <div class="inline-visual" aria-hidden="true">
-        <div class="inline-visual-header">Visual: tool placement priorities</div>
-        <div class="placement-layout">
-          <div class="placement-box">
-            <h3>Table saw</h3>
-            <div class="placement-visual tablesaw"></div>
-            <p class="muted">Needs thought around infeed and outfeed more than almost anything else.</p>
-          </div>
+      <div class="subcard-grid four-up">
+        <div class="subcard">
+          <h3>Table saw</h3>
+          <p class="muted">Needs thought around infeed and outfeed more than almost anything else.</p>
+        </div>
 
-          <div class="placement-box">
-            <h3>Mobile benchtop tools</h3>
-            <div class="placement-visual mobile"></div>
-            <p class="muted">Great candidates for carts and wall-adjacent storage when not in use.</p>
-          </div>
+        <div class="subcard">
+          <h3>Mobile benchtop tools</h3>
+          <p class="muted">Great candidates for carts and wall-adjacent storage when not in use.</p>
+        </div>
 
-          <div class="placement-box">
-            <h3>Miter saw</h3>
-            <div class="placement-visual miter"></div>
-            <p class="muted">Do not let a giant station eat the whole room before it earns that space.</p>
-          </div>
+        <div class="subcard">
+          <h3>Miter saw</h3>
+          <p class="muted">Do not let a giant station eat the whole room before it earns that space.</p>
+        </div>
 
-          <div class="placement-box">
-            <h3>Router station</h3>
-            <div class="placement-visual router"></div>
-            <p class="muted">Keep it accessible without letting it dominate the footprint.</p>
-          </div>
+        <div class="subcard">
+          <h3>Router station</h3>
+          <p class="muted">Keep it accessible without letting it dominate the footprint.</p>
         </div>
       </div>
 
-      <h3>Table saw</h3>
+      <h3 style="margin-top:22px;">Table saw</h3>
       <p>
         The table saw often deserves the most thought because it needs infeed and outfeed room. In some small shops,
         it works best near the center. In others, it may sit offset and roll into a better position when needed.
@@ -1131,27 +613,22 @@
       </div>
     </section>
 
-    <section id="workbench">
+    <section id="workbench" class="section">
       <h2>Where should the workbench go?</h2>
 
-      <div class="inline-visual" aria-hidden="true">
-        <div class="inline-visual-header">Visual: centered bench vs wall-adjacent bench</div>
-        <div class="bench-layout">
-          <div class="bench-box">
-            <h3>Centered when space allows</h3>
-            <div class="bench-visual center"></div>
-            <p class="muted">Great when you can work from multiple sides without killing walkways.</p>
-          </div>
+      <div class="subcard-grid">
+        <div class="subcard">
+          <h3>Centered when space allows</h3>
+          <p class="muted">Great when you can work from multiple sides without killing walkways.</p>
+        </div>
 
-          <div class="bench-box">
-            <h3>Near a wall when space is tighter</h3>
-            <div class="bench-visual wall"></div>
-            <p class="muted">Still works well if the active sides stay clear and usable.</p>
-          </div>
+        <div class="subcard">
+          <h3>Near a wall when space is tighter</h3>
+          <p class="muted">Still works well if the active sides stay clear and usable.</p>
         </div>
       </div>
 
-      <p>
+      <p style="margin-top:18px;">
         The workbench is often the real heart of a small woodworking shop. That does not always mean it belongs dead center,
         but it should live where it is easy to use from multiple sides when possible.
       </p>
@@ -1167,39 +644,32 @@
       </div>
     </section>
 
-    <section id="storage">
+    <section id="storage" class="section">
       <h2>Storage in a small workshop</h2>
 
-      <div class="inline-visual" aria-hidden="true">
-        <div class="inline-visual-header">Visual: three smart storage moves in a tight shop</div>
-        <div class="storage-layout">
-          <div class="storage-box">
-            <h3>Wall storage</h3>
-            <div class="storage-visual wall"></div>
-            <p class="muted">Use vertical space so the floor does not carry everything.</p>
-          </div>
+      <div class="subcard-grid four-up">
+        <div class="subcard">
+          <h3>Wall storage</h3>
+          <p class="muted">Use vertical space so the floor does not carry everything.</p>
+        </div>
 
-          <div class="storage-box">
-            <h3>Realistic lumber storage</h3>
-            <div class="storage-visual lumber"></div>
-            <p class="muted">Store what you actually use, not every someday board.</p>
-          </div>
+        <div class="subcard">
+          <h3>Realistic lumber storage</h3>
+          <p class="muted">Store what you actually use, not every someday board.</p>
+        </div>
 
-          <div class="storage-box">
-            <h3>Daily-use access</h3>
-            <div class="storage-visual daily"></div>
-            <p class="muted">Frequently touched tools should be easy to grab without digging.</p>
-          </div>
+        <div class="subcard">
+          <h3>Daily-use access</h3>
+          <p class="muted">Frequently touched tools should be easy to grab without digging.</p>
+        </div>
 
-          <div class="storage-box">
-            <h3>Backup items separated</h3>
-            <div class="storage-visual daily"></div>
-            <p class="muted">Do not bury everyday tools with spare parts, backups, and occasional jigs.</p>
-          </div>
+        <div class="subcard">
+          <h3>Backup items separated</h3>
+          <p class="muted">Do not bury everyday tools with spare parts, backups, and occasional jigs.</p>
         </div>
       </div>
 
-      <p>
+      <p style="margin-top:18px;">
         Small shop storage works best when it goes vertical. Walls, shelves, peg systems, and cabinets can take a huge load off the floor.
       </p>
 
@@ -1220,33 +690,27 @@
       </p>
     </section>
 
-    <section id="mistakes">
+    <section id="mistakes" class="section">
       <h2>Common small workshop layout mistakes</h2>
 
-      <div class="inline-visual" aria-hidden="true">
-        <div class="inline-visual-header">Visual: three layout mistakes that eat space fast</div>
-        <div class="mistake-layout">
-          <div class="mistake-box">
-            <h3>Oversized stations</h3>
-            <div class="mistake-visual station"></div>
-            <p class="muted">A huge permanent footprint can lock up the whole room before workflow is even clear.</p>
-          </div>
+      <div class="subcard-grid three-up">
+        <div class="subcard">
+          <h3>Oversized stations</h3>
+          <p class="muted">A huge permanent footprint can lock up the whole room before workflow is even clear.</p>
+        </div>
 
-          <div class="mistake-box">
-            <h3>Blocking the center</h3>
-            <div class="mistake-visual centerblock"></div>
-            <p class="muted">Once the middle gets clogged, everything around it gets harder too.</p>
-          </div>
+        <div class="subcard">
+          <h3>Blocking the center</h3>
+          <p class="muted">Once the middle gets clogged, everything around it gets harder too.</p>
+        </div>
 
-          <div class="mistake-box">
-            <h3>Ignoring outfeed room</h3>
-            <div class="mistake-visual outfeed"></div>
-            <p class="muted">A tool can technically fit and still be miserable to use in real life.</p>
-          </div>
+        <div class="subcard">
+          <h3>Ignoring outfeed room</h3>
+          <p class="muted">A tool can technically fit and still be miserable to use in real life.</p>
         </div>
       </div>
 
-      <ul class="checklist">
+      <ul class="checklist" style="margin-top:18px;">
         <li>building oversized stations before the workflow is clear</li>
         <li>blocking the center of the shop with permanent furniture</li>
         <li>not leaving enough infeed and outfeed room</li>
@@ -1264,7 +728,7 @@
       </p>
     </section>
 
-    <section id="faq">
+    <section id="faq" class="section">
       <h2>FAQ</h2>
 
       <h3>What is the best layout for a small woodworking shop?</h3>
@@ -1298,7 +762,7 @@
       </p>
     </section>
 
-    <section>
+    <section class="section">
       <h2>Related guides</h2>
       <ul class="related-links">
         <li>
