@@ -241,131 +241,19 @@
       margin-top: 14px;
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.02fr 0.98fr;
-      gap: 18px;
-      margin-top: 24px;
-      position: relative;
-      z-index: 1;
-    }
-
     .hero-card {
       background: rgba(255,255,255,0.75);
       border: 1px solid rgba(221,211,199,0.95);
       border-radius: 18px;
       padding: 18px;
       backdrop-filter: blur(2px);
+      margin-top: 24px;
+      position: relative;
+      z-index: 1;
     }
 
     .hero-card p:last-child {
       margin-bottom: 0;
-    }
-
-    .shop-preview {
-      height: 240px;
-      border-radius: 14px;
-      border: 1px solid #d7cab9;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.45), rgba(255,255,255,0)),
-        linear-gradient(0deg, #eadfce 0 44px, #f6f0e7 44px 100%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .preview-bench {
-      position: absolute;
-      left: 26px;
-      right: 26px;
-      bottom: 36px;
-      height: 14px;
-      border-radius: 8px;
-      background: linear-gradient(180deg, #d7aa7d, #b88358);
-      border: 1px solid #9b6d48;
-    }
-
-    .preview-bench::before,
-    .preview-bench::after {
-      content: "";
-      position: absolute;
-      width: 10px;
-      top: 12px;
-      bottom: -34px;
-      border-radius: 6px;
-      background: #7d5131;
-    }
-
-    .preview-bench::before {
-      left: 24px;
-    }
-
-    .preview-bench::after {
-      right: 24px;
-    }
-
-    .preview-board {
-      position: absolute;
-      left: 34px;
-      bottom: 54px;
-      width: 170px;
-      height: 82px;
-      border-radius: 16px 16px 12px 12px;
-      border: 1px solid rgba(0,0,0,0.08);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.22),
-        0 10px 22px rgba(36,26,20,0.10);
-      background:
-        linear-gradient(90deg,
-          #f0ddb9 0%, #f0ddb9 18%,
-          #5b3c27 18%, #5b3c27 33%,
-          #b56f51 33%, #b56f51 49%,
-          #f0ddb9 49%, #f0ddb9 67%,
-          #5b3c27 67%, #5b3c27 83%,
-          #b56f51 83%, #b56f51 100%);
-      overflow: hidden;
-    }
-
-    .preview-board::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        repeating-linear-gradient(
-          90deg,
-          rgba(255,255,255,0.06) 0px,
-          rgba(255,255,255,0.06) 3px,
-          rgba(0,0,0,0.02) 3px,
-          rgba(0,0,0,0.02) 8px
-        );
-      pointer-events: none;
-    }
-
-    .preview-rack {
-      position: absolute;
-      right: 34px;
-      top: 26px;
-      width: 92px;
-      height: 122px;
-      border-radius: 14px;
-      border: 1px solid #8b6547;
-      background:
-        linear-gradient(180deg, #caa27b, #966947);
-      overflow: hidden;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.15);
-    }
-
-    .preview-rack::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 18px;
-      height: 3px;
-      background: rgba(95,57,25,0.30);
-      box-shadow:
-        0 22px 0 0 rgba(95,57,25,0.30),
-        0 44px 0 0 rgba(95,57,25,0.30),
-        0 66px 0 0 rgba(95,57,25,0.30);
     }
 
     .start-links {
@@ -430,89 +318,6 @@
       margin-bottom: 0;
     }
 
-    .card-visual {
-      height: 118px;
-      border-radius: 12px;
-      border: 1px solid #d7cab9;
-      background: linear-gradient(180deg, #f8f2ea, #eee2d2);
-      margin-bottom: 14px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card-visual.tool::before,
-    .card-visual.guide::before,
-    .card-visual.shop::before {
-      content: "";
-      position: absolute;
-    }
-
-    .card-visual.tool::before {
-      left: 18px;
-      right: 18px;
-      top: 26px;
-      height: 22px;
-      border-radius: 10px;
-      background:
-        linear-gradient(90deg,
-          #f0ddb9 0%, #f0ddb9 26%,
-          #5b3c27 26%, #5b3c27 38%,
-          #b56f51 38%, #b56f51 54%,
-          #f0ddb9 54%, #f0ddb9 70%,
-          #5b3c27 70%, #5b3c27 82%,
-          #b56f51 82%, #b56f51 100%);
-      border: 1px solid #9b6d48;
-      box-shadow: 0 26px 0 0 rgba(95,57,25,0.10);
-    }
-
-    .card-visual.guide::before {
-      left: 18px;
-      right: 18px;
-      top: 16px;
-      bottom: 16px;
-      border-radius: 10px;
-      background:
-        linear-gradient(180deg, #fffaf3, #f3e8d8);
-      border: 1px solid #d7cab9;
-      box-shadow: inset 0 -1px 0 rgba(255,255,255,0.4);
-    }
-
-    .card-visual.guide::after {
-      content: "";
-      position: absolute;
-      left: 30px;
-      right: 30px;
-      top: 34px;
-      height: 4px;
-      border-radius: 999px;
-      background: rgba(122,75,34,0.26);
-      box-shadow:
-        0 14px 0 0 rgba(122,75,34,0.20),
-        0 28px 0 0 rgba(122,75,34,0.16);
-    }
-
-    .card-visual.shop::before {
-      left: 14px;
-      right: 14px;
-      top: 14px;
-      bottom: 14px;
-      border-radius: 12px;
-      border: 2px dashed rgba(122,75,34,0.28);
-      background: rgba(255,255,255,0.12);
-    }
-
-    .card-visual.shop::after {
-      content: "";
-      position: absolute;
-      left: 24px;
-      right: 24px;
-      top: 48px;
-      height: 18px;
-      border-radius: 8px;
-      background: linear-gradient(180deg, #d7aa7d, #b88358);
-      border: 1px solid #9b6d48;
-    }
-
     .link-list {
       display: grid;
       gap: 12px;
@@ -556,7 +361,6 @@
     }
 
     @media (max-width: 920px) {
-      .hero-grid,
       .cards-grid,
       .two-col {
         grid-template-columns: 1fr;
@@ -575,22 +379,6 @@
       .hero-panel,
       .card {
         padding: 20px;
-      }
-
-      .shop-preview {
-        height: 260px;
-      }
-
-      .preview-board {
-        width: 140px;
-        height: 68px;
-        left: 22px;
-      }
-
-      .preview-rack {
-        width: 76px;
-        height: 110px;
-        right: 22px;
       }
     }
   </style>
@@ -623,35 +411,25 @@
           WoodToolChest is built for woodworkers who want clear answers, useful visuals, and tools they can actually use in the shop. Whether you are flattening a cutting board, planning a compact workshop, or looking for your next build, the goal is simple: practical help without the fluff.
         </p>
 
-        <div class="hero-grid">
-          <div class="hero-card">
-            <div class="shop-preview" aria-hidden="true">
-              <div class="preview-rack"></div>
-              <div class="preview-board"></div>
-              <div class="preview-bench"></div>
-            </div>
-          </div>
+        <div class="hero-card">
+          <h3>Start here</h3>
+          <p>Use a tool when you want a quick next move, or jump into the guides when you want a clearer explanation and practical help.</p>
 
-          <div class="hero-card">
-            <h3>Start here</h3>
-            <p>Use a tool when you want a quick next move, or jump into the guides when you want a clearer explanation and visual help.</p>
+          <div class="start-links">
+            <a class="start-link" href="/cutting-board-design-generator.html">
+              <strong>Try a tool</strong>
+              <span>Generate cutting board ideas and quick project inspiration.</span>
+            </a>
 
-            <div class="start-links">
-              <a class="start-link" href="/cutting-board-design-generator.html">
-                <strong>Try a tool</strong>
-                <span>Generate cutting board ideas and quick project inspiration.</span>
-              </a>
+            <a class="start-link" href="/best-woods-for-cutting-boards.html">
+              <strong>Read a guide</strong>
+              <span>Start with wood choices, flattening help, and practical small-shop setup.</span>
+            </a>
 
-              <a class="start-link" href="/best-woods-for-cutting-boards.html">
-                <strong>Read a guide</strong>
-                <span>Start with wood choices, flattening help, and practical small-shop setup.</span>
-              </a>
-
-              <a class="start-link" href="/how-to-flatten-a-cutting-board.html">
-                <strong>Most useful first read</strong>
-                <span>How to Flatten a Cutting Board</span>
-              </a>
-            </div>
+            <a class="start-link" href="/how-to-flatten-a-cutting-board.html">
+              <strong>Most useful first read</strong>
+              <span>How to Flatten a Cutting Board</span>
+            </a>
           </div>
         </div>
       </div>
@@ -664,19 +442,16 @@
 
       <div class="cards-grid">
         <div class="card">
-          <div class="card-visual tool"></div>
           <h3>Interactive tools</h3>
           <p>Generate cutting board ideas, woodworking project ideas, and quick inspiration when you want something practical to build or test.</p>
         </div>
 
         <div class="card">
-          <div class="card-visual guide"></div>
           <h3>Build guides</h3>
           <p>Step-by-step help for flattening boards, choosing woods, and working through real project decisions without overcomplicating them.</p>
         </div>
 
         <div class="card">
-          <div class="card-visual shop"></div>
           <h3>Shop setup advice</h3>
           <p>Layout, dust collection, workbench height, and other practical setup topics for garage shops and compact woodworking spaces.</p>
         </div>
