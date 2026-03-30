@@ -52,13 +52,13 @@
     .site-header {
       color: #fff;
       padding: 18px 20px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0)),
-        linear-gradient(135deg, #34251b 0%, #2b2018 55%, #241a14 100%);
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0)),
+        linear-gradient(135deg, #33241a 0%, #2b2018 58%, #241a14 100%);
       box-shadow:
-        inset 0 -1px 0 rgba(255,255,255,0.05),
-        0 10px 24px rgba(20, 14, 10, 0.18);
+        inset 0 -1px 0 rgba(255,255,255,0.04),
+        0 8px 20px rgba(24, 17, 12, 0.14);
     }
 
     .site-header-inner,
@@ -75,20 +75,18 @@
     }
 
     .brand-mark {
-      width: 38px;
-      height: 38px;
-      border-radius: 11px;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.20), rgba(255,255,255,0.03)),
+        linear-gradient(180deg, rgba(255,255,255,0.16), rgba(255,255,255,0.02)),
         linear-gradient(135deg, #9f6a37, #7a4b22);
-      border: 1px solid rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.12);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.14),
-        0 6px 14px rgba(0,0,0,0.16);
-      flex: 0 0 38px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.10);
+      flex: 0 0 36px;
     }
 
     .brand-mark-bars {
@@ -99,15 +97,15 @@
 
     .brand-mark-bars span {
       display: block;
-      width: 6px;
+      width: 5px;
       border-radius: 2px;
-      background: rgba(255,255,255,0.92);
+      background: rgba(255,255,255,0.90);
       box-shadow: inset 0 -1px 0 rgba(0,0,0,0.15);
     }
 
-    .brand-mark-bars span:nth-child(1) { height: 13px; }
-    .brand-mark-bars span:nth-child(2) { height: 18px; }
-    .brand-mark-bars span:nth-child(3) { height: 11px; }
+    .brand-mark-bars span:nth-child(1) { height: 12px; }
+    .brand-mark-bars span:nth-child(2) { height: 16px; }
+    .brand-mark-bars span:nth-child(3) { height: 10px; }
 
     .brand-text-wrap {
       display: flex;
@@ -117,12 +115,15 @@
     }
 
     .brand {
-      font-size: 1.72rem;
+      font-size: 1.62rem;
       font-weight: 700;
       color: #fff;
       line-height: 1;
-      text-decoration: none;
       letter-spacing: 0.01em;
+      text-decoration: none;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     .brand:hover {
@@ -131,11 +132,11 @@
     }
 
     .brand-sub {
-      font-size: 0.76rem;
-      color: rgba(255,255,255,0.74);
+      font-size: 0.74rem;
+      color: rgba(255,255,255,0.72);
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      line-height: 1.1;
+      line-height: 1.15;
     }
 
     .hero {
@@ -173,7 +174,7 @@
       border-radius: 28px;
       transform: rotate(8deg);
       pointer-events: none;
-      opacity: 0.4;
+      opacity: 0.34;
     }
 
     .eyebrow {
@@ -194,7 +195,7 @@
     }
 
     h1 {
-      font-size: 2.8rem;
+      font-size: 2.75rem;
       margin-bottom: 14px;
       max-width: 760px;
       position: relative;
@@ -202,12 +203,12 @@
     }
 
     h2 {
-      font-size: 1.85rem;
+      font-size: 1.8rem;
       margin: 0 0 16px;
     }
 
     h3 {
-      font-size: 1.08rem;
+      font-size: 1.06rem;
       margin: 0 0 10px;
     }
 
@@ -216,7 +217,7 @@
     }
 
     .tagline {
-      font-size: 1.12rem;
+      font-size: 1.1rem;
       font-weight: 700;
       color: #3a2b1f;
       margin: 10px 0 8px;
@@ -326,89 +327,6 @@
 
     .nav-card p:last-child {
       margin-bottom: 0;
-    }
-
-    .card-visual {
-      height: 118px;
-      border-radius: 12px;
-      border: 1px solid #d7cab9;
-      background: linear-gradient(180deg, #f8f2ea, #eee2d2);
-      margin-bottom: 14px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card-visual.tool::before,
-    .card-visual.guide::before,
-    .card-visual.shop::before {
-      content: "";
-      position: absolute;
-    }
-
-    .card-visual.tool::before {
-      left: 18px;
-      right: 18px;
-      top: 30px;
-      height: 20px;
-      border-radius: 10px;
-      background:
-        linear-gradient(90deg,
-          #f0ddb9 0%, #f0ddb9 28%,
-          #5b3c27 28%, #5b3c27 40%,
-          #b56f51 40%, #b56f51 56%,
-          #f0ddb9 56%, #f0ddb9 72%,
-          #5b3c27 72%, #5b3c27 84%,
-          #b56f51 84%, #b56f51 100%);
-      border: 1px solid #9b6d48;
-      box-shadow: 0 28px 0 0 rgba(95,57,25,0.10);
-    }
-
-    .card-visual.guide::before {
-      left: 18px;
-      right: 18px;
-      top: 16px;
-      bottom: 16px;
-      border-radius: 10px;
-      background:
-        linear-gradient(180deg, #fffaf3, #f3e8d8);
-      border: 1px solid #d7cab9;
-      box-shadow: inset 0 -1px 0 rgba(255,255,255,0.4);
-    }
-
-    .card-visual.guide::after {
-      content: "";
-      position: absolute;
-      left: 30px;
-      right: 30px;
-      top: 34px;
-      height: 4px;
-      border-radius: 999px;
-      background: rgba(122,75,34,0.26);
-      box-shadow:
-        0 14px 0 0 rgba(122,75,34,0.20),
-        0 28px 0 0 rgba(122,75,34,0.16);
-    }
-
-    .card-visual.shop::before {
-      left: 14px;
-      right: 14px;
-      top: 14px;
-      bottom: 14px;
-      border-radius: 12px;
-      border: 2px dashed rgba(122,75,34,0.28);
-      background: rgba(255,255,255,0.12);
-    }
-
-    .card-visual.shop::after {
-      content: "";
-      position: absolute;
-      left: 24px;
-      right: 24px;
-      top: 48px;
-      height: 18px;
-      border-radius: 8px;
-      background: linear-gradient(180deg, #d7aa7d, #b88358);
-      border: 1px solid #9b6d48;
     }
 
     .start-grid {
@@ -522,7 +440,7 @@
       }
 
       .brand {
-        font-size: 1.52rem;
+        font-size: 1.5rem;
       }
 
       .brand-sub {
@@ -554,7 +472,7 @@
         <p class="eyebrow">Woodworking guides and tools</p>
         <h1>Practical woodworking help for real shop builds</h1>
         <p class="tagline">For Woodworkers, By Woodworkers.</p>
-        <p class="subtagline">Useful tools and practical guides for cutting boards, shop setup, router work, and small-shop workflow.</p>
+        <p class="subtagline">Useful tools and practical guides for cutting boards, flattening help, shop setup, and small-shop workflow.</p>
         <p class="intro">
           WoodToolChest is built for woodworkers who want clear answers, useful tools, and help they can actually use in the shop. Whether you are flattening a cutting board, planning a compact workshop, or looking for your next build, the goal is simple: practical help without the fluff.
         </p>
@@ -612,19 +530,16 @@
 
       <div class="cards-grid">
         <a class="nav-card" href="#tools">
-          <div class="card-visual tool" aria-hidden="true"></div>
           <h3>Interactive tools</h3>
           <p>Generate cutting board ideas, woodworking project ideas, and quick inspiration when you want something practical to build or test.</p>
         </a>
 
         <a class="nav-card" href="#guides">
-          <div class="card-visual guide" aria-hidden="true"></div>
           <h3>Build guides</h3>
           <p>Step-by-step help for flattening boards, choosing woods, and working through real project decisions without overcomplicating them.</p>
         </a>
 
         <a class="nav-card" href="#shop-setup">
-          <div class="card-visual shop" aria-hidden="true"></div>
           <h3>Shop setup advice</h3>
           <p>Layout, dust collection, workbench height, and other practical setup topics for garage shops and compact woodworking spaces.</p>
         </a>
