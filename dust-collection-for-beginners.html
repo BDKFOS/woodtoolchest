@@ -203,14 +203,12 @@
 
     h2 {
       font-size: 1.7rem;
-      margin-bottom: 14px;
-      margin-top: 0;
+      margin: 0 0 14px;
     }
 
     h3 {
       font-size: 1.18rem;
-      margin-bottom: 10px;
-      margin-top: 0;
+      margin: 0 0 10px;
     }
 
     p {
@@ -223,18 +221,19 @@
       max-width: 760px;
       position: relative;
       z-index: 1;
+      margin-bottom: 0;
     }
 
-    .hero-visuals {
+    .hero-summary {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
+      grid-template-columns: 1fr 1fr;
       gap: 18px;
       margin-top: 24px;
       position: relative;
       z-index: 1;
     }
 
-    .visual-card {
+    .summary-card {
       background: rgba(255,255,255,0.75);
       border: 1px solid rgba(221,211,199,0.95);
       border-radius: 18px;
@@ -242,166 +241,30 @@
       backdrop-filter: blur(2px);
     }
 
-    .visual-card p:last-child {
+    .summary-card p:last-child,
+    .card p:last-child {
       margin-bottom: 0;
     }
 
-    .diagram-label {
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--accent-dark);
-      margin-bottom: 8px;
-    }
-
-    .dust-flow {
-      height: 180px;
-      border-radius: 14px;
-      border: 1px solid #d7cab9;
-      background:
-        linear-gradient(180deg, #f8f2ea, #efe5d8);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .tool-shape {
-      position: absolute;
-      left: 18px;
-      bottom: 20px;
-      width: 110px;
-      height: 68px;
-      background: linear-gradient(180deg, #a17c59, #7f5f43);
-      border-radius: 16px 16px 12px 12px;
-      box-shadow: inset 0 2px 0 rgba(255,255,255,0.18);
-    }
-
-    .tool-shape::before {
-      content: "";
-      position: absolute;
-      right: -18px;
-      top: 24px;
-      width: 28px;
-      height: 18px;
-      background: #6e5239;
-      border-radius: 4px;
-    }
-
-    .dust-cloud {
-      position: absolute;
-      left: 120px;
-      bottom: 72px;
-      width: 130px;
-      height: 70px;
-      background:
-        radial-gradient(circle at 20% 60%, rgba(153,118,86,0.35) 0 12%, transparent 13%),
-        radial-gradient(circle at 40% 25%, rgba(153,118,86,0.28) 0 10%, transparent 11%),
-        radial-gradient(circle at 65% 55%, rgba(153,118,86,0.32) 0 14%, transparent 15%),
-        radial-gradient(circle at 82% 38%, rgba(153,118,86,0.24) 0 10%, transparent 11%);
-    }
-
-    .hose {
-      position: absolute;
-      right: 32px;
-      bottom: 42px;
-      width: 110px;
-      height: 90px;
-      border: 14px solid #5f3919;
-      border-left: 0;
-      border-bottom: 0;
-      border-radius: 0 90px 0 0;
-      opacity: 0.9;
-    }
-
-    .vac {
-      position: absolute;
-      right: 22px;
-      bottom: 20px;
-      width: 86px;
-      height: 110px;
-      background: linear-gradient(180deg, #d5b089, #ab7f58);
-      border-radius: 16px;
-      border: 1px solid #8f6846;
-      box-shadow: inset 0 2px 0 rgba(255,255,255,0.2);
-    }
-
-    .vac::before {
-      content: "";
-      position: absolute;
-      left: 10px;
-      right: 10px;
-      top: 10px;
-      height: 18px;
-      border-radius: 10px;
-      background: #734c2e;
-    }
-
-    .vac::after {
-      content: "";
-      position: absolute;
-      left: 12px;
-      right: 12px;
-      bottom: 10px;
-      height: 12px;
-      border-radius: 8px;
-      background: rgba(255,255,255,0.25);
-    }
-
-    .air-arrows {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-    }
-
-    .air-arrows span {
-      position: absolute;
-      width: 42px;
-      height: 3px;
-      background: rgba(122,75,34,0.45);
-      border-radius: 999px;
-    }
-
-    .air-arrows span::after {
-      content: "";
-      position: absolute;
-      right: -2px;
-      top: -4px;
-      border-top: 5px solid transparent;
-      border-bottom: 5px solid transparent;
-      border-left: 8px solid rgba(122,75,34,0.45);
-    }
-
-    .air-arrows span:nth-child(1) { left: 168px; top: 62px; transform: rotate(-15deg); }
-    .air-arrows span:nth-child(2) { left: 210px; top: 80px; transform: rotate(-5deg); }
-    .air-arrows span:nth-child(3) { left: 252px; top: 98px; transform: rotate(6deg); }
-
-    .mini-compare {
+    .mini-points {
       display: grid;
       gap: 12px;
     }
 
-    .compare-box {
+    .mini-point {
       border: 1px solid #d7cab9;
       border-radius: 14px;
       padding: 14px;
       background: #fffaf3;
     }
 
-    .compare-box h3 {
-      margin-bottom: 8px;
+    .mini-point h3 {
+      margin: 0 0 8px;
+      font-size: 1rem;
     }
 
-    .compare-meter {
-      height: 12px;
-      background: #ede1d3;
-      border-radius: 999px;
-      overflow: hidden;
-      margin: 8px 0 10px;
-      border: 1px solid #dbcab8;
-    }
-
-    .compare-fill {
-      height: 100%;
-      border-radius: 999px;
-      background: linear-gradient(90deg, #b98d66, #7a4b22);
+    .section {
+      margin: 30px 0;
     }
 
     .card {
@@ -456,322 +319,35 @@
       border: 1px solid #e3c2b7;
     }
 
-    .inline-visual {
-      margin: 18px 0 20px;
-      border: 1px solid #d9ccbd;
-      border-radius: 16px;
-      background: linear-gradient(180deg, #faf5ee, #f2e9dc);
-      overflow: hidden;
-    }
-
-    .inline-visual-header {
-      padding: 12px 16px;
-      border-bottom: 1px solid #ddcfbf;
-      font-weight: 700;
-      color: #3d2a1c;
-      background: rgba(255,255,255,0.4);
-    }
-
-    .vac-vs-collector {
+    .subcard-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      min-height: 210px;
-    }
-
-    .machine-side {
-      padding: 18px;
-      position: relative;
-    }
-
-    .machine-side:first-child {
-      border-right: 1px solid #ddcfbf;
-    }
-
-    .machine-icon {
-      width: 90px;
-      height: 90px;
-      border-radius: 18px;
-      background: linear-gradient(180deg, #d8b48f, #aa7f59);
-      border: 1px solid #9a724f;
-      margin-bottom: 12px;
-      position: relative;
-      box-shadow: inset 0 2px 0 rgba(255,255,255,0.2);
-    }
-
-    .machine-icon.vac-icon::before {
-      content: "";
-      position: absolute;
-      top: 10px;
-      left: 12px;
-      right: 12px;
-      height: 16px;
-      border-radius: 10px;
-      background: #724b2d;
-    }
-
-    .machine-icon.vac-icon::after {
-      content: "";
-      position: absolute;
-      right: -18px;
-      top: 40px;
-      width: 26px;
-      height: 12px;
-      border-radius: 6px;
-      background: #5f3919;
-    }
-
-    .machine-icon.collector-icon::before {
-      content: "";
-      position: absolute;
-      left: 16px;
-      top: 16px;
-      width: 58px;
-      height: 22px;
-      border-radius: 10px;
-      background: #724b2d;
-    }
-
-    .machine-icon.collector-icon::after {
-      content: "";
-      position: absolute;
-      right: -10px;
-      top: 18px;
-      width: 16px;
-      height: 56px;
-      border-radius: 8px;
-      background: #7b5b41;
-    }
-
-    .chip-bars {
-      display: flex;
-      gap: 6px;
-      align-items: flex-end;
-      margin-top: 10px;
-    }
-
-    .chip-bars span {
-      display: block;
-      width: 18px;
-      border-radius: 6px 6px 2px 2px;
-      background: linear-gradient(180deg, #c89a70, #916546);
-    }
-
-    .chip-bars span:nth-child(1) { height: 24px; }
-    .chip-bars span:nth-child(2) { height: 44px; }
-    .chip-bars span:nth-child(3) { height: 30px; }
-    .chip-bars span:nth-child(4) { height: 58px; }
-    .chip-bars span:nth-child(5) { height: 38px; }
-
-    .setup-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 18px;
-    }
-
-    .setup-card {
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 16px;
-      background: linear-gradient(180deg, #fffdf8, #fbf7f1);
-      box-shadow: 0 6px 18px rgba(32, 22, 16, 0.03);
-    }
-
-    .setup-visual {
-      height: 120px;
-      border-radius: 12px;
-      margin-bottom: 12px;
-      border: 1px solid #d9ccbd;
-      background: linear-gradient(180deg, #f8f2ea, #eee2d2);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .setup-visual.hose::before {
-      content: "";
-      position: absolute;
-      left: 16px;
-      bottom: 16px;
-      width: 58px;
-      height: 58px;
-      border-radius: 12px;
-      background: linear-gradient(180deg, #d7b18a, #ab7f58);
-      border: 1px solid #956b48;
-    }
-
-    .setup-visual.hose::after {
-      content: "";
-      position: absolute;
-      left: 60px;
-      top: 24px;
-      width: 46px;
-      height: 58px;
-      border: 12px solid #603a1b;
-      border-left: 0;
-      border-bottom: 0;
-      border-radius: 0 50px 0 0;
-    }
-
-    .setup-visual.adapters::before,
-    .setup-visual.adapters::after {
-      content: "";
-      position: absolute;
-      border-radius: 999px;
-      background: linear-gradient(180deg, #b7885f, #835535);
-      border: 1px solid #7d5638;
-    }
-
-    .setup-visual.adapters::before {
-      width: 64px;
-      height: 36px;
-      left: 16px;
-      top: 28px;
-    }
-
-    .setup-visual.adapters::after {
-      width: 86px;
-      height: 22px;
-      right: 14px;
-      bottom: 24px;
-    }
-
-    .setup-visual.filter::before {
-      content: "";
-      position: absolute;
-      left: 22px;
-      right: 22px;
-      top: 26px;
-      bottom: 24px;
-      border-radius: 14px;
-      background:
-        repeating-linear-gradient(
-          to bottom,
-          #d6c3ae 0px,
-          #d6c3ae 8px,
-          #b59677 8px,
-          #b59677 14px
-        );
-      border: 1px solid #9d7b5c;
-    }
-
-    .priority-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 14px;
-      margin-top: 18px;
+      margin: 18px 0 0;
     }
 
-    .priority-card {
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 14px;
-      background: #fffdf8;
-      box-shadow: 0 6px 18px rgba(32, 22, 16, 0.03);
+    .subcard-grid.three-up {
+      grid-template-columns: repeat(3, 1fr);
     }
 
-    .priority-visual {
-      height: 100px;
-      border-radius: 12px;
-      margin-bottom: 12px;
-      border: 1px solid #d9ccbd;
-      background: linear-gradient(180deg, #f8f2ea, #eee2d2);
-      position: relative;
-      overflow: hidden;
+    .subcard-grid.four-up {
+      grid-template-columns: repeat(4, 1fr);
     }
 
-    .priority-visual.sander::before,
-    .priority-visual.router::before,
-    .priority-visual.planer::before,
-    .priority-visual.tablesaw::before {
-      content: "";
-      position: absolute;
-      background: linear-gradient(180deg, #ba8f69, #8a6142);
-      border: 1px solid #7a553a;
-      box-shadow: inset 0 2px 0 rgba(255,255,255,0.16);
+    .subcard-grid.five-up {
+      grid-template-columns: repeat(5, 1fr);
     }
 
-    .priority-visual.sander::before {
-      width: 72px;
-      height: 38px;
-      border-radius: 16px;
-      left: 14px;
-      top: 30px;
-    }
-
-    .priority-visual.router::before {
-      width: 48px;
-      height: 60px;
+    .subcard {
+      border: 1px solid #d8c9b8;
       border-radius: 14px;
-      left: 24px;
-      top: 18px;
+      background: #fffaf3;
+      padding: 16px;
     }
 
-    .priority-visual.planer::before {
-      width: 78px;
-      height: 48px;
-      border-radius: 12px;
-      left: 12px;
-      top: 24px;
-    }
-
-    .priority-visual.tablesaw::before {
-      width: 84px;
-      height: 28px;
-      border-radius: 10px;
-      left: 10px;
-      top: 22px;
-    }
-
-    .priority-visual.sander::after,
-    .priority-visual.router::after,
-    .priority-visual.planer::after,
-    .priority-visual.tablesaw::after {
-      content: "";
-      position: absolute;
-      right: 10px;
-      bottom: 18px;
-      width: 54px;
-      height: 38px;
-      background:
-        radial-gradient(circle at 20% 60%, rgba(150,115,84,0.35) 0 12%, transparent 13%),
-        radial-gradient(circle at 42% 25%, rgba(150,115,84,0.28) 0 10%, transparent 11%),
-        radial-gradient(circle at 65% 58%, rgba(150,115,84,0.30) 0 14%, transparent 15%);
-    }
-
-    .steps-visual {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 10px;
-      margin: 18px 0 8px;
-    }
-
-    .step-mini {
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 12px;
-      background: linear-gradient(180deg, #fffdf8, #fbf7f1);
-      text-align: center;
-    }
-
-    .step-number {
-      width: 28px;
-      height: 28px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-      color: white;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      margin-bottom: 10px;
-      box-shadow: 0 6px 14px rgba(95,57,25,0.16);
-    }
-
-    .step-mini p {
-      margin: 0;
-      font-size: 0.92rem;
-      color: #3a2d22;
-      line-height: 1.45;
+    .subcard h3 {
+      font-size: 1rem;
+      margin-bottom: 8px;
     }
 
     .related-links {
@@ -814,20 +390,13 @@
     }
 
     @media (max-width: 860px) {
-      .hero-visuals,
-      .setup-grid,
-      .priority-grid,
-      .steps-visual {
+      .hero-summary,
+      .subcard-grid,
+      .subcard-grid.three-up,
+      .subcard-grid.four-up,
+      .subcard-grid.five-up,
+      .related-links {
         grid-template-columns: 1fr;
-      }
-
-      .vac-vs-collector {
-        grid-template-columns: 1fr;
-      }
-
-      .machine-side:first-child {
-        border-right: 0;
-        border-bottom: 1px solid #ddcfbf;
       }
     }
 
@@ -843,24 +412,6 @@
       .card,
       .hero-panel {
         padding: 20px;
-      }
-
-      .dust-flow {
-        height: 210px;
-      }
-
-      .tool-shape {
-        width: 92px;
-        height: 58px;
-      }
-
-      .dust-cloud {
-        left: 96px;
-        width: 98px;
-      }
-
-      .hose {
-        width: 88px;
       }
     }
   </style>
@@ -893,35 +444,22 @@
           is simpler: capture as much dust as you reasonably can, protect your lungs, and build from there.
         </p>
 
-        <div class="hero-visuals">
-          <div class="visual-card">
-            <div class="diagram-label">Basic idea: catch dust at the source</div>
-            <div class="dust-flow" aria-hidden="true">
-              <div class="tool-shape"></div>
-              <div class="dust-cloud"></div>
-              <div class="hose"></div>
-              <div class="vac"></div>
-              <div class="air-arrows">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-            </div>
-          </div>
-
-          <div class="visual-card">
+        <div class="hero-summary">
+          <div class="summary-card">
             <h3>What matters most early on</h3>
             <p>You do not need a perfect wall-to-wall ducted system to make a real improvement in a beginner shop.</p>
-            <div class="mini-compare">
-              <div class="compare-box">
+          </div>
+
+          <div class="summary-card">
+            <div class="mini-points">
+              <div class="mini-point">
                 <h3>Capture at tool</h3>
-                <div class="compare-meter"><div class="compare-fill" style="width: 88%;"></div></div>
                 <p class="muted">High impact, especially for sanders, routers, and messy machines.</p>
               </div>
-              <div class="compare-box">
-                <h3>Fancy full system</h3>
-                <div class="compare-meter"><div class="compare-fill" style="width: 42%;"></div></div>
-                <p class="muted">Can come later, once your actual machine lineup justifies it.</p>
+
+              <div class="mini-point">
+                <h3>Start practical</h3>
+                <p class="muted">A usable first setup matters more than planning a dream system you do not actually build.</p>
               </div>
             </div>
           </div>
@@ -952,7 +490,7 @@
       </ul>
     </section>
 
-    <section id="why-it-matters">
+    <section id="why-it-matters" class="section">
       <h2>Why dust collection matters</h2>
       <p>
         Dust collection is not just about keeping the floor cleaner. It helps with shop cleanup, yes,
@@ -969,32 +507,19 @@
         Even a decent setup has limits, especially in a small closed shop.
       </div>
 
-      <div class="inline-visual" aria-hidden="true">
-        <div class="inline-visual-header">Visual: chips on the floor vs fine dust in the air</div>
-        <div class="vac-vs-collector">
-          <div class="machine-side">
-            <h3>Easy to notice</h3>
-            <p class="muted">Big chips and visible mess make you want to clean up fast.</p>
-            <div class="chip-bars">
-              <span></span><span></span><span></span><span></span><span></span>
-            </div>
-          </div>
-          <div class="machine-side">
-            <h3>Easy to underestimate</h3>
-            <p class="muted">Fine dust spreads quietly and lingers much longer than beginners expect.</p>
-            <div style="position:absolute; right:26px; top:44px; width:120px; height:80px; background:
-              radial-gradient(circle at 20% 60%, rgba(153,118,86,0.28) 0 10%, transparent 11%),
-              radial-gradient(circle at 42% 25%, rgba(153,118,86,0.24) 0 8%, transparent 9%),
-              radial-gradient(circle at 65% 58%, rgba(153,118,86,0.26) 0 12%, transparent 13%),
-              radial-gradient(circle at 82% 38%, rgba(153,118,86,0.18) 0 8%, transparent 9%),
-              radial-gradient(circle at 58% 20%, rgba(153,118,86,0.16) 0 7%, transparent 8%);
-            "></div>
-          </div>
+      <div class="subcard-grid" style="margin-top:18px;">
+        <div class="subcard">
+          <h3>Easy to notice</h3>
+          <p class="muted">Big chips and visible mess make you want to clean up fast.</p>
+        </div>
+        <div class="subcard">
+          <h3>Easy to underestimate</h3>
+          <p class="muted">Fine dust spreads quietly and lingers much longer than beginners expect.</p>
         </div>
       </div>
     </section>
 
-    <section id="shop-vac-vs-collector">
+    <section id="shop-vac-vs-collector" class="section">
       <h2>Shop vac vs dust collector</h2>
 
       <h3>Shop vac</h3>
@@ -1009,23 +534,14 @@
         and some table saw setups. These systems are built more for moving volume than a typical shop vac.
       </p>
 
-      <div class="inline-visual" aria-hidden="true">
-        <div class="inline-visual-header">Visual comparison: shop vac vs dust collector</div>
-        <div class="vac-vs-collector">
-          <div class="machine-side">
-            <div class="machine-icon vac-icon"></div>
-            <h3>Shop vac</h3>
-            <p class="muted">Smaller, easier to move, great for direct tool hookup and general cleanup.</p>
-            <div class="compare-meter"><div class="compare-fill" style="width: 60%;"></div></div>
-            <p class="muted">Best fit for beginner portability</p>
-          </div>
-          <div class="machine-side">
-            <div class="machine-icon collector-icon"></div>
-            <h3>Dust collector</h3>
-            <p class="muted">Makes more sense once you start feeding chip-heavy machines that overwhelm a simple vac.</p>
-            <div class="compare-meter"><div class="compare-fill" style="width: 86%;"></div></div>
-            <p class="muted">Better at moving big chip volume</p>
-          </div>
+      <div class="subcard-grid" style="margin-top:18px;">
+        <div class="subcard">
+          <h3>Shop vac</h3>
+          <p class="muted">Smaller, easier to move, great for direct tool hookup and general cleanup.</p>
+        </div>
+        <div class="subcard">
+          <h3>Dust collector</h3>
+          <p class="muted">Makes more sense once you start feeding chip-heavy machines that overwhelm a simple vac.</p>
         </div>
       </div>
 
@@ -1042,7 +558,7 @@
       </p>
     </section>
 
-    <section id="good-beginner-setup">
+    <section id="good-beginner-setup" class="section">
       <h2>What a good beginner dust collection setup looks like</h2>
       <p>
         A practical beginner setup is not fancy. It is usually a shop vac, hose adapters that actually fit your tools,
@@ -1059,19 +575,16 @@
           <li>a realistic cleanup routine after machine work</li>
         </ul>
 
-        <div class="setup-grid" aria-hidden="true">
-          <div class="setup-card">
-            <div class="setup-visual hose"></div>
+        <div class="subcard-grid three-up" style="margin-top:18px;">
+          <div class="subcard">
             <h3>Hose setup</h3>
             <p class="muted">Keep it simple and direct so you actually use it every time.</p>
           </div>
-          <div class="setup-card">
-            <div class="setup-visual adapters"></div>
+          <div class="subcard">
             <h3>Adapters that fit</h3>
             <p class="muted">A clean connection solves more beginner frustration than people expect.</p>
           </div>
-          <div class="setup-card">
-            <div class="setup-visual filter"></div>
+          <div class="subcard">
             <h3>Filter or bag</h3>
             <p class="muted">A usable vac is a vac you do not hate emptying and cleaning constantly.</p>
           </div>
@@ -1089,36 +602,29 @@
       </div>
     </section>
 
-    <section id="tools-that-need-it-most">
+    <section id="tools-that-need-it-most" class="section">
       <h2>Which tools need dust collection most?</h2>
 
-      <div class="priority-grid" aria-hidden="true">
-        <div class="priority-card">
-          <div class="priority-visual sander"></div>
+      <div class="subcard-grid four-up">
+        <div class="subcard">
           <h3>Sanders</h3>
           <p class="muted">Fine dust problem. One of the first tools where extraction feels immediately worth it.</p>
         </div>
-
-        <div class="priority-card">
-          <div class="priority-visual router"></div>
+        <div class="subcard">
           <h3>Routers</h3>
           <p class="muted">Throws dust and chips everywhere. Even partial collection helps a lot.</p>
         </div>
-
-        <div class="priority-card">
-          <div class="priority-visual planer"></div>
+        <div class="subcard">
           <h3>Planers</h3>
           <p class="muted">Chip avalanche machine. Often the tool that makes beginners want more than a vac.</p>
         </div>
-
-        <div class="priority-card">
-          <div class="priority-visual tablesaw"></div>
+        <div class="subcard">
           <h3>Table saws</h3>
           <p class="muted">Depends on the saw, but almost any collection is better than none.</p>
         </div>
       </div>
 
-      <h3>Sanders</h3>
+      <h3 style="margin-top:22px;">Sanders</h3>
       <p>
         Sanders create a lot of fine dust and benefit a ton from extraction. This is one of the first places where dust collection
         noticeably improves the experience.
@@ -1142,33 +648,33 @@
       </p>
     </section>
 
-    <section id="small-shop-tips">
+    <section id="small-shop-tips" class="section">
       <h2>Small shop dust collection tips</h2>
 
-      <div class="steps-visual" aria-hidden="true">
-        <div class="step-mini">
-          <div class="step-number">1</div>
-          <p>Fix your worst mess-maker first</p>
+      <div class="subcard-grid five-up">
+        <div class="subcard">
+          <h3>1</h3>
+          <p class="muted">Fix your worst mess-maker first.</p>
         </div>
-        <div class="step-mini">
-          <div class="step-number">2</div>
-          <p>Keep hose runs short and simple</p>
+        <div class="subcard">
+          <h3>2</h3>
+          <p class="muted">Keep hose runs short and simple.</p>
         </div>
-        <div class="step-mini">
-          <div class="step-number">3</div>
-          <p>Use mobile setups in tight spaces</p>
+        <div class="subcard">
+          <h3>3</h3>
+          <p class="muted">Use mobile setups in tight spaces.</p>
         </div>
-        <div class="step-mini">
-          <div class="step-number">4</div>
-          <p>Expect to refine as you learn</p>
+        <div class="subcard">
+          <h3>4</h3>
+          <p class="muted">Expect to refine as you learn.</p>
         </div>
-        <div class="step-mini">
-          <div class="step-number">5</div>
-          <p>Think beyond one machine hookup</p>
+        <div class="subcard">
+          <h3>5</h3>
+          <p class="muted">Think beyond one machine hookup.</p>
         </div>
       </div>
 
-      <ol class="steps">
+      <ol class="steps" style="margin-top:18px;">
         <li>
           <strong>Start with your worst dust-maker.</strong> You do not need to solve the whole shop at once.
           Fix the tool creating the most mess first.
@@ -1188,7 +694,7 @@
       </ol>
     </section>
 
-    <section id="mistakes">
+    <section id="mistakes" class="section">
       <h2>Common beginner dust collection mistakes</h2>
       <ul class="checklist">
         <li>trying to build a perfect system before understanding the shop</li>
@@ -1204,7 +710,7 @@
       </p>
     </section>
 
-    <section id="faq">
+    <section id="faq" class="section">
       <h2>FAQ</h2>
 
       <h3>Do beginners need a real dust collector?</h3>
@@ -1238,7 +744,7 @@
       </p>
     </section>
 
-    <section>
+    <section class="section">
       <h2>Related guides</h2>
       <ul class="related-links">
         <li>
