@@ -203,14 +203,12 @@
 
     h2 {
       font-size: 1.72rem;
-      margin-bottom: 14px;
-      margin-top: 42px;
+      margin: 0 0 14px;
     }
 
     h3 {
       font-size: 1.18rem;
-      margin-bottom: 10px;
-      margin-top: 26px;
+      margin: 0 0 10px;
     }
 
     p {
@@ -223,18 +221,19 @@
       max-width: 760px;
       position: relative;
       z-index: 1;
+      margin-bottom: 0;
     }
 
-    .hero-visuals {
+    .hero-summary {
       display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
+      grid-template-columns: 1fr 1fr;
       gap: 18px;
       margin-top: 24px;
       position: relative;
       z-index: 1;
     }
 
-    .visual-card {
+    .summary-card {
       background: rgba(255,255,255,0.75);
       border: 1px solid rgba(221,211,199,0.95);
       border-radius: 18px;
@@ -242,150 +241,9 @@
       backdrop-filter: blur(2px);
     }
 
-    .visual-card p:last-child {
+    .summary-card p:last-child,
+    .card p:last-child {
       margin-bottom: 0;
-    }
-
-    .diagram-label {
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--accent-dark);
-      margin-bottom: 8px;
-    }
-
-    .bench-height-visual {
-      height: 230px;
-      border-radius: 14px;
-      border: 1px solid #d7cab9;
-      background: linear-gradient(180deg, #f9f4ec, #efe5d8);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .bench-height-visual .person {
-      position: absolute;
-      left: 36px;
-      bottom: 18px;
-      width: 84px;
-      height: 168px;
-    }
-
-    .person .head {
-      position: absolute;
-      top: 0;
-      left: 26px;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: #7d5131;
-    }
-
-    .person .torso {
-      position: absolute;
-      top: 34px;
-      left: 34px;
-      width: 16px;
-      height: 58px;
-      border-radius: 10px;
-      background: #7d5131;
-    }
-
-    .person .arm-left,
-    .person .arm-right,
-    .person .leg-left,
-    .person .leg-right {
-      position: absolute;
-      background: #7d5131;
-      border-radius: 10px;
-    }
-
-    .person .arm-left {
-      top: 44px;
-      left: 14px;
-      width: 24px;
-      height: 10px;
-      transform: rotate(10deg);
-    }
-
-    .person .arm-right {
-      top: 44px;
-      left: 46px;
-      width: 30px;
-      height: 10px;
-      transform: rotate(-10deg);
-    }
-
-    .person .leg-left {
-      top: 88px;
-      left: 28px;
-      width: 10px;
-      height: 62px;
-      transform: rotate(4deg);
-    }
-
-    .person .leg-right {
-      top: 88px;
-      left: 46px;
-      width: 10px;
-      height: 62px;
-      transform: rotate(-4deg);
-    }
-
-    .bench-top {
-      position: absolute;
-      left: 136px;
-      right: 24px;
-      height: 18px;
-      border-radius: 8px;
-      background: linear-gradient(180deg, #d7aa7d, #b88358);
-      border: 1px solid #9b6d48;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.16);
-    }
-
-    .bench-top.low {
-      top: 122px;
-    }
-
-    .bench-top.wrist {
-      top: 104px;
-    }
-
-    .bench-top.high {
-      top: 86px;
-    }
-
-    .height-line {
-      position: absolute;
-      left: 120px;
-      width: 2px;
-      background: rgba(122,75,34,0.35);
-      top: 48px;
-      bottom: 22px;
-    }
-
-    .height-tag {
-      position: absolute;
-      left: 146px;
-      background: rgba(255,255,255,0.84);
-      border: 1px solid #d7cab9;
-      border-radius: 999px;
-      padding: 5px 10px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: #4b3524;
-      white-space: nowrap;
-    }
-
-    .height-tag.low {
-      top: 112px;
-    }
-
-    .height-tag.wrist {
-      top: 94px;
-    }
-
-    .height-tag.high {
-      top: 76px;
     }
 
     .mini-points {
@@ -405,19 +263,8 @@
       font-size: 1rem;
     }
 
-    .mini-meter {
-      height: 12px;
-      background: #ede1d3;
-      border-radius: 999px;
-      overflow: hidden;
-      margin: 8px 0 10px;
-      border: 1px solid #dbcab8;
-    }
-
-    .mini-meter-fill {
-      height: 100%;
-      border-radius: 999px;
-      background: linear-gradient(90deg, #b98d66, #7a4b22);
+    .section {
+      margin: 30px 0;
     }
 
     .card {
@@ -472,246 +319,35 @@
       border: 1px solid #e3c2b7;
     }
 
-    .inline-visual {
-      margin: 18px 0 20px;
-      border: 1px solid #d9ccbd;
-      border-radius: 16px;
-      background: linear-gradient(180deg, #faf5ee, #f2e9dc);
-      overflow: hidden;
-      box-shadow: 0 6px 18px rgba(32, 22, 16, 0.03);
-    }
-
-    .inline-visual-header {
-      padding: 12px 16px;
-      border-bottom: 1px solid #ddcfbf;
-      font-weight: 700;
-      color: #3d2a1c;
-      background: rgba(255,255,255,0.4);
-    }
-
-    .rule-layout,
-    .work-layout,
-    .choose-layout,
-    .mistake-layout {
-      padding: 18px;
-      background: linear-gradient(180deg, #f8f2ea, #eee2d2);
-    }
-
-    .rule-layout {
+    .subcard-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 14px;
+      margin: 18px 0 0;
     }
 
-    .rule-box,
-    .work-box,
-    .choose-box,
-    .mistake-box {
+    .subcard-grid.three-up {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .subcard-grid.four-up {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .subcard-grid.five-up {
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    .subcard {
       border: 1px solid #d8c9b8;
       border-radius: 14px;
-      background: rgba(255,255,255,0.42);
-      padding: 14px;
-      position: relative;
+      background: #fffaf3;
+      padding: 16px;
     }
 
-    .rule-box h3,
-    .work-box h3,
-    .choose-box h3,
-    .mistake-box h3 {
-      margin: 0 0 10px;
+    .subcard h3 {
       font-size: 1rem;
-      color: #3c2a1c;
-    }
-
-    .rule-visual,
-    .work-visual,
-    .choose-visual,
-    .mistake-visual {
-      height: 100px;
-      border-radius: 12px;
-      border: 1px solid #d7cab9;
-      background: linear-gradient(180deg, #f8f2ea, #eee2d2);
-      margin-bottom: 12px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .rule-visual.wrist::before,
-    .rule-visual.adjust::before,
-    .work-visual.planing::before,
-    .work-visual.general::before,
-    .work-visual.detail::before,
-    .work-visual.assembly::before,
-    .choose-visual.mainwork::before,
-    .choose-visual.body::before,
-    .choose-visual.mockup::before,
-    .choose-visual.floor::before,
-    .mistake-visual.popular::before,
-    .mistake-visual.high::before,
-    .mistake-visual.low::before,
-    .mistake-visual.casters::before {
-      content: "";
-      position: absolute;
-    }
-
-    .rule-visual.wrist::before {
-      left: 18px;
-      right: 18px;
-      top: 50px;
-      height: 12px;
-      border-radius: 8px;
-      background: linear-gradient(180deg, #d7aa7d, #b88358);
-      border: 1px solid #9b6d48;
-      box-shadow:
-        -54px -22px 0 -2px rgba(122,75,34,0.24);
-    }
-
-    .rule-visual.adjust::before {
-      left: 18px;
-      right: 18px;
-      top: 46px;
-      height: 12px;
-      border-radius: 8px;
-      background: linear-gradient(180deg, #d7aa7d, #b88358);
-      border: 1px solid #9b6d48;
-    }
-
-    .rule-visual.adjust::after {
-      content: "";
-      position: absolute;
-      left: 30px;
-      right: 30px;
-      top: 28px;
-      height: 4px;
-      border-radius: 999px;
-      background: rgba(122,75,34,0.42);
-    }
-
-    .work-layout,
-    .mistake-layout {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .work-visual.planing::before,
-    .work-visual.general::before,
-    .work-visual.detail::before,
-    .work-visual.assembly::before {
-      left: 16px;
-      right: 16px;
-      height: 16px;
-      border-radius: 8px;
-      background: linear-gradient(180deg, #d7aa7d, #b88358);
-      border: 1px solid #9b6d48;
-    }
-
-    .work-visual.planing::before { top: 58px; }
-    .work-visual.general::before { top: 48px; }
-    .work-visual.detail::before { top: 40px; }
-    .work-visual.assembly::before { top: 44px; }
-
-    .work-visual.planing::after,
-    .work-visual.general::after,
-    .work-visual.detail::after,
-    .work-visual.assembly::after {
-      content: "";
-      position: absolute;
-      left: 22px;
-      width: 20px;
-      height: 52px;
-      top: 12px;
-      background: linear-gradient(180deg, rgba(125,81,49,0.18), rgba(125,81,49,0.04));
-      border-radius: 10px;
-    }
-
-    .choose-layout {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .choose-visual.mainwork::before {
-      left: 16px;
-      right: 16px;
-      top: 38px;
-      height: 20px;
-      border-radius: 8px;
-      background: linear-gradient(180deg, #d7aa7d, #b88358);
-      border: 1px solid #9b6d48;
-    }
-
-    .choose-visual.body::before {
-      left: 18px;
-      right: 18px;
-      top: 24px;
-      height: 4px;
-      border-radius: 999px;
-      background: rgba(122,75,34,0.42);
-      box-shadow: 0 18px 0 0 rgba(122,75,34,0.30);
-    }
-
-    .choose-visual.mockup::before {
-      left: 18px;
-      right: 18px;
-      top: 42px;
-      height: 14px;
-      border-radius: 8px;
-      background: linear-gradient(180deg, #d7aa7d, #b88358);
-      border: 1px solid #9b6d48;
-      box-shadow: 0 18px 0 0 rgba(125,81,49,0.18);
-    }
-
-    .choose-visual.floor::before {
-      left: 10px;
-      right: 10px;
-      bottom: 16px;
-      height: 18px;
-      border-radius: 8px;
-      background:
-        linear-gradient(135deg, rgba(122,75,34,0.24), rgba(122,75,34,0.06));
-      border: 1px solid #d7cab9;
-    }
-
-    .mistake-visual.popular::before,
-    .mistake-visual.high::before,
-    .mistake-visual.low::before,
-    .mistake-visual.casters::before {
-      left: 18px;
-      right: 18px;
-      height: 16px;
-      border-radius: 8px;
-      background: linear-gradient(180deg, #d7aa7d, #b88358);
-      border: 1px solid #9b6d48;
-    }
-
-    .mistake-visual.popular::before { top: 46px; }
-    .mistake-visual.high::before { top: 26px; }
-    .mistake-visual.low::before { top: 64px; }
-    .mistake-visual.casters::before { top: 46px; }
-
-    .mistake-visual.popular::after {
-      content: "";
-      position: absolute;
-      left: 12px;
-      top: 12px;
-      width: 56px;
-      height: 4px;
-      border-radius: 999px;
-      background: rgba(168,74,54,0.55);
-      transform: rotate(-12deg);
-    }
-
-    .mistake-visual.casters::after {
-      content: "";
-      position: absolute;
-      left: 22px;
-      right: 22px;
-      bottom: 14px;
-      height: 10px;
-      background:
-        radial-gradient(circle at 10% 50%, #6b4a2d 0 4px, transparent 5px),
-        radial-gradient(circle at 90% 50%, #6b4a2d 0 4px, transparent 5px);
+      margin-bottom: 8px;
     }
 
     .related-links {
@@ -754,11 +390,11 @@
     }
 
     @media (max-width: 860px) {
-      .hero-visuals,
-      .rule-layout,
-      .work-layout,
-      .choose-layout,
-      .mistake-layout,
+      .hero-summary,
+      .subcard-grid,
+      .subcard-grid.three-up,
+      .subcard-grid.four-up,
+      .subcard-grid.five-up,
       .related-links {
         grid-template-columns: 1fr;
       }
@@ -776,14 +412,6 @@
       .card,
       .hero-panel {
         padding: 20px;
-      }
-
-      .bench-height-visual {
-        height: 250px;
-      }
-
-      .bench-top {
-        left: 118px;
       }
     }
   </style>
@@ -815,42 +443,21 @@
           A bench for hand planing, assembly, sanding, and detail work does not always want to sit at the same height.
         </p>
 
-        <div class="hero-visuals">
-          <div class="visual-card">
-            <div class="diagram-label">Visual: lower, wrist-height, and slightly higher bench zones</div>
-            <div class="bench-height-visual" aria-hidden="true">
-              <div class="person">
-                <div class="head"></div>
-                <div class="torso"></div>
-                <div class="arm-left"></div>
-                <div class="arm-right"></div>
-                <div class="leg-left"></div>
-                <div class="leg-right"></div>
-              </div>
-              <div class="height-line"></div>
-              <div class="bench-top low"></div>
-              <div class="bench-top wrist"></div>
-              <div class="bench-top high"></div>
-              <div class="height-tag low">lower for force</div>
-              <div class="height-tag wrist">wrist-height zone</div>
-              <div class="height-tag high">higher for detail</div>
-            </div>
-          </div>
-
-          <div class="visual-card">
+        <div class="hero-summary">
+          <div class="summary-card">
             <h3>What matters most</h3>
             <p>The best bench height usually comes from balancing comfort and leverage, not chasing a popular number online.</p>
+          </div>
 
+          <div class="summary-card">
             <div class="mini-points">
               <div class="mini-point">
                 <h3>General-purpose sweet spot</h3>
-                <div class="mini-meter"><div class="mini-meter-fill" style="width: 88%;"></div></div>
                 <p class="muted">Wrist height or slightly below is often the most practical starting point.</p>
               </div>
 
               <div class="mini-point">
                 <h3>Task-specific adjustment</h3>
-                <div class="mini-meter"><div class="mini-meter-fill" style="width: 80%;"></div></div>
                 <p class="muted">Heavier hand tool work often wants lower; detail and assembly often want slightly higher.</p>
               </div>
             </div>
@@ -880,7 +487,7 @@
       </ul>
     </section>
 
-    <section id="why-height-matters">
+    <section id="why-height-matters" class="section">
       <h2>Why workbench height matters</h2>
       <p>
         Bench height affects comfort, leverage, control, and fatigue. If a bench is too high, heavy work can feel awkward and weak.
@@ -892,27 +499,22 @@
       </p>
     </section>
 
-    <section id="general-rule">
+    <section id="general-rule" class="section">
       <h2>General workbench height rule</h2>
       <p>
         A practical starting point is to stand naturally with your arms relaxed and notice where your wrist crease lands.
         That is a solid starting zone for many woodworking benches.
       </p>
 
-      <div class="inline-visual" aria-hidden="true">
-        <div class="inline-visual-header">Visual: start at wrist height, then tune from there</div>
-        <div class="rule-layout">
-          <div class="rule-box">
-            <h3>Starting point</h3>
-            <div class="rule-visual wrist"></div>
-            <p class="muted">Wrist height is a practical reference point because it balances comfort and versatility.</p>
-          </div>
+      <div class="subcard-grid">
+        <div class="subcard">
+          <h3>Starting point</h3>
+          <p class="muted">Wrist height is a practical reference point because it balances comfort and versatility.</p>
+        </div>
 
-          <div class="rule-box">
-            <h3>Then adjust to your work</h3>
-            <div class="rule-visual adjust"></div>
-            <p class="muted">Go a little lower for force-heavy work or a little higher for lighter detail tasks.</p>
-          </div>
+        <div class="subcard">
+          <h3>Then adjust to your work</h3>
+          <p class="muted">Go a little lower for force-heavy work or a little higher for lighter detail tasks.</p>
         </div>
       </div>
 
@@ -930,39 +532,32 @@
       </div>
     </section>
 
-    <section id="different-work">
+    <section id="different-work" class="section">
       <h2>Best bench height for different kinds of work</h2>
 
-      <div class="inline-visual" aria-hidden="true">
-        <div class="inline-visual-header">Visual: different work often wants different bench heights</div>
-        <div class="work-layout">
-          <div class="work-box">
-            <h3>Hand planing</h3>
-            <div class="work-visual planing"></div>
-            <p class="muted">Lower often feels better when you want leverage and body weight over the work.</p>
-          </div>
+      <div class="subcard-grid four-up">
+        <div class="subcard">
+          <h3>Hand planing</h3>
+          <p class="muted">Lower often feels better when you want leverage and body weight over the work.</p>
+        </div>
 
-          <div class="work-box">
-            <h3>General woodworking</h3>
-            <div class="work-visual general"></div>
-            <p class="muted">A medium bench around wrist height is often the all-around sweet spot.</p>
-          </div>
+        <div class="subcard">
+          <h3>General woodworking</h3>
+          <p class="muted">A medium bench around wrist height is often the all-around sweet spot.</p>
+        </div>
 
-          <div class="work-box">
-            <h3>Detail work</h3>
-            <div class="work-visual detail"></div>
-            <p class="muted">Slightly higher can reduce hunching and bring the work closer to your eyes.</p>
-          </div>
+        <div class="subcard">
+          <h3>Detail work</h3>
+          <p class="muted">Slightly higher can reduce hunching and bring the work closer to your eyes.</p>
+        </div>
 
-          <div class="work-box">
-            <h3>Assembly and sanding</h3>
-            <div class="work-visual assembly"></div>
-            <p class="muted">These tasks often feel comfortable on a bench a bit higher than a planing bench.</p>
-          </div>
+        <div class="subcard">
+          <h3>Assembly and sanding</h3>
+          <p class="muted">These tasks often feel comfortable on a bench a bit higher than a planing bench.</p>
         </div>
       </div>
 
-      <h3>Hand planing and heavier hand tool work</h3>
+      <h3 style="margin-top:22px;">Hand planing and heavier hand tool work</h3>
       <p>
         A slightly lower bench often feels better here because it lets you get your body weight over the work and push more naturally.
         Too high, and the motion can feel cramped.
@@ -984,45 +579,37 @@
       </p>
     </section>
 
-    <section id="how-to-choose">
+    <section id="how-to-choose" class="section">
       <h2>How to choose the right workbench height for you</h2>
 
-      <div class="inline-visual" aria-hidden="true">
-        <div class="inline-visual-header">Visual: five practical steps for choosing your height</div>
-        <div class="choose-layout">
-          <div class="choose-box">
-            <h3>Main work</h3>
-            <div class="choose-visual mainwork"></div>
-            <p class="muted">Think about what you actually do most at the bench.</p>
-          </div>
+      <div class="subcard-grid five-up">
+        <div class="subcard">
+          <h3>Main work</h3>
+          <p class="muted">Think about what you actually do most at the bench.</p>
+        </div>
 
-          <div class="choose-box">
-            <h3>Use your body</h3>
-            <div class="choose-visual body"></div>
-            <p class="muted">Wrist height is more useful than a random online number.</p>
-          </div>
+        <div class="subcard">
+          <h3>Use your body</h3>
+          <p class="muted">Wrist height is more useful than a random online number.</p>
+        </div>
 
-          <div class="choose-box">
-            <h3>Mock it up</h3>
-            <div class="choose-visual mockup"></div>
-            <p class="muted">A temporary setup can tell you a lot before final build decisions.</p>
-          </div>
+        <div class="subcard">
+          <h3>Mock it up</h3>
+          <p class="muted">A temporary setup can tell you a lot before final build decisions.</p>
+        </div>
 
-          <div class="choose-box">
-            <h3>Consider your floor</h3>
-            <div class="choose-visual floor"></div>
-            <p class="muted">Shoes, mats, and uneven concrete can shift what feels right.</p>
-          </div>
+        <div class="subcard">
+          <h3>Consider your floor</h3>
+          <p class="muted">Shoes, mats, and uneven concrete can shift what feels right.</p>
+        </div>
 
-          <div class="choose-box">
-            <h3>Accept tradeoffs</h3>
-            <div class="choose-visual mainwork"></div>
-            <p class="muted">One general-purpose bench usually beats chasing perfection for every task.</p>
-          </div>
+        <div class="subcard">
+          <h3>Accept tradeoffs</h3>
+          <p class="muted">One general-purpose bench usually beats chasing perfection for every task.</p>
         </div>
       </div>
 
-      <ol class="steps">
+      <ol class="steps" style="margin-top:18px;">
         <li>
           <strong>Think about your main type of work.</strong> If you mostly build furniture with machines and use the bench for assembly and sanding,
           your answer may be different than someone doing a lot of hand tool stock prep.
@@ -1046,39 +633,32 @@
       </div>
     </section>
 
-    <section id="mistakes">
+    <section id="mistakes" class="section">
       <h2>Common workbench height mistakes</h2>
 
-      <div class="inline-visual" aria-hidden="true">
-        <div class="inline-visual-header">Visual: four bench height mistakes that show up in real shops</div>
-        <div class="mistake-layout">
-          <div class="mistake-box">
-            <h3>Choosing by popularity</h3>
-            <div class="mistake-visual popular"></div>
-            <p class="muted">A trendy number does not know your height, tools, or work style.</p>
-          </div>
+      <div class="subcard-grid four-up">
+        <div class="subcard">
+          <h3>Choosing by popularity</h3>
+          <p class="muted">A trendy number does not know your height, tools, or work style.</p>
+        </div>
 
-          <div class="mistake-box">
-            <h3>Too high for force work</h3>
-            <div class="mistake-visual high"></div>
-            <p class="muted">A high bench can make heavier work feel cramped and weak.</p>
-          </div>
+        <div class="subcard">
+          <h3>Too high for force work</h3>
+          <p class="muted">A high bench can make heavier work feel cramped and weak.</p>
+        </div>
 
-          <div class="mistake-box">
-            <h3>Too low for detail work</h3>
-            <div class="mistake-visual low"></div>
-            <p class="muted">A low bench can make detail-heavy tasks harder on your back and eyes.</p>
-          </div>
+        <div class="subcard">
+          <h3>Too low for detail work</h3>
+          <p class="muted">A low bench can make detail-heavy tasks harder on your back and eyes.</p>
+        </div>
 
-          <div class="mistake-box">
-            <h3>Ignoring casters and feet</h3>
-            <div class="mistake-visual casters"></div>
-            <p class="muted">Those extra inches matter more than people expect once the bench is finished.</p>
-          </div>
+        <div class="subcard">
+          <h3>Ignoring casters and feet</h3>
+          <p class="muted">Those extra inches matter more than people expect once the bench is finished.</p>
         </div>
       </div>
 
-      <ul class="checklist">
+      <ul class="checklist" style="margin-top:18px;">
         <li>choosing a number just because it is popular online</li>
         <li>building too high for heavy hand tool work</li>
         <li>building too low for detail-heavy work</li>
@@ -1091,7 +671,7 @@
       </p>
     </section>
 
-    <section id="faq">
+    <section id="faq" class="section">
       <h2>FAQ</h2>
 
       <h3>What is the standard workbench height?</h3>
@@ -1123,7 +703,7 @@
       </p>
     </section>
 
-    <section>
+    <section class="section">
       <h2>Related guides</h2>
       <ul class="related-links">
         <li>
