@@ -189,7 +189,7 @@
     }
 
     h1 {
-      font-size: 2.5rem;
+      font-size: 2.45rem;
       margin-bottom: 14px;
       max-width: 760px;
       position: relative;
@@ -216,9 +216,10 @@
       max-width: 760px;
       position: relative;
       z-index: 1;
+      margin-bottom: 0;
     }
 
-    .hero-mini-gallery {
+    .hero-summary {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
       gap: 18px;
@@ -227,7 +228,7 @@
       z-index: 1;
     }
 
-    .mini-card {
+    .summary-card {
       background: rgba(255,255,255,0.72);
       border: 1px solid rgba(221,211,199,0.9);
       border-radius: 18px;
@@ -235,73 +236,25 @@
       backdrop-filter: blur(2px);
     }
 
-    .mini-card p:last-child {
+    .summary-card p:last-child {
       margin-bottom: 0;
     }
 
-    .mini-boards {
+    .mini-points {
       display: grid;
       gap: 12px;
     }
 
-    .mini-board {
+    .mini-point {
       border: 1px solid #d7cab9;
-      border-radius: 12px;
-      overflow: hidden;
-      background: #f0e8dc;
-      height: 74px;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.4);
-      position: relative;
+      border-radius: 14px;
+      padding: 14px;
+      background: #fffaf3;
     }
 
-    .mini-board-label {
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--accent-dark);
-      margin-bottom: 6px;
-    }
-
-    .board-striped,
-    .board-chaos,
-    .board-checker,
-    .board-border {
-      display: grid;
-      height: 100%;
-      width: 100%;
-    }
-
-    .board-striped {
-      grid-template-columns: repeat(6, 1fr);
-    }
-
-    .board-chaos {
-      grid-template-columns: 1.2fr .9fr 1.4fr .8fr 1fr 1.3fr;
-    }
-
-    .checker-grid {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      grid-template-rows: repeat(4, 1fr);
-      width: 100%;
-      height: 100%;
-    }
-
-    .board-border .center {
-      position: absolute;
-      inset: 8px 10px;
-      border-radius: 7px;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-    }
-
-    .board-border::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border: 10px solid #6b4a2d;
-      border-radius: 12px;
-      box-sizing: border-box;
+    .mini-point h3 {
+      margin: 0 0 8px;
+      font-size: 1rem;
     }
 
     .section {
@@ -482,7 +435,7 @@
       box-shadow:
         inset 0 2px 0 rgba(255,255,255,0.28),
         inset 0 -10px 20px rgba(0,0,0,0.04);
-      border: 1px solid rgba(98,72,50,0.10);
+      border: 1px solid rgba(98,72,50,0.12);
       background: #eadfce;
     }
 
@@ -490,36 +443,121 @@
       position: absolute;
       width: 62px;
       height: 14px;
-      background: rgba(80,56,36,0.25);
+      background: rgba(80,56,36,0.24);
       border-radius: 999px;
       top: 18px;
       left: 50%;
       transform: translateX(-50%);
-      filter: blur(0.2px);
       box-shadow: inset 0 1px 2px rgba(0,0,0,0.15);
       opacity: 0;
-      transition: opacity 0.15s ease;
-      z-index: 3;
+      z-index: 5;
     }
 
     .preview-board.has-handle .handle-hole {
       opacity: 1;
     }
 
+    .board-surface,
+    .board-surface * {
+      box-sizing: border-box;
+    }
+
+    .board-surface {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+
     .grain-overlay {
       position: absolute;
       inset: 0;
+      pointer-events: none;
+      z-index: 4;
+      opacity: 0.2;
+    }
+
+    .grain-overlay.face {
       background:
         repeating-linear-gradient(
           90deg,
-          rgba(255,255,255,0.04) 0px,
-          rgba(255,255,255,0.04) 2px,
+          rgba(255,255,255,0.06) 0px,
+          rgba(255,255,255,0.06) 2px,
           rgba(0,0,0,0.02) 2px,
           rgba(0,0,0,0.02) 8px
         );
       mix-blend-mode: soft-light;
-      pointer-events: none;
+    }
+
+    .grain-overlay.end {
+      background:
+        repeating-linear-gradient(
+          90deg,
+          rgba(255,255,255,0.04) 0px,
+          rgba(255,255,255,0.04) 1px,
+          rgba(0,0,0,0.02) 1px,
+          rgba(0,0,0,0.02) 7px
+        ),
+        repeating-linear-gradient(
+          0deg,
+          rgba(255,255,255,0.03) 0px,
+          rgba(255,255,255,0.03) 1px,
+          rgba(0,0,0,0.015) 1px,
+          rgba(0,0,0,0.015) 7px
+        );
+      mix-blend-mode: soft-light;
+    }
+
+    .pattern-stripes,
+    .pattern-border-center {
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
+
+    .pattern-stripes .segment,
+    .pattern-border-center .segment {
+      height: 100%;
+    }
+
+    .pattern-border {
+      position: absolute;
+      inset: 0;
+      border-radius: 12px;
+    }
+
+    .pattern-border .border-frame {
+      position: absolute;
+      inset: 0;
+      border-radius: 12px;
+      z-index: 1;
+    }
+
+    .pattern-border .center-panel {
+      position: absolute;
+      inset: 8.5% 8%;
+      border-radius: 8px;
+      overflow: hidden;
       z-index: 2;
+      border: 1px solid rgba(0,0,0,0.08);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .pattern-grid {
+      display: grid;
+      width: 100%;
+      height: 100%;
+    }
+
+    .pattern-row {
+      display: flex;
+      width: 100%;
+      flex: 1 1 auto;
+    }
+
+    .pattern-row .block {
+      flex: 1 1 auto;
+      height: 100%;
+      border: 1px solid rgba(0,0,0,0.035);
     }
 
     .result-grid {
@@ -584,13 +622,18 @@
       flex: 0 0 14px;
     }
 
-    .tips-grid {
+    .subcard-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
+      margin-top: 18px;
     }
 
-    .tip-card {
+    .subcard-grid.two-up {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .subcard {
       background: linear-gradient(180deg, #fffdf8, #fbf7f1);
       border: 1px solid var(--line);
       border-radius: var(--radius);
@@ -598,32 +641,8 @@
       box-shadow: 0 6px 18px rgba(32, 22, 16, 0.03);
     }
 
-    .tip-visual {
-      width: 100%;
-      height: 132px;
-      border-radius: 12px;
-      margin-bottom: 14px;
-      border: 1px solid #d9ccbd;
-      overflow: hidden;
-      position: relative;
-      background: #efe5d7;
-    }
-
-    .tip-visual.stripes {
-      display: grid;
-      grid-template-columns: 1fr .8fr 1.1fr .8fr 1.2fr 1fr;
-    }
-
-    .tip-visual.checker {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      grid-template-rows: repeat(4, 1fr);
-    }
-
-    .tip-visual.endgrain {
-      display: grid;
-      grid-template-columns: repeat(8, 1fr);
-      grid-template-rows: repeat(5, 1fr);
+    .subcard h3 {
+      margin-bottom: 8px;
     }
 
     .faq-list {
@@ -676,8 +695,8 @@
 
     @media (max-width: 920px) {
       .tool-grid,
-      .hero-mini-gallery,
-      .tips-grid {
+      .hero-summary,
+      .subcard-grid {
         grid-template-columns: 1fr;
       }
 
@@ -693,7 +712,8 @@
 
       .field-grid,
       .result-grid,
-      .checkbox-grid {
+      .checkbox-grid,
+      .subcard-grid.two-up {
         grid-template-columns: 1fr;
       }
 
@@ -731,42 +751,26 @@
         <p class="eyebrow">Interactive tool</p>
         <h1>Cutting Board Design Generator</h1>
         <p class="intro">
-          Plug in the kind of lumber you actually have, then generate a realistic cutting board idea with a pattern, size suggestion, build notes, and a visual preview of what the final board could look like.
+          Plug in the kind of lumber you actually have, then generate a cutting board idea with a size suggestion,
+          a realistic pattern direction, wood usage notes, and a preview that feels closer to something a real woodworker would actually build.
         </p>
 
-        <div class="hero-mini-gallery">
-          <div class="mini-card">
-            <h3>Why this tool helps</h3>
-            <p>Good cutting board ideas are easier when you can see them. This generator gives you a woodworking-friendly visual instead of just dumping random text, so you can judge contrast, layout, and overall feel faster.</p>
-            <p>Use it for edge grain inspiration, rough planning before glue-up, or simply breaking out of a design rut in the shop.</p>
+        <div class="hero-summary">
+          <div class="summary-card">
+            <h3>What this tool should help with</h3>
+            <p>It is meant to get you to a practical, buildable board faster — not to spit out busy patterns that look clever on a screen but make no sense in the shop.</p>
           </div>
 
-          <div class="mini-card">
-            <div class="mini-boards">
-              <div>
-                <div class="mini-board-label">Striped idea</div>
-                <div class="mini-board">
-                  <div class="board-striped">
-                    <div style="background:#f3e2bf;"></div>
-                    <div style="background:#6a482c;"></div>
-                    <div style="background:#b86c52;"></div>
-                    <div style="background:#f3e2bf;"></div>
-                    <div style="background:#6a482c;"></div>
-                    <div style="background:#b86c52;"></div>
-                  </div>
-                </div>
+          <div class="summary-card">
+            <div class="mini-points">
+              <div class="mini-point">
+                <h3>Best use case</h3>
+                <p>Use it to test realistic wood combinations, proportions, and pattern directions before glue-up.</p>
               </div>
 
-              <div>
-                <div class="mini-board-label">Checker idea</div>
-                <div class="mini-board">
-                  <div class="checker-grid">
-                    <div style="background:#f3e2bf;"></div><div style="background:#6a482c;"></div><div style="background:#f3e2bf;"></div><div style="background:#6a482c;"></div><div style="background:#f3e2bf;"></div><div style="background:#6a482c;"></div>
-                    <div style="background:#6a482c;"></div><div style="background:#f3e2bf;"></div><div style="background:#6a482c;"></div><div style="background:#f3e2bf;"></div><div style="background:#6a482c;"></div><div style="background:#f3e2bf;"></div>
-                    <div style="background:#f3e2bf;"></div><div style="background:#6a482c;"></div><div style="background:#f3e2bf;"></div><div style="background:#6a482c;"></div><div style="background:#f3e2bf;"></div><div style="background:#6a482c;"></div>
-                    <div style="background:#6a482c;"></div><div style="background:#f3e2bf;"></div><div style="background:#6a482c;"></div><div style="background:#f3e2bf;"></div><div style="background:#6a482c;"></div><div style="background:#f3e2bf;"></div>
-                  </div>
-                </div>
+              <div class="mini-point">
+                <h3>Design bias</h3>
+                <p>Cleaner boards, stronger contrast, and patterns that real woodworkers actually tend to build.</p>
               </div>
             </div>
           </div>
@@ -793,9 +797,9 @@
                 <select id="patternPreference">
                   <option value="random">Surprise me</option>
                   <option value="striped">Striped</option>
-                  <option value="checker">Checker</option>
-                  <option value="chaos">Chaos</option>
-                  <option value="border">Border</option>
+                  <option value="checker">Checker / block</option>
+                  <option value="chaos">Varied stripe</option>
+                  <option value="border">Border frame</option>
                 </select>
               </div>
 
@@ -816,7 +820,9 @@
                   <option value="1.25" selected>1.25 inch</option>
                   <option value="1.5">1.5 inch</option>
                   <option value="1.75">1.75 inch</option>
+                  <option value="2">2 inch</option>
                 </select>
+                <div class="help">End grain boards can now go to 2 inches.</div>
               </div>
 
               <div>
@@ -828,7 +834,7 @@
               <div>
                 <label for="maxWidth">Max usable glue-up width (inches)</label>
                 <input id="maxWidth" type="number" min="6" max="30" value="16" />
-                <div class="help">This helps the generator avoid oversized suggestions.</div>
+                <div class="help">This keeps the suggestion realistic for your shop and stock.</div>
               </div>
             </div>
 
@@ -844,7 +850,7 @@
                 <label class="check"><input type="checkbox" value="Purpleheart" /> Purpleheart</label>
                 <label class="check"><input type="checkbox" value="Sapele" /> Sapele</label>
               </div>
-              <div class="help">Pick at least two woods for better contrast. If you only have one, the tool will still build around it.</div>
+              <div class="help">Two or three woods is usually enough. Most strong boards do not need a huge species mix.</div>
             </div>
 
             <div class="actions">
@@ -855,7 +861,7 @@
 
           <aside class="card result-card">
             <div class="result-top">
-              <h2 style="margin-bottom:0;">Visual preview</h2>
+              <h2 style="margin-bottom:0;">Preview</h2>
               <div class="badge" id="difficultyBadge">Balanced build</div>
             </div>
 
@@ -866,9 +872,10 @@
               </div>
 
               <div class="preview-board-shell">
-                <div class="preview-board has-handle" id="previewBoard">
+                <div class="preview-board" id="previewBoard">
                   <div class="handle-hole"></div>
-                  <div class="grain-overlay"></div>
+                  <div class="board-surface" id="boardSurface"></div>
+                  <div class="grain-overlay face" id="grainOverlay"></div>
                 </div>
               </div>
             </div>
@@ -894,11 +901,11 @@
 
             <div class="result-item" style="margin-bottom:14px;">
               <span>Build note</span>
-              <strong id="resultNote">Aim for strong light-dark contrast, and keep strips consistent before glue-up.</strong>
+              <strong id="resultNote">Aim for strong light-dark contrast and keep the layout clean before glue-up.</strong>
             </div>
 
             <div class="note-box" id="resultAdvice">
-              For this combination, keep the light wood dominant and use the darker wood as contrast so the board reads clearly from across the room.
+              For this combination, keep the lighter wood dominant and use the darker wood as contrast so the board reads clearly without feeling busy.
             </div>
 
             <div class="legend" id="legend"></div>
@@ -908,38 +915,28 @@
 
       <section class="section">
         <div class="card">
-          <h2>What the visuals mean</h2>
+          <h2>What the preview is trying to show</h2>
           <p>
-            The preview is not meant to be an exact CAD drawing. It is a fast woodworking sketch that helps you judge proportion, contrast, and layout before you start milling stock. That matters because many cutting board builds look great in your head, then feel flat once the strips are actually glued up.
+            This is not meant to be a perfect CAD drawing. It is a faster way to judge proportion, contrast, pattern direction, and whether the idea feels like something worth building with real stock.
           </p>
           <p>
-            This visual also helps you think through practical choices: whether the dark wood is taking over the design, whether the size feels realistic for the lumber you have, and whether a busier pattern is worth the extra glue-up work.
+            The biggest goal is to avoid fake-looking boards that feel clever on a screen but awkward in a shop. Cleaner layouts and believable strip or block logic usually lead to better finished boards.
           </p>
 
-          <div class="tips-grid" style="margin-top:18px;">
-            <div class="tip-card">
-              <div class="tip-visual stripes">
-                <div style="background:#f3e2bf;"></div>
-                <div style="background:#6a482c;"></div>
-                <div style="background:#b86c52;"></div>
-                <div style="background:#f3e2bf;"></div>
-                <div style="background:#6a482c;"></div>
-                <div style="background:#b86c52;"></div>
-              </div>
-              <h3>Striped boards</h3>
-              <p>Great for beginners, fast to glue up, and one of the easiest ways to get a clean visual result with minimal complexity.</p>
+          <div class="subcard-grid">
+            <div class="subcard">
+              <h3>Strong boards are usually simpler</h3>
+              <p>Most usable cutting board designs rely on clean proportions, one dominant wood, and one or two accent woods — not visual chaos.</p>
             </div>
 
-            <div class="tip-card">
-              <div class="tip-visual checker" id="tipChecker"></div>
-              <h3>Checker builds</h3>
-              <p>These look awesome, but they usually demand better alignment, more precise milling, and more patience during glue-ups.</p>
+            <div class="subcard">
+              <h3>Contrast matters more than novelty</h3>
+              <p>If the woods are too close in tone, the design can disappear. If the mix is too busy, it can feel forced fast.</p>
             </div>
 
-            <div class="tip-card">
-              <div class="tip-visual endgrain" id="tipEndgrain"></div>
-              <h3>End grain look</h3>
-              <p>End grain boards can be beautiful and durable, but they add milling steps and increase the chance that small inconsistencies will show.</p>
+            <div class="subcard">
+              <h3>Pattern should match the build</h3>
+              <p>Edge grain and end grain do not want the same visual logic. This tool now leans more toward patterns that actually fit the board type.</p>
             </div>
           </div>
         </div>
@@ -998,45 +995,52 @@
   </footer>
 
   <script>
-    const woodColors = {
-      "Maple": "#f3e2bf",
-      "Walnut": "#6a482c",
-      "Cherry": "#b86c52",
-      "Ash": "#e7d6b8",
-      "White Oak": "#c7a06d",
-      "Padauk": "#cf592f",
-      "Purpleheart": "#6f5196",
-      "Sapele": "#8b4a34"
+    const woodData = {
+      "Maple": { color: "#f3e2bf", tone: "light" },
+      "Walnut": { color: "#6a482c", tone: "dark" },
+      "Cherry": { color: "#b86c52", tone: "warm" },
+      "Ash": { color: "#e7d6b8", tone: "light" },
+      "White Oak": { color: "#c7a06d", tone: "medium" },
+      "Padauk": { color: "#cf592f", tone: "bold" },
+      "Purpleheart": { color: "#6f5196", tone: "bold" },
+      "Sapele": { color: "#8b4a34", tone: "dark" }
+    };
+
+    const displayPatternNames = {
+      striped: "Striped",
+      checker: "Checker / block",
+      chaos: "Varied stripe",
+      border: "Border frame"
     };
 
     const buildNotes = {
       striped: [
-        "Aim for consistent strip widths before glue-up so the pattern reads cleanly.",
-        "Alternate light and dark woods to keep the board from feeling flat.",
-        "Striped boards look best when the darkest wood is used as contrast, not as the majority."
+        "Keep the strip widths deliberate. Good striped boards usually look cleaner when the dominant wood does most of the work.",
+        "Use the darker wood as contrast, not as half the board, unless you deliberately want a heavier look.",
+        "A striped board gets stronger visually when the widths feel intentional instead of perfectly random."
       ],
       checker: [
-        "A checker design rewards careful milling and square cuts; small errors show up fast.",
-        "Dry fit the layout before glue-up so the checker pattern does not drift visually.",
-        "Keep the color contrast strong or the checker effect can disappear."
+        "Block layouts show milling errors fast, so this style rewards cleaner setup and better repeatability.",
+        "Keep the color contrast clear. A block pattern with weak contrast often feels muddy instead of crisp.",
+        "If you build this as end grain, plan extra time for the second glue-up and final flattening."
       ],
       chaos: [
-        "Chaos boards work best when the wood mix still has some rhythm instead of pure randomness.",
-        "Vary strip width, but keep at least one repeated wood so the design still feels intentional.",
-        "This style is forgiving visually, but it still benefits from clean glue lines."
+        "Varied stripes work best when they still have rhythm. Too many abrupt width changes can make the board feel cluttered.",
+        "Try to keep one wood dominant even in a more varied layout so the board still feels intentional.",
+        "A little variation goes a long way. This style usually looks best when it is calmer than you think."
       ],
       border: [
-        "A border can frame the board nicely, but leave enough center area so it does not feel crowded.",
-        "Use the border wood as either your darkest or your warmest accent species.",
-        "Border builds often look better with calmer center strips instead of a busy middle."
+        "Border layouts usually look best when the center stays calmer than the frame.",
+        "A dark or warm frame can work well, but leave enough quiet space inside so the border does not overpower the board.",
+        "This style tends to land better on gift or serving builds than on boards meant to feel very plain and workmanlike."
       ]
     };
 
     const adviceMap = {
-      general: "For a daily-use board, keep the design clean and practical so it is easy to maintain and enjoyable to grab every day.",
+      general: "For a daily-use board, keep the layout practical and easy to live with.",
       prep: "Prep boards usually benefit from a bit more surface area, but there is no prize for making them heavier than they need to be.",
-      gift: "Gift builds usually land best when the contrast is strong and the size feels substantial without becoming bulky.",
-      display: "Display and serving boards can lean a bit more decorative, especially with border layouts or bolder accent woods."
+      gift: "Gift builds usually land best when the contrast is strong and the pattern reads clearly without being overcomplicated.",
+      display: "Display and serving boards can lean a little more decorative, but they still usually look better when the pattern stays controlled."
     };
 
     function randomFrom(array) {
@@ -1052,13 +1056,71 @@
       return copy;
     }
 
+    function clamp(value, min, max) {
+      return Math.max(min, Math.min(max, value));
+    }
+
     function getSelectedWoods() {
       const boxes = document.querySelectorAll('.check input[type="checkbox"]:checked');
       return Array.from(boxes).map(box => box.value);
     }
 
-    function clamp(value, min, max) {
-      return Math.max(min, Math.min(max, value));
+    function unique(array) {
+      return [...new Set(array)];
+    }
+
+    function getWoodColor(wood) {
+      return (woodData[wood] && woodData[wood].color) || "#c8b59e";
+    }
+
+    function sortWoodsForBoards(selected) {
+      const preferredBase = ["Maple", "Ash", "White Oak", "Cherry", "Walnut", "Sapele", "Padauk", "Purpleheart"];
+      return [...selected].sort((a, b) => preferredBase.indexOf(a) - preferredBase.indexOf(b));
+    }
+
+    function chooseWoodMix(selectedWoods, pattern, boardType) {
+      let woods = sortWoodsForBoards(selectedWoods);
+
+      if (woods.length === 0) {
+        woods = ["Maple", "Walnut"];
+      }
+
+      if (woods.length === 1) {
+        return [woods[0], woods[0]];
+      }
+
+      const lightCandidates = woods.filter(wood => ["light", "medium", "warm"].includes(woodData[wood].tone));
+      const darkCandidates = woods.filter(wood => ["dark", "bold", "warm"].includes(woodData[wood].tone));
+
+      let dominant = lightCandidates[0] || woods[0];
+      let accent = darkCandidates.find(wood => wood !== dominant) || woods.find(wood => wood !== dominant) || dominant;
+      let support = woods.find(wood => wood !== dominant && wood !== accent) || accent;
+
+      if (pattern === "border") {
+        return unique([dominant, accent, support]).slice(0, 3);
+      }
+
+      if (pattern === "checker" && boardType === "end") {
+        return unique([dominant, accent]).slice(0, 2);
+      }
+
+      return unique([dominant, accent, support]).slice(0, 3);
+    }
+
+    function choosePattern(preference, boardType) {
+      if (preference !== "random") {
+        return preference;
+      }
+
+      if (boardType === "end") {
+        return randomFrom(["checker", "striped", "border", "chaos"]);
+      }
+
+      if (boardType === "serving") {
+        return randomFrom(["striped", "border", "chaos"]);
+      }
+
+      return randomFrom(["striped", "chaos", "border", "striped"]);
     }
 
     function suggestSize(boardType, boardUse, maxLength, maxWidth) {
@@ -1091,73 +1153,299 @@
       targetLength = clamp(targetLength, 10, Math.max(10, maxLength));
       targetWidth = clamp(targetWidth, 8, Math.max(8, maxWidth));
 
-      if (targetLength > maxLength) targetLength = maxLength;
-      if (targetWidth > maxWidth) targetWidth = maxWidth;
-
-      targetLength = Math.floor(targetLength);
-      targetWidth = Math.floor(targetWidth);
-
-      return { length: targetLength, width: targetWidth };
+      return {
+        length: Math.floor(targetLength),
+        width: Math.floor(targetWidth)
+      };
     }
 
-    function choosePattern(preference, boardType) {
-      if (preference !== "random") {
-        return preference;
+    function getDifficulty(pattern, boardType, thickness) {
+      const numericThickness = parseFloat(thickness);
+
+      if (boardType === "end" && (pattern === "checker" || numericThickness >= 2)) {
+        return "More advanced";
       }
 
-      const options = boardType === "end"
-        ? ["checker", "chaos", "border", "striped"]
-        : ["striped", "chaos", "border", "checker"];
-
-      return randomFrom(options);
-    }
-
-    function chooseWoodMix(selectedWoods, pattern) {
-      if (selectedWoods.length === 0) {
-        selectedWoods = ["Maple", "Walnut"];
+      if (boardType === "end" || pattern === "border" || pattern === "checker") {
+        return "Moderate build";
       }
 
-      if (selectedWoods.length === 1) {
-        return [selectedWoods[0], selectedWoods[0], selectedWoods[0]];
+      if (pattern === "chaos") {
+        return "Balanced build";
       }
 
-      const shuffled = shuffle(selectedWoods);
-
-      if (pattern === "checker" || pattern === "border") {
-        return shuffled.slice(0, Math.min(2, shuffled.length));
-      }
-
-      if (shuffled.length >= 3) {
-        return shuffled.slice(0, 3);
-      }
-
-      return [shuffled[0], shuffled[1], shuffled[0]];
+      return "Beginner friendly";
     }
 
     function suggestStripCount(pattern, boardType, width) {
-      if (pattern === "checker") return boardType === "end" ? "24 blocks" : "18 blocks";
-      if (pattern === "border") return Math.max(6, Math.round(width / 2.2)) + " center strips + border";
-      if (pattern === "chaos") return Math.max(7, Math.round(width / 1.8)) + " varied strips";
-      return Math.max(6, Math.round(width / 1.9)) + " strips";
+      if (pattern === "checker" && boardType === "end") {
+        return `${Math.max(24, Math.round(width * 2))} blocks`;
+      }
+
+      if (pattern === "border") {
+        return `${Math.max(5, Math.round(width / 2.4))} center strips + frame`;
+      }
+
+      if (pattern === "chaos") {
+        return `${Math.max(6, Math.round(width / 2))} varied strips`;
+      }
+
+      if (boardType === "end") {
+        return `${Math.max(7, Math.round(width / 1.8))} strips before block cut`;
+      }
+
+      return `${Math.max(6, Math.round(width / 1.9))} strips`;
     }
 
-    function getDifficulty(pattern, boardType) {
-      if (pattern === "checker" && boardType === "end") return "More advanced";
-      if (boardType === "end" || pattern === "border" || pattern === "checker") return "Moderate build";
-      if (pattern === "chaos") return "Balanced build";
-      return "Beginner friendly";
+    function getBoardLogic(pattern, boardType) {
+      if (boardType === "end" && pattern === "checker") {
+        return "end-checker";
+      }
+
+      if (boardType === "end" && pattern === "border") {
+        return "end-border";
+      }
+
+      if (boardType === "end") {
+        return "end-stripes";
+      }
+
+      if (pattern === "border") {
+        return "edge-border";
+      }
+
+      if (pattern === "checker") {
+        return "checker-inspired";
+      }
+
+      if (pattern === "chaos") {
+        return "varied-stripe";
+      }
+
+      return "edge-stripes";
+    }
+
+    function createStripSequence(woods, logic) {
+      const a = woods[0];
+      const b = woods[1] || woods[0];
+      const c = woods[2] || b;
+
+      if (logic === "varied-stripe") {
+        return [
+          { wood: a, size: 16 },
+          { wood: b, size: 6 },
+          { wood: a, size: 12 },
+          { wood: c, size: 8 },
+          { wood: a, size: 14 },
+          { wood: b, size: 5 },
+          { wood: a, size: 11 },
+          { wood: c, size: 7 }
+        ];
+      }
+
+      if (logic === "checker-inspired") {
+        return [
+          { wood: a, size: 12 },
+          { wood: b, size: 6 },
+          { wood: a, size: 6 },
+          { wood: b, size: 12 },
+          { wood: a, size: 12 },
+          { wood: b, size: 6 },
+          { wood: a, size: 6 },
+          { wood: b, size: 12 }
+        ];
+      }
+
+      return [
+        { wood: a, size: 18 },
+        { wood: b, size: 6 },
+        { wood: a, size: 14 },
+        { wood: c, size: 5 },
+        { wood: a, size: 14 },
+        { wood: b, size: 6 },
+        { wood: a, size: 18 }
+      ];
+    }
+
+    function renderEdgeStripes(target, woods, logic) {
+      const sequence = createStripSequence(woods, logic);
+      const total = sequence.reduce((sum, item) => sum + item.size, 0);
+
+      const wrap = document.createElement("div");
+      wrap.className = "pattern-stripes board-surface";
+
+      sequence.forEach(item => {
+        const segment = document.createElement("div");
+        segment.className = "segment";
+        segment.style.flex = `${item.size} 0 0`;
+        segment.style.background = getWoodColor(item.wood);
+        wrap.appendChild(segment);
+      });
+
+      target.style.display = "flex";
+      target.style.width = "100%";
+      target.style.height = "100%";
+      target.innerHTML = "";
+      target.appendChild(wrap);
+    }
+
+    function renderBorderBoard(target, woods, boardType) {
+      const a = woods[0];
+      const b = woods[1] || woods[0];
+      const c = woods[2] || b;
+
+      const wrap = document.createElement("div");
+      wrap.className = "pattern-border board-surface";
+
+      const frame = document.createElement("div");
+      frame.className = "border-frame";
+      frame.style.background = getWoodColor(b);
+
+      const centerPanel = document.createElement("div");
+      centerPanel.className = "center-panel";
+
+      const center = document.createElement("div");
+      center.className = "pattern-border-center";
+      center.style.width = "100%";
+      center.style.height = "100%";
+
+      const sequence = boardType === "end"
+        ? [
+            { wood: a, size: 12 },
+            { wood: c, size: 5 },
+            { wood: a, size: 10 },
+            { wood: c, size: 5 },
+            { wood: a, size: 12 }
+          ]
+        : [
+            { wood: a, size: 14 },
+            { wood: c, size: 5 },
+            { wood: a, size: 11 },
+            { wood: c, size: 5 },
+            { wood: a, size: 14 }
+          ];
+
+      sequence.forEach(item => {
+        const segment = document.createElement("div");
+        segment.className = "segment";
+        segment.style.flex = `${item.size} 0 0`;
+        segment.style.background = getWoodColor(item.wood);
+        center.appendChild(segment);
+      });
+
+      centerPanel.appendChild(center);
+      wrap.appendChild(frame);
+      wrap.appendChild(centerPanel);
+
+      target.innerHTML = "";
+      target.appendChild(wrap);
+    }
+
+    function renderEndChecker(target, woods) {
+      const a = woods[0];
+      const b = woods[1] || woods[0];
+
+      const grid = document.createElement("div");
+      grid.className = "pattern-grid board-surface";
+      grid.style.gridTemplateColumns = "repeat(1, 1fr)";
+      grid.style.gridTemplateRows = "repeat(6, 1fr)";
+      grid.style.width = "100%";
+      grid.style.height = "100%";
+
+      for (let row = 0; row < 6; row++) {
+        const rowEl = document.createElement("div");
+        rowEl.className = "pattern-row";
+
+        for (let col = 0; col < 8; col++) {
+          const block = document.createElement("div");
+          block.className = "block";
+          block.style.background = (row + col) % 2 === 0 ? getWoodColor(a) : getWoodColor(b);
+          rowEl.appendChild(block);
+        }
+
+        grid.appendChild(rowEl);
+      }
+
+      target.innerHTML = "";
+      target.appendChild(grid);
+    }
+
+    function renderEndStripes(target, woods, logic) {
+      const sequence = createStripSequence(woods, logic === "varied-stripe" ? "varied-stripe" : "edge-stripes");
+      const rows = 6;
+
+      const grid = document.createElement("div");
+      grid.className = "pattern-grid board-surface";
+      grid.style.gridTemplateColumns = "repeat(1, 1fr)";
+      grid.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
+      grid.style.width = "100%";
+      grid.style.height = "100%";
+
+      for (let row = 0; row < rows; row++) {
+        const rowEl = document.createElement("div");
+        rowEl.className = "pattern-row";
+
+        const offset = row % 2 === 0 ? 0 : 2;
+        const rotated = [...sequence.slice(offset), ...sequence.slice(0, offset)];
+
+        rotated.forEach(item => {
+          const block = document.createElement("div");
+          block.className = "block";
+          block.style.flex = `${item.size} 0 0`;
+          block.style.background = getWoodColor(item.wood);
+          rowEl.appendChild(block);
+        });
+
+        grid.appendChild(rowEl);
+      }
+
+      target.innerHTML = "";
+      target.appendChild(grid);
+    }
+
+    function renderPreview(pattern, woods, boardType, boardUse, size) {
+      const previewBoard = document.getElementById("previewBoard");
+      const boardSurface = document.getElementById("boardSurface");
+      const grainOverlay = document.getElementById("grainOverlay");
+      const logic = getBoardLogic(pattern, boardType);
+
+      previewBoard.className = "preview-board";
+      if (boardType === "serving" || boardUse === "display") {
+        previewBoard.classList.add("has-handle");
+      }
+
+      grainOverlay.className = "grain-overlay";
+      grainOverlay.classList.add(boardType === "end" ? "end" : "face");
+
+      if (logic === "edge-border" || logic === "end-border") {
+        renderBorderBoard(boardSurface, woods, boardType);
+      } else if (logic === "end-checker") {
+        renderEndChecker(boardSurface, woods);
+      } else if (logic === "end-stripes") {
+        renderEndStripes(boardSurface, woods, pattern === "chaos" ? "varied-stripe" : "edge-stripes");
+      } else if (logic === "checker-inspired") {
+        renderEdgeStripes(boardSurface, woods, "checker-inspired");
+      } else if (logic === "varied-stripe") {
+        renderEdgeStripes(boardSurface, woods, "varied-stripe");
+      } else {
+        renderEdgeStripes(boardSurface, woods, "edge-stripes");
+      }
+
+      document.getElementById("previewPatternLabel").textContent = "Pattern: " + displayPatternNames[pattern];
+      document.getElementById("previewSizeLabel").textContent = `${size.width} × ${size.length} in`;
     }
 
     function makeLegend(woods) {
       const legend = document.getElementById("legend");
       legend.innerHTML = "";
+
       woods.forEach(wood => {
         const item = document.createElement("div");
         item.className = "legend-item";
 
         const swatch = document.createElement("span");
         swatch.className = "swatch";
-        swatch.style.background = woodColors[wood] || "#ccc";
+        swatch.style.background = getWoodColor(wood);
 
         const text = document.createElement("span");
         text.textContent = wood;
@@ -1168,112 +1456,31 @@
       });
     }
 
-    function renderStriped(board, woods) {
-      board.innerHTML = '<div class="handle-hole"></div><div class="grain-overlay"></div>';
-      const shell = document.createElement("div");
-      shell.className = "board-striped";
+    function generateAdvice(boardUse, boardType, pattern, woods) {
+      const dominant = woods[0];
+      const accent = woods[1] || woods[0];
 
-      const pattern = [];
-      for (let i = 0; i < 8; i++) {
-        pattern.push(woods[i % woods.length]);
-      }
+      let advice = adviceMap[boardUse] + " ";
 
-      pattern.forEach(wood => {
-        const strip = document.createElement("div");
-        strip.style.background = woodColors[wood] || "#ccc";
-        shell.appendChild(strip);
-      });
-
-      board.appendChild(shell);
-    }
-
-    function renderChaos(board, woods) {
-      board.innerHTML = '<div class="handle-hole"></div><div class="grain-overlay"></div>';
-      const shell = document.createElement("div");
-      shell.className = "board-chaos";
-
-      const pattern = shuffle([
-        woods[0],
-        woods[woods.length - 1],
-        woods[Math.min(1, woods.length - 1)],
-        woods[0],
-        woods[Math.min(woods.length - 1, 1)],
-        woods[woods.length - 1]
-      ]);
-
-      pattern.forEach(wood => {
-        const strip = document.createElement("div");
-        strip.style.background = woodColors[wood] || "#ccc";
-        shell.appendChild(strip);
-      });
-
-      board.appendChild(shell);
-    }
-
-    function renderChecker(board, woods) {
-      board.innerHTML = '<div class="handle-hole"></div><div class="grain-overlay"></div>';
-      const grid = document.createElement("div");
-      grid.className = "checker-grid";
-
-      const a = woods[0];
-      const b = woods[Math.min(1, woods.length - 1)];
-
-      for (let row = 0; row < 5; row++) {
-        for (let col = 0; col < 7; col++) {
-          const cell = document.createElement("div");
-          cell.style.background = (row + col) % 2 === 0 ? (woodColors[a] || "#ccc") : (woodColors[b] || "#999");
-          grid.appendChild(cell);
-        }
-      }
-
-      board.appendChild(grid);
-    }
-
-    function renderBorder(board, woods) {
-      board.innerHTML = '<div class="handle-hole"></div><div class="grain-overlay"></div>';
-      const borderWood = woods[Math.min(1, woods.length - 1)];
-      board.style.background = woodColors[borderWood] || "#7b5a40";
-
-      const center = document.createElement("div");
-      center.className = "center";
-
-      for (let i = 0; i < 6; i++) {
-        const strip = document.createElement("div");
-        strip.style.background = woodColors[woods[i % woods.length]] || "#ccc";
-        center.appendChild(strip);
-      }
-
-      const shell = document.createElement("div");
-      shell.className = "board-border";
-      shell.appendChild(center);
-
-      board.appendChild(shell);
-    }
-
-    function renderPreview(pattern, woods, boardType, boardUse, size) {
-      const board = document.getElementById("previewBoard");
-      board.className = "preview-board";
-
-      if (boardType === "serving" || boardUse === "display") {
-        board.classList.add("has-handle");
-      }
-
-      if (pattern === "checker") {
-        renderChecker(board, woods);
-      } else if (pattern === "chaos") {
-        renderChaos(board, woods);
-      } else if (pattern === "border") {
-        renderBorder(board, woods);
+      if (boardType === "end") {
+        advice += "Because this is end grain, expect more milling steps and make sure your strips are truly consistent before the second glue-up. ";
+      } else if (boardType === "serving") {
+        advice += "Serving boards usually look better when they stay a little calmer and slimmer than a heavy prep board. ";
       } else {
-        renderStriped(board, woods);
+        advice += "Edge grain is usually the most forgiving path for a clean, repeatable result. ";
       }
 
-      document.getElementById("previewPatternLabel").textContent = "Pattern: " + capitalize(pattern);
-      document.getElementById("previewSizeLabel").textContent = `${size.width} × ${size.length} in`;
-    }
+      if (pattern === "border") {
+        advice += `Keep ${accent} framing the board and let ${dominant} do most of the work in the center.`;
+      } else if (pattern === "chaos") {
+        advice += `Let ${dominant} stay dominant and use ${accent} as punctuation, not noise.`;
+      } else if (pattern === "checker") {
+        advice += `Make sure the contrast between ${dominant} and ${accent} is strong enough for the block pattern to actually read.`;
+      } else {
+        advice += `Using ${dominant} as the base with ${accent} as contrast is usually the safer call than splitting the board 50/50.`;
+      }
 
-    function capitalize(str) {
-      return str.charAt(0).toUpperCase() + str.slice(1);
+      return advice;
     }
 
     function generateBoard() {
@@ -1286,34 +1493,30 @@
       const selectedWoods = getSelectedWoods();
 
       const pattern = choosePattern(patternPreference, boardType);
-      const woods = chooseWoodMix(selectedWoods, pattern);
+      const woods = chooseWoodMix(selectedWoods, pattern, boardType);
       const size = suggestSize(boardType, boardUse, maxLength, maxWidth);
       const strips = suggestStripCount(pattern, boardType, size.width);
-      const difficulty = getDifficulty(pattern, boardType);
+      const difficulty = getDifficulty(pattern, boardType, thickness);
       const note = randomFrom(buildNotes[pattern]);
-      const advice = adviceMap[boardUse] + " " + (boardType === "end"
-        ? "Because this is end grain, plan extra time for milling, second glue-up, and flattening."
-        : boardType === "serving"
-          ? "Serving boards usually look best when they stay a little slimmer and cleaner."
-          : "Edge grain is usually the most forgiving path for a clean, repeatable result.");
+      const advice = generateAdvice(boardUse, boardType, pattern, woods);
 
       document.getElementById("resultWood").textContent = woods.join(" + ");
-      document.getElementById("resultPattern").textContent = capitalize(pattern);
+      document.getElementById("resultPattern").textContent = displayPatternNames[pattern];
       document.getElementById("resultSize").textContent = `${size.width} × ${size.length} inches`;
       document.getElementById("resultStrips").textContent = strips;
-      document.getElementById("resultNote").textContent = `${note} Final thickness target: ${thickness} inch.`;
+      document.getElementById("resultNote").textContent = `${note} Final thickness target: ${thickness} inch${parseFloat(thickness) === 1 ? "" : "es"}.`;
       document.getElementById("resultAdvice").textContent = advice;
       document.getElementById("difficultyBadge").textContent = difficulty;
 
       renderPreview(pattern, woods, boardType, boardUse, size);
-      makeLegend([...new Set(woods)]);
+      makeLegend(unique(woods));
     }
 
     function randomizeInputs() {
       const boardTypes = ["edge", "end", "serving"];
       const patterns = ["random", "striped", "checker", "chaos", "border"];
       const uses = ["general", "prep", "gift", "display"];
-      const thicknesses = ["1", "1.25", "1.5", "1.75"];
+      const thicknesses = ["1", "1.25", "1.5", "1.75", "2"];
 
       document.getElementById("boardType").value = randomFrom(boardTypes);
       document.getElementById("patternPreference").value = randomFrom(patterns);
@@ -1335,30 +1538,6 @@
       generateBoard();
     }
 
-    function fillTipChecker() {
-      const target = document.getElementById("tipChecker");
-      const colors = ["#f3e2bf", "#6a482c"];
-      for (let row = 0; row < 4; row++) {
-        for (let col = 0; col < 6; col++) {
-          const cell = document.createElement("div");
-          cell.style.background = colors[(row + col) % 2];
-          target.appendChild(cell);
-        }
-      }
-    }
-
-    function fillTipEndgrain() {
-      const target = document.getElementById("tipEndgrain");
-      const palette = ["#f3e2bf", "#6a482c", "#b86c52", "#e7d6b8"];
-      for (let i = 0; i < 40; i++) {
-        const block = document.createElement("div");
-        block.style.background = palette[(i + (i % 3)) % palette.length];
-        target.appendChild(block);
-      }
-    }
-
-    fillTipChecker();
-    fillTipEndgrain();
     generateBoard();
   </script>
 </body>
