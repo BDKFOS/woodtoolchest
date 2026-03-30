@@ -12,1277 +12,306 @@
     :root {
       --bg: #f7f3ec;
       --surface: #fffdf8;
-      --surface-2: #fbf7f1;
       --text: #1f1a17;
       --muted: #6b625a;
       --line: #ddd3c7;
       --accent: #7a4b22;
-      --accent-dark: #5f3919;
-      --max: 920px;
-      --radius: 16px;
-      --shadow: 0 10px 28px rgba(32, 22, 16, 0.05);
+      --max: 860px;
+      --radius: 14px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.7;
+      line-height: 1.65;
     }
 
-    a {
-      color: var(--accent-dark);
-      text-decoration: none;
-    }
-
-    a:hover {
-      color: var(--accent);
-      text-decoration: underline;
-    }
-
-    .site-header {
-      color: #fff;
-      padding: 20px;
-      border-bottom: 1px solid #1d1510;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0) 45%),
-        repeating-linear-gradient(
-          to bottom,
-          rgba(255,255,255,0.035) 0px,
-          rgba(255,255,255,0.035) 1px,
-          rgba(0,0,0,0) 1px,
-          rgba(0,0,0,0) 42px
-        ),
-        linear-gradient(135deg, #3a281d 0%, #2b2018 45%, #241a14 100%);
-      box-shadow: inset 0 -1px 0 rgba(255,255,255,0.04);
-    }
-
-    .site-header-inner,
-    .container,
-    .footer-inner {
+    .container {
       width: min(var(--max), calc(100% - 32px));
       margin: 0 auto;
     }
 
-    .brand-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .brand-mark {
-      width: 34px;
-      height: 34px;
-      border-radius: 10px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.02)),
-        linear-gradient(135deg, #9f6a37, #7a4b22);
-      border: 1px solid rgba(255,255,255,0.14);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
-      flex: 0 0 34px;
-    }
-
-    .brand-mark-bars {
-      display: flex;
-      gap: 3px;
-      align-items: flex-end;
-    }
-
-    .brand-mark-bars span {
-      display: block;
-      width: 5px;
-      border-radius: 2px;
-      background: rgba(255,255,255,0.88);
-      box-shadow: inset 0 -1px 0 rgba(0,0,0,0.15);
-    }
-
-    .brand-mark-bars span:nth-child(1) { height: 12px; }
-    .brand-mark-bars span:nth-child(2) { height: 16px; }
-    .brand-mark-bars span:nth-child(3) { height: 10px; }
-
-    .brand-text-wrap {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
+    .site-header {
+      color: #fff;
+      padding: 18px;
+      background: linear-gradient(135deg, #3a281d, #241a14);
     }
 
     .brand {
-      font-size: 1.55rem;
+      font-size: 1.5rem;
       font-weight: 700;
-      text-decoration: none;
       color: #fff;
-      line-height: 1;
-    }
-
-    .brand:hover {
-      color: #f1e4d7;
       text-decoration: none;
     }
 
-    .brand-sub {
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.72);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      line-height: 1.1;
-    }
+    h1 { font-size: 2rem; margin-bottom: 12px; }
+    h2 { font-size: 1.5rem; margin: 32px 0 12px; }
+    h3 { font-size: 1.1rem; margin: 22px 0 8px; }
+
+    p { margin: 0 0 14px; }
 
     .hero {
-      padding: 34px 0 24px;
-    }
-
-    .hero-panel {
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at top right, rgba(122,75,34,0.10), transparent 35%),
-        linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0));
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 30px;
-      box-shadow: var(--shadow);
-      margin-bottom: 24px;
-    }
-
-    .hero-panel::after {
-      content: "";
-      position: absolute;
-      right: -34px;
-      top: -6px;
-      width: 230px;
-      height: 230px;
-      background:
-        repeating-linear-gradient(
-          135deg,
-          rgba(122,75,34,0.07) 0px,
-          rgba(122,75,34,0.07) 10px,
-          rgba(122,75,34,0.02) 10px,
-          rgba(122,75,34,0.02) 20px
-        );
-      border-radius: 28px;
-      transform: rotate(8deg);
-      pointer-events: none;
-      opacity: 0.45;
-    }
-
-    .eyebrow {
-      font-size: 0.9rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin: 0 0 10px;
-      position: relative;
-      z-index: 1;
-    }
-
-    h1, h2, h3 {
-      line-height: 1.2;
-      margin-top: 0;
-      color: #1e1814;
-    }
-
-    h1 {
-      font-size: 2.35rem;
-      margin-bottom: 14px;
-      position: relative;
-      z-index: 1;
-    }
-
-    h2 {
-      font-size: 1.72rem;
-      margin-bottom: 14px;
-      margin-top: 42px;
-    }
-
-    h3 {
-      font-size: 1.18rem;
-      margin-bottom: 10px;
-      margin-top: 26px;
-    }
-
-    p {
-      margin: 0 0 18px;
+      padding: 28px 0 10px;
     }
 
     .intro {
-      font-size: 1.05rem;
       color: #2b241f;
-      max-width: 760px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-visuals {
-      display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
-      gap: 18px;
-      margin-top: 24px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .visual-card {
-      background: rgba(255,255,255,0.75);
-      border: 1px solid rgba(221,211,199,0.95);
-      border-radius: 18px;
-      padding: 18px;
-      backdrop-filter: blur(2px);
-    }
-
-    .visual-card p:last-child {
-      margin-bottom: 0;
-    }
-
-    .diagram-label {
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--accent-dark);
-      margin-bottom: 8px;
-    }
-
-    .hero-board-visual {
-      height: 220px;
-      border-radius: 14px;
-      border: 1px solid #d7cab9;
-      background: linear-gradient(180deg, #f9f4ec, #efe5d8);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .board-surface {
-      position: absolute;
-      left: 30px;
-      right: 30px;
-      top: 88px;
-      height: 58px;
-      border-radius: 14px;
-      background:
-        linear-gradient(90deg,
-          #f1dfbf 0%,
-          #f1dfbf 18%,
-          #6d492c 18%,
-          #6d492c 33%,
-          #ba6b4c 33%,
-          #ba6b4c 49%,
-          #f1dfbf 49%,
-          #f1dfbf 66%,
-          #6d492c 66%,
-          #6d492c 82%,
-          #ba6b4c 82%,
-          #ba6b4c 100%);
-      border: 1px solid #a87f5d;
-      box-shadow: inset 0 2px 0 rgba(255,255,255,0.14);
-      transform: perspective(280px) rotateX(16deg);
-    }
-
-    .board-shadow {
-      position: absolute;
-      left: 42px;
-      right: 42px;
-      top: 154px;
-      height: 18px;
-      border-radius: 999px;
-      background: rgba(73, 45, 25, 0.12);
-      filter: blur(5px);
-    }
-
-    .flatten-line {
-      position: absolute;
-      left: 60px;
-      right: 60px;
-      top: 62px;
-      height: 4px;
-      border-radius: 999px;
-      background: rgba(122,75,34,0.42);
-    }
-
-    .flatten-line::after {
-      content: "";
-      position: absolute;
-      right: -2px;
-      top: -4px;
-      border-top: 6px solid transparent;
-      border-bottom: 6px solid transparent;
-      border-left: 9px solid rgba(122,75,34,0.42);
-    }
-
-    .flatten-line.two {
-      top: 76px;
-      right: 88px;
-    }
-
-    .flatten-line.three {
-      top: 190px;
-      left: 92px;
-      transform: rotate(180deg);
-    }
-
-    .mini-points {
-      display: grid;
-      gap: 12px;
-    }
-
-    .mini-point {
-      border: 1px solid #d7cab9;
-      border-radius: 14px;
-      padding: 14px;
-      background: #fffaf3;
-    }
-
-    .mini-point h3 {
-      margin: 0 0 8px;
-      font-size: 1rem;
-    }
-
-    .mini-meter {
-      height: 12px;
-      background: #ede1d3;
-      border-radius: 999px;
-      overflow: hidden;
-      margin: 8px 0 10px;
-      border: 1px solid #dbcab8;
-    }
-
-    .mini-meter-fill {
-      height: 100%;
-      border-radius: 999px;
-      background: linear-gradient(90deg, #b98d66, #7a4b22);
     }
 
     .card {
       background: var(--surface);
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      padding: 22px;
-      margin: 24px 0;
-      box-shadow: 0 8px 24px rgba(32, 22, 16, 0.03);
-    }
-
-    .toc ul,
-    .checklist,
-    .steps,
-    .related-links {
-      padding-left: 20px;
-      margin: 0;
-    }
-
-    .toc li,
-    .checklist li,
-    .steps li,
-    .related-links li {
-      margin-bottom: 10px;
+      padding: 18px;
+      margin: 20px 0;
     }
 
     .quick-answer {
-      border-left: 5px solid var(--accent);
-      padding: 18px 18px 18px 20px;
+      border-left: 4px solid var(--accent);
       background: #f4ece3;
-      border-radius: 12px;
     }
 
-    .muted {
-      color: var(--muted);
+    .checklist, .steps, .toc ul {
+      padding-left: 18px;
     }
 
-    .tip-box,
-    .warning-box {
-      padding: 16px 18px;
-      border-radius: 12px;
-      margin: 18px 0;
-    }
+    li { margin-bottom: 8px; }
 
     .tip-box {
       background: #efe7dc;
       border: 1px solid #d7c8b7;
+      padding: 14px;
+      border-radius: 10px;
+      margin: 16px 0;
     }
 
     .warning-box {
       background: #f7ebe6;
       border: 1px solid #e3c2b7;
-    }
-
-    .inline-visual {
-      margin: 18px 0 20px;
-      border: 1px solid #d9ccbd;
-      border-radius: 16px;
-      background: linear-gradient(180deg, #faf5ee, #f2e9dc);
-      overflow: hidden;
-      box-shadow: 0 6px 18px rgba(32, 22, 16, 0.03);
-    }
-
-    .inline-visual-header {
-      padding: 12px 16px;
-      border-bottom: 1px solid #ddcfbf;
-      font-weight: 700;
-      color: #3d2a1c;
-      background: rgba(255,255,255,0.4);
-    }
-
-    .compare-layout,
-    .method-layout,
-    .steps-visual,
-    .mistake-layout {
-      padding: 18px;
-      background: linear-gradient(180deg, #f8f2ea, #eee2d2);
-    }
-
-    .compare-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-
-    .compare-box,
-    .method-box,
-    .step-mini,
-    .mistake-box {
-      border: 1px solid #d8c9b8;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.42);
       padding: 14px;
-      position: relative;
-    }
-
-    .compare-box h3,
-    .method-box h3,
-    .mistake-box h3 {
-      margin: 0 0 10px;
-      font-size: 1rem;
-      color: #3c2a1c;
-    }
-
-    .compare-board {
-      height: 98px;
-      border-radius: 12px;
-      border: 1px solid #d7cab9;
-      background: linear-gradient(180deg, #f8f2ea, #eee2d2);
-      position: relative;
-      overflow: hidden;
-      margin-bottom: 10px;
-    }
-
-    .compare-board .face {
-      position: absolute;
-      left: 16px;
-      right: 16px;
-      top: 34px;
-      height: 28px;
-      border-radius: 8px;
-      border: 1px solid #a87f5d;
-      background: linear-gradient(90deg, #f1dfbf, #6d492c, #ba6b4c, #f1dfbf, #6d492c);
-    }
-
-    .compare-board.edge .face {
-      transform: none;
-    }
-
-    .compare-board.end .face {
-      background:
-        linear-gradient(90deg,
-          #f1dfbf 0%, #f1dfbf 14%,
-          #6d492c 14%, #6d492c 28%,
-          #ba6b4c 28%, #ba6b4c 42%,
-          #e7d6b8 42%, #e7d6b8 56%,
-          #6d492c 56%, #6d492c 70%,
-          #f1dfbf 70%, #f1dfbf 84%,
-          #ba6b4c 84%, #ba6b4c 100%);
-      box-shadow: inset 0 0 0 999px rgba(255,255,255,0.03);
-    }
-
-    .method-layout {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .method-visual {
-      height: 118px;
-      border-radius: 12px;
-      border: 1px solid #d7cab9;
-      background: linear-gradient(180deg, #f8f2ea, #eee2d2);
-      position: relative;
-      overflow: hidden;
-      margin-bottom: 12px;
-    }
-
-    .method-visual.router::before,
-    .method-visual.router::after,
-    .method-visual.planer::before,
-    .method-visual.planer::after,
-    .method-visual.sanding::before,
-    .method-visual.sanding::after {
-      content: "";
-      position: absolute;
-    }
-
-    .method-visual.router::before {
-      left: 14px;
-      right: 14px;
-      top: 24px;
-      height: 10px;
-      border-radius: 999px;
-      background: linear-gradient(180deg, #8b5b33, #6c4424);
-    }
-
-    .method-visual.router::after {
-      left: 22px;
-      right: 22px;
-      top: 44px;
-      height: 46px;
-      border-radius: 12px;
-      border: 1px solid #b89473;
-      background: rgba(197,161,125,0.28);
-      box-shadow:
-        inset 0 0 0 12px transparent,
-        inset 0 -18px 0 rgba(184,131,88,0.65);
-    }
-
-    .router-dot {
-      position: absolute;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background: linear-gradient(180deg, #7d5131, #5f3919);
-      border: 1px solid #4f2d14;
-      left: 50%;
-      top: 52px;
-      transform: translateX(-50%);
-    }
-
-    .method-visual.planer::before {
-      left: 16px;
-      right: 16px;
-      top: 34px;
-      height: 44px;
-      border-radius: 12px;
-      background: linear-gradient(180deg, #cda37c, #9a6d49);
-      border: 1px solid #8d623f;
-    }
-
-    .method-visual.planer::after {
-      left: 34px;
-      right: 34px;
-      top: 48px;
-      height: 14px;
-      border-radius: 8px;
-      background: #f1dfbf;
-    }
-
-    .method-visual.sanding::before {
-      left: 18px;
-      right: 18px;
-      top: 56px;
-      height: 22px;
-      border-radius: 8px;
-      background: linear-gradient(180deg, #d7aa7d, #b88358);
-      border: 1px solid #9b6d48;
-    }
-
-    .method-visual.sanding::after {
-      width: 56px;
-      height: 28px;
-      right: 18px;
-      top: 24px;
-      border-radius: 12px;
-      background: linear-gradient(180deg, #caa27b, #966947);
-      border: 1px solid #835a3b;
-      transform: rotate(-14deg);
-    }
-
-    .steps-visual {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .step-number {
-      width: 28px;
-      height: 28px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-      color: white;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      margin-bottom: 10px;
-      box-shadow: 0 6px 14px rgba(95,57,25,0.16);
-    }
-
-    .step-mini p {
-      margin: 0;
-      font-size: 0.92rem;
-      color: #3a2d22;
-      line-height: 1.45;
-    }
-
-    .step-icon {
-      height: 60px;
       border-radius: 10px;
-      border: 1px solid #d7cab9;
-      background: linear-gradient(180deg, #f8f2ea, #eee2d2);
-      margin-bottom: 10px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .step-icon.check::before,
-    .step-icon.mark::before,
-    .step-icon.flatten::before,
-    .step-icon.finish::before {
-      content: "";
-      position: absolute;
-    }
-
-    .step-icon.check::before {
-      left: 12px;
-      right: 12px;
-      top: 22px;
-      height: 16px;
-      border-radius: 8px;
-      background: linear-gradient(180deg, #d7aa7d, #b88358);
-      border: 1px solid #9b6d48;
-      transform: rotate(-3deg);
-    }
-
-    .step-icon.mark::before {
-      left: 12px;
-      right: 12px;
-      top: 24px;
-      height: 14px;
-      border-radius: 8px;
-      background:
-        repeating-linear-gradient(90deg,
-          #d7aa7d 0px, #d7aa7d 22px,
-          #7d5131 22px, #7d5131 24px);
-      border: 1px solid #9b6d48;
-    }
-
-    .step-icon.flatten::before {
-      left: 10px;
-      right: 10px;
-      top: 16px;
-      height: 6px;
-      border-radius: 999px;
-      background: rgba(122,75,34,0.42);
-    }
-
-    .step-icon.flatten::after {
-      content: "";
-      position: absolute;
-      left: 14px;
-      right: 14px;
-      bottom: 12px;
-      height: 18px;
-      border-radius: 8px;
-      background: linear-gradient(180deg, #d7aa7d, #b88358);
-      border: 1px solid #9b6d48;
-    }
-
-    .step-icon.finish::before {
-      left: 16px;
-      right: 16px;
-      top: 22px;
-      height: 18px;
-      border-radius: 8px;
-      background: linear-gradient(180deg, #d7aa7d, #b88358);
-      border: 1px solid #9b6d48;
-      box-shadow: inset 0 0 0 999px rgba(255,255,255,0.08);
-    }
-
-    .mistake-layout {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .mistake-box {
-      min-height: 176px;
-    }
-
-    .mistake-visual {
-      height: 96px;
-      border-radius: 12px;
-      border: 1px solid #d7cab9;
-      background: linear-gradient(180deg, #f8f2ea, #eee2d2);
-      margin-bottom: 12px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .mistake-visual.sand::before,
-    .mistake-visual.planer::before,
-    .mistake-visual.router::before {
-      content: "";
-      position: absolute;
-    }
-
-    .mistake-visual.sand::before {
-      left: 16px;
-      right: 16px;
-      top: 44px;
-      height: 18px;
-      border-radius: 8px;
-      background: linear-gradient(180deg, #d7aa7d, #b88358);
-      border: 1px solid #9b6d48;
-      box-shadow: inset 0 -10px 0 rgba(95,57,25,0.20);
-    }
-
-    .mistake-visual.planer::before {
-      left: 18px;
-      right: 18px;
-      top: 26px;
-      height: 36px;
-      border-radius: 12px;
-      background: linear-gradient(180deg, #cda37c, #9a6d49);
-      border: 1px solid #8d623f;
-    }
-
-    .mistake-visual.planer::after {
-      content: "";
-      position: absolute;
-      left: 8px;
-      top: 12px;
-      width: 74px;
-      height: 4px;
-      border-radius: 999px;
-      background: rgba(168,74,54,0.55);
-      transform: rotate(-14deg);
-    }
-
-    .mistake-visual.router::before {
-      left: 14px;
-      right: 14px;
-      top: 18px;
-      height: 8px;
-      border-radius: 999px;
-      background: linear-gradient(180deg, #8b5b33, #6c4424);
-    }
-
-    .mistake-visual.router::after {
-      content: "";
-      position: absolute;
-      left: 26px;
-      right: 26px;
-      bottom: 16px;
-      height: 20px;
-      border-radius: 8px;
-      background: linear-gradient(180deg, #d7aa7d, #b88358);
-      border: 1px solid #9b6d48;
-      transform: rotate(-4deg);
+      margin: 16px 0;
     }
 
     .related-links {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px;
       list-style: none;
-      padding-left: 0;
-    }
-
-    .related-links li {
-      margin-bottom: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
     }
 
     .related-links a {
       display: block;
-      background: linear-gradient(180deg, #fffdf8, #fbf7f1);
       border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 16px;
+      border-radius: 10px;
+      padding: 12px;
+      background: #fffdf8;
       font-weight: 700;
       color: #2c221a;
-      box-shadow: 0 6px 18px rgba(32, 22, 16, 0.03);
     }
 
-    .related-links a span {
+    .related-links span {
       display: block;
-      color: var(--muted);
       font-weight: 400;
-      font-size: 0.92rem;
-      margin-top: 6px;
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-top: 4px;
     }
 
     .footer {
-      margin-top: 56px;
-      padding: 28px 20px 40px;
+      margin-top: 40px;
+      padding: 24px;
       border-top: 1px solid var(--line);
       color: var(--muted);
       background: #f3ede4;
     }
-
-    @media (max-width: 860px) {
-      .hero-visuals,
-      .compare-layout,
-      .method-layout,
-      .steps-visual,
-      .mistake-layout,
-      .related-links {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 700px) {
-      h1 {
-        font-size: 1.95rem;
-      }
-
-      h2 {
-        font-size: 1.45rem;
-      }
-
-      .card,
-      .hero-panel {
-        padding: 20px;
-      }
-
-      .hero-board-visual {
-        height: 240px;
-      }
-
-      .board-surface {
-        left: 18px;
-        right: 18px;
-      }
-    }
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="site-header-inner">
-      <div class="brand-row">
-        <div class="brand-mark" aria-hidden="true">
-          <div class="brand-mark-bars">
-            <span></span><span></span><span></span>
-          </div>
-        </div>
-        <div class="brand-text-wrap">
-          <a class="brand" href="/">WoodToolChest</a>
-          <div class="brand-sub">Practical woodworking guides, tools, and shop setup</div>
-        </div>
-      </div>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="/">WoodToolChest</a>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="hero">
+    <h1>How to Flatten a Cutting Board</h1>
+    <p class="intro">
+      Flattening a cutting board is one of those jobs that sounds simple until the board is cupped,
+      twisted, or just wide enough to make everything annoying. The right approach depends on the board,
+      the warp, and the tools you actually have.
+    </p>
+  </section>
+
+  <section class="card quick-answer">
+    <h2>Quick answer</h2>
+    <p>
+      The safest and most flexible way to flatten a cutting board is with a router flattening jig.
+      A planer works for some edge grain boards. Light unevenness can be cleaned up with sanding.
+    </p>
+  </section>
+
+  <section class="card toc">
+    <h2>On this page</h2>
+    <ul>
+      <li><a href="#best-method">Best method</a></li>
+      <li><a href="#edge-vs-end">Edge vs end grain</a></li>
+      <li><a href="#router-method">Router jig</a></li>
+      <li><a href="#planer-method">Planer</a></li>
+      <li><a href="#sanding-method">Sanding</a></li>
+      <li><a href="#step-by-step">Steps</a></li>
+      <li><a href="#mistakes">Mistakes</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+  </section>
+
+  <section id="best-method">
+    <h2>Best way to flatten a cutting board</h2>
+    <p>
+      For wide, warped, or end grain boards, use a router flattening jig. It gives control and avoids forcing stock through machines.
+    </p>
+    <p>
+      For mild edge grain cleanup, a planer can be faster. For very small imperfections, sanding may be enough.
+    </p>
+
+    <div class="tip-box">
+      <strong>Rule:</strong> More valuable board = more control, not more speed.
     </div>
-  </header>
+  </section>
 
-  <main class="container">
-    <section class="hero">
-      <div class="hero-panel">
-        <p class="eyebrow">Project Help</p>
-        <h1>How to Flatten a Cutting Board</h1>
-        <p class="intro">
-          Flattening a cutting board is one of those jobs that sounds simple until the board is cupped,
-          twisted, or just wide enough to make everything annoying. The right approach depends on whether
-          the board is edge grain or end grain, how bad the warp is, and what tools you actually have.
-        </p>
+  <section id="edge-vs-end">
+    <h2>Edge grain vs end grain</h2>
 
-        <div class="hero-visuals">
-          <div class="visual-card">
-            <div class="diagram-label">Visual: a cutting board being flattened evenly</div>
-            <div class="hero-board-visual" aria-hidden="true">
-              <div class="flatten-line"></div>
-              <div class="flatten-line two"></div>
-              <div class="board-surface"></div>
-              <div class="board-shadow"></div>
-              <div class="flatten-line three"></div>
-            </div>
-          </div>
+    <h3>Edge grain</h3>
+    <p>
+      Easier to flatten. Can sometimes go through a planer if already close to flat.
+    </p>
 
-          <div class="visual-card">
-            <h3>What usually matters most</h3>
-            <p>The biggest decision is not “what tool do I own?” It is whether the board needs controlled flattening or just light cleanup.</p>
+    <h3>End grain</h3>
+    <p>
+      Needs more care. Router jig is usually the safer and more controlled option.
+    </p>
 
-            <div class="mini-points">
-              <div class="mini-point">
-                <h3>Best control</h3>
-                <div class="mini-meter"><div class="mini-meter-fill" style="width: 90%;"></div></div>
-                <p class="muted">Router flattening jig for wide boards, end grain, and awkward glue-ups.</p>
-              </div>
-
-              <div class="mini-point">
-                <h3>Best speed</h3>
-                <div class="mini-meter"><div class="mini-meter-fill" style="width: 68%;"></div></div>
-                <p class="muted">Planer for mild edge grain cleanup when the board is already close.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="card quick-answer">
-      <h2>Quick answer</h2>
-      <p>
-        The safest and most flexible way to flatten a cutting board is with a router flattening jig,
-        especially for wide or end grain boards. A planer can work for some edge grain boards, but it
-        is not always the best choice for end grain. Light cupping or minor unevenness can also be cleaned
-        up with careful sanding or hand tools.
-      </p>
-    </section>
-
-    <section class="card toc">
-      <h2>On this page</h2>
-      <ul>
-        <li><a href="#best-method">Best way to flatten a cutting board</a></li>
-        <li><a href="#edge-vs-end">Edge grain vs end grain</a></li>
-        <li><a href="#router-method">Using a router flattening jig</a></li>
-        <li><a href="#planer-method">Using a planer</a></li>
-        <li><a href="#sanding-method">Using sanding only</a></li>
-        <li><a href="#step-by-step">Step-by-step process</a></li>
-        <li><a href="#mistakes">Mistakes to avoid</a></li>
-        <li><a href="#faq">FAQ</a></li>
-      </ul>
-    </section>
-
-    <section id="best-method">
-      <h2>Best way to flatten a cutting board</h2>
-      <p>
-        If the board is wide, visibly warped, or made from end grain, a router flattening jig is usually
-        the best method. It gives you control, works with boards that are too wide for a planer, and avoids
-        some of the sketchiness that comes with forcing difficult stock through a machine.
-      </p>
-      <p>
-        If the board is edge grain, not too wide, and only needs light cleanup, a planer may be faster.
-        If it is only slightly uneven, sanding may be enough.
-      </p>
-
-      <div class="tip-box">
-        <strong>Simple rule:</strong> the more valuable or difficult the board is, the more you should
-        lean toward the method with the most control rather than the fastest one.
-      </div>
-
-      <div class="inline-visual" aria-hidden="true">
-        <div class="inline-visual-header">Visual: control vs speed by method</div>
-        <div class="method-layout">
-          <div class="method-box">
-            <h3>Router jig</h3>
-            <div class="method-visual router">
-              <div class="router-dot"></div>
-            </div>
-            <p class="muted">Best control for wide, warped, or end grain boards.</p>
-          </div>
-
-          <div class="method-box">
-            <h3>Planer</h3>
-            <div class="method-visual planer"></div>
-            <p class="muted">Fastest when the board is edge grain and already close to flat.</p>
-          </div>
-
-          <div class="method-box">
-            <h3>Sanding</h3>
-            <div class="method-visual sanding"></div>
-            <p class="muted">Best for cleanup and refinement, not major flattening.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="edge-vs-end">
-      <h2>Edge grain vs end grain cutting boards</h2>
-
-      <div class="inline-visual" aria-hidden="true">
-        <div class="inline-visual-header">Visual: edge grain vs end grain boards</div>
-        <div class="compare-layout">
-          <div class="compare-box">
-            <h3>Edge grain</h3>
-            <div class="compare-board edge">
-              <div class="face"></div>
-            </div>
-            <p class="muted">Usually easier to flatten, and sometimes suitable for light planer cleanup.</p>
-          </div>
-
-          <div class="compare-box">
-            <h3>End grain</h3>
-            <div class="compare-board end">
-              <div class="face"></div>
-            </div>
-            <p class="muted">Needs more care; many woodworkers prefer a router jig for control and safety.</p>
-          </div>
-        </div>
-      </div>
-
-      <h3>Edge grain boards</h3>
-      <p>
-        Edge grain boards are usually easier to flatten. If the board fits your planer and the warp is mild,
-        you may be able to clean it up there. You still need to pay attention to snipe, support, and how much
-        material you are removing.
-      </p>
-
-      <h3>End grain boards</h3>
-      <p>
-        End grain boards need more care. Many woodworkers prefer not to run them through a planer at all,
-        especially if the board is wide, heavy, or has glue lines they do not want to stress. A router
-        flattening jig is often the better call.
-      </p>
-
-      <div class="warning-box">
-        <strong>Important:</strong> if you are unsure whether a board is safe or wise to plane, do not force it.
-        A slower method is better than ruining the board or creating a dangerous situation.
-      </div>
-    </section>
-
-    <section id="router-method">
-      <h2>Using a router flattening jig</h2>
-      <p>
-        This is the most practical flattening method for many small shops. It works especially well for
-        end grain boards, wide glue-ups, and boards with uneven spots that need controlled surfacing.
-      </p>
-
-      <div class="card">
-        <h3>Why it works well</h3>
-        <ul class="checklist">
-          <li>handles boards wider than your planer</li>
-          <li>gives you controlled, shallow passes</li>
-          <li>works well for end grain and thick glue-ups</li>
-          <li>lets you flatten one face before referencing the other</li>
-        </ul>
-      </div>
-
-      <p>
-        The board needs to be shimmed so it cannot rock. Once it is stable, take shallow passes, overlap each pass,
-        and mark the surface with pencil so you can track low spots.
-      </p>
-
-      <p>
-        After one face is flat, flip the board and flatten the second face using the newly flattened face as your reference.
-      </p>
-    </section>
-
-    <section id="planer-method">
-      <h2>Using a planer to flatten a cutting board</h2>
-      <p>
-        A planer can be a good solution for some cutting boards, but this depends on the board type and how much flattening is needed.
-        It is not the universal answer.
-      </p>
-
-      <h3>When a planer makes sense</h3>
-      <ul class="checklist">
-        <li>the board is edge grain</li>
-        <li>the board fits comfortably in your planer</li>
-        <li>the board is already mostly flat</li>
-        <li>you only need light cleanup</li>
-      </ul>
-
-      <h3>When it may not be the best choice</h3>
-      <ul class="checklist">
-        <li>the board is end grain</li>
-        <li>the board is heavily cupped or twisted</li>
-        <li>the board is very wide or awkward to support</li>
-        <li>you are worried about tearout, snipe, or stressing glue lines</li>
-      </ul>
-
-      <p>
-        If you do plane a cutting board, take light passes and support it well on both infeed and outfeed.
-      </p>
-    </section>
-
-    <section id="sanding-method">
-      <h2>Can you flatten a cutting board with sanding only?</h2>
-      <p>
-        Sometimes, yes. If the board is only slightly uneven, you may be able to flatten it enough with sanding,
-        especially if the problem is more surface cleanup than real warp.
-      </p>
-
-      <p>
-        Sanding is slower and less precise than a router jig for serious flattening, but it can absolutely work for:
-      </p>
-
-      <ul class="checklist">
-        <li>minor glue line unevenness</li>
-        <li>small high spots</li>
-        <li>final cleanup after routing</li>
-        <li>boards that are already close to flat</li>
-      </ul>
-
-      <div class="tip-box">
-        <strong>Good expectation:</strong> sanding is great for refinement, but if the board is truly cupped or twisted,
-        sanding alone can take forever and still leave you chasing flat.
-      </div>
-    </section>
-
-    <section id="step-by-step">
-      <h2>Step-by-step process to flatten a cutting board</h2>
-
-      <div class="inline-visual" aria-hidden="true">
-        <div class="inline-visual-header">Visual: simple flattening workflow</div>
-        <div class="steps-visual">
-          <div class="step-mini">
-            <div class="step-number">1</div>
-            <div class="step-icon check"></div>
-            <p>Check for cup, twist, and rocking corners.</p>
-          </div>
-
-          <div class="step-mini">
-            <div class="step-number">2</div>
-            <div class="step-icon mark"></div>
-            <p>Mark the surface so low spots stay visible.</p>
-          </div>
-
-          <div class="step-mini">
-            <div class="step-number">3</div>
-            <div class="step-icon flatten"></div>
-            <p>Flatten the first face with shallow, even passes.</p>
-          </div>
-
-          <div class="step-mini">
-            <div class="step-number">4</div>
-            <div class="step-icon finish"></div>
-            <p>Flip, finish flattening, then sand and ease edges.</p>
-          </div>
-        </div>
-      </div>
-
-      <ol class="steps">
-        <li>
-          <strong>Check the board first.</strong> Look for cup, twist, rocking corners, and glue squeeze-out or rough spots
-          that may affect how it sits.
-        </li>
-        <li>
-          <strong>Choose the method.</strong> For wide, end grain, or badly warped boards, use a router flattening jig.
-          For mild edge grain cleanup, a planer may work. For tiny imperfections, sanding may be enough.
-        </li>
-        <li>
-          <strong>Mark the surface.</strong> Use pencil marks across the face so you can see where material has been removed.
-        </li>
-        <li>
-          <strong>Flatten the first face.</strong> Take shallow, controlled passes until the face is consistently cleaned up.
-        </li>
-        <li>
-          <strong>Flip and flatten the second face.</strong> Once the first face is truly flat, use it as your reference.
-        </li>
-        <li>
-          <strong>Clean up tool marks.</strong> After flattening, sand the board progressively until the surface is ready for final finish.
-        </li>
-        <li>
-          <strong>Break edges and finish.</strong> Ease the edges, final sand, and apply your chosen food-safe finish.
-        </li>
-      </ol>
-    </section>
-
-    <section id="mistakes">
-      <h2>Common mistakes to avoid</h2>
-
-      <div class="inline-visual" aria-hidden="true">
-        <div class="inline-visual-header">Visual: three common flattening mistakes</div>
-        <div class="mistake-layout">
-          <div class="mistake-box">
-            <h3>Sanding away serious warp</h3>
-            <div class="mistake-visual sand"></div>
-            <p class="muted">This takes forever and often leaves the board looking flat-ish instead of truly flat.</p>
-          </div>
-
-          <div class="mistake-box">
-            <h3>Forcing the planer choice</h3>
-            <div class="mistake-visual planer"></div>
-            <p class="muted">Fast is not always smart, especially when the board is awkward, wide, or end grain.</p>
-          </div>
-
-          <div class="mistake-box">
-            <h3>Unstable router setup</h3>
-            <div class="mistake-visual router"></div>
-            <p class="muted">If the board rocks or the setup is off, the flattening result will be off too.</p>
-          </div>
-        </div>
-      </div>
-
-      <ul class="checklist">
-        <li>trying to sand out serious warp by brute force</li>
-        <li>running a questionable board through the planer just because it is faster</li>
-        <li>not shimming the board securely in a flattening jig</li>
-        <li>taking overly deep router passes</li>
-        <li>flattening one face halfway and assuming it is done</li>
-        <li>forgetting that flattening still needs sanding afterward</li>
-      </ul>
-
-      <p>
-        The biggest mistake is rushing because the board looks close enough. Cutting boards reveal unevenness fast,
-        especially once finish goes on.
-      </p>
-    </section>
-
-    <section id="faq">
-      <h2>FAQ</h2>
-
-      <h3>What is the best way to flatten an end grain cutting board?</h3>
-      <p>
-        A router flattening jig is usually the safest and most controlled method for an end grain cutting board,
-        especially if the board is wide or noticeably uneven.
-      </p>
-
-      <h3>Can I use a planer on a cutting board?</h3>
-      <p>
-        Sometimes. It can make sense for some edge grain boards that are already mostly flat, but it is not always the best choice,
-        especially for end grain or heavily warped boards.
-      </p>
-
-      <h3>Do I still need to sand after flattening?</h3>
-      <p>
-        Yes. Flattening gets the board flat. Sanding removes tool marks and brings the surface up to final finish quality.
-      </p>
-
-      <h3>Can I flatten a cutting board without a router sled?</h3>
-      <p>
-        Yes, depending on the board. A planer, hand plane, or sanding setup may work, but a router jig is one of the most flexible
-        options for small shops.
-      </p>
-    </section>
-
-    <section class="card">
-      <h2>Bottom line</h2>
-      <p>
-        The best way to flatten a cutting board depends on the board in front of you, not the method that sounds fastest.
-        For a lot of real-world shop work, a router flattening jig gives the most control with the least drama.
-      </p>
-    </section>
-
-    <section>
-      <h2>Related guides</h2>
-      <ul class="related-links">
-        <li>
-          <a href="/router-flattening-jig.html">
-            Router Flattening Jig Guide
-            <span>The most flexible flattening method for many small-shop cutting board builds.</span>
-          </a>
-        </li>
-        <li>
-          <a href="/plunge-vs-fixed-base-router.html">
-            Plunge vs Fixed Base Router
-            <span>Helpful if you are deciding what router setup makes more sense for flattening work.</span>
-          </a>
-        </li>
-        <li>
-          <a href="/dust-collection-for-beginners.html">
-            Dust Collection for Beginners
-            <span>Flattening boards creates a surprising amount of chips and dust, especially with a router.</span>
-          </a>
-        </li>
-        <li>
-          <a href="/workbench-height-guide.html">
-            Workbench Height Guide
-            <span>Useful when you are building a more comfortable and workable shop setup overall.</span>
-          </a>
-        </li>
-      </ul>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-inner">
-      <p><strong>WoodToolChest</strong> gives practical woodworking guides, shop setup advice, and tool help for real-world builds.</p>
-      <p class="muted">© 2026 WoodToolChest</p>
+    <div class="warning-box">
+      If you are unsure about planing a board, do not force it.
     </div>
-  </footer>
+  </section>
+
+  <section id="router-method">
+    <h2>Using a router flattening jig</h2>
+
+    <ul class="checklist">
+      <li>handles wide boards</li>
+      <li>controlled shallow passes</li>
+      <li>ideal for end grain</li>
+      <li>most reliable method overall</li>
+    </ul>
+
+    <p>
+      Shim the board so it cannot rock. Take shallow passes and mark the surface to track progress.
+    </p>
+  </section>
+
+  <section id="planer-method">
+    <h2>Using a planer</h2>
+
+    <h3>Works when:</h3>
+    <ul class="checklist">
+      <li>edge grain</li>
+      <li>mostly flat already</li>
+      <li>fits comfortably</li>
+    </ul>
+
+    <h3>Not ideal when:</h3>
+    <ul class="checklist">
+      <li>end grain</li>
+      <li>heavy warp</li>
+      <li>awkward size</li>
+    </ul>
+  </section>
+
+  <section id="sanding-method">
+    <h2>Sanding only</h2>
+    <p>
+      Works for minor unevenness and cleanup, not major flattening.
+    </p>
+
+    <ul class="checklist">
+      <li>small high spots</li>
+      <li>glue line cleanup</li>
+      <li>final finish prep</li>
+    </ul>
+  </section>
+
+  <section id="step-by-step">
+    <h2>Step-by-step</h2>
+
+    <ol class="steps">
+      <li>Check for warp</li>
+      <li>Choose method</li>
+      <li>Mark surface</li>
+      <li>Flatten first face</li>
+      <li>Flip and repeat</li>
+      <li>Sand smooth</li>
+      <li>Finish</li>
+    </ol>
+  </section>
+
+  <section id="mistakes">
+    <h2>Common mistakes</h2>
+
+    <ul class="checklist">
+      <li>sanding major warp</li>
+      <li>forcing planer use</li>
+      <li>unstable jig setup</li>
+      <li>deep passes</li>
+      <li>rushing the process</li>
+    </ul>
+  </section>
+
+  <section id="faq">
+    <h2>FAQ</h2>
+
+    <h3>Best method for end grain?</h3>
+    <p>Router jig.</p>
+
+    <h3>Can I use a planer?</h3>
+    <p>Sometimes, for edge grain only.</p>
+
+    <h3>Do I still need sanding?</h3>
+    <p>Yes.</p>
+  </section>
+
+  <section class="card">
+    <h2>Bottom line</h2>
+    <p>
+      Use the method that gives you control. For most real-world boards, that is a router flattening jig.
+    </p>
+  </section>
+
+  <section>
+    <h2>Related guides</h2>
+    <ul class="related-links">
+      <li><a href="/router-flattening-jig.html">Router Flattening Jig Guide</a></li>
+      <li><a href="/dust-collection-for-beginners.html">Dust Collection for Beginners</a></li>
+      <li><a href="/workbench-height-guide.html">Workbench Height Guide</a></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p><strong>WoodToolChest</strong> — Practical woodworking guides</p>
+  </div>
+</footer>
+
 </body>
 </html>
