@@ -598,9 +598,15 @@
             </div>
 
             <div class="field">
-              <label for="tempNote">Assumption</label>
-              <input id="tempNote" type="text" value="Indoor use at typical room temperature" readonly>
-              <p class="helper">This estimate uses a practical indoor equilibrium moisture model.</p>
+              <label for="storageLocation">Storage location</label>
+              <select id="storageLocation">
+                <option value="indoor">Indoor shop / conditioned indoor space</option>
+                <option value="climateControlledShop">Outdoor climate-controlled shop</option>
+                <option value="garage">Garage shop</option>
+                <option value="basement">Basement shop</option>
+                <option value="shed">Unconditioned shed / outdoor shop</option>
+              </select>
+              <p class="helper" id="storageHelper">Uses a typical indoor humidity range and equilibrium moisture estimate.</p>
             </div>
           </div>
 
@@ -682,7 +688,7 @@
       <ol class="steps">
         <li>Measure the actual width of the part that can move.</li>
         <li>Pick the closest species and grain orientation.</li>
-        <li>Use realistic indoor low and high humidity values for your climate and house.</li>
+        <li>Use realistic low and high humidity values for the place where the wood will live.</li>
         <li>Build in a little more allowance than the estimate if the part is important or hard to remake.</li>
       </ol>
     </section>
@@ -723,7 +729,7 @@
 
       <h3>What humidity numbers should I use?</h3>
       <p>
-        Use realistic indoor low and high values for your space. In many heated homes, winter can be much drier than summer, even if the wood never leaves the house.
+        Use realistic low and high values for the place where the wood will live. The storage-location dropdown gives you a quick starting point, and you can still fine-tune the humidity numbers manually.
       </p>
     </section>
 
@@ -783,6 +789,34 @@
       birch: { name: "Birch", tangential: 9.5, radial: 6.5 },
       poplar: { name: "Poplar", tangential: 8.2, radial: 4.6 },
       beech: { name: "Beech", tangential: 11.9, radial: 5.5 }
+    };
+
+    const storageProfiles = {
+      indoor: {
+        low: 35,
+        high: 60,
+        helper: "Uses a typical indoor humidity range and equilibrium moisture estimate."
+      },
+      climateControlledShop: {
+        low: 35,
+        high: 55,
+        helper: "Assumes the shop stays fairly stable, similar to conditioned indoor space."
+      },
+      garage: {
+        low: 40,
+        high: 70,
+        helper: "Garage shops usually swing more with the seasons unless heavily conditioned."
+      },
+      basement: {
+        low: 45,
+        high: 65,
+        helper: "Basements are often steadier than garages, but still tend to run more humid."
+      },
+      shed: {
+        low: 50,
+        high: 80,
+        helper: "Unconditioned outdoor shops usually see the biggest seasonal humidity swings."
+      }
     };
 
     const emcTable = [
@@ -882,6 +916,17 @@
       return Number(value).toFixed(digits);
     }
 
+    function applyStorageProfile() {
+      const storageLocation = document.getElementById("storageLocation").value;
+      const profile = storageProfiles[storageLocation];
+
+      document.getElementById("rhLow").value = profile.low;
+      document.getElementById("rhHigh").value = profile.high;
+      document.getElementById("storageHelper").textContent = profile.helper;
+
+      calculate();
+    }
+
     function calculate() {
       const speciesKey = document.getElementById("species").value;
       const orientation = document.getElementById("orientation").value;
@@ -923,7 +968,9 @@
       document.getElementById(id).addEventListener("change", calculate);
     });
 
-    calculate();
+    document.getElementById("storageLocation").addEventListener("change", applyStorageProfile);
+
+    applyStorageProfile();
   </script>
 </body>
 </html>
