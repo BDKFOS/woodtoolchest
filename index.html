@@ -147,34 +147,15 @@
       position: relative;
       overflow: hidden;
       background:
-        radial-gradient(circle at top right, rgba(122,75,34,0.10), transparent 35%),
-        linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0));
+        linear-gradient(90deg, rgba(255,253,248,0.98) 0%, rgba(255,253,248,0.96) 40%, rgba(255,253,248,0.88) 68%, rgba(255,253,248,0.82) 100%),
+        url("images/homepage/workbench.jpg");
+      background-size: cover;
+      background-position: center right;
       border: 1px solid var(--line);
       border-radius: 26px;
       padding: 34px 30px;
       box-shadow: var(--shadow);
       margin-bottom: 26px;
-    }
-
-    .hero-panel::after {
-      content: "";
-      position: absolute;
-      right: -34px;
-      top: -6px;
-      width: 250px;
-      height: 250px;
-      background:
-        repeating-linear-gradient(
-          135deg,
-          rgba(122,75,34,0.07) 0px,
-          rgba(122,75,34,0.07) 10px,
-          rgba(122,75,34,0.02) 10px,
-          rgba(122,75,34,0.02) 20px
-        );
-      border-radius: 28px;
-      transform: rotate(8deg);
-      pointer-events: none;
-      opacity: 0.34;
     }
 
     .eyebrow {
@@ -242,22 +223,6 @@
       margin-bottom: 0;
     }
 
-    .hero-image {
-      margin-top: 22px;
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      box-shadow: 0 10px 24px rgba(32, 22, 16, 0.08);
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-image img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
     .hero-summary {
       display: grid;
       grid-template-columns: 1.04fr 0.96fr;
@@ -268,7 +233,7 @@
     }
 
     .summary-card {
-      background: rgba(255,255,255,0.75);
+      background: rgba(255,255,255,0.82);
       border: 1px solid rgba(221,211,199,0.95);
       border-radius: 18px;
       padding: 18px;
@@ -288,7 +253,7 @@
       border: 1px solid #d7cab9;
       border-radius: 14px;
       padding: 14px;
-      background: #fffaf3;
+      background: rgba(255,250,243,0.92);
     }
 
     .mini-point h3 {
@@ -434,6 +399,14 @@
       .two-col {
         grid-template-columns: 1fr;
       }
+
+      .hero-panel {
+        background-position: center center;
+        background:
+          linear-gradient(180deg, rgba(255,253,248,0.97) 0%, rgba(255,253,248,0.93) 52%, rgba(255,253,248,0.88) 100%),
+          url("images/homepage/workbench.jpg");
+        background-size: cover;
+      }
     }
 
     @media (max-width: 700px) {
@@ -492,10 +465,6 @@
         <p class="intro">
           WoodToolChest is built for woodworkers who want clear answers, useful tools, and help they can actually use in the shop. Whether you are flattening a cutting board, planning a compact workshop, or looking for your next build, the goal is simple: practical help without the fluff.
         </p>
-
-        <div class="hero-image">
-          <img src="/images/homepage/workbench.jpg" alt="Woodworking workbench with tools in a real shop">
-        </div>
 
         <div class="hero-summary">
           <div class="summary-card">
