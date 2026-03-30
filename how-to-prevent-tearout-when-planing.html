@@ -3,211 +3,455 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>How to Prevent Tearout When Planing | Wood Tool Chest</title>
+
+  <title>How to Prevent Tearout When Planing | WoodToolChest</title>
   <meta name="description" content="Learn how to prevent tearout when planing wood with simple tips on grain direction, light passes, sharp knives, and smart board prep." />
   <link rel="canonical" href="https://www.woodtoolchest.com/how-to-prevent-tearout-when-planing.html" />
+
   <style>
+    :root {
+      --bg: #f7f3ec;
+      --surface: #fffdf8;
+      --surface-2: #fbf7f1;
+      --text: #1f1a17;
+      --muted: #6b625a;
+      --line: #ddd3c7;
+      --accent: #7a4b22;
+      --accent-dark: #5f3919;
+      --max: 920px;
+      --radius: 16px;
+      --shadow: 0 10px 28px rgba(32, 22, 16, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f7f3ee;
-      color: #2f2419;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.7;
     }
 
-    header {
-      background: linear-gradient(135deg, #5c3d2e, #8b5e3c);
+    a {
+      color: var(--accent-dark);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .site-header {
       color: #fff;
-      padding: 48px 20px;
-      text-align: center;
-    }
-
-    header h1 {
-      margin: 0 0 12px;
-      font-size: 2.2rem;
-    }
-
-    header p {
-      max-width: 760px;
-      margin: 0 auto;
-      font-size: 1.05rem;
-    }
-
-    main {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 32px 20px 56px;
-    }
-
-    .hero-visual {
-      background: #fff;
-      border: 1px solid #e6ddd2;
-      border-radius: 14px;
       padding: 20px;
-      margin: 0 0 28px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      border-bottom: 1px solid #1d1510;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0) 45%),
+        repeating-linear-gradient(
+          to bottom,
+          rgba(255,255,255,0.035) 0px,
+          rgba(255,255,255,0.035) 1px,
+          rgba(0,0,0,0) 1px,
+          rgba(0,0,0,0) 42px
+        ),
+        linear-gradient(135deg, #3a281d 0%, #2b2018 45%, #241a14 100%);
+      box-shadow: inset 0 -1px 0 rgba(255,255,255,0.04);
     }
 
-    .board-demo {
+    .site-header-inner,
+    .container,
+    .footer-inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .brand-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.02)),
+        linear-gradient(135deg, #9f6a37, #7a4b22);
+      border: 1px solid rgba(255,255,255,0.14);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
+      flex: 0 0 34px;
+    }
+
+    .brand-mark-bars {
+      display: flex;
+      gap: 3px;
+      align-items: flex-end;
+    }
+
+    .brand-mark-bars span {
+      display: block;
+      width: 5px;
+      border-radius: 2px;
+      background: rgba(255,255,255,0.88);
+      box-shadow: inset 0 -1px 0 rgba(0,0,0,0.15);
+    }
+
+    .brand-mark-bars span:nth-child(1) { height: 12px; }
+    .brand-mark-bars span:nth-child(2) { height: 16px; }
+    .brand-mark-bars span:nth-child(3) { height: 10px; }
+
+    .brand-text-wrap {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 2px;
     }
 
-    .board-label {
-      font-weight: bold;
-      color: #5c3d2e;
-      margin-bottom: 6px;
+    .brand {
+      font-size: 1.55rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: #fff;
+      line-height: 1;
     }
 
-    .board {
-      height: 72px;
-      border-radius: 10px;
-      overflow: hidden;
-      border: 1px solid #d7cab9;
-      display: flex;
-      background: #eee;
+    .brand:hover {
+      color: #f1e4d7;
+      text-decoration: none;
     }
 
-    .grain-good-1 { background: #e7d4b5; flex: 1; }
-    .grain-good-2 { background: #d2b48c; flex: 1; }
-    .grain-good-3 { background: #c49a6c; flex: 1; }
-    .grain-good-4 { background: #b5835a; flex: 1; }
+    .brand-sub {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.72);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      line-height: 1.1;
+    }
 
-    .grain-bad-1,
-    .grain-bad-2,
-    .grain-bad-3,
-    .grain-bad-4 {
-      flex: 1;
+    .hero {
+      padding: 34px 0 24px;
+    }
+
+    .hero-panel {
       position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top right, rgba(122,75,34,0.10), transparent 35%),
+        linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0));
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
     }
 
-    .grain-bad-1 { background: #e7d4b5; }
-    .grain-bad-2 { background: #d2b48c; }
-    .grain-bad-3 { background: #c49a6c; }
-    .grain-bad-4 { background: #b5835a; }
-
-    .grain-bad-2::after,
-    .grain-bad-3::after {
+    .hero-panel::after {
       content: "";
       position: absolute;
-      right: 12px;
-      top: 10px;
-      width: 22px;
-      height: 50px;
-      background: rgba(90, 45, 15, 0.22);
-      border-radius: 50% 25% 50% 25%;
-      transform: rotate(18deg);
+      right: -34px;
+      top: -6px;
+      width: 230px;
+      height: 230px;
+      background:
+        repeating-linear-gradient(
+          135deg,
+          rgba(122,75,34,0.07) 0px,
+          rgba(122,75,34,0.07) 10px,
+          rgba(122,75,34,0.02) 10px,
+          rgba(122,75,34,0.02) 20px
+        );
+      border-radius: 28px;
+      transform: rotate(8deg);
+      pointer-events: none;
+      opacity: 0.45;
     }
 
-    section {
-      background: #fff;
-      border: 1px solid #e6ddd2;
-      border-radius: 14px;
-      padding: 24px;
-      margin-bottom: 22px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    .eyebrow {
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1, h2, h3 {
+      line-height: 1.2;
+      margin-top: 0;
+      color: #1e1814;
+    }
+
+    h1 {
+      font-size: 2.35rem;
+      margin-bottom: 14px;
+      position: relative;
+      z-index: 1;
     }
 
     h2 {
-      margin-top: 0;
-      color: #5c3d2e;
+      font-size: 1.72rem;
+      margin: 0 0 14px;
     }
 
-    ul, ol {
-      padding-left: 22px;
+    h3 {
+      font-size: 1.18rem;
+      margin: 0 0 10px;
+    }
+
+    p {
+      margin: 0 0 18px;
+    }
+
+    .intro {
+      font-size: 1.05rem;
+      color: #2b241f;
+      max-width: 760px;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 0;
+    }
+
+    .hero-summary {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .summary-card {
+      background: rgba(255,255,255,0.75);
+      border: 1px solid rgba(221,211,199,0.95);
+      border-radius: 18px;
+      padding: 18px;
+      backdrop-filter: blur(2px);
+    }
+
+    .summary-card p:last-child,
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .mini-points {
+      display: grid;
+      gap: 12px;
+    }
+
+    .mini-point {
+      border: 1px solid #d7cab9;
+      border-radius: 14px;
+      padding: 14px;
+      background: #fffaf3;
+    }
+
+    .mini-point h3 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .section {
+      margin: 30px 0;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      margin: 24px 0;
+      box-shadow: 0 8px 24px rgba(32, 22, 16, 0.03);
+    }
+
+    .checklist,
+    .steps {
+      padding-left: 20px;
+      margin: 0;
+    }
+
+    .checklist li,
+    .steps li {
+      margin-bottom: 10px;
+    }
+
+    .quick-answer {
+      border-left: 5px solid var(--accent);
+      padding: 18px 18px 18px 20px;
+      background: #f4ece3;
+      border-radius: 12px;
+    }
+
+    .muted {
+      color: var(--muted);
     }
 
     .tip-box {
-      background: #efe4d6;
-      border-left: 5px solid #8b5e3c;
       padding: 16px 18px;
-      border-radius: 8px;
-      margin-top: 18px;
+      border-radius: 12px;
+      margin: 18px 0;
+      background: #efe7dc;
+      border: 1px solid #d7c8b7;
+    }
+
+    .subcard-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 18px 0 0;
+    }
+
+    .subcard {
+      border: 1px solid #d8c9b8;
+      border-radius: 14px;
+      background: #fffaf3;
+      padding: 16px;
+    }
+
+    .subcard h3 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .related-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .related-links li {
+      margin-bottom: 0;
     }
 
     .related-links a {
       display: block;
-      margin: 10px 0;
-      color: #5c3d2e;
-      text-decoration: none;
-      font-weight: bold;
+      background: linear-gradient(180deg, #fffdf8, #fbf7f1);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      font-weight: 700;
+      color: #2c221a;
+      box-shadow: 0 6px 18px rgba(32, 22, 16, 0.03);
     }
 
-    .related-links a:hover {
-      text-decoration: underline;
+    .related-links a span {
+      display: block;
+      color: var(--muted);
+      font-weight: 400;
+      font-size: 0.92rem;
+      margin-top: 6px;
     }
 
-    footer {
-      text-align: center;
-      padding: 24px 20px 40px;
-      color: #6d5a49;
-      font-size: 0.95rem;
+    .footer {
+      margin-top: 56px;
+      padding: 28px 20px 40px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      background: #f3ede4;
     }
 
-    @media (max-width: 640px) {
-      header h1 {
-        font-size: 1.8rem;
+    @media (max-width: 860px) {
+      .hero-summary,
+      .subcard-grid,
+      .related-links {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      h1 {
+        font-size: 1.95rem;
       }
 
-      main {
-        padding: 24px 16px 44px;
+      h2 {
+        font-size: 1.45rem;
       }
 
-      section,
-      .hero-visual {
-        padding: 18px;
-      }
-
-      .board {
-        height: 60px;
+      .card,
+      .hero-panel {
+        padding: 20px;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>How to Prevent Tearout When Planing</h1>
-    <p>
-      Tearout can ruin an otherwise great board in seconds. The good news is that a few simple habits can dramatically reduce it, whether you are using a planer, jointer, or hand plane.
-    </p>
-  </header>
-
-  <main>
-    <div class="hero-visual">
-      <div class="board-demo">
-        <div>
-          <div class="board-label">Better Result: planing with favorable grain direction</div>
-          <div class="board" aria-label="Example of smoother planing direction">
-            <div class="grain-good-1"></div>
-            <div class="grain-good-2"></div>
-            <div class="grain-good-3"></div>
-            <div class="grain-good-4"></div>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <div class="brand-row">
+        <div class="brand-mark" aria-hidden="true">
+          <div class="brand-mark-bars">
+            <span></span><span></span><span></span>
           </div>
         </div>
-
-        <div>
-          <div class="board-label">Riskier Result: reversing grain can cause tearout</div>
-          <div class="board" aria-label="Example showing tearout-prone grain">
-            <div class="grain-bad-1"></div>
-            <div class="grain-bad-2"></div>
-            <div class="grain-bad-3"></div>
-            <div class="grain-bad-4"></div>
-          </div>
+        <div class="brand-text-wrap">
+          <a class="brand" href="/">WoodToolChest</a>
+          <div class="brand-sub">Practical woodworking guides, tools, and shop setup</div>
         </div>
       </div>
     </div>
+  </header>
 
-    <section>
+  <main class="container">
+    <section class="hero">
+      <div class="hero-panel">
+        <p class="eyebrow">Milling Help</p>
+        <h1>How to Prevent Tearout When Planing</h1>
+        <p class="intro">
+          Tearout can ruin an otherwise great board in seconds. The good news is that a few simple habits can dramatically reduce it, whether you are using a planer, jointer, or hand plane.
+        </p>
+
+        <div class="hero-summary">
+          <div class="summary-card">
+            <h3>What tearout usually means</h3>
+            <p>Tearout happens when wood fibers lift and break below the surface instead of being sliced cleanly. It shows up most often with reversing grain, figured lumber, dull knives, and overly aggressive cuts.</p>
+          </div>
+
+          <div class="summary-card">
+            <div class="mini-points">
+              <div class="mini-point">
+                <h3>Biggest factor</h3>
+                <p class="muted">Grain direction is usually the first thing to check before changing anything else.</p>
+              </div>
+
+              <div class="mini-point">
+                <h3>Best habit</h3>
+                <p class="muted">Take lighter passes and inspect the board instead of trying to finish in one shot.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card quick-answer">
+      <h2>Quick answer</h2>
       <p>
-        Tearout happens when wood fibers lift and break below the surface instead of being sliced cleanly. It is especially common with figured lumber, reversing grain, dull knives, and overly aggressive cuts.
+        To prevent tearout when planing, pay attention to grain direction, take lighter passes, keep your knives sharp, and slow down on figured or reversing grain. A clean reference face and patient milling usually beat aggressive cuts.
       </p>
+    </section>
+
+    <section class="section">
       <p>
         If you have ever pulled a board out of the planer and found ugly divots, chipped grain, or fuzzy broken patches, that is tearout. The goal is to help the cutter slice the fibers cleanly before they can rip loose.
       </p>
     </section>
 
-    <section>
+    <section class="section">
       <h2>1. Pay Attention to Grain Direction</h2>
       <p>
         This is the biggest factor. Look at the edge or face of the board and try to read which way the grain is rising. In general, you want the cutter to move with the grain rather than digging into rising fibers.
@@ -217,7 +461,7 @@
       </p>
     </section>
 
-    <section>
+    <section class="section">
       <h2>2. Take Lighter Passes</h2>
       <p>
         Heavy passes are much more likely to yank fibers out of the surface. When a board looks tricky, reduce the depth of cut and sneak up on the final thickness.
@@ -227,7 +471,7 @@
       </p>
     </section>
 
-    <section>
+    <section class="section">
       <h2>3. Use Sharp Knives or Blades</h2>
       <p>
         Dull planer knives crush and pull fibers instead of cutting them. If you are getting more tearout than usual, especially across multiple boards, dull knives may be part of the problem.
@@ -237,7 +481,7 @@
       </p>
     </section>
 
-    <section>
+    <section class="section">
       <h2>4. Start With a Clean, Flat Reference Face</h2>
       <p>
         A twisted or cupped board can feed unevenly, which makes the cutter interact with the grain inconsistently. Flattening one face first, whether with a jointer, sled, or router flattening jig, can improve your results.
@@ -247,7 +491,7 @@
       </p>
     </section>
 
-    <section>
+    <section class="section">
       <h2>5. Watch Problem Woods Closely</h2>
       <p>
         Some woods are simply more prone to tearout than others. Highly figured maple, curly grain, knotty stock, and boards with reversing grain often need extra care.
@@ -261,23 +505,25 @@
       </div>
     </section>
 
-    <section>
+    <section class="section">
       <h2>6. Don’t Chase Perfection in One Pass</h2>
       <p>
         It is tempting to hog off material quickly, especially when you are milling rough lumber. But boards with difficult grain often reward patience.
       </p>
-      <ol>
-        <li>Take a light pass</li>
-        <li>Inspect the surface</li>
-        <li>Flip direction if needed</li>
-        <li>Repeat gradually</li>
+
+      <ol class="steps">
+        <li>Take a light pass.</li>
+        <li>Inspect the surface.</li>
+        <li>Flip direction if needed.</li>
+        <li>Repeat gradually.</li>
       </ol>
+
       <p>
         This approach gives you more control and usually leaves a much cleaner surface.
       </p>
     </section>
 
-    <section>
+    <section class="section">
       <h2>7. Sanding Can Help, But It Won’t Fix Deep Tearout</h2>
       <p>
         Very shallow tearout or fuzzy grain can often be cleaned up with sanding. Deep tearout, though, usually means you either need to keep planing carefully or accept a thinner finished board.
@@ -287,19 +533,31 @@
       </p>
     </section>
 
-    <section>
+    <section class="section">
       <h2>Simple Tearout Prevention Checklist</h2>
-      <ul>
-        <li>Read the grain before planing</li>
-        <li>Feed from the more favorable direction</li>
-        <li>Take lighter passes</li>
-        <li>Keep knives sharp</li>
-        <li>Flatten unstable boards first</li>
-        <li>Slow down on figured or reversing grain</li>
-      </ul>
+
+      <div class="subcard-grid">
+        <div class="subcard">
+          <h3>Before planing</h3>
+          <ul class="checklist">
+            <li>read the grain before planing</li>
+            <li>feed from the more favorable direction</li>
+            <li>keep knives sharp</li>
+          </ul>
+        </div>
+
+        <div class="subcard">
+          <h3>During the cut</h3>
+          <ul class="checklist">
+            <li>take lighter passes</li>
+            <li>flatten unstable boards first</li>
+            <li>slow down on figured or reversing grain</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
-    <section>
+    <section class="section">
       <h2>Final Thoughts</h2>
       <p>
         Tearout is frustrating, but it is also normal. Even experienced woodworkers run into it. The key is learning to spot risky grain, lighten your cuts, and work with the board instead of forcing it.
@@ -309,17 +567,42 @@
       </p>
     </section>
 
-    <section class="related-links">
+    <section class="section">
       <h2>Related Guides</h2>
-      <a href="/how-to-flatten-a-cutting-board.html">How to Flatten a Cutting Board</a>
-      <a href="/router-flattening-jig.html">Router Flattening Jig Guide</a>
-      <a href="/dust-collection-for-beginners.html">Dust Collection for Beginners</a>
-      <a href="/small-workshop-layout-guide.html">Small Workshop Layout Guide</a>
+      <ul class="related-links">
+        <li>
+          <a href="/how-to-flatten-a-cutting-board.html">
+            How to Flatten a Cutting Board
+            <span>Helpful if the board already has unevenness, cup, or twist that needs more than just clean planing.</span>
+          </a>
+        </li>
+        <li>
+          <a href="/router-flattening-jig.html">
+            Router Flattening Jig Guide
+            <span>A practical option when a board is too wide, awkward, or unstable for easier milling methods.</span>
+          </a>
+        </li>
+        <li>
+          <a href="/dust-collection-for-beginners.html">
+            Dust Collection for Beginners
+            <span>Planing and cleanup create more chips and fine dust than many beginners expect.</span>
+          </a>
+        </li>
+        <li>
+          <a href="/small-workshop-layout-guide.html">
+            Small Workshop Layout Guide
+            <span>Useful if you are trying to set up a shop that handles milling and cleanup more comfortably.</span>
+          </a>
+        </li>
+      </ul>
     </section>
   </main>
 
-  <footer>
-    <p>Wood Tool Chest</p>
+  <footer class="footer">
+    <div class="footer-inner">
+      <p><strong>WoodToolChest</strong> gives practical woodworking guides, shop setup advice, and tool help for real-world builds.</p>
+      <p class="muted">© 2026 WoodToolChest</p>
+    </div>
   </footer>
 </body>
 </html>
