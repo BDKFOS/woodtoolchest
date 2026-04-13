@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G1ZT9QNFQT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-G1ZT9QNFQT');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Board Foot Calculator | Lumber Estimator for Woodworking Projects | WoodToolChest</title>
+  <meta name="description" content="Use this board foot calculator to estimate lumber needs, project waste, milling loss, and material cost. Great for cutting boards, tables, shelves, panels, and general woodworking builds.">
+  <link rel="canonical" href="https://www.woodtoolchest.com/board-foot-calculator.html">
+
+  <meta property="og:title" content="Board Foot Calculator | Lumber Estimator for Woodworking Projects | WoodToolChest">
+  <meta property="og:description" content="Estimate board feet, lumber cost, waste allowance, and real shop material needs for woodworking projects.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.woodtoolchest.com/board-foot-calculator.html">
+  <meta property="og:site_name" content="WoodToolChest">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Board Foot Calculator | Lumber Estimator for Woodworking Projects">
+  <meta name="twitter:description" content="Calculate board feet, add waste and milling allowance, and estimate lumber cost for real woodworking builds.">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Board Foot Calculator",
+    "url": "https://www.woodtoolchest.com/board-foot-calculator.html",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Web",
+    "description": "A woodworking board foot calculator that estimates lumber quantity, waste allowance, milling loss, and project cost."
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a board foot?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A board foot is a unit of lumber volume equal to 144 cubic inches, which is usually expressed as 1 inch thick by 12 inches wide by 12 inches long."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you calculate board feet?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Board feet are calculated as thickness in inches times width in inches times length in inches, divided by 144. If length is entered in feet, use thickness times width times length in feet, divided by 12."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Should I add extra lumber for waste?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Most projects need extra lumber for defects, cutting waste, grain selection, milling loss, and mistakes. A practical allowance often falls between 10% and 30%, depending on the project and how rough the stock is."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is rough lumber measured the same as S4S lumber?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The board foot formula is the same, but rough lumber often requires more allowance because jointing, planing, and trimming reduce usable material."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #f7f3ec;
+      --surface: #fffdf8;
+      --surface-2: #fbf7f1;
+      --text: #1f1a17;
+      --muted: #6b625a;
+      --line: #ddd3c7;
+      --accent: #7a4b22;
+      --accent-dark: #5f3919;
+      --max: 980px;
+      --radius: 16px;
+      --shadow: 0 10px 28px rgba(32, 22, 16, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--accent-dark);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .site-header {
+      color: #fff;
+      padding: 20px;
+      border-bottom: 1px solid #1d1510;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0) 45%),
+        repeating-linear-gradient(
+          to bottom,
+          rgba(255,255,255,0.035) 0px,
+          rgba(255,255,255,0.035) 1px,
+          rgba(0,0,0,0) 1px,
+          rgba(0,0,0,0) 42px
+        ),
+        linear-gradient(135deg, #3a281d 0%, #2b2018 45%, #241a14 100%);
+      box-shadow: inset 0 -1px 0 rgba(255,255,255,0.04);
+    }
+
+    .site-header-inner,
+    .container,
+    .footer-inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .brand-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.02)),
+        linear-gradient(135deg, #9f6a37, #7a4b22);
+      border: 1px solid rgba(255,255,255,0.14);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
+      flex: 0 0 34px;
+    }
+
+    .brand-mark-bars {
+      display: flex;
+      gap: 3px;
+      align-items: flex-end;
+    }
+
+    .brand-mark-bars span {
+      display: block;
+      width: 5px;
+      border-radius: 2px;
+      background: rgba(255,255,255,0.88);
+      box-shadow: inset 0 -1px 0 rgba(0,0,0,0.15);
+    }
+
+    .brand-mark-bars span:nth-child(1) { height: 12px; }
+    .brand-mark-bars span:nth-child(2) { height: 16px; }
+    .brand-mark-bars span:nth-child(3) { height: 10px; }
+
+    .brand-text-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand {
+      font-size: 1.55rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .brand:hover {
+      color: #f1e4d7;
+      text-decoration: none;
+    }
+
+    .brand-sub {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.72);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      line-height: 1.1;
+    }
+
+    .hero {
+      padding: 34px 0 24px;
+    }
+
+    .hero-panel {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top right, rgba(122,75,34,0.10), transparent 35%),
+        linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0));
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+
+    .hero-panel::after {
+      content: "";
+      position: absolute;
+      right: -34px;
+      top: -6px;
+      width: 230px;
+      height: 230px;
+      background:
+        repeating-linear-gradient(
+          135deg,
+          rgba(122,75,34,0.07) 0px,
+          rgba(122,75,34,0.07) 10px,
+          rgba(122,75,34,0.02) 10px,
+          rgba(122,75,34,0.02) 20px
+        );
+      border-radius: 28px;
+      transform: rotate(8deg);
+      pointer-events: none;
+      opacity: 0.45;
+    }
+
+    .eyebrow {
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1, h2, h3 {
+      line-height: 1.2;
+      margin-top: 0;
+      color: #1e1814;
+    }
+
+    h1 {
+      font-size: 2.35rem;
+      margin-bottom: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    h2 {
+      font-size: 1.72rem;
+      margin: 0 0 14px;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      margin: 0 0 10px;
+    }
+
+    p {
+      margin: 0 0 18px;
+    }
+
+    .intro {
+      font-size: 1.05rem;
+      color: #2b241f;
+      max-width: 760px;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 0;
+    }
+
+    .hero-summary {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .summary-card {
+      background: rgba(255,255,255,0.75);
+      border: 1px solid rgba(221,211,199,0.95);
+      border-radius: 18px;
+      padding: 18px;
+      backdrop-filter: blur(2px);
+    }
+
+    .summary-card p:last-child,
+    .card p:last-child,
+    .helper:last-child {
+      margin-bottom: 0;
+    }
+
+    .mini-points {
+      display: grid;
+      gap: 12px;
+    }
+
+    .mini-point {
+      border: 1px solid #d7cab9;
+      border-radius: 14px;
+      padding: 14px;
+      background: #fffaf3;
+    }
+
+    .mini-point h3 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .section {
+      margin: 30px 0;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      margin: 24px 0;
+      box-shadow: 0 8px 24px rgba(32, 22, 16, 0.03);
+    }
+
+    .quick-answer {
+      border-left: 5px solid var(--accent);
+      padding: 18px 18px 18px 20px;
+      background: #f4ece3;
+      border-radius: 12px;
+    }
+
+    .mode-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .mode-tab {
+      border: 1px solid #d8c9b8;
+      background: #fffaf3;
+      color: #2b2018;
+      border-radius: 999px;
+      padding: 10px 14px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+    }
+
+    .mode-tab:hover {
+      transform: translateY(-1px);
+      border-color: #b98f69;
+    }
+
+    .mode-tab.active {
+      background: #7a4b22;
+      color: #fff;
+      border-color: #7a4b22;
+    }
+
+    .tool-grid {
+      display: grid;
+      grid-template-columns: 1.06fr 0.94fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .field {
+      display: grid;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      font-weight: 700;
+      color: #2c221a;
+      font-size: 0.96rem;
+    }
+
+    .field input,
+    .field select {
+      width: 100%;
+      padding: 12px 13px;
+      border: 1px solid #d8c9b8;
+      border-radius: 12px;
+      background: #fffdf8;
+      color: var(--text);
+      font: inherit;
+    }
+
+    .field input:focus,
+    .field select:focus {
+      outline: 2px solid rgba(122,75,34,0.14);
+      border-color: #b98f69;
+    }
+
+    .helper {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-top: -2px;
+      margin-bottom: 0;
+    }
+
+    .mode-panel {
+      display: none;
+    }
+
+    .mode-panel.active {
+      display: block;
+    }
+
+    .inline-toggle-grid {
+      display: grid;
+      gap: 10px;
+      margin: 10px 0 18px;
+    }
+
+    .toggle-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 12px;
+      border: 1px solid #d8c9b8;
+      border-radius: 12px;
+      background: #fffaf3;
+    }
+
+    .toggle-row input {
+      margin-top: 3px;
+      accent-color: #7a4b22;
+    }
+
+    .toggle-row strong {
+      display: block;
+      margin-bottom: 2px;
+      color: #2b2018;
+    }
+
+    .result-card {
+      background: linear-gradient(180deg, #fffdf8, #fbf7f1);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 8px 24px rgba(32, 22, 16, 0.03);
+      position: sticky;
+      top: 18px;
+    }
+
+    .result-number {
+      font-size: 2.1rem;
+      font-weight: 700;
+      line-height: 1.05;
+      color: #2b2018;
+      margin-bottom: 6px;
+    }
+
+    .result-sub {
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .result-metrics {
+      display: grid;
+      gap: 10px;
+      margin: 16px 0;
+    }
+
+    .metric {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 11px 12px;
+      border: 1px solid #d8c9b8;
+      border-radius: 12px;
+      background: #fffaf3;
+    }
+
+    .metric strong {
+      color: #2b2018;
+      text-align: right;
+    }
+
+    .tip-box,
+    .warning-box,
+    .note-box {
+      padding: 16px 18px;
+      border-radius: 12px;
+      margin: 18px 0;
+    }
+
+    .tip-box {
+      background: #efe7dc;
+      border: 1px solid #d7c8b7;
+    }
+
+    .warning-box {
+      background: #f7ebe6;
+      border: 1px solid #e3c2b7;
+    }
+
+    .note-box {
+      background: #f5efe7;
+      border: 1px solid #ddcfbf;
+    }
+
+    .subcard-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 18px 0 0;
+    }
+
+    .subcard-grid.three-up {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .subcard {
+      border: 1px solid #d8c9b8;
+      border-radius: 14px;
+      background: #fffaf3;
+      padding: 16px;
+    }
+
+    .subcard h3 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .checklist,
+    .steps,
+    .related-links {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .checklist li,
+    .steps li {
+      margin-bottom: 10px;
+    }
+
+    .related-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .related-links li {
+      margin-bottom: 0;
+    }
+
+    .related-links a {
+      display: block;
+      background: linear-gradient(180deg, #fffdf8, #fbf7f1);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      font-weight: 700;
+      color: #2c221a;
+      box-shadow: 0 6px 18px rgba(32, 22, 16, 0.03);
+    }
+
+    .related-links a span {
+      display: block;
+      color: var(--muted);
+      font-weight: 400;
+      font-size: 0.92rem;
+      margin-top: 6px;
+    }
+
+    .footer {
+      margin-top: 56px;
+      padding: 28px 20px 40px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      background: #f3ede4;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 900px) {
+      .hero-summary,
+      .tool-grid,
+      .field-grid,
+      .subcard-grid,
+      .subcard-grid.three-up,
+      .related-links {
+        grid-template-columns: 1fr;
+      }
+
+      .result-card {
+        position: static;
+      }
+    }
+
+    @media (max-width: 700px) {
+      h1 {
+        font-size: 1.95rem;
+      }
+
+      h2 {
+        font-size: 1.45rem;
+      }
+
+      .card,
+      .hero-panel {
+        padding: 20px;
+      }
+
+      .mode-tabs {
+        flex-direction: column;
+      }
+
+      .mode-tab {
+        width: 100%;
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <div class="brand-row">
+        <div class="brand-mark" aria-hidden="true">
+          <div class="brand-mark-bars">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+        <div class="brand-text-wrap">
+          <a class="brand" href="/">WoodToolChest</a>
+          <div class="brand-sub">Practical woodworking guides, tools, and shop setup</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-panel">
+        <p class="eyebrow">Interactive Tool</p>
+        <h1>Board Foot Calculator</h1>
+        <p class="intro">
+          Use this board foot calculator to estimate lumber volume, add realistic waste, account for milling loss, and get a better feel for what your project may actually require before you buy wood. It works well for furniture parts, cutting boards, glue-ups, shelves, panels, and general shop planning.
+        </p>
+
+        <div class="hero-summary">
+          <div class="summary-card">
+            <h3>What this helps with</h3>
+            <p>Figuring out how much lumber you need before heading to the hardwood dealer, pricing a build, or realizing too late that your parts list did not include waste, trimming, or bad grain.</p>
+          </div>
+
+          <div class="summary-card">
+            <div class="mini-points">
+              <div class="mini-point">
+                <h3>Best use</h3>
+                <p class="muted">Project planning, rough lumber buying, cost estimates, cutting board glue-ups, shelves, tables, panels, and batch builds.</p>
+              </div>
+
+              <div class="mini-point">
+                <h3>Keep in mind</h3>
+                <p class="muted">The formula is simple, but real projects need extra room for defects, milling, mistakes, and grain selection. This tool helps cover that reality.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card quick-answer">
+      <h2>Quick answer</h2>
+      <p>
+        A board foot is 144 cubic inches of lumber. The base formula is simple, but most woodworkers should buy more than the bare minimum. In real shops, the useful number is usually your calculated board footage plus waste, milling loss, and a little breathing room.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Calculator</h2>
+
+      <div class="mode-tabs" role="tablist" aria-label="Calculator modes">
+        <button class="mode-tab active" id="tab-simple" data-mode="simple" type="button" role="tab" aria-selected="true">Simple board foot</button>
+        <button class="mode-tab" id="tab-project" data-mode="project" type="button" role="tab" aria-selected="false">Project estimator</button>
+        <button class="mode-tab" id="tab-shop" data-mode="shop" type="button" role="tab" aria-selected="false">Real shop mode</button>
+      </div>
+
+      <div class="tool-grid">
+        <div>
+          <section class="mode-panel active" id="panel-simple" aria-labelledby="tab-simple">
+            <div class="field-grid">
+              <div class="field">
+                <label for="simpleThickness">Thickness</label>
+                <input id="simpleThickness" type="number" min="0.125" max="12" step="0.125" value="1">
+                <p class="helper">Enter actual thickness in inches.</p>
+              </div>
+
+              <div class="field">
+                <label for="simpleWidth">Width</label>
+                <input id="simpleWidth" type="number" min="0.25" max="48" step="0.125" value="6">
+                <p class="helper">Enter actual width in inches.</p>
+              </div>
+            </div>
+
+            <div class="field-grid">
+              <div class="field">
+                <label for="simpleLength">Length</label>
+                <input id="simpleLength" type="number" min="1" max="240" step="0.25" value="48">
+                <p class="helper">Enter length in inches.</p>
+              </div>
+
+              <div class="field">
+                <label for="simpleQty">Quantity</label>
+                <input id="simpleQty" type="number" min="1" max="500" step="1" value="4">
+                <p class="helper">How many identical pieces you need.</p>
+              </div>
+            </div>
+
+            <div class="field-grid">
+              <div class="field">
+                <label for="simplePrice">Price per board foot</label>
+                <input id="simplePrice" type="number" min="0" max="200" step="0.01" value="9.50">
+                <p class="helper">Optional, but useful for quick cost checks.</p>
+              </div>
+
+              <div class="field">
+                <label for="simpleWaste">Waste allowance (%)</label>
+                <input id="simpleWaste" type="number" min="0" max="100" step="1" value="15">
+                <p class="helper">A practical starting point for basic buying margin.</p>
+              </div>
+            </div>
+
+            <div class="note-box">
+              <strong>Best for:</strong> a single part size, repeated pieces, quick pricing, and fast lumber estimates when you already know your dimensions.
+            </div>
+          </section>
+
+          <section class="mode-panel" id="panel-project" aria-labelledby="tab-project">
+            <div class="field-grid">
+              <div class="field">
+                <label for="projectType">Project type</label>
+                <select id="projectType">
+                  <option value="cuttingBoard">Cutting board / serving board</option>
+                  <option value="tabletop">Tabletop / desk top</option>
+                  <option value="shelves">Shelves</option>
+                  <option value="panelGlueUp">Panel glue-up</option>
+                  <option value="general">General project</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="projectThickness">Finished thickness</label>
+                <input id="projectThickness" type="number" min="0.25" max="8" step="0.125" value="1.5">
+                <p class="helper">Finished target thickness in inches.</p>
+              </div>
+            </div>
+
+            <div class="field-grid">
+              <div class="field">
+                <label for="projectWidth">Finished width</label>
+                <input id="projectWidth" type="number" min="1" max="96" step="0.125" value="12">
+                <p class="helper">Final project width in inches.</p>
+              </div>
+
+              <div class="field">
+                <label for="projectLength">Finished length</label>
+                <input id="projectLength" type="number" min="1" max="240" step="0.125" value="18">
+                <p class="helper">Final project length in inches.</p>
+              </div>
+            </div>
+
+            <div class="field-grid">
+              <div class="field">
+                <label for="projectQty">Quantity</label>
+                <input id="projectQty" type="number" min="1" max="200" step="1" value="2">
+                <p class="helper">Number of finished pieces.</p>
+              </div>
+
+              <div class="field">
+                <label for="projectPrice">Price per board foot</label>
+                <input id="projectPrice" type="number" min="0" max="200" step="0.01" value="12.00">
+                <p class="helper">Optional for estimating lumber cost.</p>
+              </div>
+            </div>
+
+            <div class="field-grid">
+              <div class="field">
+                <label for="projectWaste">Waste allowance (%)</label>
+                <input id="projectWaste" type="number" min="0" max="100" step="1" value="20">
+                <p class="helper">Covers trimming, defects, grain choice, and mistakes.</p>
+              </div>
+
+              <div class="field">
+                <label for="projectExtra">Extra safety margin (%)</label>
+                <input id="projectExtra" type="number" min="0" max="100" step="1" value="5">
+                <p class="helper">Use this if you hate coming up short.</p>
+              </div>
+            </div>
+
+            <div class="tip-box" id="projectTipBox">
+              Project presets lightly influence suggested advice, not the formula itself. The goal is a more realistic shopping estimate, not fake precision.
+            </div>
+          </section>
+
+          <section class="mode-panel" id="panel-shop" aria-labelledby="tab-shop">
+            <div class="field-grid">
+              <div class="field">
+                <label for="shopThickness">Rough thickness</label>
+                <select id="shopThickness">
+                  <option value="1">4/4 rough</option>
+                  <option value="1.25">5/4 rough</option>
+                  <option value="1.5">6/4 rough</option>
+                  <option value="2">8/4 rough</option>
+                  <option value="3">12/4 rough</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="shopBoardWidth">Average board width</label>
+                <input id="shopBoardWidth" type="number" min="2" max="20" step="0.125" value="7">
+                <p class="helper">Average width of the rough boards you expect to buy.</p>
+              </div>
+            </div>
+
+            <div class="field-grid">
+              <div class="field">
+                <label for="shopUsableLength">Usable board length</label>
+                <input id="shopUsableLength" type="number" min="12" max="240" step="1" value="72">
+                <p class="helper">Average usable length in inches after cutting around defects.</p>
+              </div>
+
+              <div class="field">
+                <label for="shopTargetBF">Finished board feet needed</label>
+                <input id="shopTargetBF" type="number" min="0.1" max="1000" step="0.1" value="12">
+                <p class="helper">How much finished material your project truly needs.</p>
+              </div>
+            </div>
+
+            <div class="field-grid">
+              <div class="field">
+                <label for="shopPrice">Price per board foot</label>
+                <input id="shopPrice" type="number" min="0" max="200" step="0.01" value="8.75">
+                <p class="helper">For rough lumber cost estimating.</p>
+              </div>
+
+              <div class="field">
+                <label for="shopKerf">Estimated saw kerf / trimming loss (%)</label>
+                <input id="shopKerf" type="number" min="0" max="100" step="1" value="8">
+                <p class="helper">Captures repeated cuts and trim waste.</p>
+              </div>
+            </div>
+
+            <div class="inline-toggle-grid">
+              <label class="toggle-row">
+                <input id="toggleMilling" type="checkbox" checked>
+                <span>
+                  <strong>Include jointing and planing loss</strong>
+                  <span class="muted">Good for rough stock that still needs flattening and cleanup.</span>
+                </span>
+              </label>
+
+              <label class="toggle-row">
+                <input id="toggleDefects" type="checkbox" checked>
+                <span>
+                  <strong>Include defect and grain-selection allowance</strong>
+                  <span class="muted">Useful when you care about appearance, matching, or working around knots and checks.</span>
+                </span>
+              </label>
+
+              <label class="toggle-row">
+                <input id="toggleBuffer" type="checkbox" checked>
+                <span>
+                  <strong>Include extra one-board buffer</strong>
+                  <span class="muted">A small safety margin that often saves a second lumber-yard trip.</span>
+                </span>
+              </label>
+            </div>
+
+            <div class="warning-box">
+              <strong>Real shop mode:</strong> this mode is intentionally more conservative. It tries to reflect what often happens after milling, trimming, and rejecting ugly parts, not just what the clean formula says on paper.
+            </div>
+          </section>
+        </div>
+
+        <aside class="result-card" aria-live="polite">
+          <h3 id="resultTitle">Estimated lumber needed</h3>
+          <div class="result-number" id="mainResultDisplay">0.00 BF</div>
+          <p class="result-sub" id="subResultDisplay">Board feet including your current allowances.</p>
+
+          <div class="result-metrics">
+            <div class="metric">
+              <span>Base board feet</span>
+              <strong id="baseBFDisplay">0.00 BF</strong>
+            </div>
+            <div class="metric">
+              <span>Recommended purchase</span>
+              <strong id="recommendedBFDisplay">0.00 BF</strong>
+            </div>
+            <div class="metric">
+              <span>Estimated lumber cost</span>
+              <strong id="costDisplay">$0.00</strong>
+            </div>
+            <div class="metric">
+              <span id="metricFourLabel">Waste + allowance</span>
+              <strong id="allowanceDisplay">0%</strong>
+            </div>
+          </div>
+
+          <div class="tip-box" id="adviceBox">
+            Start with the clean formula, then buy like a woodworker, not like a robot.
+          </div>
+
+          <p class="helper" id="secondaryHelper">
+            Board foot formula: thickness × width × length ÷ 144
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>What the result means</h2>
+      <p>
+        The calculator gives you a base board footage number plus a more realistic purchase estimate. That second number is usually the one that matters most in the real world.
+      </p>
+
+      <div class="subcard-grid">
+        <div class="subcard">
+          <h3>Base board feet</h3>
+          <p class="muted">This is the pure math from your dimensions before real-world shop losses are added.</p>
+        </div>
+
+        <div class="subcard">
+          <h3>Recommended purchase</h3>
+          <p class="muted">This adds waste, milling, trimming, defects, and a practical safety margin depending on the mode you are using.</p>
+        </div>
+      </div>
+
+      <div class="note-box">
+        <strong>Important:</strong> the best number for buying lumber is usually not the minimum. If you are matching grain, building with rough lumber, or want the freedom to reject ugly pieces, you should lean toward the higher estimate.
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>How to use this tool well</h2>
+      <ol class="steps">
+        <li>Start with your finished dimensions or your actual part sizes.</li>
+        <li>Use the simple mode for quick math, the project mode for realistic shopping, and the real shop mode when rough lumber and milling losses are part of the job.</li>
+        <li>Enter a price per board foot if you want a rough material cost before buying.</li>
+        <li>Add enough allowance for defects, trimming, and grain choice; especially for visible furniture parts.</li>
+        <li>When in doubt, buy a little extra. A second trip is usually more expensive than one extra board.</li>
+      </ol>
+    </section>
+
+    <section class="section">
+      <h2>When woodworkers usually come up short</h2>
+
+      <div class="subcard-grid three-up">
+        <div class="subcard">
+          <h3>Ignoring milling loss</h3>
+          <p class="muted">Rough lumber rarely ends at the same thickness and width you bought on paper.</p>
+        </div>
+
+        <div class="subcard">
+          <h3>Buying only exact footage</h3>
+          <p class="muted">The formula does not account for defects, grain selection, or mistakes.</p>
+        </div>
+
+        <div class="subcard">
+          <h3>Forgetting trim waste</h3>
+          <p class="muted">Crosscuts, kerf, and squaring ends quietly eat up material.</p>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <strong>Simple rule:</strong> if the project is appearance-sensitive, uses rough stock, or needs matched parts, the true buy number is often 15% to 30% higher than the raw math.
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>FAQ</h2>
+
+      <h3>What is a board foot?</h3>
+      <p>
+        A board foot is a volume measurement equal to 144 cubic inches of lumber. One common way to picture it is 1 inch thick, 12 inches wide, and 12 inches long.
+      </p>
+
+      <h3>How do I calculate board feet from inches?</h3>
+      <p>
+        Multiply thickness by width by length, all in inches, then divide by 144.
+      </p>
+
+      <h3>Why does rough lumber need more allowance?</h3>
+      <p>
+        Because you usually lose some material to flattening, jointing, planing, trimming, cutting around defects, and selecting better grain.
+      </p>
+
+      <h3>How much extra lumber should I buy?</h3>
+      <p>
+        It depends on the project, but many woodworkers add around 10% to 20% for simpler work and more for figured stock, rough lumber, matched grain, or high-precision furniture parts.
+      </p>
+
+      <h3>Can I use this for cutting boards?</h3>
+      <p>
+        Yes. It is especially useful for cutting boards and glue-ups because those builds often need extra material for flattening, trimming, and dialing in a nicer final look.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Bottom line</h2>
+      <p>
+        The board foot formula is easy. Buying the right amount of wood is the hard part. Use the clean number as your baseline, then use the real-world estimate so your project survives milling, trimming, and the normal chaos of a woodworking shop.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Related guides and tools</h2>
+      <ul class="related-links">
+        <li>
+          <a href="/wood-movement-calculator.html">
+            Wood Movement Calculator
+            <span>Useful after you estimate your lumber and want to think through seasonal movement in panels, tops, and wide parts.</span>
+          </a>
+        </li>
+        <li>
+          <a href="/cutting-board-design-generator.html">
+            Cutting Board Design Generator
+            <span>Plan a cutting board idea, then come back here to estimate how much material the build may actually need.</span>
+          </a>
+        </li>
+        <li>
+          <a href="/best-woods-for-cutting-boards.html">
+            Best Woods for Cutting Boards
+            <span>Helpful if you are deciding which species to buy before pricing out your lumber.</span>
+          </a>
+        </li>
+        <li>
+          <a href="/how-to-flatten-a-cutting-board.html">
+            How to Flatten a Cutting Board
+            <span>Useful when your glue-up estimate is done and you want to plan for flattening loss and cleanup.</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p><strong>WoodToolChest</strong> gives practical woodworking guides, shop setup advice, and tool help for real-world builds.</p>
+      <p class="muted">© 2026 WoodToolChest</p>
+    </div>
+  </footer>
+
+  <script>
+    const modeTabs = document.querySelectorAll(".mode-tab");
+    const modePanels = document.querySelectorAll(".mode-panel");
+
+    const projectPresets = {
+      cuttingBoard: {
+        waste: 20,
+        extra: 5,
+        tip: "Cutting boards usually deserve extra lumber for glue-up cleanup, flattening, edge trimming, and dialing in a better final look."
+      },
+      tabletop: {
+        waste: 18,
+        extra: 8,
+        tip: "Tabletops often need a little more room for grain selection, panel glue-up trimming, and rejecting parts that do not look right together."
+      },
+      shelves: {
+        waste: 12,
+        extra: 5,
+        tip: "Shelf projects are often more predictable, but long parts still benefit from a little extra margin for defects and clean trimming."
+      },
+      panelGlueUp: {
+        waste: 18,
+        extra: 6,
+        tip: "Panel glue-ups almost always lose some width and length to squaring, flattening, and cleanup."
+      },
+      general: {
+        waste: 15,
+        extra: 5,
+        tip: "General projects vary a lot, so this is a balanced middle-ground estimate."
+      }
+    };
+
+    function clamp(value, min, max) {
+      return Math.min(Math.max(value, min), max);
+    }
+
+    function round(value, decimals = 2) {
+      return Number(value).toFixed(decimals);
+    }
+
+    function currency(value) {
+      return "$" + Number(value).toFixed(2);
+    }
+
+    function boardFeetFromInches(thickness, width, length, qty = 1) {
+      return (thickness * width * length * qty) / 144;
+    }
+
+    function boardFeetSingleBoard(thickness, width, length) {
+      return (thickness * width * length) / 144;
+    }
+
+    function calculateSimple() {
+      const thickness = clamp(parseFloat(document.getElementById("simpleThickness").value) || 0, 0, 12);
+      const width = clamp(parseFloat(document.getElementById("simpleWidth").value) || 0, 0, 48);
+      const length = clamp(parseFloat(document.getElementById("simpleLength").value) || 0, 0, 240);
+      const qty = clamp(parseInt(document.getElementById("simpleQty").value, 10) || 0, 1, 500);
+      const price = clamp(parseFloat(document.getElementById("simplePrice").value) || 0, 0, 200);
+      const waste = clamp(parseFloat(document.getElementById("simpleWaste").value) || 0, 0, 100);
+
+      const baseBF = boardFeetFromInches(thickness, width, length, qty);
+      const recommendedBF = baseBF * (1 + waste / 100);
+      const estimatedCost = recommendedBF * price;
+
+      updateResultCard({
+        title: "Estimated lumber needed",
+        main: round(recommendedBF, 2) + " BF",
+        sub: "Board feet including your waste allowance.",
+        baseBF: round(baseBF, 2) + " BF",
+        recommendedBF: round(recommendedBF, 2) + " BF",
+        cost: currency(estimatedCost),
+        metricFourLabel: "Waste + allowance",
+        allowance: round(waste, 0) + "%",
+        advice: getSimpleAdvice(baseBF, waste),
+        helper: "Base formula used: " + round(thickness, 3) + " × " + round(width, 3) + " × " + round(length, 3) + " × " + qty + " ÷ 144"
+      });
+    }
+
+    function calculateProject() {
+      const projectType = document.getElementById("projectType").value;
+      const thickness = clamp(parseFloat(document.getElementById("projectThickness").value) || 0, 0, 8);
+      const width = clamp(parseFloat(document.getElementById("projectWidth").value) || 0, 0, 96);
+      const length = clamp(parseFloat(document.getElementById("projectLength").value) || 0, 0, 240);
+      const qty = clamp(parseInt(document.getElementById("projectQty").value, 10) || 0, 1, 200);
+      const price = clamp(parseFloat(document.getElementById("projectPrice").value) || 0, 0, 200);
+      const waste = clamp(parseFloat(document.getElementById("projectWaste").value) || 0, 0, 100);
+      const extra = clamp(parseFloat(document.getElementById("projectExtra").value) || 0, 0, 100);
+
+      const baseBF = boardFeetFromInches(thickness, width, length, qty);
+      const totalAllowancePercent = waste + extra;
+      const recommendedBF = baseBF * (1 + totalAllowancePercent / 100);
+      const estimatedCost = recommendedBF * price;
+
+      updateResultCard({
+        title: "Estimated project lumber",
+        main: round(recommendedBF, 2) + " BF",
+        sub: "Board feet with waste and extra project margin included.",
+        baseBF: round(baseBF, 2) + " BF",
+        recommendedBF: round(recommendedBF, 2) + " BF",
+        cost: currency(estimatedCost),
+        metricFourLabel: "Total allowance",
+        allowance: round(totalAllowancePercent, 0) + "%",
+        advice: getProjectAdvice(projectType, totalAllowancePercent),
+        helper: "Finished size estimate: " + qty + " piece" + (qty === 1 ? "" : "s") + " at " + round(thickness, 3) + "\" × " + round(width, 3) + "\" × " + round(length, 3) + "\""
+      });
+    }
+
+    function calculateShop() {
+      const roughThickness = clamp(parseFloat(document.getElementById("shopThickness").value) || 0, 0, 12);
+      const boardWidth = clamp(parseFloat(document.getElementById("shopBoardWidth").value) || 0, 0, 20);
+      const usableLength = clamp(parseFloat(document.getElementById("shopUsableLength").value) || 0, 0, 240);
+      const targetBF = clamp(parseFloat(document.getElementById("shopTargetBF").value) || 0, 0, 1000);
+      const price = clamp(parseFloat(document.getElementById("shopPrice").value) || 0, 0, 200);
+      const kerf = clamp(parseFloat(document.getElementById("shopKerf").value) || 0, 0, 100);
+
+      const includeMilling = document.getElementById("toggleMilling").checked;
+      const includeDefects = document.getElementById("toggleDefects").checked;
+      const includeBuffer = document.getElementById("toggleBuffer").checked;
+
+      let allowancePercent = kerf;
+      if (includeMilling) allowancePercent += 12;
+      if (includeDefects) allowancePercent += 10;
+
+      let recommendedBF = targetBF * (1 + allowancePercent / 100);
+
+      const oneBoardBF = boardFeetSingleBoard(roughThickness, boardWidth, usableLength);
+      let boardBufferBF = 0;
+
+      if (includeBuffer && oneBoardBF > 0) {
+        boardBufferBF = oneBoardBF;
+        recommendedBF += boardBufferBF;
+      }
+
+      const estimatedCost = recommendedBF * price;
+      const suggestedBoards = oneBoardBF > 0 ? Math.ceil(recommendedBF / oneBoardBF) : 0;
+
+      updateResultCard({
+        title: "Recommended rough-lumber buy",
+        main: round(recommendedBF, 2) + " BF",
+        sub: "A more conservative buy number for real shop work.",
+        baseBF: round(targetBF, 2) + " BF",
+        recommendedBF: round(recommendedBF, 2) + " BF",
+        cost: currency(estimatedCost),
+        metricFourLabel: "Suggested rough boards",
+        allowance: suggestedBoards > 0 ? suggestedBoards + " board" + (suggestedBoards === 1 ? "" : "s") : "0",
+        advice: getShopAdvice(allowancePercent, boardBufferBF, suggestedBoards),
+        helper: "Avg board size used: " + roughThickness + "\" × " + round(boardWidth, 3) + "\" × " + round(usableLength, 1) + "\"; about " + round(oneBoardBF, 2) + " BF each"
+      });
+    }
+
+    function getSimpleAdvice(baseBF, waste) {
+      if (baseBF < 2) {
+        return "Small projects can still eat material fast once you trim ends, clean glue lines, or reject a board that just looks wrong. A little extra goes a long way.";
+      }
+      if (waste < 10) {
+        return "Your waste allowance is pretty lean. That may be fine for predictable parts, but it can get tight if the stock is rough or visually important.";
+      }
+      if (waste <= 20) {
+        return "This is a practical range for many normal builds. It usually gives enough room for trimming, minor mistakes, and better grain choices.";
+      }
+      return "You are buying conservatively, which is often smart for figured wood, visible furniture parts, or any project where a second trip would be annoying.";
+    }
+
+    function getProjectAdvice(projectType, totalAllowancePercent) {
+      if (projectType === "cuttingBoard") {
+        return "Cutting boards usually lose more than people expect during glue-up cleanup and flattening. A slightly generous estimate is often the right call.";
+      }
+      if (projectType === "tabletop") {
+        return "For tabletops, extra lumber buys you better grain selection and more freedom to reject awkward boards before glue-up.";
+      }
+      if (projectType === "shelves") {
+        return "Shelves are often straightforward, but long clean parts still benefit from some extra footage for defects and end trimming.";
+      }
+      if (projectType === "panelGlueUp") {
+        return "Panel glue-ups almost always shrink a little on paper after squaring, trimming, and flattening. This estimate helps account for that.";
+      }
+      if (totalAllowancePercent < 15) {
+        return "This is a fairly lean project allowance. It can work, but only if your stock is predictable and your part list is tight.";
+      }
+      return "This looks like a healthy project estimate. It gives you a better chance of finishing the build without scrambling for more lumber.";
+    }
+
+    function getShopAdvice(allowancePercent, boardBufferBF, suggestedBoards) {
+      let message = "This estimate leans conservative on purpose. Rough lumber rarely turns into finished parts with zero friction.";
+
+      if (allowancePercent >= 25) {
+        message += " Your allowances reflect a realistic amount of kerf, milling, and defect loss for many real builds.";
+      }
+
+      if (boardBufferBF > 0) {
+        message += " The extra-board buffer can be a lifesaver when one board has checks, twist, or ugly grain.";
+      }
+
+      if (suggestedBoards <= 2) {
+        message += " With only a few boards in play, each bad board matters more, so a buffer is especially useful.";
+      }
+
+      return message;
+    }
+
+    function updateResultCard(data) {
+      document.getElementById("resultTitle").textContent = data.title;
+      document.getElementById("mainResultDisplay").textContent = data.main;
+      document.getElementById("subResultDisplay").textContent = data.sub;
+      document.getElementById("baseBFDisplay").textContent = data.baseBF;
+      document.getElementById("recommendedBFDisplay").textContent = data.recommendedBF;
+      document.getElementById("costDisplay").textContent = data.cost;
+      document.getElementById("metricFourLabel").textContent = data.metricFourLabel;
+      document.getElementById("allowanceDisplay").textContent = data.allowance;
+      document.getElementById("adviceBox").textContent = data.advice;
+      document.getElementById("secondaryHelper").textContent = data.helper;
+    }
+
+    function setMode(mode) {
+      modeTabs.forEach((tab) => {
+        const isActive = tab.dataset.mode === mode;
+        tab.classList.toggle("active", isActive);
+        tab.setAttribute("aria-selected", isActive ? "true" : "false");
+      });
+
+      modePanels.forEach((panel) => {
+        const shouldShow = panel.id === "panel-" + mode;
+        panel.classList.toggle("active", shouldShow);
+      });
+
+      calculateActiveMode();
+    }
+
+    function calculateActiveMode() {
+      const activeTab = document.querySelector(".mode-tab.active");
+      const mode = activeTab ? activeTab.dataset.mode : "simple";
+
+      if (mode === "simple") calculateSimple();
+      if (mode === "project") calculateProject();
+      if (mode === "shop") calculateShop();
+    }
+
+    document.getElementById("projectType").addEventListener("change", function () {
+      const preset = projectPresets[this.value];
+      document.getElementById("projectWaste").value = preset.waste;
+      document.getElementById("projectExtra").value = preset.extra;
+      document.getElementById("projectTipBox").textContent = preset.tip;
+      calculateProject();
+    });
+
+    modeTabs.forEach((tab) => {
+      tab.addEventListener("click", function () {
+        setMode(this.dataset.mode);
+      });
+    });
+
+    [
+      "simpleThickness", "simpleWidth", "simpleLength", "simpleQty", "simplePrice", "simpleWaste",
+      "projectThickness", "projectWidth", "projectLength", "projectQty", "projectPrice", "projectWaste", "projectExtra",
+      "shopThickness", "shopBoardWidth", "shopUsableLength", "shopTargetBF", "shopPrice", "shopKerf",
+      "toggleMilling", "toggleDefects", "toggleBuffer"
+    ].forEach((id) => {
+      const element = document.getElementById(id);
+      if (!element) return;
+
+      element.addEventListener("input", calculateActiveMode);
+      element.addEventListener("change", calculateActiveMode);
+    });
+
+    setMode("simple");
+  </script>
+</body>
+</html>
