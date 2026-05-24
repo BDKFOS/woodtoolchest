@@ -1,950 +1,1079 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G1ZT9QNFQT"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G1ZT9QNFQT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-G1ZT9QNFQT');
+  </script>
 
-  gtag('config', 'G-G1ZT9QNFQT');
-</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>WoodToolChest | Practical Woodworking Guides and Tools</title>
-  <meta name="description" content="Useful woodworking tools and practical guides for real shop builds. Explore board foot calculators, cutting board tools, flattening help, workshop setup advice, wood movement planning, and more.">
+  <title>WoodToolChest | Woodworking Tools, Cutting Board Design, and Practical Guides</title>
+  <meta name="description" content="Design better cutting boards, plan smarter shop projects, and explore practical woodworking tools and guides built for real projects.">
   <link rel="canonical" href="https://www.woodtoolchest.com/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #f7f3ec;
-      --surface: #fffdf8;
-      --surface-2: #fbf7f1;
-      --text: #1f1a17;
-      --muted: #6b625a;
-      --line: #ddd3c7;
-      --accent: #7a4b22;
-      --accent-dark: #5f3919;
-      --accent-soft: #c89c73;
-      --header-line: rgba(255,255,255,0.10);
-      --max: 1080px;
-      --radius: 18px;
-      --shadow: 0 10px 28px rgba(32, 22, 16, 0.05);
+      --bg: #f6f4ef;
+      --bg-2: #eef3ef;
+      --surface: rgba(255, 255, 252, 0.84);
+      --surface-solid: #fffef9;
+      --surface-tint: #f8fbf6;
+      --ink: #17201d;
+      --muted: #657069;
+      --soft: #87928b;
+      --line: rgba(31, 45, 39, 0.12);
+      --line-strong: rgba(31, 45, 39, 0.18);
+      --green: #2d6a56;
+      --green-dark: #183f35;
+      --sage: #dfe9df;
+      --sky: #dcebf2;
+      --clay: #c27a5a;
+      --gold: #d6aa57;
+      --plum: #79617c;
+      --cream: #fff8e8;
+      --max: 1160px;
+      --radius: 24px;
+      --shadow: 0 24px 70px rgba(25, 35, 31, 0.10);
+      --shadow-soft: 0 12px 34px rgba(25, 35, 31, 0.07);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
+      font-family: "Inter", Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      line-height: 1.65;
+      background:
+        radial-gradient(circle at 12% 7%, rgba(220, 235, 242, 0.80), transparent 30%),
+        radial-gradient(circle at 88% 10%, rgba(223, 233, 223, 0.95), transparent 32%),
+        radial-gradient(circle at 70% 70%, rgba(255, 248, 232, 0.95), transparent 34%),
+        linear-gradient(180deg, #f8f7f1 0%, #f2f4ef 44%, #f7f4ed 100%);
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(23, 32, 29, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(23, 32, 29, 0.022) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,0.25), transparent 65%);
     }
 
     a {
-      color: var(--accent-dark);
+      color: inherit;
       text-decoration: none;
     }
 
-    a:hover {
-      color: var(--accent);
-      text-decoration: underline;
+    a:hover { text-decoration: none; }
+
+    .container,
+    .nav-inner,
+    .footer-inner {
+      width: min(var(--max), calc(100% - 36px));
+      margin: 0 auto;
     }
 
     .site-header {
-      position: relative;
-      color: #fff;
-      padding: 18px 20px 20px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      background:
-        radial-gradient(circle at top left, rgba(201, 148, 98, 0.22), transparent 30%),
-        radial-gradient(circle at 88% 18%, rgba(255,255,255,0.08), transparent 16%),
-        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0) 45%),
-        linear-gradient(135deg, #3a291e 0%, #2b2018 54%, #221913 100%);
-      box-shadow:
-        inset 0 -1px 0 rgba(255,255,255,0.04),
-        0 8px 20px rgba(24, 17, 12, 0.14);
-      overflow: hidden;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(31, 45, 39, 0.08);
+      background: rgba(248, 247, 241, 0.78);
+      backdrop-filter: blur(18px);
     }
 
-    .site-header::before {
+    .nav-inner {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand-row {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .logo-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.90), rgba(255,255,255,0.25)),
+        linear-gradient(135deg, #2d6a56, #7a8f79 58%, #d6aa57);
+      border: 1px solid rgba(24, 63, 53, 0.16);
+      box-shadow: 0 12px 28px rgba(45, 106, 86, 0.16), inset 0 1px 0 rgba(255,255,255,0.55);
+      flex: 0 0 44px;
+    }
+
+    .logo-mark svg { width: 27px; height: 27px; }
+
+    .brand-text {
+      display: grid;
+      gap: 1px;
+      min-width: 0;
+    }
+
+    .brand {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 1.42rem;
+      font-weight: 700;
+      letter-spacing: -0.035em;
+      line-height: 1;
+      color: #13221e;
+    }
+
+    .brand-sub {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--soft);
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 39px;
+      padding: 9px 13px;
+      border-radius: 999px;
+      color: #33413c;
+      font-size: 0.93rem;
+      font-weight: 700;
+      transition: background 0.16s ease, color 0.16s ease, transform 0.16s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--green-dark);
+      background: rgba(45, 106, 86, 0.08);
+      transform: translateY(-1px);
+    }
+
+    .nav-links .nav-cta {
+      color: #fff;
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      box-shadow: 0 12px 25px rgba(45, 106, 86, 0.18);
+    }
+
+    .hero {
+      padding: 38px 0 28px;
+    }
+
+    .hero-shell {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(31, 45, 39, 0.10);
+      border-radius: 34px;
+      padding: 34px;
+      background:
+        linear-gradient(110deg, rgba(255,255,252,0.92) 0%, rgba(255,255,252,0.86) 38%, rgba(255,255,252,0.45) 66%, rgba(255,255,252,0.20) 100%),
+        url("images/homepage/hand-plane.jpg"),
+        url("images/homepage/workbench.jpg"),
+        linear-gradient(135deg, #eef3ef, #fff8e8);
+      background-size: cover;
+      background-position: center right;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-shell::before {
       content: "";
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.03) 50%, transparent 100%),
-        repeating-linear-gradient(
-          90deg,
-          rgba(255,255,255,0.025) 0px,
-          rgba(255,255,255,0.025) 1px,
-          transparent 1px,
-          transparent 120px
-        );
-      opacity: 0.5;
+        radial-gradient(circle at 82% 20%, rgba(220, 235, 242, 0.55), transparent 30%),
+        radial-gradient(circle at 60% 88%, rgba(214, 170, 87, 0.20), transparent 26%);
       pointer-events: none;
     }
 
-    .site-header::after {
+    .hero-shell::after {
       content: "";
       position: absolute;
-      right: -120px;
-      top: -140px;
-      width: 340px;
-      height: 340px;
+      right: -80px;
+      bottom: -90px;
+      width: 360px;
+      height: 360px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,255,255,0.08), rgba(255,255,255,0));
+      background: rgba(45, 106, 86, 0.08);
+      filter: blur(2px);
       pointer-events: none;
     }
 
-    .site-header-inner,
-    .container,
-    .footer-inner {
-      width: min(var(--max), calc(100% - 32px));
-      margin: 0 auto;
+    .hero-grid {
       position: relative;
       z-index: 1;
-    }
-
-    .header-shell {
       display: grid;
-      gap: 14px;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 32px;
+      align-items: center;
     }
 
-    .header-top {
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 14px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(45, 106, 86, 0.10);
+      color: var(--green-dark);
+      border: 1px solid rgba(45, 106, 86, 0.12);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--gold);
+      box-shadow: 0 0 0 5px rgba(214, 170, 87, 0.18);
+    }
+
+    h1, h2, h3 { margin-top: 0; line-height: 1.08; color: var(--ink); }
+
+    h1 {
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 700;
+      letter-spacing: -0.055em;
+      font-size: clamp(3rem, 7vw, 5.9rem);
+      max-width: 760px;
+      margin: 0 0 18px;
+    }
+
+    .hero-copy {
+      max-width: 620px;
+      color: #46534e;
+      font-size: 1.13rem;
+      margin: 0 0 24px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 13px 18px;
+      border-radius: 15px;
+      font-weight: 800;
+      border: 1px solid transparent;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+    }
+
+    .button:hover { transform: translateY(-2px); }
+
+    .button-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      box-shadow: 0 18px 34px rgba(45, 106, 86, 0.22);
+    }
+
+    .button-secondary {
+      color: #23322d;
+      background: rgba(255,255,252,0.76);
+      border-color: rgba(31, 45, 39, 0.13);
+      box-shadow: 0 10px 28px rgba(25, 35, 31, 0.07);
+    }
+
+    .proof-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .proof-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,252,0.72);
+      border: 1px solid rgba(31, 45, 39, 0.10);
+      color: #46534e;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .proof-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--clay);
+    }
+
+    .hero-feature {
+      align-self: stretch;
+      display: grid;
+      align-items: center;
+    }
+
+    .designer-card {
+      border-radius: 30px;
+      background:
+        linear-gradient(180deg, rgba(255,255,252,0.86), rgba(255,255,252,0.68));
+      border: 1px solid rgba(31,45,39,0.12);
+      box-shadow: 0 22px 60px rgba(25,35,31,0.12);
+      backdrop-filter: blur(12px);
+      padding: 18px;
+    }
+
+    .board-preview {
+      min-height: 262px;
+      border-radius: 24px;
+      border: 1px solid rgba(31,45,39,0.12);
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 20% 18%, rgba(255,255,255,0.75), transparent 20%),
+        linear-gradient(145deg, #eef3ef, #dcebf2 58%, #fff8e8);
+      display: grid;
+      place-items: center;
+      position: relative;
+    }
+
+    .board-preview::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(120deg, transparent, rgba(255,255,255,0.36), transparent);
+      transform: translateX(-80%);
+      animation: shine 5s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes shine {
+      0%, 45% { transform: translateX(-95%); opacity: 0; }
+      55% { opacity: 0.8; }
+      100% { transform: translateX(95%); opacity: 0; }
+    }
+
+    .mock-board {
+      width: min(88%, 420px);
+      height: 154px;
+      border-radius: 22px;
+      box-shadow:
+        0 32px 34px rgba(34, 28, 22, 0.22),
+        inset 0 0 0 1px rgba(255,255,255,0.45),
+        inset 0 -18px 26px rgba(40, 22, 16, 0.12);
+      background:
+        linear-gradient(90deg,
+          #3b2a25 0 12%, #d6b077 12% 19%, #684139 19% 30%, #f0d59b 30% 34%,
+          #2d2421 34% 48%, #c27a5a 48% 57%, #e7c484 57% 62%, #4c332e 62% 74%,
+          #d9b477 74% 80%, #332722 80% 100%);
+      position: relative;
+      transform: rotate(-2deg);
+    }
+
+    .mock-board::before {
+      content: "";
+      position: absolute;
+      inset: 13px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.28);
+      background:
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.06) 0 1px, transparent 1px 42px),
+        repeating-linear-gradient(12deg, rgba(255,255,255,0.06) 0 1px, transparent 1px 18px);
+      mix-blend-mode: soft-light;
+    }
+
+    .mock-board::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.22), transparent 42%, rgba(0,0,0,0.10));
+      pointer-events: none;
+    }
+
+    .designer-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 17px 6px 2px;
+    }
+
+    .designer-meta strong {
+      display: block;
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 1.35rem;
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+    }
+
+    .designer-meta span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-top: 3px;
+    }
+
+    .score {
+      flex: 0 0 auto;
+      border-radius: 999px;
+      padding: 9px 12px;
+      background: rgba(45, 106, 86, 0.10);
+      color: var(--green-dark);
+      font-weight: 800;
+      font-size: 0.86rem;
+      border: 1px solid rgba(45, 106, 86, 0.12);
+    }
+
+    .section { padding: 34px 0; }
+
+    .section-heading {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .section-kicker {
+      margin: 0 0 8px;
+      color: var(--green);
+      font-weight: 800;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      font-weight: 700;
+      letter-spacing: -0.052em;
+      margin: 0;
+    }
+
+    .section-copy {
+      max-width: 520px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .feature-panel {
+      display: grid;
+      grid-template-columns: 1.06fr 0.94fr;
+      gap: 20px;
+      align-items: stretch;
+      background: rgba(255,255,252,0.62);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 18px;
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(12px);
+    }
+
+    .feature-visual {
+      min-height: 360px;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(31,45,39,0.11);
+      background:
+        radial-gradient(circle at 30% 20%, rgba(255,255,255,0.68), transparent 24%),
+        linear-gradient(140deg, #e7efea, #dcebf2 42%, #fff8e8 100%);
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+
+    .cube-grid {
+      width: min(86%, 580px);
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 0;
+      transform: rotate(-2deg);
+      filter: drop-shadow(0 28px 24px rgba(35, 42, 37, 0.20));
+    }
+
+    .cube {
+      aspect-ratio: 1;
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+      background:
+        linear-gradient(30deg, #3b2a25 0 33%, #d6b077 33% 66%, #7b4c3f 66% 100%);
+      margin: -5%;
+      opacity: 0.94;
+    }
+
+    .cube:nth-child(3n) { background: linear-gradient(30deg, #2e2521 0 33%, #f0d59b 33% 66%, #935f4d 66% 100%); }
+    .cube:nth-child(4n) { background: linear-gradient(30deg, #4a332c 0 33%, #caa069 33% 66%, #5d3b34 66% 100%); }
+    .cube:nth-child(5n) { background: linear-gradient(30deg, #2c342f 0 33%, #d8c28f 33% 66%, #765649 66% 100%); }
+
+    .feature-content {
+      padding: 26px;
+      display: grid;
+      align-content: center;
+    }
+
+    h3 {
+      font-size: 1.28rem;
+      margin: 0 0 10px;
+      letter-spacing: -0.02em;
+    }
+
+    .feature-content h3 {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: clamp(2rem, 3.4vw, 3.2rem);
+      letter-spacing: -0.05em;
+      margin-bottom: 14px;
+    }
+
+    .feature-content p {
+      color: var(--muted);
+      margin: 0 0 22px;
+      font-size: 1.03rem;
+    }
+
+    .mini-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .mini-stat {
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: rgba(255,255,252,0.72);
+      padding: 12px;
+    }
+
+    .mini-stat strong {
+      display: block;
+      font-size: 1.1rem;
+      color: var(--ink);
+    }
+
+    .mini-stat span {
+      display: block;
+      color: var(--soft);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .tool-grid,
+    .guide-grid,
+    .path-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .tool-grid { grid-template-columns: 1.2fr 0.9fr 0.9fr; }
+    .guide-grid { grid-template-columns: repeat(4, 1fr); }
+    .path-grid { grid-template-columns: repeat(3, 1fr); }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      display: block;
+      min-height: 210px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 22px;
+      background: rgba(255,255,252,0.68);
+      box-shadow: 0 10px 28px rgba(25, 35, 31, 0.06);
+      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 45px rgba(25, 35, 31, 0.10);
+      border-color: rgba(45,106,86,0.24);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      right: -60px;
+      top: -70px;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: rgba(220,235,242,0.85);
+      pointer-events: none;
+    }
+
+    .card.accent-green::before { background: rgba(223,233,223,0.95); }
+    .card.accent-gold::before { background: rgba(255,248,232,0.95); }
+    .card.accent-plum::before { background: rgba(121,97,124,0.13); }
+    .card.accent-clay::before { background: rgba(194,122,90,0.13); }
+
+    .card-topline {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .icon-bubble {
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: #fffef9;
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 22px rgba(25,35,31,0.07);
+      font-size: 1.28rem;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: rgba(45,106,86,0.09);
+      color: var(--green-dark);
+      padding: 6px 9px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .card h3,
+    .guide-card h3,
+    .path-card h3 {
+      position: relative;
+      z-index: 1;
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+    }
+
+    .card p,
+    .guide-card p,
+    .path-card p {
+      position: relative;
+      z-index: 1;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .card.large {
+      min-height: 260px;
+      background:
+        linear-gradient(160deg, rgba(255,255,252,0.76), rgba(255,255,252,0.52)),
+        linear-gradient(135deg, rgba(223,233,223,0.95), rgba(220,235,242,0.95));
+    }
+
+    .guide-card,
+    .path-card {
+      display: block;
+      min-height: 190px;
+      border: 1px solid var(--line);
+      border-radius: 23px;
+      padding: 20px;
+      background: rgba(255,255,252,0.62);
+      box-shadow: 0 10px 28px rgba(25, 35, 31, 0.05);
+      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+    }
+
+    .guide-card:hover,
+    .path-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 38px rgba(25, 35, 31, 0.09);
+      border-color: rgba(45,106,86,0.24);
+    }
+
+    .guide-thumb {
+      height: 92px;
+      border-radius: 18px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(31,45,39,0.10);
+      background:
+        radial-gradient(circle at 20% 22%, rgba(255,255,255,0.78), transparent 25%),
+        linear-gradient(135deg, var(--sage), var(--sky));
+      position: relative;
+      overflow: hidden;
+    }
+
+    .guide-thumb::after {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border-radius: 14px;
+      background: rgba(255,255,252,0.42);
+      border: 1px solid rgba(255,255,255,0.45);
+    }
+
+    .guide-card:nth-child(2) .guide-thumb { background: linear-gradient(135deg, #fff8e8, #dcebf2); }
+    .guide-card:nth-child(3) .guide-thumb { background: linear-gradient(135deg, #e7efea, #f1dfd6); }
+    .guide-card:nth-child(4) .guide-thumb { background: linear-gradient(135deg, #eee8f1, #dfe9df); }
+
+    .quote-panel {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 20px;
+      align-items: center;
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      padding: 24px;
+      background:
+        linear-gradient(120deg, rgba(45,106,86,0.10), transparent 42%),
+        rgba(255,255,252,0.64);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .plane-art {
+      min-height: 230px;
+      border-radius: 24px;
+      border: 1px solid rgba(31,45,39,0.10);
+      background:
+        linear-gradient(120deg, rgba(255,255,252,0.78), rgba(255,255,252,0.36)),
+        url("images/homepage/hand-plane.jpg"),
+        url("images/homepage/workbench.jpg"),
+        linear-gradient(135deg, var(--sage), var(--sky));
+      background-size: cover;
+      background-position: center;
+      opacity: 0.82;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.26);
+    }
+
+    .quote-copy h2 { margin-bottom: 14px; }
+    .quote-copy p { color: var(--muted); margin: 0; }
+
+    .footer {
+      margin-top: 36px;
+      padding: 34px 0 44px;
+      border-top: 1px solid var(--line);
+      background: rgba(255,255,252,0.38);
+    }
+
+    .footer-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 20px;
-    }
-
-    .brand-row {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      min-width: 0;
-    }
-
-    .brand-mark {
-      width: 58px;
-      height: 58px;
-      border-radius: 17px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.03)),
-        linear-gradient(135deg, #b77a44 0%, #8b572e 46%, #6c421f 100%);
-      border: 1px solid rgba(255,255,255,0.14);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.15),
-        inset 0 -12px 20px rgba(0,0,0,0.12),
-        0 10px 22px rgba(0,0,0,0.16);
-      flex: 0 0 58px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .brand-mark::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        repeating-linear-gradient(
-          180deg,
-          rgba(255,255,255,0.055) 0px,
-          rgba(255,255,255,0.055) 1px,
-          rgba(0,0,0,0) 1px,
-          rgba(0,0,0,0) 7px
-        );
-      opacity: 0.24;
-      pointer-events: none;
-    }
-
-    .brand-mark svg {
-      display: block;
-      position: relative;
-      z-index: 1;
-      filter: drop-shadow(0 1px 0 rgba(0,0,0,0.12));
-    }
-
-    .brand-text-wrap {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      min-width: 0;
-    }
-
-    .brand-line {
-      display: flex;
-      align-items: center;
-      gap: 10px;
       flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.95rem;
     }
 
-    .brand {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1;
-      letter-spacing: -0.02em;
-      text-decoration: none;
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    .brand:hover {
-      color: #f1e4d7;
-      text-decoration: none;
-    }
-
-    .brand-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(255,255,255,0.07);
-      color: rgba(255,255,255,0.82);
-      font-size: 0.67rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      line-height: 1;
-      backdrop-filter: blur(4px);
-    }
-
-    .brand-sub {
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.74);
-      text-transform: uppercase;
-      letter-spacing: 0.11em;
-      line-height: 1.2;
-    }
-
-    .main-nav {
+    .footer-links {
       display: flex;
-      align-items: center;
+      gap: 16px;
       flex-wrap: wrap;
-      gap: 10px;
-      justify-content: flex-end;
-    }
-
-    .main-nav a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 40px;
-      padding: 9px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.04);
-      color: rgba(255,255,255,0.88);
-      font-size: 0.94rem;
       font-weight: 700;
-      line-height: 1;
-      text-decoration: none;
-      transition: transform 0.12s ease, background 0.12s ease, border-color 0.12s ease, color 0.12s ease;
-      backdrop-filter: blur(4px);
-    }
-
-    .main-nav a:hover {
-      text-decoration: none;
-      color: #fff;
-      background: rgba(255,255,255,0.10);
-      border-color: rgba(255,255,255,0.18);
-      transform: translateY(-1px);
-    }
-
-    .main-nav a.nav-cta {
-      background: linear-gradient(180deg, rgba(201,148,98,0.30), rgba(201,148,98,0.16));
-      border-color: rgba(255,255,255,0.18);
-      color: #fff;
-    }
-
-    .main-nav a.nav-cta:hover {
-      background: linear-gradient(180deg, rgba(201,148,98,0.42), rgba(201,148,98,0.22));
-    }
-
-    .header-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 13px 16px;
-      border: 1px solid var(--header-line);
-      border-radius: 18px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
-      backdrop-filter: blur(6px);
-    }
-
-    .header-bar-copy {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      min-width: 0;
-      color: rgba(255,255,255,0.86);
-      font-size: 0.96rem;
-      line-height: 1.45;
-    }
-
-    .header-bar-copy strong {
-      color: #fff;
-    }
-
-    .header-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--accent-soft);
-      box-shadow: 0 0 0 4px rgba(200,156,115,0.12);
-      flex: 0 0 7px;
-    }
-
-    .header-bar-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .header-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 40px;
-      padding: 10px 14px;
-      border-radius: 12px;
-      font-weight: 700;
-      line-height: 1;
-      text-decoration: none;
-      transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
-    }
-
-    .header-button:hover {
-      text-decoration: none;
-      transform: translateY(-1px);
-    }
-
-    .header-button-primary {
-      background: linear-gradient(180deg, #c89462, #af7340);
-      color: #fff;
-      border: 1px solid rgba(255,255,255,0.18);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.16);
-    }
-
-    .header-button-primary:hover {
-      background: linear-gradient(180deg, #d19e6d, #b77843);
-      color: #fff;
-    }
-
-    .header-button-secondary {
-      background: rgba(255,255,255,0.06);
-      color: rgba(255,255,255,0.92);
-      border: 1px solid rgba(255,255,255,0.12);
-    }
-
-    .header-button-secondary:hover {
-      background: rgba(255,255,255,0.10);
-      color: #fff;
-    }
-
-    .hero {
-      padding: 34px 0 26px;
-    }
-
-    .hero-panel {
-      position: relative;
-      overflow: hidden;
-      background:
-        linear-gradient(90deg, rgba(255,253,248,0.90) 0%, rgba(255,253,248,0.88) 40%, rgba(255,253,248,0.78) 68%, rgba(255,253,248,0.72) 100%),
-        url("images/homepage/workbench.jpg");
-      background-size: cover;
-      background-position: center right;
-      border: 1px solid var(--line);
-      border-radius: 26px;
-      padding: 34px 30px;
-      box-shadow: var(--shadow);
-      margin-bottom: 26px;
-    }
-
-    .eyebrow {
-      font-size: 0.9rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin: 0 0 10px;
-      position: relative;
-      z-index: 1;
-    }
-
-    h1, h2, h3 {
-      line-height: 1.2;
-      margin-top: 0;
-      color: #1e1814;
-    }
-
-    h1 {
-      font-size: 2.75rem;
-      margin-bottom: 14px;
-      max-width: 760px;
-      position: relative;
-      z-index: 1;
-    }
-
-    h2 {
-      font-size: 1.8rem;
-      margin: 0 0 16px;
-    }
-
-    h3 {
-      font-size: 1.06rem;
-      margin: 0 0 10px;
-    }
-
-    p {
-      margin: 0 0 18px;
-    }
-
-    .tagline {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #3a2b1f;
-      margin: 10px 0 8px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .subtagline {
-      color: var(--muted);
-      margin-bottom: 0;
-      position: relative;
-      z-index: 1;
-    }
-
-    .intro {
-      font-size: 1.08rem;
-      color: #2b241f;
-      max-width: 760px;
-      position: relative;
-      z-index: 1;
-      margin-top: 14px;
-      margin-bottom: 0;
-    }
-
-    .hero-summary {
-      display: grid;
-      grid-template-columns: 1.04fr 0.96fr;
-      gap: 18px;
-      margin-top: 24px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .summary-card {
-      background: rgba(255,255,255,0.82);
-      border: 1px solid rgba(221,211,199,0.95);
-      border-radius: 18px;
-      padding: 18px;
-      backdrop-filter: blur(2px);
-    }
-
-    .summary-card p:last-child {
-      margin-bottom: 0;
-    }
-
-    .mini-points {
-      display: grid;
-      gap: 12px;
-    }
-
-    .mini-point {
-      border: 1px solid #d7cab9;
-      border-radius: 14px;
-      padding: 14px;
-      background: rgba(255,250,243,0.92);
-    }
-
-    .mini-point h3 {
-      margin: 0 0 8px;
-      font-size: 1rem;
-    }
-
-    .section {
-      margin-bottom: 28px;
-      scroll-margin-top: 18px;
-    }
-
-    .section-header {
-      margin-bottom: 14px;
-    }
-
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 20px;
-      box-shadow: 0 8px 24px rgba(32, 22, 16, 0.03);
-    }
-
-    .card p:last-child {
-      margin-bottom: 0;
-    }
-
-    .nav-card {
-      display: block;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 20px;
-      box-shadow: 0 8px 24px rgba(32, 22, 16, 0.03);
-      transition: transform 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
-      color: inherit;
-    }
-
-    .nav-card:hover {
-      text-decoration: none;
-      transform: translateY(-1px);
-      border-color: #ccb59b;
-      box-shadow: 0 12px 26px rgba(32, 22, 16, 0.05);
-    }
-
-    .nav-card p:last-child {
-      margin-bottom: 0;
-    }
-
-    .start-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .start-link {
-      display: block;
-      border: 1px solid #d7cab9;
-      border-radius: 16px;
-      padding: 18px;
-      background: #fffaf3;
-      box-shadow: 0 6px 18px rgba(32, 22, 16, 0.03);
-      transition: transform 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
-    }
-
-    .start-link:hover {
-      text-decoration: none;
-      transform: translateY(-1px);
-      border-color: #ccb59b;
-      box-shadow: 0 12px 26px rgba(32, 22, 16, 0.05);
-    }
-
-    .start-link strong {
-      display: block;
-      color: #2b2018;
-      margin-bottom: 6px;
-      font-size: 1rem;
-    }
-
-    .start-link span {
-      display: block;
-      color: var(--muted);
-      font-size: 0.92rem;
-      line-height: 1.5;
-    }
-
-    .link-list {
-      display: grid;
-      gap: 12px;
-    }
-
-    .link-item {
-      display: block;
-      background: linear-gradient(180deg, #fffdf8, #fbf7f1);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 16px;
-      font-weight: 700;
-      color: #2c221a;
-      box-shadow: 0 6px 18px rgba(32, 22, 16, 0.03);
-      transition: transform 0.12s ease, border-color 0.12s ease;
-    }
-
-    .link-item:hover {
-      text-decoration: none;
-      transform: translateY(-1px);
-      border-color: #ccb59b;
-    }
-
-    .link-item span {
-      display: block;
-      color: var(--muted);
-      font-weight: 400;
-      font-size: 0.92rem;
-      margin-top: 6px;
-    }
-
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .footer {
-      margin-top: 56px;
-      padding: 28px 20px 40px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      background: #f3ede4;
+      color: #3b4944;
     }
 
     @media (max-width: 980px) {
-      .header-top,
-      .header-bar {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .main-nav,
-      .header-bar-actions {
-        justify-content: flex-start;
-      }
+      .nav-inner { align-items: flex-start; flex-direction: column; padding: 15px 0; }
+      .nav-links { justify-content: flex-start; }
+      .hero-grid,
+      .feature-panel,
+      .quote-panel { grid-template-columns: 1fr; }
+      .tool-grid,
+      .guide-grid,
+      .path-grid { grid-template-columns: 1fr 1fr; }
+      .section-heading { align-items: flex-start; flex-direction: column; }
     }
 
-    @media (max-width: 920px) {
-      .hero-summary,
-      .cards-grid,
-      .start-grid,
-      .two-col {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-panel {
-        background-position: center center;
-        background:
-          linear-gradient(180deg, rgba(255,253,248,0.97) 0%, rgba(255,253,248,0.93) 52%, rgba(255,253,248,0.88) 100%),
-          url("images/homepage/workbench.jpg");
-        background-size: cover;
-      }
-    }
-
-    @media (max-width: 700px) {
-      h1 {
-        font-size: 2.1rem;
-      }
-
-      h2 {
-        font-size: 1.5rem;
-      }
-
-      .hero-panel,
-      .card,
-      .nav-card {
-        padding: 20px;
-      }
-
-      .site-header {
-        padding: 16px 18px 18px;
-      }
-
-      .site-header-inner,
+    @media (max-width: 680px) {
       .container,
-      .footer-inner {
-        width: min(var(--max), calc(100% - 24px));
-      }
-
-      .brand-row {
-        gap: 12px;
-      }
-
-      .brand-mark {
-        width: 50px;
-        height: 50px;
-        flex-basis: 50px;
-        border-radius: 15px;
-      }
-
-      .brand-mark svg {
-        width: 24px;
-        height: 24px;
-      }
-
-      .brand {
-        font-size: 1.62rem;
-      }
-
-      .brand-pill {
-        font-size: 0.62rem;
-      }
-
-      .brand-sub {
-        font-size: 0.69rem;
-        letter-spacing: 0.09em;
-      }
-
-      .main-nav {
-        width: 100%;
-      }
-
-      .main-nav a {
-        min-height: 38px;
-        padding: 9px 12px;
-        font-size: 0.88rem;
-      }
-
-      .header-bar {
-        padding: 12px;
-        gap: 12px;
-      }
-
-      .header-bar-copy {
-        font-size: 0.9rem;
-      }
-
-      .header-bar-actions {
-        width: 100%;
-      }
-
-      .header-button {
-        flex: 1 1 auto;
-      }
+      .nav-inner,
+      .footer-inner { width: min(var(--max), calc(100% - 24px)); }
+      .hero { padding-top: 22px; }
+      .hero-shell { padding: 22px; border-radius: 26px; }
+      .hero-copy { font-size: 1.02rem; }
+      .button { width: 100%; }
+      .proof-row { display: grid; grid-template-columns: 1fr; }
+      .tool-grid,
+      .guide-grid,
+      .path-grid,
+      .mini-stats { grid-template-columns: 1fr; }
+      .designer-meta { align-items: flex-start; flex-direction: column; }
+      .nav-links a { padding: 8px 10px; font-size: 0.86rem; }
+      .brand-sub { display: none; }
+      .feature-visual { min-height: 280px; }
+      .cube-grid { grid-template-columns: repeat(6, 1fr); }
     }
   </style>
 </head>
 <body>
   <header class="site-header">
-    <div class="site-header-inner">
-      <div class="header-shell">
-        <div class="header-top">
-          <div class="brand-row">
-            <div class="brand-mark" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                <rect x="3" y="8" width="6" height="13" rx="1.6" fill="rgba(255,255,255,0.96)"></rect>
-                <rect x="11" y="4" width="6" height="17" rx="1.6" fill="rgba(255,255,255,0.84)"></rect>
-                <rect x="19" y="10" width="6" height="11" rx="1.6" fill="rgba(255,255,255,0.68)"></rect>
-                <path d="M11 10.5H17" stroke="rgba(90,54,27,0.22)" stroke-width="1.2" stroke-linecap="round"></path>
-                <path d="M3 13.5H9" stroke="rgba(90,54,27,0.18)" stroke-width="1.2" stroke-linecap="round"></path>
-                <path d="M19 14.5H25" stroke="rgba(90,54,27,0.16)" stroke-width="1.2" stroke-linecap="round"></path>
-              </svg>
-            </div>
+    <div class="nav-inner">
+      <a class="brand-row" href="/" aria-label="WoodToolChest home">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 19.5L20.4 7.8C21.6 6.8 23.4 7.5 23.6 9.1L24.6 17.2L27 18.4V22.2H5.2C4.5 22.2 4 21.7 4 21V20.6C4 19.9 4.5 19.5 5.2 19.5H6Z" fill="rgba(255,255,255,0.94)"/>
+            <path d="M9.4 19.5L20.9 10.2L21.7 17.4L9.4 19.5Z" fill="rgba(255,255,255,0.54)"/>
+            <path d="M8 24.5H25" stroke="rgba(255,255,255,0.86)" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand">WoodToolChest</span>
+          <span class="brand-sub">Design tools & shop guides</span>
+        </span>
+      </a>
 
-            <div class="brand-text-wrap">
-              <div class="brand-line">
-                <a class="brand" href="/">WoodToolChest</a>
-                <span class="brand-pill">Built for real shops</span>
-              </div>
-              <div class="brand-sub">Practical woodworking guides, tools, and shop setup</div>
-            </div>
-          </div>
-
-          <nav class="main-nav" aria-label="Primary">
-            <a href="#tools">Tools</a>
-            <a href="#guides">Guides</a>
-            <a href="#shop-setup">Shop Setup</a>
-            <a class="nav-cta" href="/board-foot-calculator.html">Board Foot Calculator</a>
-          </nav>
-        </div>
-
-        <div class="header-bar">
-          <div class="header-bar-copy">
-            <span class="header-dot" aria-hidden="true"></span>
-            <span><strong>Better woodworking starts here.</strong> Useful tools, straightforward guides, and advice you can actually use on real builds.</span>
-          </div>
-
-          <div class="header-bar-actions">
-            <a class="header-button header-button-primary" href="#tools">Start with the tools</a>
-            <a class="header-button header-button-secondary" href="/board-foot-calculator.html">Estimate your lumber</a>
-          </div>
-        </div>
-      </div>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="/cutting-board-design-generator.html">Designer</a>
+        <a href="#tools">Tools</a>
+        <a href="#guides">Guides</a>
+        <a href="#shop">Shop</a>
+        <a class="nav-cta" href="/cutting-board-design-generator.html">Design a Board</a>
+      </nav>
     </div>
   </header>
 
-  <main class="container">
+  <main>
     <section class="hero">
-      <div class="hero-panel">
-        <p class="eyebrow">Woodworking guides and tools</p>
-        <h1>Practical woodworking help for real shop builds</h1>
-        <p class="tagline">For Woodworkers, By Woodworkers.</p>
-        <p class="subtagline">Useful tools and practical guides for lumber estimates, cutting boards, flattening help, shop setup, wood movement planning, and small-shop workflow.</p>
-        <p class="intro">
-          WoodToolChest is built for woodworkers who want clear answers, useful tools, and help they can actually use in the shop. Whether you are estimating lumber for a project, flattening a cutting board, planning a compact workshop, or thinking through wood movement, the goal is simple: practical help without the fluff.
-        </p>
-
-        <div class="hero-summary">
-          <div class="summary-card">
-            <h3>What you will find here</h3>
-            <p>Interactive tools for quick decisions, practical guides for real build problems, and small-shop advice that does not assume you have a dream setup.</p>
-          </div>
-
-          <div class="summary-card">
-            <div class="mini-points">
-              <div class="mini-point">
-                <h3>Best for</h3>
-                <p>Board foot estimates, cutting boards, flattening, beginner shop upgrades, workflow cleanup, wood movement planning, and small useful builds.</p>
+      <div class="container">
+        <div class="hero-shell">
+          <div class="hero-grid">
+            <div class="hero-content">
+              <p class="eyebrow">Woodworking that feels good to plan</p>
+              <h1>Make something worth keeping.</h1>
+              <p class="hero-copy">
+                Design cutting boards, plan better projects, and make smarter shop decisions with simple tools that feel more like inspiration than homework.
+              </p>
+              <div class="hero-actions">
+                <a class="button button-primary" href="/cutting-board-design-generator.html">Open the Cutting Board Designer →</a>
+                <a class="button button-secondary" href="#guides">Browse the guides</a>
               </div>
-
-              <div class="mini-point">
-                <h3>Style of help</h3>
-                <p>Cleaner pages, straightforward guidance, and tools that feel more usable to real woodworkers.</p>
+              <div class="proof-row" aria-label="Site highlights">
+                <span class="proof-pill"><span class="proof-dot"></span> Free tools</span>
+                <span class="proof-pill"><span class="proof-dot"></span> Buildable ideas</span>
+                <span class="proof-pill"><span class="proof-dot"></span> Small-shop friendly</span>
               </div>
+            </div>
+
+            <div class="hero-feature" aria-label="Featured cutting board designer preview">
+              <a class="designer-card" href="/cutting-board-design-generator.html">
+                <div class="board-preview">
+                  <div class="mock-board" aria-hidden="true"></div>
+                </div>
+                <div class="designer-meta">
+                  <div>
+                    <strong>Cutting Board Designer</strong>
+                    <span>Explore premium, 3D, and buildable board concepts.</span>
+                  </div>
+                  <div class="score">Flagship tool</div>
+                </div>
+              </a>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="section-header">
-        <h2>Start here</h2>
+    <section class="section" id="featured">
+      <div class="container">
+        <div class="feature-panel">
+          <div class="feature-visual" aria-hidden="true">
+            <div class="cube-grid">
+              <span class="cube"></span><span class="cube"></span><span class="cube"></span><span class="cube"></span><span class="cube"></span><span class="cube"></span><span class="cube"></span><span class="cube"></span>
+              <span class="cube"></span><span class="cube"></span><span class="cube"></span><span class="cube"></span><span class="cube"></span><span class="cube"></span><span class="cube"></span><span class="cube"></span>
+              <span class="cube"></span><span class="cube"></span><span class="cube"></span><span class="cube"></span><span class="cube"></span><span class="cube"></span><span class="cube"></span><span class="cube"></span>
+              <span class="cube"></span><span class="cube"></span><span class="cube"></span><span class="cube"></span><span class="cube"></span><span class="cube"></span><span class="cube"></span><span class="cube"></span>
+              <span class="cube"></span><span class="cube"></span><span class="cube"></span><span class="cube"></span><span class="cube"></span><span class="cube"></span><span class="cube"></span><span class="cube"></span>
+            </div>
+          </div>
+          <div class="feature-content">
+            <p class="section-kicker">Start with the fun part</p>
+            <h3>Design your next cutting board before you cut a strip.</h3>
+            <p>
+              The cutting board designer is the center of WoodToolChest: visual patterns, wood combinations, style direction, and build notes that make the idea feel real.
+            </p>
+            <div class="mini-stats">
+              <div class="mini-stat"><strong>3D</strong><span>patterns</span></div>
+              <div class="mini-stat"><strong>Wood</strong><span>palettes</span></div>
+              <div class="mini-stat"><strong>Build</strong><span>notes</span></div>
+            </div>
+            <a class="button button-primary" href="/cutting-board-design-generator.html">Launch designer →</a>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="start-grid">
-        <a class="start-link" href="#tools">
-          <strong>Try the tools</strong>
-          <span>Use the calculators and generators when you want a quick next move, lumber estimate, design idea, movement estimate, or project direction.</span>
-        </a>
+    <section class="section" id="tools">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Tools</p>
+            <h2>Useful, visual, not overbuilt.</h2>
+          </div>
+          <p class="section-copy">Quick tools for choosing a design direction, planning a project, estimating movement, or finding the next smart shop upgrade.</p>
+        </div>
 
-        <a class="start-link" href="#guides">
-          <strong>Read the guides</strong>
-          <span>Go here for practical how-to help on flattening, wood selection, tearout, and build decisions.</span>
-        </a>
+        <div class="tool-grid">
+          <a class="card large accent-green" href="/cutting-board-design-generator.html">
+            <div class="card-topline">
+              <span class="icon-bubble">▧</span>
+              <span class="tag">Main tool</span>
+            </div>
+            <h3>Cutting Board Design Generator</h3>
+            <p>Create cleaner cutting board concepts with woods, style direction, 3D patterns, and practical build notes.</p>
+          </a>
 
-        <a class="start-link" href="#shop-setup">
-          <strong>Fix your shop setup</strong>
-          <span>Get into layout, dust collection, bench height, and other compact-shop improvements.</span>
-        </a>
+          <a class="card accent-gold" href="/wood-project-idea-generator.html">
+            <div class="card-topline">
+              <span class="icon-bubble">✦</span>
+              <span class="tag">Ideas</span>
+            </div>
+            <h3>Wood Project Idea Generator</h3>
+            <p>Find a realistic project idea when you want to build but do not know where to start.</p>
+          </a>
+
+          <a class="card accent-plum" href="/wood-movement-calculator.html">
+            <div class="card-topline">
+              <span class="icon-bubble">↔</span>
+              <span class="tag">Planning</span>
+            </div>
+            <h3>Wood Movement Calculator</h3>
+            <p>Estimate seasonal expansion before a glue-up, panel, tabletop, or cutting board surprises you.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="guides">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Popular guides</p>
+            <h2>Answers for the messy middle.</h2>
+          </div>
+          <p class="section-copy">Practical help for the exact moments where a project gets confusing, risky, dusty, or just annoying.</p>
+        </div>
+
+        <div class="guide-grid">
+          <a class="guide-card" href="/best-woods-for-cutting-boards.html">
+            <div class="guide-thumb"></div>
+            <h3>Best Woods for Cutting Boards</h3>
+            <p>Maple, walnut, cherry, and what to avoid.</p>
+          </a>
+          <a class="guide-card" href="/how-to-flatten-a-cutting-board.html">
+            <div class="guide-thumb"></div>
+            <h3>How to Flatten a Cutting Board</h3>
+            <p>Router, planer, and sanding options explained plainly.</p>
+          </a>
+          <a class="guide-card" href="/router-flattening-jig.html">
+            <div class="guide-thumb"></div>
+            <h3>Router Flattening Jig Guide</h3>
+            <p>A better path for slabs, glue-ups, and wide boards.</p>
+          </a>
+          <a class="guide-card" href="/how-to-prevent-tearout-when-planing.html">
+            <div class="guide-thumb"></div>
+            <h3>Prevent Tearout When Planing</h3>
+            <p>Read the grain and avoid ruining the surface late.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="shop">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Shop setup</p>
+            <h2>Make the space easier to use.</h2>
+          </div>
+          <p class="section-copy">Small changes to layout, dust collection, and bench setup can make woodworking feel lighter before the first cut.</p>
+        </div>
+
+        <div class="path-grid">
+          <a class="path-card" href="/small-workshop-layout-guide.html">
+            <h3>Small Workshop Layout</h3>
+            <p>Plan flow, storage, and clear space without pretending you own an aircraft hangar.</p>
+          </a>
+          <a class="path-card" href="/dust-collection-for-beginners.html">
+            <h3>Dust Collection for Beginners</h3>
+            <p>Start with the dust problems that matter most and upgrade in the right order.</p>
+          </a>
+          <a class="path-card" href="/workbench-height-guide.html">
+            <h3>Workbench Height Guide</h3>
+            <p>Choose a bench height that fits your body, your tools, and the kind of work you actually do.</p>
+          </a>
+        </div>
       </div>
     </section>
 
     <section class="section">
-      <div class="section-header">
-        <h2>Explore by type</h2>
-      </div>
-
-      <div class="cards-grid">
-        <a class="nav-card" href="#tools">
-          <h3>Interactive tools</h3>
-          <p>Estimate board feet, generate cutting board ideas, calculate wood movement, get project ideas, and use simple tools that solve real shop problems fast.</p>
-        </a>
-
-        <a class="nav-card" href="#guides">
-          <h3>Build guides</h3>
-          <p>Step-by-step help for flattening boards, choosing woods, and working through real project decisions without overcomplicating them.</p>
-        </a>
-
-        <a class="nav-card" href="#shop-setup">
-          <h3>Shop setup advice</h3>
-          <p>Layout, dust collection, workbench height, and other practical setup topics for garage shops and compact woodworking spaces.</p>
-        </a>
-      </div>
-    </section>
-
-    <section class="section two-col" id="tools">
-      <div>
-        <div class="section-header">
-          <h2>Tools</h2>
+      <div class="container">
+        <div class="quote-panel">
+          <div class="plane-art" aria-hidden="true"></div>
+          <div class="quote-copy">
+            <p class="section-kicker">The vibe</p>
+            <h2>Less sawdust cliche. More quiet confidence.</h2>
+            <p>
+              WoodToolChest is still built for woodworkers, but the experience should feel cleaner, calmer, and more enjoyable; a place to explore ideas, not just read instructions.
+            </p>
+          </div>
         </div>
-
-        <div class="link-list">
-          <a class="link-item" href="/board-foot-calculator.html">
-            Board Foot Calculator
-            <span>Estimate board feet, add realistic waste and milling loss, and get a better feel for how much lumber your project may actually need.</span>
-          </a>
-
-          <a class="link-item" href="/cutting-board-design-generator.html">
-            Cutting Board Design Generator
-            <span>Generate cutting board ideas with more realistic pattern direction, wood mixes, and buildable board suggestions.</span>
-          </a>
-
-          <a class="link-item" href="/wood-project-idea-generator.html">
-            Wood Project Idea Generator
-            <span>Get a random, realistic woodworking idea with difficulty, wood type, and estimated time.</span>
-          </a>
-
-          <a class="link-item" href="/wood-movement-calculator.html">
-            Wood Movement Calculator
-            <span>Estimate seasonal expansion and contraction across board width using species, grain orientation, and humidity range.</span>
-          </a>
-        </div>
-      </div>
-
-      <div id="guides">
-        <div class="section-header">
-          <h2>Build guides</h2>
-        </div>
-
-        <div class="link-list">
-          <a class="link-item" href="/best-woods-for-cutting-boards.html">
-            Best Woods for Cutting Boards
-            <span>A beginner-friendly guide to maple, walnut, cherry, and the woods worth avoiding.</span>
-          </a>
-
-          <a class="link-item" href="/how-to-flatten-a-cutting-board.html">
-            How to Flatten a Cutting Board
-            <span>Practical methods for edge grain and end grain boards using routers, planers, or sanding.</span>
-          </a>
-
-          <a class="link-item" href="/how-to-prevent-tearout-when-planing.html">
-            How to Prevent Tearout When Planing
-            <span>Learn how to read grain, take lighter passes, and avoid ugly tearout before it starts.</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="shop-setup">
-      <div class="section-header">
-        <h2>Shop setup and workflow</h2>
-      </div>
-
-      <div class="link-list">
-        <a class="link-item" href="/router-flattening-jig.html">
-          Router Flattening Jig Guide
-          <span>Learn how to build and use a flattening jig for slabs, cutting boards, and wider glue-ups.</span>
-        </a>
-
-        <a class="link-item" href="/dust-collection-for-beginners.html">
-          Dust Collection for Beginners
-          <span>A practical small-shop guide to shop vacs, dust collectors, and what matters most first.</span>
-        </a>
-
-        <a class="link-item" href="/small-workshop-layout-guide.html">
-          Small Workshop Layout Guide
-          <span>Plan a better garage or compact shop layout with cleaner workflow, storage, and open space.</span>
-        </a>
-
-        <a class="link-item" href="/workbench-height-guide.html">
-          Workbench Height Guide
-          <span>Choose a bench height that actually fits your work style, body, and type of woodworking.</span>
-        </a>
       </div>
     </section>
   </main>
 
   <footer class="footer">
     <div class="footer-inner">
-      <p><strong>WoodToolChest</strong> gives practical woodworking guides, shop setup advice, and tool help for real-world builds.</p>
-      <p>For Woodworkers, By Woodworkers.</p>
-      <p class="muted">© 2026 WoodToolChest</p>
+      <a class="brand-row" href="/" aria-label="WoodToolChest home">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 19.5L20.4 7.8C21.6 6.8 23.4 7.5 23.6 9.1L24.6 17.2L27 18.4V22.2H5.2C4.5 22.2 4 21.7 4 21V20.6C4 19.9 4.5 19.5 5.2 19.5H6Z" fill="rgba(255,255,255,0.94)"/>
+            <path d="M9.4 19.5L20.9 10.2L21.7 17.4L9.4 19.5Z" fill="rgba(255,255,255,0.54)"/>
+            <path d="M8 24.5H25" stroke="rgba(255,255,255,0.86)" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="brand-text"><span class="brand">WoodToolChest</span></span>
+      </a>
+      <div class="footer-links">
+        <a href="/cutting-board-design-generator.html">Designer</a>
+        <a href="#tools">Tools</a>
+        <a href="#guides">Guides</a>
+        <a href="#shop">Shop Setup</a>
+      </div>
+      <div>© 2026 WoodToolChest</div>
     </div>
   </footer>
 </body>
