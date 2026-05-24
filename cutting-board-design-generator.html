@@ -2,1552 +2,919 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G1ZT9QNFQT"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G1ZT9QNFQT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-G1ZT9QNFQT');
+  </script>
 
-  gtag('config', 'G-G1ZT9QNFQT');
-</script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Cutting Board Design Generator | Random Wood & Pattern Ideas | WoodToolChest</title>
-  <meta name="description" content="Generate cutting board ideas based on the lumber you actually have, with suggested wood combinations, dimensions, patterns, and build details." />
-  <link rel="canonical" href="https://www.woodtoolchest.com/cutting-board-design-generator.html" />
+  <title>Cutting Board Design Generator | 3D Patterns, Wood Combos & Buildable Ideas | WoodToolChest</title>
+  <meta name="description" content="Design realistic cutting boards with premium wood combinations, 3D illusion patterns, buildability scores, dimensions, cut notes, and practical shop guidance.">
+  <link rel="canonical" href="https://www.woodtoolchest.com/cutting-board-design-generator.html">
 
   <style>
     :root {
       --bg: #f7f3ec;
       --surface: #fffdf8;
       --surface-2: #fbf7f1;
+      --surface-3: #f3eadf;
       --text: #1f1a17;
       --muted: #6b625a;
       --line: #ddd3c7;
       --accent: #7a4b22;
       --accent-dark: #5f3919;
-      --success: #47653d;
-      --radius: 16px;
-      --max: 1040px;
-      --shadow: 0 10px 28px rgba(32, 22, 16, 0.05);
+      --accent-soft: #c89c73;
+      --dark: #251a13;
+      --dark-2: #342419;
+      --max: 1180px;
+      --radius: 20px;
+      --shadow: 0 18px 44px rgba(32, 22, 16, 0.08);
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-    }
-
-    a {
-      color: var(--accent-dark);
-      text-decoration: none;
-    }
-
-    a:hover {
-      color: var(--accent);
-      text-decoration: underline;
-    }
-
-    .header {
-      color: white;
-      padding: 22px 20px;
-      border-bottom: 1px solid #1d1510;
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0) 45%),
-        repeating-linear-gradient(
-          to bottom,
-          rgba(255,255,255,0.035) 0px,
-          rgba(255,255,255,0.035) 1px,
-          rgba(0,0,0,0) 1px,
-          rgba(0,0,0,0) 42px
-        ),
-        linear-gradient(135deg, #3a281d 0%, #2b2018 45%, #241a14 100%);
-      box-shadow: inset 0 -1px 0 rgba(255,255,255,0.04);
+        radial-gradient(circle at top left, rgba(122,75,34,0.10), transparent 30%),
+        linear-gradient(180deg, #f8f3eb 0%, var(--bg) 42%, #f2eadf 100%);
+      color: var(--text);
+      line-height: 1.65;
     }
 
-    .container {
+    a { color: var(--accent-dark); text-decoration: none; }
+    a:hover { color: var(--accent); text-decoration: underline; }
+
+    .site-header {
+      color: #fff;
+      padding: 18px 20px;
+      background:
+        radial-gradient(circle at 18% 12%, rgba(201,148,98,0.24), transparent 28%),
+        linear-gradient(135deg, #3a291e 0%, #2b2018 54%, #221913 100%);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 8px 24px rgba(24, 17, 12, 0.18);
+    }
+
+    .site-header-inner,
+    .container,
+    .footer-inner {
       width: min(var(--max), calc(100% - 32px));
       margin: 0 auto;
     }
 
-    .brand-row {
+    .header-top {
       display: flex;
       align-items: center;
-      gap: 12px;
+      justify-content: space-between;
+      gap: 20px;
     }
 
+    .brand-row { display: flex; align-items: center; gap: 13px; min-width: 0; }
     .brand-mark {
-      width: 34px;
-      height: 34px;
-      border-radius: 10px;
+      width: 48px;
+      height: 48px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 48px;
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.02)),
-        linear-gradient(135deg, #9f6a37, #7a4b22);
-      border: 1px solid rgba(255,255,255,0.14);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
-      flex: 0 0 34px;
+        linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.03)),
+        linear-gradient(135deg, #b77a44 0%, #8b572e 48%, #6c421f 100%);
+      border: 1px solid rgba(255,255,255,0.15);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 10px 22px rgba(0,0,0,0.16);
     }
 
-    .brand-mark-bars {
-      display: flex;
-      gap: 3px;
-      align-items: flex-end;
-    }
+    .brand-mark svg { display: block; }
+    .brand-text-wrap { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+    .brand { color: #fff; font-weight: 800; font-size: 1.72rem; line-height: 1; letter-spacing: -0.03em; }
+    .brand:hover { color: #f1e4d7; text-decoration: none; }
+    .brand-sub { color: rgba(255,255,255,0.72); font-size: 0.75rem; letter-spacing: 0.10em; text-transform: uppercase; }
 
-    .brand-mark-bars span {
-      display: block;
-      width: 5px;
-      border-radius: 2px;
-      background: rgba(255,255,255,0.88);
-      box-shadow: inset 0 -1px 0 rgba(0,0,0,0.15);
-    }
-
-    .brand-mark-bars span:nth-child(1) { height: 12px; }
-    .brand-mark-bars span:nth-child(2) { height: 16px; }
-    .brand-mark-bars span:nth-child(3) { height: 10px; }
-
-    .brand-text-wrap {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .brand {
-      font-size: 1.55rem;
+    .main-nav { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .main-nav a {
+      color: rgba(255,255,255,0.88);
       font-weight: 700;
-      letter-spacing: 0.01em;
-      line-height: 1;
-      color: white;
+      font-size: 0.92rem;
+      padding: 9px 13px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.10);
     }
+    .main-nav a:hover { color: #fff; background: rgba(255,255,255,0.10); text-decoration: none; }
+    .main-nav .nav-cta { background: linear-gradient(180deg, #c89462, #af7340); color: #fff; }
 
-    .brand-sub {
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.72);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      line-height: 1.1;
-    }
-
-    main {
-      padding: 34px 0 56px;
-    }
-
+    .hero { padding: 34px 0 24px; }
     .hero-panel {
       position: relative;
       overflow: hidden;
+      border-radius: 30px;
+      padding: 34px;
       background:
-        radial-gradient(circle at top right, rgba(122,75,34,0.10), transparent 35%),
-        linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0));
+        radial-gradient(circle at 88% 10%, rgba(201,148,98,0.24), transparent 26%),
+        linear-gradient(135deg, rgba(255,253,248,0.98) 0%, rgba(255,253,248,0.94) 52%, rgba(248,241,232,0.90) 100%);
       border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 34px 30px;
       box-shadow: var(--shadow);
-      margin-bottom: 26px;
-    }
-
-    .hero-panel::after {
-      content: "";
-      position: absolute;
-      right: -34px;
-      top: -6px;
-      width: 240px;
-      height: 240px;
-      background:
-        repeating-linear-gradient(
-          135deg,
-          rgba(122,75,34,0.07) 0px,
-          rgba(122,75,34,0.07) 10px,
-          rgba(122,75,34,0.02) 10px,
-          rgba(122,75,34,0.02) 20px
-        );
-      border-radius: 28px;
-      transform: rotate(8deg);
-      pointer-events: none;
-      opacity: 0.5;
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 26px;
+      align-items: center;
     }
 
     .eyebrow {
+      margin: 0 0 10px;
+      color: var(--accent);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: 0.85rem;
+    }
+
+    h1, h2, h3 { color: #1e1814; line-height: 1.15; margin-top: 0; }
+    h1 { font-size: clamp(2.2rem, 5vw, 4.25rem); letter-spacing: -0.065em; margin-bottom: 14px; }
+    h2 { font-size: clamp(1.55rem, 3vw, 2.15rem); letter-spacing: -0.035em; margin-bottom: 14px; }
+    h3 { font-size: 1.08rem; margin-bottom: 8px; }
+    p { margin: 0 0 18px; }
+    .intro { font-size: 1.08rem; color: #332820; max-width: 650px; }
+
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
+    .button, button {
+      appearance: none;
+      border: 0;
+      cursor: pointer;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      font-weight: 800;
+      line-height: 1;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, border-color 0.12s ease;
+    }
+    .button:hover, button:hover { transform: translateY(-1px); text-decoration: none; }
+    .button-primary, .primary-button {
+      color: #fff;
+      background: linear-gradient(180deg, #9a622f, #704118);
+      box-shadow: 0 12px 24px rgba(99, 58, 24, 0.20), inset 0 1px 0 rgba(255,255,255,0.18);
+    }
+    .button-secondary, .secondary-button {
+      background: rgba(255,255,255,0.76);
+      color: #2c2118;
+      border: 1px solid var(--line);
+    }
+
+    .proof-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+    .proof-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: #fffaf3;
+      border: 1px solid #dfd1c0;
+      color: #3b2e24;
       font-size: 0.9rem;
       font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin: 0 0 10px;
-      position: relative;
-      z-index: 1;
     }
 
-    h1, h2, h3 {
-      color: #1e1814;
-      line-height: 1.2;
-      margin-top: 0;
-    }
-
-    h1 {
-      font-size: 2.45rem;
-      margin-bottom: 14px;
-      max-width: 760px;
-      position: relative;
-      z-index: 1;
-    }
-
-    h2 {
-      font-size: 1.75rem;
-      margin-bottom: 14px;
-    }
-
-    h3 {
-      font-size: 1.08rem;
-      margin-bottom: 10px;
-    }
-
-    p {
-      margin: 0 0 16px;
-    }
-
-    .intro {
-      font-size: 1.05rem;
-      color: #2b241f;
-      max-width: 760px;
-      position: relative;
-      z-index: 1;
-      margin-bottom: 0;
-    }
-
-    .hero-summary {
+    .hero-preview {
+      min-height: 330px;
+      border-radius: 24px;
+      border: 1px solid rgba(80,53,34,0.20);
+      background:
+        radial-gradient(circle at 50% 12%, rgba(255,255,255,0.42), transparent 24%),
+        linear-gradient(135deg, #342418, #211711);
+      padding: 22px;
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 18px;
-      margin-top: 24px;
-      position: relative;
-      z-index: 1;
+      place-items: center;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 20px 44px rgba(32, 22, 16, 0.16);
     }
+    .hero-preview svg { width: 100%; max-width: 560px; height: auto; display: block; }
 
-    .summary-card {
-      background: rgba(255,255,255,0.72);
-      border: 1px solid rgba(221,211,199,0.9);
-      border-radius: 18px;
-      padding: 18px;
-      backdrop-filter: blur(2px);
-    }
-
-    .summary-card p:last-child {
-      margin-bottom: 0;
-    }
-
-    .mini-points {
+    .tool-shell {
       display: grid;
-      gap: 12px;
-    }
-
-    .mini-point {
-      border: 1px solid #d7cab9;
-      border-radius: 14px;
-      padding: 14px;
-      background: #fffaf3;
-    }
-
-    .mini-point h3 {
-      margin: 0 0 8px;
-      font-size: 1rem;
-    }
-
-    .section {
-      margin-bottom: 24px;
-    }
-
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 24px;
-      box-shadow: 0 8px 24px rgba(32, 22, 16, 0.03);
-    }
-
-    .tool-grid {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
+      grid-template-columns: 360px 1fr;
       gap: 22px;
       align-items: start;
+      margin: 10px 0 32px;
     }
 
-    .field-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
+    .panel, .result-panel, .content-card {
+      background: rgba(255,253,248,0.92);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 28px rgba(32, 22, 16, 0.045);
     }
 
-    label {
-      display: block;
-      font-weight: 700;
-      margin-bottom: 7px;
-      color: #2b241f;
-    }
+    .panel { padding: 20px; position: sticky; top: 18px; }
+    .result-panel { padding: 22px; }
+    .content-card { padding: 24px; margin-bottom: 22px; }
 
-    .help {
-      font-size: 0.92rem;
-      color: var(--muted);
-      margin-top: 6px;
-    }
-
-    input[type="number"],
-    select {
+    .control-section { padding: 16px 0; border-top: 1px solid var(--line); }
+    .control-section:first-of-type { border-top: 0; padding-top: 0; }
+    label, .control-title { display: block; color: #382d25; font-weight: 800; margin-bottom: 8px; font-size: 0.93rem; }
+    select, input[type="number"], input[type="range"] {
       width: 100%;
-      padding: 12px 13px;
-      border-radius: 12px;
-      border: 1px solid var(--line);
-      background: white;
+      font: inherit;
       color: var(--text);
-      font: inherit;
+      border: 1px solid #d6c6b4;
+      background: #fffaf3;
+      border-radius: 12px;
+      min-height: 42px;
+      padding: 9px 10px;
       outline: none;
-      transition: border-color 0.15s ease, box-shadow 0.15s ease;
     }
+    select:focus, input:focus { border-color: #b98a5e; box-shadow: 0 0 0 3px rgba(184, 124, 71, 0.14); }
 
-    input[type="number"]:focus,
-    select:focus {
-      border-color: #bb9a7d;
-      box-shadow: 0 0 0 4px rgba(122,75,34,0.08);
-    }
-
-    .checkbox-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 8px;
-    }
-
-    .check {
+    .option-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .option-card {
+      position: relative;
       display: flex;
       align-items: center;
-      gap: 10px;
-      background: var(--surface-2);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 10px 12px;
-    }
-
-    .check input {
-      margin: 0;
-      accent-color: var(--accent);
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 20px;
-    }
-
-    button {
-      border: 0;
-      border-radius: 12px;
-      padding: 12px 18px;
-      font: inherit;
-      font-weight: 700;
+      gap: 8px;
+      padding: 10px;
+      border-radius: 13px;
+      border: 1px solid #d8c9b8;
+      background: #fffaf3;
       cursor: pointer;
-      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #332820;
     }
+    .option-card input { accent-color: var(--accent); }
+    .option-card:has(input:checked) { border-color: #a66c38; background: #f5eadc; box-shadow: inset 0 0 0 1px rgba(166,108,56,0.08); }
 
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-      color: white;
-      box-shadow: 0 8px 18px rgba(95,57,25,0.18);
+    .inline-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .small-help { color: var(--muted); font-size: 0.88rem; margin: 8px 0 0; }
+
+    .button-stack { display: grid; gap: 10px; margin-top: 2px; }
+    .variant-row { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-top: 10px; }
+    .variant-row button { min-height: 39px; padding: 10px; border: 1px solid #d8c9b8; background: #fffaf3; color: #30251e; font-size: 0.85rem; }
+
+    .render-card {
+      position: relative;
+      overflow: hidden;
+      padding: 18px;
+      border-radius: 24px;
+      min-height: 470px;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 48% 18%, rgba(255,255,255,0.25), transparent 24%),
+        linear-gradient(135deg, #312116 0%, #211711 62%, #15100c 100%);
+      border: 1px solid rgba(80,53,34,0.22);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
     }
-
-    .btn-secondary {
-      background: #efe5d8;
-      color: #3d2b1d;
-      border: 1px solid #dcccbc;
+    .render-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 78px),
+        radial-gradient(circle at 80% 85%, rgba(201,148,98,0.12), transparent 30%);
+      pointer-events: none;
     }
+    .board-stage { position: relative; z-index: 1; width: 100%; max-width: 760px; }
+    .board-stage svg { display: block; width: 100%; height: auto; }
 
-    button:hover {
-      transform: translateY(-1px);
-    }
-
-    .result-card {
-      position: sticky;
-      top: 18px;
-    }
-
-    .result-top {
+    .result-topline {
       display: flex;
-      align-items: center;
+      align-items: start;
       justify-content: space-between;
-      gap: 14px;
-      margin-bottom: 16px;
+      gap: 16px;
+      margin: 18px 0 16px;
     }
-
+    .board-name { margin: 0 0 5px; font-size: clamp(1.45rem, 3vw, 2.25rem); letter-spacing: -0.045em; }
+    .board-subtitle { color: var(--muted); margin: 0; }
     .badge {
       display: inline-flex;
       align-items: center;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: #efe4d6;
-      color: var(--accent-dark);
-      font-size: 0.84rem;
-      font-weight: 700;
       white-space: nowrap;
-    }
-
-    .preview-frame {
-      border: 1px solid #d9ccbd;
-      border-radius: 18px;
-      padding: 16px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.65)),
-        linear-gradient(135deg, #faf5ee, #f4ece1);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
-      margin-bottom: 18px;
-    }
-
-    .preview-label {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin-bottom: 10px;
-    }
-
-    .preview-board-shell {
-      width: 100%;
-      aspect-ratio: 1.45 / 1;
-      border-radius: 16px;
-      border: 1px solid #d7cab9;
-      background: #e7dccd;
-      padding: 14px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .preview-board {
-      width: 100%;
-      height: 100%;
-      border-radius: 12px;
-      overflow: hidden;
-      position: relative;
-      box-shadow:
-        inset 0 2px 0 rgba(255,255,255,0.28),
-        inset 0 -10px 20px rgba(0,0,0,0.04);
-      border: 1px solid rgba(98,72,50,0.12);
-      background: #eadfce;
-    }
-
-    .handle-hole {
-      position: absolute;
-      width: 62px;
-      height: 14px;
-      background: rgba(80,56,36,0.24);
       border-radius: 999px;
-      top: 18px;
-      left: 50%;
-      transform: translateX(-50%);
-      box-shadow: inset 0 1px 2px rgba(0,0,0,0.15);
-      opacity: 0;
-      z-index: 5;
-    }
-
-    .preview-board.has-handle .handle-hole {
-      opacity: 1;
-    }
-
-    .board-surface,
-    .board-surface * {
-      box-sizing: border-box;
-    }
-
-    .board-surface {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-    }
-
-    .grain-overlay {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 4;
-      opacity: 0.2;
-    }
-
-    .grain-overlay.face {
-      background:
-        repeating-linear-gradient(
-          90deg,
-          rgba(255,255,255,0.06) 0px,
-          rgba(255,255,255,0.06) 2px,
-          rgba(0,0,0,0.02) 2px,
-          rgba(0,0,0,0.02) 8px
-        );
-      mix-blend-mode: soft-light;
-    }
-
-    .grain-overlay.end {
-      background:
-        repeating-linear-gradient(
-          90deg,
-          rgba(255,255,255,0.04) 0px,
-          rgba(255,255,255,0.04) 1px,
-          rgba(0,0,0,0.02) 1px,
-          rgba(0,0,0,0.02) 7px
-        ),
-        repeating-linear-gradient(
-          0deg,
-          rgba(255,255,255,0.03) 0px,
-          rgba(255,255,255,0.03) 1px,
-          rgba(0,0,0,0.015) 1px,
-          rgba(0,0,0,0.015) 7px
-        );
-      mix-blend-mode: soft-light;
-    }
-
-    .pattern-stripes,
-    .pattern-border-center {
-      display: flex;
-      width: 100%;
-      height: 100%;
-    }
-
-    .pattern-stripes .segment,
-    .pattern-border-center .segment {
-      height: 100%;
-    }
-
-    .pattern-border {
-      position: absolute;
-      inset: 0;
-      border-radius: 12px;
-    }
-
-    .pattern-border .border-frame {
-      position: absolute;
-      inset: 0;
-      border-radius: 12px;
-      z-index: 1;
-    }
-
-    .pattern-border .center-panel {
-      position: absolute;
-      inset: 8.5% 8%;
-      border-radius: 8px;
-      overflow: hidden;
-      z-index: 2;
-      border: 1px solid rgba(0,0,0,0.08);
-      background: rgba(255,255,255,0.08);
-    }
-
-    .pattern-grid {
-      display: grid;
-      width: 100%;
-      height: 100%;
-    }
-
-    .pattern-row {
-      display: flex;
-      width: 100%;
-      flex: 1 1 auto;
-    }
-
-    .pattern-row .block {
-      flex: 1 1 auto;
-      height: 100%;
-      border: 1px solid rgba(0,0,0,0.035);
-    }
-
-    .result-grid {
-      display: grid;
-      gap: 12px;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      margin-bottom: 14px;
-    }
-
-    .result-item {
-      background: var(--surface-2);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 14px;
-    }
-
-    .result-item span {
-      display: block;
-      color: var(--muted);
+      padding: 8px 11px;
+      background: #f2e5d6;
+      border: 1px solid #d7c3ad;
+      color: #5d3719;
+      font-weight: 800;
       font-size: 0.85rem;
-      margin-bottom: 4px;
     }
 
-    .result-item strong {
-      display: block;
-      font-size: 1.02rem;
-      line-height: 1.35;
-      color: #241b15;
+    .metric-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 16px 0; }
+    .metric {
+      padding: 14px;
+      border-radius: 16px;
+      background: #fffaf3;
+      border: 1px solid #d8c9b8;
     }
+    .metric span { display: block; color: var(--muted); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 5px; }
+    .metric strong { font-size: 1.2rem; color: #241a14; }
 
-    .note-box {
-      background: #f6efe6;
-      border-left: 4px solid var(--accent);
-      border-radius: 10px;
-      padding: 14px 14px 14px 16px;
-      color: #34271d;
+    .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
+    .detail-box {
+      background: #fffaf3;
+      border: 1px solid #d8c9b8;
+      border-radius: 16px;
+      padding: 16px;
     }
+    .detail-box ul { margin: 0; padding-left: 19px; }
+    .detail-box li { margin-bottom: 7px; }
 
-    .legend {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 14px;
-    }
-
-    .legend-item {
+    .swatch-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+    .swatch {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: #faf5ee;
-      border: 1px solid var(--line);
-      border-radius: 999px;
       padding: 7px 10px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid #d8c9b8;
+      font-weight: 700;
       font-size: 0.88rem;
     }
+    .swatch-chip { width: 18px; height: 18px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.18); }
 
-    .swatch {
-      width: 14px;
-      height: 14px;
-      border-radius: 4px;
-      border: 1px solid rgba(0,0,0,0.08);
-      flex: 0 0 14px;
-    }
+    .section-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .mini-card { background: #fffaf3; border: 1px solid #d8c9b8; border-radius: 16px; padding: 18px; }
+    .mini-card p:last-child { margin-bottom: 0; color: var(--muted); }
 
-    .subcard-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 18px;
-    }
+    .related-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .related-links a { display: block; background: #fffaf3; border: 1px solid #d8c9b8; border-radius: 14px; padding: 15px; font-weight: 800; color: #2c221a; }
+    .related-links a span { display: block; margin-top: 5px; color: var(--muted); font-weight: 400; font-size: 0.9rem; }
 
-    .subcard-grid.two-up {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+    .footer { margin-top: 54px; padding: 28px 20px 40px; border-top: 1px solid var(--line); background: #f3ede4; color: var(--muted); }
+    .footer p { margin-bottom: 8px; }
 
-    .subcard {
-      background: linear-gradient(180deg, #fffdf8, #fbf7f1);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 18px;
-      box-shadow: 0 6px 18px rgba(32, 22, 16, 0.03);
-    }
-
-    .subcard h3 {
-      margin-bottom: 8px;
-    }
-
-    .faq-list {
-      display: grid;
-      gap: 14px;
-    }
-
-    .faq-item {
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 16px 18px;
-      background: var(--surface);
-    }
-
-    .faq-item h3 {
-      margin-bottom: 8px;
-    }
-
-    .related-links {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px;
-    }
-
-    .related-links a {
-      display: block;
-      background: linear-gradient(180deg, #fffdf8, #fbf7f1);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 16px;
-      font-weight: 700;
-      color: #2c221a;
-      box-shadow: 0 6px 18px rgba(32, 22, 16, 0.03);
-    }
-
-    .related-links a span {
-      display: block;
-      color: var(--muted);
-      font-weight: 400;
-      font-size: 0.92rem;
-      margin-top: 6px;
-    }
-
-    footer {
-      padding: 10px 0 30px;
-      color: var(--muted);
-      font-size: 0.95rem;
-      text-align: center;
-    }
-
-    @media (max-width: 920px) {
-      .tool-grid,
-      .hero-summary,
-      .subcard-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .result-card {
-        position: static;
-      }
+    @media (max-width: 980px) {
+      .hero-panel, .tool-shell { grid-template-columns: 1fr; }
+      .panel { position: static; }
+      .metric-grid { grid-template-columns: 1fr 1fr; }
+      .section-grid, .detail-grid { grid-template-columns: 1fr; }
+      .hero-preview { min-height: 280px; }
     }
 
     @media (max-width: 720px) {
-      h1 {
-        font-size: 2rem;
-      }
-
-      .field-grid,
-      .result-grid,
-      .checkbox-grid,
-      .subcard-grid.two-up {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-panel,
-      .card {
-        padding: 20px;
-      }
-
-      .preview-board-shell {
-        aspect-ratio: 1.2 / 1;
-      }
+      .site-header-inner, .container, .footer-inner { width: min(var(--max), calc(100% - 24px)); }
+      .header-top { align-items: flex-start; flex-direction: column; }
+      .main-nav { justify-content: flex-start; }
+      .hero-panel, .result-panel, .content-card, .panel { padding: 18px; border-radius: 20px; }
+      .render-card { min-height: 330px; padding: 10px; }
+      .option-grid, .inline-grid, .variant-row, .metric-grid, .related-links { grid-template-columns: 1fr; }
+      .result-topline { flex-direction: column; }
+      .brand { font-size: 1.45rem; }
+      .brand-sub { font-size: 0.67rem; }
     }
   </style>
 </head>
 <body>
-  <header class="header">
-    <div class="container">
-      <div class="brand-row">
-        <div class="brand-mark" aria-hidden="true">
-          <div class="brand-mark-bars">
-            <span></span><span></span><span></span>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <div class="header-top">
+        <div class="brand-row">
+          <div class="brand-mark" aria-hidden="true">
+            <svg width="27" height="27" viewBox="0 0 28 28" fill="none">
+              <rect x="3" y="8" width="6" height="13" rx="1.6" fill="rgba(255,255,255,0.96)"></rect>
+              <rect x="11" y="4" width="6" height="17" rx="1.6" fill="rgba(255,255,255,0.84)"></rect>
+              <rect x="19" y="10" width="6" height="11" rx="1.6" fill="rgba(255,255,255,0.68)"></rect>
+              <path d="M11 10.5H17" stroke="rgba(90,54,27,0.22)" stroke-width="1.2" stroke-linecap="round"></path>
+              <path d="M3 13.5H9" stroke="rgba(90,54,27,0.18)" stroke-width="1.2" stroke-linecap="round"></path>
+              <path d="M19 14.5H25" stroke="rgba(90,54,27,0.16)" stroke-width="1.2" stroke-linecap="round"></path>
+            </svg>
+          </div>
+          <div class="brand-text-wrap">
+            <a class="brand" href="/">WoodToolChest</a>
+            <div class="brand-sub">Practical woodworking tools and guides</div>
           </div>
         </div>
-        <div class="brand-text-wrap">
-          <a class="brand" href="/">WoodToolChest</a>
-          <div class="brand-sub">Practical woodworking guides, tools, and shop setup</div>
-        </div>
+
+        <nav class="main-nav" aria-label="Primary">
+          <a href="/">Home</a>
+          <a href="#designer">Designer</a>
+          <a href="#how-it-works">How It Works</a>
+          <a class="nav-cta" href="/best-woods-for-cutting-boards.html">Wood Guide</a>
+        </nav>
       </div>
     </div>
   </header>
 
-  <main>
-    <div class="container">
-      <section class="hero-panel">
-        <p class="eyebrow">Interactive tool</p>
-        <h1>Cutting Board Design Generator</h1>
-        <p class="intro">
-          Plug in the kind of lumber you actually have, then generate a cutting board idea with a size suggestion,
-          a realistic pattern direction, wood usage notes, and a preview that feels closer to something a real woodworker would actually build.
-        </p>
-
-        <div class="hero-summary">
-          <div class="summary-card">
-            <h3>What this tool should help with</h3>
-            <p>It is meant to get you to a practical, buildable board faster — not to spit out busy patterns that look clever on a screen but make no sense in the shop.</p>
+  <main class="container">
+    <section class="hero">
+      <div class="hero-panel">
+        <div>
+          <p class="eyebrow">Flagship Tool</p>
+          <h1>Design a cutting board worth building.</h1>
+          <p class="intro">Generate cleaner, more realistic cutting board concepts with premium wood combinations, 3D illusion patterns, buildability scores, dimensions, and practical shop notes.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#designer">Open the designer</a>
+            <button class="secondary-button" type="button" onclick="generateBoard('3d')">Generate a 3D board</button>
           </div>
+          <div class="proof-row" aria-label="Tool highlights">
+            <span class="proof-pill">🪵 3D patterns</span>
+            <span class="proof-pill">📐 Build notes</span>
+            <span class="proof-pill">⚡ No login</span>
+          </div>
+        </div>
+        <div class="hero-preview" aria-hidden="true">
+          <div id="heroPreview"></div>
+        </div>
+      </div>
+    </section>
 
-          <div class="summary-card">
-            <div class="mini-points">
-              <div class="mini-point">
-                <h3>Best use case</h3>
-                <p>Use it to test realistic wood combinations, proportions, and pattern directions before glue-up.</p>
-              </div>
+    <section class="tool-shell" id="designer">
+      <aside class="panel" aria-label="Cutting board design controls">
+        <h2>Board Designer</h2>
+        <p class="small-help">Choose the kind of board you want, then generate variants until something feels buildable and worth saving.</p>
 
-              <div class="mini-point">
-                <h3>Design bias</h3>
-                <p>Cleaner boards, stronger contrast, and patterns that real woodworkers actually tend to build.</p>
-              </div>
+        <div class="control-section">
+          <span class="control-title">Pattern type</span>
+          <div class="option-grid">
+            <label class="option-card"><input type="radio" name="pattern" value="edge" checked> Edge grain</label>
+            <label class="option-card"><input type="radio" name="pattern" value="endgrain"> End grain</label>
+            <label class="option-card"><input type="radio" name="pattern" value="tumbling"> 3D cubes</label>
+            <label class="option-card"><input type="radio" name="pattern" value="woven"> Woven 3D</label>
+            <label class="option-card"><input type="radio" name="pattern" value="parquet"> Parquet</label>
+            <label class="option-card"><input type="radio" name="pattern" value="random"> Surprise me</label>
+          </div>
+        </div>
+
+        <div class="control-section">
+          <label for="style">Style direction</label>
+          <select id="style">
+            <option value="luxury">Luxury walnut-heavy</option>
+            <option value="modern">Modern high contrast</option>
+            <option value="minimal">Minimal and clean</option>
+            <option value="classic">Classic gift board</option>
+            <option value="rustic">Rustic warm tone</option>
+            <option value="wild">Bold statement board</option>
+          </select>
+        </div>
+
+        <div class="control-section">
+          <span class="control-title">Woods to include</span>
+          <div class="option-grid" id="woodOptions">
+            <label class="option-card"><input type="checkbox" value="maple" checked> Maple</label>
+            <label class="option-card"><input type="checkbox" value="walnut" checked> Walnut</label>
+            <label class="option-card"><input type="checkbox" value="cherry" checked> Cherry</label>
+            <label class="option-card"><input type="checkbox" value="whiteOak"> White oak</label>
+            <label class="option-card"><input type="checkbox" value="purpleheart"> Purpleheart</label>
+            <label class="option-card"><input type="checkbox" value="padauk"> Padauk</label>
+          </div>
+          <p class="small-help">For food-safe simplicity, maple, walnut, and cherry are usually the cleanest default choices.</p>
+        </div>
+
+        <div class="control-section">
+          <div class="inline-grid">
+            <div>
+              <label for="size">Finished size</label>
+              <select id="size">
+                <option value="small">Small 10 × 14</option>
+                <option value="medium" selected>Medium 12 × 18</option>
+                <option value="large">Large 14 × 20</option>
+                <option value="xl">XL 16 × 24</option>
+              </select>
+            </div>
+            <div>
+              <label for="complexity">Complexity</label>
+              <select id="complexity">
+                <option value="beginner">Beginner</option>
+                <option value="intermediate" selected>Intermediate</option>
+                <option value="advanced">Advanced</option>
+              </select>
             </div>
           </div>
         </div>
-      </section>
 
-      <section class="section">
-        <div class="tool-grid">
-          <div class="card">
-            <h2>Build your idea</h2>
-
-            <div class="field-grid">
-              <div>
-                <label for="boardType">Board style</label>
-                <select id="boardType">
-                  <option value="edge">Edge grain</option>
-                  <option value="end">End grain</option>
-                  <option value="serving">Serving board</option>
-                </select>
-              </div>
-
-              <div>
-                <label for="patternPreference">Pattern style</label>
-                <select id="patternPreference">
-                  <option value="random">Surprise me</option>
-                  <option value="striped">Striped</option>
-                  <option value="checker">Checker / block</option>
-                  <option value="chaos">Varied stripe</option>
-                  <option value="border">Border frame</option>
-                </select>
-              </div>
-
-              <div>
-                <label for="boardUse">Primary use</label>
-                <select id="boardUse">
-                  <option value="general">General kitchen use</option>
-                  <option value="prep">Meal prep</option>
-                  <option value="gift">Gift build</option>
-                  <option value="display">Display / serving</option>
-                </select>
-              </div>
-
-              <div>
-                <label for="thickness">Target thickness</label>
-                <select id="thickness">
-                  <option value="1">1 inch</option>
-                  <option value="1.25" selected>1.25 inch</option>
-                  <option value="1.5">1.5 inch</option>
-                  <option value="1.75">1.75 inch</option>
-                  <option value="2">2 inch</option>
-                </select>
-                <div class="help">End grain boards can now go to 2 inches.</div>
-              </div>
-
-              <div>
-                <label for="maxLength">Max usable board length (inches)</label>
-                <input id="maxLength" type="number" min="8" max="48" value="24" />
-                <div class="help">Use the longest clean length you can realistically mill.</div>
-              </div>
-
-              <div>
-                <label for="maxWidth">Max usable glue-up width (inches)</label>
-                <input id="maxWidth" type="number" min="6" max="30" value="16" />
-                <div class="help">This keeps the suggestion realistic for your shop and stock.</div>
-              </div>
-            </div>
-
-            <div style="margin-top:18px;">
-              <label>Woods you have on hand</label>
-              <div class="checkbox-grid">
-                <label class="check"><input type="checkbox" value="Maple" checked /> Maple</label>
-                <label class="check"><input type="checkbox" value="Walnut" checked /> Walnut</label>
-                <label class="check"><input type="checkbox" value="Cherry" /> Cherry</label>
-                <label class="check"><input type="checkbox" value="Ash" /> Ash</label>
-                <label class="check"><input type="checkbox" value="White Oak" /> White Oak</label>
-                <label class="check"><input type="checkbox" value="Padauk" /> Padauk</label>
-                <label class="check"><input type="checkbox" value="Purpleheart" /> Purpleheart</label>
-                <label class="check"><input type="checkbox" value="Sapele" /> Sapele</label>
-              </div>
-              <div class="help">Two or three woods is usually enough. Most strong boards do not need a huge species mix.</div>
-            </div>
-
-            <div class="actions">
-              <button class="btn-primary" type="button" onclick="generateBoard()">Generate Design</button>
-              <button class="btn-secondary" type="button" onclick="randomizeInputs()">Randomize Inputs</button>
-            </div>
-          </div>
-
-          <aside class="card result-card">
-            <div class="result-top">
-              <h2 style="margin-bottom:0;">Preview</h2>
-              <div class="badge" id="difficultyBadge">Balanced build</div>
-            </div>
-
-            <div class="preview-frame">
-              <div class="preview-label">
-                <span id="previewPatternLabel">Pattern: Striped</span>
-                <span id="previewSizeLabel">14 × 20 in</span>
-              </div>
-
-              <div class="preview-board-shell">
-                <div class="preview-board" id="previewBoard">
-                  <div class="handle-hole"></div>
-                  <div class="board-surface" id="boardSurface"></div>
-                  <div class="grain-overlay face" id="grainOverlay"></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="result-grid">
-              <div class="result-item">
-                <span>Suggested wood mix</span>
-                <strong id="resultWood">Maple + Walnut</strong>
-              </div>
-              <div class="result-item">
-                <span>Pattern</span>
-                <strong id="resultPattern">Striped</strong>
-              </div>
-              <div class="result-item">
-                <span>Suggested size</span>
-                <strong id="resultSize">14 × 20 inches</strong>
-              </div>
-              <div class="result-item">
-                <span>Estimated strips / blocks</span>
-                <strong id="resultStrips">8 strips</strong>
-              </div>
-            </div>
-
-            <div class="result-item" style="margin-bottom:14px;">
-              <span>Build note</span>
-              <strong id="resultNote">Aim for strong light-dark contrast and keep the layout clean before glue-up.</strong>
-            </div>
-
-            <div class="note-box" id="resultAdvice">
-              For this combination, keep the lighter wood dominant and use the darker wood as contrast so the board reads clearly without feeling busy.
-            </div>
-
-            <div class="legend" id="legend"></div>
-          </aside>
+        <div class="control-section">
+          <label for="depth">3D depth</label>
+          <input id="depth" type="range" min="1" max="10" value="6">
+          <p class="small-help">Subtle boards stay premium. Higher depth creates stronger optical illusion patterns.</p>
         </div>
-      </section>
 
-      <section class="section">
-        <div class="card">
-          <h2>What the preview is trying to show</h2>
-          <p>
-            This is not meant to be a perfect CAD drawing. It is a faster way to judge proportion, contrast, pattern direction, and whether the idea feels like something worth building with real stock.
-          </p>
-          <p>
-            The biggest goal is to avoid fake-looking boards that feel clever on a screen but awkward in a shop. Cleaner layouts and believable strip or block logic usually lead to better finished boards.
-          </p>
+        <div class="control-section">
+          <div class="button-stack">
+            <button class="primary-button" type="button" onclick="generateBoard()">Generate board</button>
+          </div>
+          <div class="variant-row">
+            <button type="button" onclick="generateBoard('premium')">More premium</button>
+            <button type="button" onclick="generateBoard('easier')">Easier build</button>
+            <button type="button" onclick="generateBoard('contrast')">More contrast</button>
+            <button type="button" onclick="generateBoard('3d')">More 3D</button>
+          </div>
+        </div>
+      </aside>
 
-          <div class="subcard-grid">
-            <div class="subcard">
-              <h3>Strong boards are usually simpler</h3>
-              <p>Most usable cutting board designs rely on clean proportions, one dominant wood, and one or two accent woods — not visual chaos.</p>
-            </div>
+      <section class="result-panel" aria-live="polite">
+        <div class="render-card">
+          <div class="board-stage" id="boardRender"></div>
+        </div>
 
-            <div class="subcard">
-              <h3>Contrast matters more than novelty</h3>
-              <p>If the woods are too close in tone, the design can disappear. If the mix is too busy, it can feel forced fast.</p>
-            </div>
+        <div class="result-topline">
+          <div>
+            <h2 class="board-name" id="boardName">Midnight Ridge</h2>
+            <p class="board-subtitle" id="boardSubtitle">Luxury edge grain board with walnut, maple, and cherry accents.</p>
+          </div>
+          <span class="badge" id="boardBadge">Buildable: Yes</span>
+        </div>
 
-            <div class="subcard">
-              <h3>Pattern should match the build</h3>
-              <p>Edge grain and end grain do not want the same visual logic. This tool now leans more toward patterns that actually fit the board type.</p>
-            </div>
+        <div class="swatch-row" id="swatches"></div>
+
+        <div class="metric-grid">
+          <div class="metric"><span>Looks</span><strong id="looksScore">9.1</strong></div>
+          <div class="metric"><span>Buildability</span><strong id="buildScore">8.7</strong></div>
+          <div class="metric"><span>Difficulty</span><strong id="difficultyScore">4.8</strong></div>
+          <div class="metric"><span>Sellability</span><strong id="sellScore">8.9</strong></div>
+        </div>
+
+        <div class="detail-grid">
+          <div class="detail-box">
+            <h3>Build details</h3>
+            <ul id="buildDetails"></ul>
+          </div>
+          <div class="detail-box">
+            <h3>Cut list direction</h3>
+            <ul id="cutList"></ul>
           </div>
         </div>
       </section>
+    </section>
 
-      <section class="section">
-        <div class="card">
-          <h2>Quick design tips</h2>
-          <div class="faq-list">
-            <div class="faq-item">
-              <h3>Keep one wood dominant</h3>
-              <p>Most strong cutting board designs use one main wood, then bring in one darker or bolder wood as contrast. Equal visual weight can work, but it often looks busier than expected.</p>
-            </div>
-            <div class="faq-item">
-              <h3>Do not oversize the board just because you can</h3>
-              <p>A huge board sounds appealing until it becomes heavy, awkward to clean, and annoying to move around the kitchen. Medium sizes often get used the most.</p>
-            </div>
-            <div class="faq-item">
-              <h3>End grain usually needs more care than edge grain</h3>
-              <p>If your lumber is limited or your milling is still getting dialed in, edge grain often gives you the best chance of finishing with a board you are proud of.</p>
-            </div>
-          </div>
+    <section class="content-card" id="how-it-works">
+      <h2>What this generator is trying to do</h2>
+      <p>This version is built around visual quality and practical depth. Instead of random stripes only, it creates premium-looking boards with cleaner wood rhythm, realistic grain texture, 3D illusion options, and enough build information to help you decide whether the idea is worth taking to the shop.</p>
+      <div class="section-grid">
+        <div class="mini-card">
+          <h3>Cleaner visuals</h3>
+          <p>Wood grain, shadows, bevels, seams, and more believable strip layouts make the board feel less like a flat color swatch.</p>
         </div>
-      </section>
+        <div class="mini-card">
+          <h3>More depth</h3>
+          <p>Each result includes difficulty, buildability, sellability, glue-up notes, tool notes, and rough cut direction.</p>
+        </div>
+        <div class="mini-card">
+          <h3>3D patterns</h3>
+          <p>Tumbling blocks, woven illusion patterns, parquet layouts, and end-grain grids give the tool a real flagship feature.</p>
+        </div>
+      </div>
+    </section>
 
-      <section class="section">
-        <div class="card">
-          <h2>Related guides</h2>
-          <div class="related-links">
-            <a href="/how-to-flatten-a-cutting-board.html">
-              How to Flatten a Cutting Board
-              <span>Practical flattening methods for boards that came out of glue-up less than perfect.</span>
-            </a>
-            <a href="/router-flattening-jig.html">
-              Router Flattening Jig
-              <span>A simple way to flatten larger panels and stubborn glue-ups in a small shop.</span>
-            </a>
-            <a href="/how-to-prevent-tearout-when-planing.html">
-              How to Prevent Tearout When Planing
-              <span>Helpful for milling your strips cleanly before the board build starts.</span>
-            </a>
-            <a href="/best-woods-for-cutting-boards.html">
-              Best Woods for Cutting Boards
-              <span>Use this if you are still deciding what species are actually worth using.</span>
-            </a>
-          </div>
-        </div>
-      </section>
-    </div>
+    <section class="content-card">
+      <h2>Related cutting board guides</h2>
+      <div class="related-links">
+        <a href="/best-woods-for-cutting-boards.html">Best Woods for Cutting Boards <span>Choose safer, better-looking hardwood combinations.</span></a>
+        <a href="/how-to-flatten-a-cutting-board.html">How to Flatten a Cutting Board <span>Fix glue-up issues before sanding forever.</span></a>
+        <a href="/router-flattening-jig.html">Router Flattening Jig Guide <span>Useful for end grain, slabs, and wide boards.</span></a>
+        <a href="/wood-movement-calculator.html">Wood Movement Calculator <span>Plan seasonal movement before building.</span></a>
+      </div>
+    </section>
   </main>
 
-  <footer>
-    <div class="container">
-      <p>WoodToolChest</p>
+  <footer class="footer">
+    <div class="footer-inner">
+      <p><strong>WoodToolChest</strong> gives practical woodworking guides, shop setup advice, and tool help for real-world builds.</p>
+      <p class="muted">© 2026 WoodToolChest</p>
     </div>
   </footer>
 
   <script>
-    const woodData = {
-      "Maple": { color: "#f3e2bf", tone: "light" },
-      "Walnut": { color: "#6a482c", tone: "dark" },
-      "Cherry": { color: "#b86c52", tone: "warm" },
-      "Ash": { color: "#e7d6b8", tone: "light" },
-      "White Oak": { color: "#c7a06d", tone: "medium" },
-      "Padauk": { color: "#cf592f", tone: "bold" },
-      "Purpleheart": { color: "#6f5196", tone: "bold" },
-      "Sapele": { color: "#8b4a34", tone: "dark" }
+    const woods = {
+      maple: { label: "Maple", base: "#d8b982", dark: "#b98e54", light: "#efd9aa" },
+      walnut: { label: "Walnut", base: "#4b2d1d", dark: "#2c1b13", light: "#73513a" },
+      cherry: { label: "Cherry", base: "#a65f3e", dark: "#743c28", light: "#c9815d" },
+      whiteOak: { label: "White Oak", base: "#b99463", dark: "#87663e", light: "#d4b987" },
+      purpleheart: { label: "Purpleheart", base: "#6c3f73", dark: "#432348", light: "#926095" },
+      padauk: { label: "Padauk", base: "#b14b25", dark: "#813015", light: "#d06b3c" }
     };
 
-    const displayPatternNames = {
-      striped: "Striped",
-      checker: "Checker / block",
-      chaos: "Varied stripe",
-      border: "Border frame"
-    };
+    const namesA = ["Midnight", "Maple", "Walnut", "Copper", "North", "Forge", "Ridge", "River", "Heritage", "Summit", "Ash", "Foundry"];
+    const namesB = ["Ridge", "Block", "Table", "Line", "Weave", "Cube", "Board", "Parquet", "Run", "Stack", "Grain", "Field"];
+    let currentSeed = Math.floor(Math.random() * 999999);
 
-    const buildNotes = {
-      striped: [
-        "Keep the strip widths deliberate. Good striped boards usually look cleaner when the dominant wood does most of the work.",
-        "Use the darker wood as contrast, not as half the board, unless you deliberately want a heavier look.",
-        "A striped board gets stronger visually when the widths feel intentional instead of perfectly random."
-      ],
-      checker: [
-        "Block layouts show milling errors fast, so this style rewards cleaner setup and better repeatability.",
-        "Keep the color contrast clear. A block pattern with weak contrast often feels muddy instead of crisp.",
-        "If you build this as end grain, plan extra time for the second glue-up and final flattening."
-      ],
-      chaos: [
-        "Varied stripes work best when they still have rhythm. Too many abrupt width changes can make the board feel cluttered.",
-        "Try to keep one wood dominant even in a more varied layout so the board still feels intentional.",
-        "A little variation goes a long way. This style usually looks best when it is calmer than you think."
-      ],
-      border: [
-        "Border layouts usually look best when the center stays calmer than the frame.",
-        "A dark or warm frame can work well, but leave enough quiet space inside so the border does not overpower the board.",
-        "This style tends to land better on gift or serving builds than on boards meant to feel very plain and workmanlike."
-      ]
-    };
-
-    const adviceMap = {
-      general: "For a daily-use board, keep the layout practical and easy to live with.",
-      prep: "Prep boards usually benefit from a bit more surface area, but there is no prize for making them heavier than they need to be.",
-      gift: "Gift builds usually land best when the contrast is strong and the pattern reads clearly without being overcomplicated.",
-      display: "Display and serving boards can lean a little more decorative, but they still usually look better when the pattern stays controlled."
-    };
-
-    function randomFrom(array) {
-      return array[Math.floor(Math.random() * array.length)];
-    }
-
-    function shuffle(array) {
-      const copy = [...array];
-      for (let i = copy.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [copy[i], copy[j]] = [copy[j], copy[i]];
-      }
-      return copy;
-    }
-
-    function clamp(value, min, max) {
-      return Math.max(min, Math.min(max, value));
-    }
-
-    function getSelectedWoods() {
-      const boxes = document.querySelectorAll('.check input[type="checkbox"]:checked');
-      return Array.from(boxes).map(box => box.value);
-    }
-
-    function unique(array) {
-      return [...new Set(array)];
-    }
-
-    function getWoodColor(wood) {
-      return (woodData[wood] && woodData[wood].color) || "#c8b59e";
-    }
-
-    function sortWoodsForBoards(selected) {
-      const preferredBase = ["Maple", "Ash", "White Oak", "Cherry", "Walnut", "Sapele", "Padauk", "Purpleheart"];
-      return [...selected].sort((a, b) => preferredBase.indexOf(a) - preferredBase.indexOf(b));
-    }
-
-    function chooseWoodMix(selectedWoods, pattern, boardType) {
-      let woods = sortWoodsForBoards(selectedWoods);
-
-      if (woods.length === 0) {
-        woods = ["Maple", "Walnut"];
-      }
-
-      if (woods.length === 1) {
-        return [woods[0], woods[0]];
-      }
-
-      const lightCandidates = woods.filter(wood => ["light", "medium", "warm"].includes(woodData[wood].tone));
-      const darkCandidates = woods.filter(wood => ["dark", "bold", "warm"].includes(woodData[wood].tone));
-
-      let dominant = lightCandidates[0] || woods[0];
-      let accent = darkCandidates.find(wood => wood !== dominant) || woods.find(wood => wood !== dominant) || dominant;
-      let support = woods.find(wood => wood !== dominant && wood !== accent) || accent;
-
-      if (pattern === "border") {
-        return unique([dominant, accent, support]).slice(0, 3);
-      }
-
-      if (pattern === "checker" && boardType === "end") {
-        return unique([dominant, accent]).slice(0, 2);
-      }
-
-      return unique([dominant, accent, support]).slice(0, 3);
-    }
-
-    function choosePattern(preference, boardType) {
-      if (preference !== "random") {
-        return preference;
-      }
-
-      if (boardType === "end") {
-        return randomFrom(["checker", "striped", "border", "chaos"]);
-      }
-
-      if (boardType === "serving") {
-        return randomFrom(["striped", "border", "chaos"]);
-      }
-
-      return randomFrom(["striped", "chaos", "border", "striped"]);
-    }
-
-    function suggestSize(boardType, boardUse, maxLength, maxWidth) {
-      let targetLength = 20;
-      let targetWidth = 14;
-
-      if (boardType === "serving") {
-        targetLength = 18;
-        targetWidth = 10;
-      }
-
-      if (boardType === "end") {
-        targetLength = 16;
-        targetWidth = 12;
-      }
-
-      if (boardUse === "prep") {
-        targetLength += 2;
-        targetWidth += 2;
-      }
-
-      if (boardUse === "gift") {
-        targetLength += 1;
-      }
-
-      if (boardUse === "display") {
-        targetWidth -= 1;
-      }
-
-      targetLength = clamp(targetLength, 10, Math.max(10, maxLength));
-      targetWidth = clamp(targetWidth, 8, Math.max(8, maxWidth));
-
-      return {
-        length: Math.floor(targetLength),
-        width: Math.floor(targetWidth)
+    function seeded(seed) {
+      let value = seed % 2147483647;
+      if (value <= 0) value += 2147483646;
+      return function() {
+        value = value * 16807 % 2147483647;
+        return (value - 1) / 2147483646;
       };
     }
 
-    function getDifficulty(pattern, boardType, thickness) {
-      const numericThickness = parseFloat(thickness);
+    function choice(arr, rand) { return arr[Math.floor(rand() * arr.length)]; }
+    function clamp(n, min, max) { return Math.max(min, Math.min(max, n)); }
 
-      if (boardType === "end" && (pattern === "checker" || numericThickness >= 2)) {
-        return "More advanced";
-      }
-
-      if (boardType === "end" || pattern === "border" || pattern === "checker") {
-        return "Moderate build";
-      }
-
-      if (pattern === "chaos") {
-        return "Balanced build";
-      }
-
-      return "Beginner friendly";
+    function selectedPattern() {
+      const checked = document.querySelector('input[name="pattern"]:checked');
+      return checked ? checked.value : "edge";
     }
 
-    function suggestStripCount(pattern, boardType, width) {
-      if (pattern === "checker" && boardType === "end") {
-        return `${Math.max(24, Math.round(width * 2))} blocks`;
-      }
-
-      if (pattern === "border") {
-        return `${Math.max(5, Math.round(width / 2.4))} center strips + frame`;
-      }
-
-      if (pattern === "chaos") {
-        return `${Math.max(6, Math.round(width / 2))} varied strips`;
-      }
-
-      if (boardType === "end") {
-        return `${Math.max(7, Math.round(width / 1.8))} strips before block cut`;
-      }
-
-      return `${Math.max(6, Math.round(width / 1.9))} strips`;
+    function selectedWoods() {
+      const selected = [...document.querySelectorAll('#woodOptions input:checked')].map(input => input.value);
+      return selected.length ? selected : ["maple", "walnut", "cherry"];
     }
 
-    function getBoardLogic(pattern, boardType) {
-      if (boardType === "end" && pattern === "checker") {
-        return "end-checker";
-      }
-
-      if (boardType === "end" && pattern === "border") {
-        return "end-border";
-      }
-
-      if (boardType === "end") {
-        return "end-stripes";
-      }
-
-      if (pattern === "border") {
-        return "edge-border";
-      }
-
-      if (pattern === "checker") {
-        return "checker-inspired";
-      }
-
-      if (pattern === "chaos") {
-        return "varied-stripe";
-      }
-
-      return "edge-stripes";
+    function setPattern(value) {
+      const input = document.querySelector(`input[name="pattern"][value="${value}"]`);
+      if (input) input.checked = true;
     }
 
-    function createStripSequence(woods, logic) {
-      const a = woods[0];
-      const b = woods[1] || woods[0];
-      const c = woods[2] || b;
+    function generateBoard(mode) {
+      if (mode === "3d") setPattern(Math.random() > 0.5 ? "tumbling" : "woven");
+      if (mode === "premium") document.getElementById('style').value = "luxury";
+      if (mode === "easier") {
+        document.getElementById('complexity').value = "beginner";
+        if (["tumbling", "woven", "parquet"].includes(selectedPattern())) setPattern("edge");
+      }
+      if (mode === "contrast") document.getElementById('style').value = "modern";
 
-      if (logic === "varied-stripe") {
+      currentSeed = Math.floor(Math.random() * 999999);
+      renderAll(currentSeed);
+    }
+
+    function buildPalette(style, chosen, rand) {
+      let palette = chosen.slice();
+      if (style === "luxury") palette = ["walnut", "maple", "cherry"].filter(w => chosen.includes(w));
+      if (style === "modern") palette = ["maple", "walnut", "purpleheart", "padauk"].filter(w => chosen.includes(w));
+      if (style === "minimal") palette = chosen.filter(w => ["maple", "walnut", "cherry"].includes(w)).slice(0, 2);
+      if (style === "rustic") palette = ["cherry", "whiteOak", "walnut", "maple"].filter(w => chosen.includes(w));
+      if (style === "wild") palette = chosen;
+      if (palette.length < 2) palette = [...new Set([...palette, "maple", "walnut", "cherry"])].slice(0, 3);
+      return palette.sort(() => rand() - 0.5);
+    }
+
+    function textureDefs(palette) {
+      const defs = [`<defs>
+        <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="22" stdDeviation="18" flood-color="#000" flood-opacity="0.28"/></filter>
+        <linearGradient id="edgeGrad" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="rgba(255,255,255,0.30)"/><stop offset="0.52" stop-color="rgba(255,255,255,0)"/><stop offset="1" stop-color="rgba(0,0,0,0.22)"/></linearGradient>`];
+      palette.forEach(key => {
+        const w = woods[key];
+        defs.push(`<pattern id="grain-${key}" patternUnits="userSpaceOnUse" width="90" height="18" patternTransform="rotate(0)">
+          <rect width="90" height="18" fill="${w.base}"/>
+          <path d="M0 4 C18 1 28 8 45 5 S72 1 90 5" stroke="${w.light}" stroke-opacity="0.28" fill="none" stroke-width="1.2"/>
+          <path d="M0 12 C20 9 32 16 52 13 S76 9 90 12" stroke="${w.dark}" stroke-opacity="0.24" fill="none" stroke-width="1.1"/>
+          <path d="M0 8 H90" stroke="#fff" stroke-opacity="0.06"/>
+        </pattern>`);
+      });
+      defs.push(`</defs>`);
+      return defs.join('');
+    }
+
+    function boardShell(inner, palette, options = {}) {
+      const width = 840;
+      const height = 520;
+      const x = 82;
+      const y = 78;
+      const bw = 676;
+      const bh = 340;
+      const radius = 28;
+      return `<svg viewBox="0 0 ${width} ${height}" role="img" aria-label="Generated cutting board design">
+        ${textureDefs(palette)}
+        <ellipse cx="420" cy="444" rx="312" ry="34" fill="#000" opacity="0.22"/>
+        <g filter="url(#shadow)">
+          <rect x="${x+12}" y="${y+32}" width="${bw}" height="${bh}" rx="${radius}" fill="#1a100b" opacity="0.28"/>
+          <rect x="${x}" y="${y}" width="${bw}" height="${bh}" rx="${radius}" fill="#6f4b2e"/>
+          <clipPath id="boardClip"><rect x="${x}" y="${y}" width="${bw}" height="${bh}" rx="${radius}"/></clipPath>
+          <g clip-path="url(#boardClip)">${inner}</g>
+          <rect x="${x}" y="${y}" width="${bw}" height="${bh}" rx="${radius}" fill="url(#edgeGrad)" opacity="0.75" pointer-events="none"/>
+          <rect x="${x+1.5}" y="${y+1.5}" width="${bw-3}" height="${bh-3}" rx="${radius-1}" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="3"/>
+          <rect x="${x+4}" y="${y+4}" width="${bw-8}" height="${bh-8}" rx="${radius-4}" fill="none" stroke="rgba(0,0,0,0.22)" stroke-width="1"/>
+        </g>
+      </svg>`;
+    }
+
+    function renderEdge(palette, rand, depth) {
+      const x = 82, y = 78, bw = 676, bh = 340;
+      let pieces = [];
+      let cursor = x;
+      while (cursor < x + bw) {
+        const key = choice(palette, rand);
+        const strip = 24 + Math.floor(rand() * 54);
+        const actual = Math.min(strip, x + bw - cursor);
+        pieces.push(`<rect x="${cursor}" y="${y}" width="${actual}" height="${bh}" fill="url(#grain-${key})"/>
+          <rect x="${cursor}" y="${y}" width="1" height="${bh}" fill="#fff" opacity="0.18"/>
+          <rect x="${cursor+actual-1}" y="${y}" width="1" height="${bh}" fill="#000" opacity="0.16"/>`);
+        cursor += actual;
+      }
+      return boardShell(pieces.join(''), palette);
+    }
+
+    function renderEndgrain(palette, rand, depth) {
+      const x = 82, y = 78, bw = 676, bh = 340;
+      const cols = depth > 7 ? 14 : 11;
+      const rows = depth > 7 ? 7 : 6;
+      const cellW = bw / cols;
+      const cellH = bh / rows;
+      let pieces = [];
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const key = palette[(r + c + Math.floor(rand()*palette.length)) % palette.length];
+          const px = x + c * cellW;
+          const py = y + r * cellH;
+          pieces.push(`<rect x="${px}" y="${py}" width="${cellW+0.5}" height="${cellH+0.5}" fill="${woods[key].base}"/>
+            <circle cx="${px + cellW*0.5}" cy="${py + cellH*0.5}" r="${Math.min(cellW,cellH)*0.22}" fill="none" stroke="${woods[key].dark}" stroke-opacity="0.17" stroke-width="1.2"/>
+            <path d="M${px+4} ${py+cellH*0.28} C${px+cellW*0.38} ${py+cellH*0.04} ${px+cellW*0.64} ${py+cellH*0.58} ${px+cellW-5} ${py+cellH*0.32}" stroke="${woods[key].light}" stroke-opacity="0.26" fill="none"/>`);
+        }
+      }
+      return boardShell(pieces.join(''), palette);
+    }
+
+    function renderTumbling(palette, rand, depth) {
+      const x = 92, y = 82;
+      const size = depth > 7 ? 50 : 60;
+      const h = size * 0.58;
+      const cols = 11;
+      const rows = 8;
+      let pieces = [];
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const cx = x + c * size * 0.92 + (r % 2) * size * 0.46;
+          const cy = y + r * h * 0.98;
+          const keys = [palette[0], palette[1 % palette.length], palette[2 % palette.length]];
+          pieces.push(`<polygon points="${cx},${cy} ${cx+size/2},${cy+h/2} ${cx},${cy+h} ${cx-size/2},${cy+h/2}" fill="${woods[keys[0]].base}" stroke="rgba(0,0,0,0.16)" stroke-width="0.8"/>
+          <polygon points="${cx},${cy} ${cx+size/2},${cy+h/2} ${cx+size/2},${cy+h*1.42} ${cx},${cy+h}" fill="${woods[keys[1]].dark}" stroke="rgba(0,0,0,0.14)" stroke-width="0.8"/>
+          <polygon points="${cx},${cy} ${cx-size/2},${cy+h/2} ${cx-size/2},${cy+h*1.42} ${cx},${cy+h}" fill="${woods[keys[2]].light}" stroke="rgba(0,0,0,0.14)" stroke-width="0.8"/>
+          <path d="M${cx-size*0.32} ${cy+h*0.48} C${cx-size*0.1} ${cy+h*0.38} ${cx+size*0.12} ${cy+h*0.6} ${cx+size*0.33} ${cy+h*0.48}" stroke="rgba(255,255,255,0.16)" fill="none"/>`);
+        }
+      }
+      return boardShell(pieces.join(''), palette);
+    }
+
+    function renderWoven(palette, rand, depth) {
+      const x = 82, y = 78, bw = 676, bh = 340;
+      const strip = depth > 7 ? 42 : 52;
+      let pieces = [];
+      for (let i = -2; i < 18; i++) {
+        const key = palette[i % palette.length < 0 ? 0 : i % palette.length];
+        const px = x + i * strip;
+        pieces.push(`<g opacity="0.98"><rect x="${px}" y="${y-60}" width="${strip*0.56}" height="${bh+120}" fill="url(#grain-${key})" transform="rotate(38 ${px} ${y})"/>
+          <rect x="${px+strip*0.56}" y="${y-60}" width="2" height="${bh+120}" fill="#000" opacity="0.18" transform="rotate(38 ${px} ${y})"/></g>`);
+      }
+      for (let i = -5; i < 16; i++) {
+        const key = palette[(i + 1) % palette.length < 0 ? 1 % palette.length : (i + 1) % palette.length];
+        const px = x + i * strip;
+        pieces.push(`<g opacity="0.78"><rect x="${px}" y="${y-80}" width="${strip*0.42}" height="${bh+150}" fill="${woods[key].dark}" transform="rotate(-38 ${px} ${y+bh})"/>
+          <path d="M${px} ${y} H${px+strip*0.42}" stroke="rgba(255,255,255,0.22)" transform="rotate(-38 ${px} ${y+bh})"/></g>`);
+      }
+      return boardShell(pieces.join(''), palette);
+    }
+
+    function renderParquet(palette, rand, depth) {
+      const x = 82, y = 78, bw = 676, bh = 340;
+      const block = depth > 7 ? 52 : 68;
+      let pieces = [];
+      for (let row = 0; row < Math.ceil(bh / block) + 1; row++) {
+        for (let col = 0; col < Math.ceil(bw / block) + 1; col++) {
+          const key = palette[(row + col) % palette.length];
+          const px = x + col * block;
+          const py = y + row * block;
+          const rotate = (row + col) % 2 === 0 ? 0 : 90;
+          pieces.push(`<g transform="rotate(${rotate} ${px+block/2} ${py+block/2})">
+            <rect x="${px}" y="${py}" width="${block}" height="${block}" fill="url(#grain-${key})" stroke="rgba(0,0,0,0.16)" stroke-width="1"/>
+            <rect x="${px}" y="${py}" width="${block}" height="${block*0.24}" fill="rgba(255,255,255,0.08)"/>
+          </g>`);
+        }
+      }
+      return boardShell(pieces.join(''), palette);
+    }
+
+    function renderPattern(pattern, palette, rand, depth) {
+      if (pattern === "random") pattern = choice(["edge", "endgrain", "tumbling", "woven", "parquet"], rand);
+      if (pattern === "endgrain") return renderEndgrain(palette, rand, depth);
+      if (pattern === "tumbling") return renderTumbling(palette, rand, depth);
+      if (pattern === "woven") return renderWoven(palette, rand, depth);
+      if (pattern === "parquet") return renderParquet(palette, rand, depth);
+      return renderEdge(palette, rand, depth);
+    }
+
+    function patternLabel(pattern) {
+      return {
+        edge: "edge grain",
+        endgrain: "end grain",
+        tumbling: "3D tumbling block",
+        woven: "woven 3D illusion",
+        parquet: "parquet",
+        random: "surprise"
+      }[pattern] || "edge grain";
+    }
+
+    function sizeLabel(size) {
+      return {
+        small: "10 × 14 in",
+        medium: "12 × 18 in",
+        large: "14 × 20 in",
+        xl: "16 × 24 in"
+      }[size];
+    }
+
+    function renderMeta(pattern, style, palette, depth, complexity, rand) {
+      const is3d = ["tumbling", "woven", "parquet"].includes(pattern);
+      const baseDifficulty = { beginner: 2.8, intermediate: 4.8, advanced: 6.8 }[complexity] + (is3d ? 1.6 : 0) + (pattern === "endgrain" ? 1.1 : 0) + depth * 0.08;
+      const difficulty = clamp(baseDifficulty, 2.2, 9.4);
+      const looks = clamp(7.4 + palette.length * 0.25 + (is3d ? 0.7 : 0.25) + depth * 0.08 + rand() * 0.5, 7.2, 9.9);
+      const build = clamp(10.2 - difficulty * 0.62 + (complexity === "beginner" ? 0.8 : 0) - (is3d ? 0.25 : 0), 4.8, 9.6);
+      const sell = clamp(7.4 + looks * 0.18 + (style === "luxury" ? 0.55 : 0) + (is3d ? 0.35 : 0), 7.2, 9.8);
+      const glueUps = is3d ? (pattern === "tumbling" ? "3 to 5" : "2 to 4") : pattern === "endgrain" ? "2 to 3" : "1 to 2";
+      return { looks, difficulty, build, sell, glueUps };
+    }
+
+    function renderAll(seed) {
+      const rand = seeded(seed);
+      const pattern = selectedPattern();
+      const style = document.getElementById('style').value;
+      const complexity = document.getElementById('complexity').value;
+      const size = document.getElementById('size').value;
+      const depth = parseInt(document.getElementById('depth').value, 10);
+      const palette = buildPalette(style, selectedWoods(), rand);
+      const svg = renderPattern(pattern, palette, rand, depth);
+
+      document.getElementById('boardRender').innerHTML = svg;
+      document.getElementById('heroPreview').innerHTML = svg;
+
+      const name = `${choice(namesA, rand)} ${choice(namesB, rand)}`;
+      const woodLabels = palette.map(w => woods[w].label);
+      const meta = renderMeta(pattern, style, palette, depth, complexity, rand);
+
+      document.getElementById('boardName').textContent = name;
+      document.getElementById('boardSubtitle').textContent = `${capitalize(style)} ${patternLabel(pattern)} board using ${woodLabels.join(', ')}.`;
+      document.getElementById('boardBadge').textContent = meta.build >= 6.5 ? "Buildable: Yes" : "Buildable: Advanced";
+      document.getElementById('looksScore').textContent = meta.looks.toFixed(1);
+      document.getElementById('buildScore').textContent = meta.build.toFixed(1);
+      document.getElementById('difficultyScore').textContent = meta.difficulty.toFixed(1);
+      document.getElementById('sellScore').textContent = meta.sell.toFixed(1);
+
+      document.getElementById('swatches').innerHTML = palette.map(key => `<span class="swatch"><span class="swatch-chip" style="background:${woods[key].base}"></span>${woods[key].label}</span>`).join('');
+
+      const buildDetails = [
+        `Finished size target: ${sizeLabel(size)}.`,
+        `Pattern type: ${patternLabel(pattern)}.`,
+        `Estimated glue-ups: ${meta.glueUps}.`,
+        is3dPattern(pattern) ? "Use test blocks first so the illusion reads correctly before full glue-up." : "Keep the strip rhythm intentional; avoid too many random widths.",
+        complexity === "beginner" ? "Best with straight, repeatable cuts and a simple finishing plan." : "Plan milling order carefully so the final board stays flat."
+      ];
+
+      const cutList = cutListFor(pattern, palette, size, depth);
+      document.getElementById('buildDetails').innerHTML = buildDetails.map(item => `<li>${item}</li>`).join('');
+      document.getElementById('cutList').innerHTML = cutList.map(item => `<li>${item}</li>`).join('');
+    }
+
+    function is3dPattern(pattern) { return ["tumbling", "woven", "parquet"].includes(pattern); }
+    function capitalize(str) { return str.charAt(0).toUpperCase() + str.slice(1); }
+
+    function cutListFor(pattern, palette, size, depth) {
+      const primary = woods[palette[0]].label;
+      const secondary = woods[palette[1 % palette.length]].label;
+      const accent = woods[palette[2 % palette.length]].label;
+      if (pattern === "tumbling") {
         return [
-          { wood: a, size: 16 },
-          { wood: b, size: 6 },
-          { wood: a, size: 12 },
-          { wood: c, size: 8 },
-          { wood: a, size: 14 },
-          { wood: b, size: 5 },
-          { wood: a, size: 11 },
-          { wood: c, size: 7 }
+          `${primary}: diamond/rhombus pieces for top faces.`,
+          `${secondary}: matching left-face pieces, cut consistently.`,
+          `${accent}: matching right-face pieces for shadow contrast.`,
+          "Make a small 3-cube sample before committing full material."
         ];
       }
-
-      if (logic === "checker-inspired") {
+      if (pattern === "woven") {
         return [
-          { wood: a, size: 12 },
-          { wood: b, size: 6 },
-          { wood: a, size: 6 },
-          { wood: b, size: 12 },
-          { wood: a, size: 12 },
-          { wood: b, size: 6 },
-          { wood: a, size: 6 },
-          { wood: b, size: 12 }
+          `${primary}: long diagonal strips, roughly 1 to 1.5 in wide.`,
+          `${secondary}: crossing strips, same thickness and consistent width.`,
+          `${accent}: optional thin contrast lines between woven runs.`,
+          "Dry fit the rhythm before glue; the pattern gets confusing fast."
         ];
       }
-
+      if (pattern === "endgrain") {
+        return [
+          `${primary}: primary blocks, milled square and consistent.`,
+          `${secondary}: alternating blocks or border rows.`,
+          `${accent}: small accent blocks or corner rhythm.`,
+          "Expect extra flattening after the final end-grain glue-up."
+        ];
+      }
+      if (pattern === "parquet") {
+        return [
+          `${primary}: rectangular parquet blocks.`,
+          `${secondary}: rotated blocks for directional contrast.`,
+          `${accent}: border or occasional highlight blocks.`,
+          "Keep every block identical or the layout will drift."
+        ];
+      }
       return [
-        { wood: a, size: 18 },
-        { wood: b, size: 6 },
-        { wood: a, size: 14 },
-        { wood: c, size: 5 },
-        { wood: a, size: 14 },
-        { wood: b, size: 6 },
-        { wood: a, size: 18 }
+        `${primary}: main strips, varied between 1 and 2 in wide.`,
+        `${secondary}: contrast strips, roughly 1/2 to 1 in wide.`,
+        `${accent}: thin accent strips, 1/8 to 3/8 in wide.`,
+        "Use cauls or a flat reference surface to keep the glue-up even."
       ];
     }
 
-    function renderEdgeStripes(target, woods, logic) {
-      const sequence = createStripSequence(woods, logic);
-      const total = sequence.reduce((sum, item) => sum + item.size, 0);
+    document.querySelectorAll('input, select').forEach(el => {
+      el.addEventListener('change', () => renderAll(currentSeed));
+      el.addEventListener('input', () => renderAll(currentSeed));
+    });
 
-      const wrap = document.createElement("div");
-      wrap.className = "pattern-stripes board-surface";
-
-      sequence.forEach(item => {
-        const segment = document.createElement("div");
-        segment.className = "segment";
-        segment.style.flex = `${item.size} 0 0`;
-        segment.style.background = getWoodColor(item.wood);
-        wrap.appendChild(segment);
-      });
-
-      target.style.display = "flex";
-      target.style.width = "100%";
-      target.style.height = "100%";
-      target.innerHTML = "";
-      target.appendChild(wrap);
-    }
-
-    function renderBorderBoard(target, woods, boardType) {
-      const a = woods[0];
-      const b = woods[1] || woods[0];
-      const c = woods[2] || b;
-
-      const wrap = document.createElement("div");
-      wrap.className = "pattern-border board-surface";
-
-      const frame = document.createElement("div");
-      frame.className = "border-frame";
-      frame.style.background = getWoodColor(b);
-
-      const centerPanel = document.createElement("div");
-      centerPanel.className = "center-panel";
-
-      const center = document.createElement("div");
-      center.className = "pattern-border-center";
-      center.style.width = "100%";
-      center.style.height = "100%";
-
-      const sequence = boardType === "end"
-        ? [
-            { wood: a, size: 12 },
-            { wood: c, size: 5 },
-            { wood: a, size: 10 },
-            { wood: c, size: 5 },
-            { wood: a, size: 12 }
-          ]
-        : [
-            { wood: a, size: 14 },
-            { wood: c, size: 5 },
-            { wood: a, size: 11 },
-            { wood: c, size: 5 },
-            { wood: a, size: 14 }
-          ];
-
-      sequence.forEach(item => {
-        const segment = document.createElement("div");
-        segment.className = "segment";
-        segment.style.flex = `${item.size} 0 0`;
-        segment.style.background = getWoodColor(item.wood);
-        center.appendChild(segment);
-      });
-
-      centerPanel.appendChild(center);
-      wrap.appendChild(frame);
-      wrap.appendChild(centerPanel);
-
-      target.innerHTML = "";
-      target.appendChild(wrap);
-    }
-
-    function renderEndChecker(target, woods) {
-      const a = woods[0];
-      const b = woods[1] || woods[0];
-
-      const grid = document.createElement("div");
-      grid.className = "pattern-grid board-surface";
-      grid.style.gridTemplateColumns = "repeat(1, 1fr)";
-      grid.style.gridTemplateRows = "repeat(6, 1fr)";
-      grid.style.width = "100%";
-      grid.style.height = "100%";
-
-      for (let row = 0; row < 6; row++) {
-        const rowEl = document.createElement("div");
-        rowEl.className = "pattern-row";
-
-        for (let col = 0; col < 8; col++) {
-          const block = document.createElement("div");
-          block.className = "block";
-          block.style.background = (row + col) % 2 === 0 ? getWoodColor(a) : getWoodColor(b);
-          rowEl.appendChild(block);
-        }
-
-        grid.appendChild(rowEl);
-      }
-
-      target.innerHTML = "";
-      target.appendChild(grid);
-    }
-
-    function renderEndStripes(target, woods, logic) {
-      const sequence = createStripSequence(woods, logic === "varied-stripe" ? "varied-stripe" : "edge-stripes");
-      const rows = 6;
-
-      const grid = document.createElement("div");
-      grid.className = "pattern-grid board-surface";
-      grid.style.gridTemplateColumns = "repeat(1, 1fr)";
-      grid.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
-      grid.style.width = "100%";
-      grid.style.height = "100%";
-
-      for (let row = 0; row < rows; row++) {
-        const rowEl = document.createElement("div");
-        rowEl.className = "pattern-row";
-
-        const offset = row % 2 === 0 ? 0 : 2;
-        const rotated = [...sequence.slice(offset), ...sequence.slice(0, offset)];
-
-        rotated.forEach(item => {
-          const block = document.createElement("div");
-          block.className = "block";
-          block.style.flex = `${item.size} 0 0`;
-          block.style.background = getWoodColor(item.wood);
-          rowEl.appendChild(block);
-        });
-
-        grid.appendChild(rowEl);
-      }
-
-      target.innerHTML = "";
-      target.appendChild(grid);
-    }
-
-    function renderPreview(pattern, woods, boardType, boardUse, size) {
-      const previewBoard = document.getElementById("previewBoard");
-      const boardSurface = document.getElementById("boardSurface");
-      const grainOverlay = document.getElementById("grainOverlay");
-      const logic = getBoardLogic(pattern, boardType);
-
-      previewBoard.className = "preview-board";
-      if (boardType === "serving" || boardUse === "display") {
-        previewBoard.classList.add("has-handle");
-      }
-
-      grainOverlay.className = "grain-overlay";
-      grainOverlay.classList.add(boardType === "end" ? "end" : "face");
-
-      if (logic === "edge-border" || logic === "end-border") {
-        renderBorderBoard(boardSurface, woods, boardType);
-      } else if (logic === "end-checker") {
-        renderEndChecker(boardSurface, woods);
-      } else if (logic === "end-stripes") {
-        renderEndStripes(boardSurface, woods, pattern === "chaos" ? "varied-stripe" : "edge-stripes");
-      } else if (logic === "checker-inspired") {
-        renderEdgeStripes(boardSurface, woods, "checker-inspired");
-      } else if (logic === "varied-stripe") {
-        renderEdgeStripes(boardSurface, woods, "varied-stripe");
-      } else {
-        renderEdgeStripes(boardSurface, woods, "edge-stripes");
-      }
-
-      document.getElementById("previewPatternLabel").textContent = "Pattern: " + displayPatternNames[pattern];
-      document.getElementById("previewSizeLabel").textContent = `${size.width} × ${size.length} in`;
-    }
-
-    function makeLegend(woods) {
-      const legend = document.getElementById("legend");
-      legend.innerHTML = "";
-
-      woods.forEach(wood => {
-        const item = document.createElement("div");
-        item.className = "legend-item";
-
-        const swatch = document.createElement("span");
-        swatch.className = "swatch";
-        swatch.style.background = getWoodColor(wood);
-
-        const text = document.createElement("span");
-        text.textContent = wood;
-
-        item.appendChild(swatch);
-        item.appendChild(text);
-        legend.appendChild(item);
-      });
-    }
-
-    function generateAdvice(boardUse, boardType, pattern, woods) {
-      const dominant = woods[0];
-      const accent = woods[1] || woods[0];
-
-      let advice = adviceMap[boardUse] + " ";
-
-      if (boardType === "end") {
-        advice += "Because this is end grain, expect more milling steps and make sure your strips are truly consistent before the second glue-up. ";
-      } else if (boardType === "serving") {
-        advice += "Serving boards usually look better when they stay a little calmer and slimmer than a heavy prep board. ";
-      } else {
-        advice += "Edge grain is usually the most forgiving path for a clean, repeatable result. ";
-      }
-
-      if (pattern === "border") {
-        advice += `Keep ${accent} framing the board and let ${dominant} do most of the work in the center.`;
-      } else if (pattern === "chaos") {
-        advice += `Let ${dominant} stay dominant and use ${accent} as punctuation, not noise.`;
-      } else if (pattern === "checker") {
-        advice += `Make sure the contrast between ${dominant} and ${accent} is strong enough for the block pattern to actually read.`;
-      } else {
-        advice += `Using ${dominant} as the base with ${accent} as contrast is usually the safer call than splitting the board 50/50.`;
-      }
-
-      return advice;
-    }
-
-    function generateBoard() {
-      const boardType = document.getElementById("boardType").value;
-      const patternPreference = document.getElementById("patternPreference").value;
-      const boardUse = document.getElementById("boardUse").value;
-      const thickness = document.getElementById("thickness").value;
-      const maxLength = parseInt(document.getElementById("maxLength").value, 10) || 24;
-      const maxWidth = parseInt(document.getElementById("maxWidth").value, 10) || 16;
-      const selectedWoods = getSelectedWoods();
-
-      const pattern = choosePattern(patternPreference, boardType);
-      const woods = chooseWoodMix(selectedWoods, pattern, boardType);
-      const size = suggestSize(boardType, boardUse, maxLength, maxWidth);
-      const strips = suggestStripCount(pattern, boardType, size.width);
-      const difficulty = getDifficulty(pattern, boardType, thickness);
-      const note = randomFrom(buildNotes[pattern]);
-      const advice = generateAdvice(boardUse, boardType, pattern, woods);
-
-      document.getElementById("resultWood").textContent = woods.join(" + ");
-      document.getElementById("resultPattern").textContent = displayPatternNames[pattern];
-      document.getElementById("resultSize").textContent = `${size.width} × ${size.length} inches`;
-      document.getElementById("resultStrips").textContent = strips;
-      document.getElementById("resultNote").textContent = `${note} Final thickness target: ${thickness} inch${parseFloat(thickness) === 1 ? "" : "es"}.`;
-      document.getElementById("resultAdvice").textContent = advice;
-      document.getElementById("difficultyBadge").textContent = difficulty;
-
-      renderPreview(pattern, woods, boardType, boardUse, size);
-      makeLegend(unique(woods));
-    }
-
-    function randomizeInputs() {
-      const boardTypes = ["edge", "end", "serving"];
-      const patterns = ["random", "striped", "checker", "chaos", "border"];
-      const uses = ["general", "prep", "gift", "display"];
-      const thicknesses = ["1", "1.25", "1.5", "1.75", "2"];
-
-      document.getElementById("boardType").value = randomFrom(boardTypes);
-      document.getElementById("patternPreference").value = randomFrom(patterns);
-      document.getElementById("boardUse").value = randomFrom(uses);
-      document.getElementById("thickness").value = randomFrom(thicknesses);
-      document.getElementById("maxLength").value = randomFrom([18, 20, 22, 24, 26]);
-      document.getElementById("maxWidth").value = randomFrom([10, 12, 14, 16, 18]);
-
-      const boxes = Array.from(document.querySelectorAll('.check input[type="checkbox"]'));
-      boxes.forEach(box => {
-        box.checked = Math.random() > 0.55;
-      });
-
-      if (getSelectedWoods().length < 2) {
-        boxes[0].checked = true;
-        boxes[1].checked = true;
-      }
-
-      generateBoard();
-    }
-
-    generateBoard();
+    renderAll(currentSeed);
   </script>
 </body>
 </html>
