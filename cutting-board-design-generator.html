@@ -441,7 +441,7 @@
         return arr.map(p => `${p[0].toFixed(2)},${p[1].toFixed(2)}`).join(' ');
       }
 
-      function cube(cx, cy, offset) {
+      function cube(cx, cy) {
         // Hexagon points around the cube. C is where the three rhombus faces meet.
         const T  = [cx, cy - 2*v - epsilon];
         const UR = [cx + u + epsilon, cy - v];
@@ -451,11 +451,13 @@
         const UL = [cx - u - epsilon, cy - v];
         const C  = [cx, cy];
 
-        // Rotate face assignments by cube position so 4+ selected woods still appear,
-        // while the classic 3-face construction stays physically correct.
-        const topKey = woodAt(palette, offset);
-        const rightKey = woodAt(palette, offset + 1);
-        const leftKey = woodAt(palette, offset + 2);
+        // Locked face assignment: every cube repeats the exact same species order.
+        // This is what creates a true tumbling-block read instead of a random quilt.
+        // With 3 woods selected, every cube is exactly: top = wood 1, right = wood 2, left = wood 3.
+        // With 1 or 2 woods selected, the same slots repeat predictably with wrapped species.
+        const topKey = faceTop;
+        const rightKey = faceRight;
+        const leftKey = faceLeft;
 
         pieces.push(`<g class="cube-unit" shape-rendering="crispEdges">`);
         pieces.push(`<polygon points="${pts([T, UR, C, UL])}" fill="${woodColor(topKey)}"/>`);
@@ -471,7 +473,7 @@
         for (let c = 0; c < cols; c++) {
           const cx = startX + c * stepX + (r % 2 ? u : 0);
           const cy = startY + r * stepY;
-          cube(cx, cy, r + c);
+          cube(cx, cy);
         }
       }
 
@@ -613,7 +615,7 @@
         return [
           `Finished size target: ${spec.finished}; rough glue-up target: about ${spec.rough} before trimming.`,
           `Pattern type: true 3D tumbling blocks, built from repeating 60° rhombus units.`,
-          `Wood faces used in the cube pattern: ${woodLabels}. Keep each species consistent so the illusion reads cleanly.`,
+          `Wood faces used in the cube pattern: ${woodLabels}. The visual locks one species to each cube face so the 3D illusion repeats consistently.`,
           `Suggested finished thickness: 1.25 to 1.5 in after flattening; start thicker if you expect heavy cleanup.`,
           `Estimated glue-ups: ${meta.glueUps}. Expect test blocks, strip glue-ups, angled crosscuts, final assembly, then flattening.`,
           `Cube scale: ${cube}. Make a small sample tile first and confirm the three-face cube illusion before full material prep.`
@@ -639,7 +641,7 @@
           `Cut rhombus/diamond units at a consistent 60°/120° geometry. Every piece in the cube field must match the same template.`,
           `Dry-fit one repeat first: ${primary} top face + ${secondary} right face + ${accent} left face. The three pieces should close into one clean cube with no filler gaps.`,
           `Batch-cut only after the sample works. Keep pieces sorted by face direction, not just by species.`,
-          `Final assembly map: repeat cube units in staggered rows; offset every other row by half a cube so the blocks interlock.`,
+          `Final assembly map: repeat the same cube recipe in every position; top face stays top face, right face stays right face, left face stays left face. Offset every other row by half a cube so the blocks interlock.`,
           `Clamp with cauls and light even pressure. Too much side pressure can slide the rhombus pieces and distort the grid.`,
           `Flatten gently after cure, trim to final size, ease edges, then sand through your normal cutting-board schedule.`
         ];
