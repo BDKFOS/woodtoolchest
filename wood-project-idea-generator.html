@@ -555,6 +555,51 @@
 
     .project-note-box p { margin-bottom: 0; }
 
+
+
+    .plan-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .plan-box {
+      padding: 18px;
+      border-radius: 14px;
+      border: 1px solid #d8c9b8;
+      background: linear-gradient(180deg, #fffdf8, #fbf7f1);
+    }
+
+    .plan-box h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+      font-weight: 800;
+      color: #25221f;
+    }
+
+    .plan-box ul,
+    .plan-box ol {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .plan-box li {
+      margin-bottom: 9px;
+      color: #625c56;
+      font-size: 14px;
+      line-height: 1.58;
+      font-weight: 500;
+    }
+
+    .plan-box.full {
+      grid-column: 1 / -1;
+    }
+
+    @media (max-width: 760px) {
+      .plan-grid { grid-template-columns: 1fr; }
+    }
+
     .idea-list { margin: 0; padding-left: 20px; }
     .idea-list li { margin-bottom: 10px; color: #625c56; font-size: 15px; line-height: 1.68; font-weight: 500; }
 
@@ -812,6 +857,28 @@
             <h3>Practical shop note</h3>
             <p id="note">Good starter build with fast feedback and a low material commitment.</p>
           </div>
+
+          <div class="plan-grid" aria-label="Generated project build plan">
+            <div class="plan-box">
+              <h3>Materials</h3>
+              <ul id="materials"></ul>
+            </div>
+
+            <div class="plan-box">
+              <h3>Cut list</h3>
+              <ul id="cutList"></ul>
+            </div>
+
+            <div class="plan-box full">
+              <h3>Step-by-step build plan</h3>
+              <ol id="steps"></ol>
+            </div>
+
+            <div class="plan-box full">
+              <h3>Finish suggestion</h3>
+              <p id="finish">Sand cleanly and apply a simple finish that fits the project.</p>
+            </div>
+          </div>
         </section>
 
         <section class="article-card" id="why-use-it">
@@ -892,19 +959,296 @@
 
   <script>
     const projects = [
-      { project: "Cutting board", difficulty: "Beginner", wood: "Maple + walnut", time: "2 to 4 hours", note: "Great starter project for glue-up, milling, sanding, and finishing without needing a huge lumber commitment." },
-      { project: "Shop mallet", difficulty: "Beginner", wood: "Maple or ash", time: "2 to 3 hours", note: "Fast build with useful shop value. Great for practicing clean joinery and shaping comfort in the handle." },
-      { project: "Bench hook", difficulty: "Beginner", wood: "Plywood + hardwood scraps", time: "1 to 2 hours", note: "A simple build that actually changes your workflow. Perfect when you want a quick win." },
-      { project: "Clamp rack", difficulty: "Beginner", wood: "Plywood or pine", time: "2 to 4 hours", note: "Good practical build for cleaning up wall space and making your shop easier to use every day." },
-      { project: "Small wall shelf", difficulty: "Beginner to intermediate", wood: "Cherry or maple", time: "3 to 5 hours", note: "A nice project for improving layout, keeping parts square, and getting cleaner edge treatment." },
-      { project: "Router bit tray", difficulty: "Beginner", wood: "Hardwood offcuts", time: "1 to 2 hours", note: "Excellent scrap project and a great way to turn leftover material into something genuinely useful." },
-      { project: "Sanding block set", difficulty: "Beginner", wood: "Hardwood scraps", time: "1 hour", note: "Tiny project, but one you will use constantly. Good choice when you want a low-stress shop session." },
-      { project: "Crosscut sled stop block", difficulty: "Intermediate", wood: "Plywood + hardwood", time: "2 to 3 hours", note: "Practical accuracy upgrade. Worth building if you keep repeating cuts and want more consistency." },
-      { project: "Floating picture ledge", difficulty: "Beginner", wood: "Poplar or pine", time: "2 to 3 hours", note: "Great for practicing straight cuts, clean sanding, and a simple wall-mounted finish." },
-      { project: "Cutting board drying rack", difficulty: "Beginner", wood: "Maple scraps", time: "1 to 2 hours", note: "A useful companion project if you already make cutting boards or want a quick kitchen build." }
+      {
+        project: "Cutting board",
+        difficulty: "Beginner",
+        wood: "Maple + walnut",
+        time: "2 to 4 hours",
+        note: "Great starter project for glue-up, milling, sanding, and finishing without needing a huge lumber commitment.",
+        materials: [
+          "Maple board or strips for the main body",
+          "Walnut strips for contrast",
+          "Waterproof wood glue",
+          "Food-safe mineral oil or board wax"
+        ],
+        cutList: [
+          "Cut maple strips to the same thickness and slightly longer than final board length.",
+          "Cut walnut accent strips to matching thickness.",
+          "Mill all strips square so the glue faces close tightly.",
+          "After glue-up, trim the board to final size and ease the edges."
+        ],
+        steps: [
+          "Mill the maple and walnut so every strip has flat faces and square edges.",
+          "Lay out the strip order dry before adding glue so the pattern looks balanced.",
+          "Spread glue evenly on every mating face and clamp the blank flat with even pressure.",
+          "Let the glue cure fully, then scrape squeeze-out before flattening.",
+          "Flatten both faces with a planer, router sled, or careful sanding setup.",
+          "Trim the board square, round or chamfer the edges, then sand through the grits.",
+          "Apply food-safe finish and let it soak in before wiping off the excess."
+        ],
+        finish: "Sand to 180 or 220 grit, raise the grain lightly with water if desired, then apply mineral oil and board wax."
+      },
+      {
+        project: "Shop mallet",
+        difficulty: "Beginner",
+        wood: "Maple or ash",
+        time: "2 to 3 hours",
+        note: "Fast build with useful shop value. Great for practicing clean joinery and shaping comfort in the handle.",
+        materials: [
+          "Hard maple, ash, or other tough hardwood for the head",
+          "Straight-grained hardwood for the handle",
+          "Wood glue",
+          "Optional wedge material if using a wedged handle"
+        ],
+        cutList: [
+          "Cut one mallet head blank roughly 3 x 3 x 5 inches.",
+          "Cut one handle blank roughly 1 x 1.5 x 12 inches.",
+          "Cut or drill the handle opening through the head.",
+          "Shape the handle after test-fitting it to the head."
+        ],
+        steps: [
+          "Square the head blank and mark the centerline for the handle opening.",
+          "Create the mortise or through-hole for the handle using the tools you have.",
+          "Shape the handle so it fits tightly without splitting the head.",
+          "Glue or wedge the handle in place depending on the design.",
+          "Chamfer the mallet head edges so they do not chip easily.",
+          "Round over the handle until it feels comfortable in your hand.",
+          "Sand the whole mallet and test the balance before finishing."
+        ],
+        finish: "Use boiled linseed oil, tung oil, or a light shop finish. Avoid making the handle slippery."
+      },
+      {
+        project: "Bench hook",
+        difficulty: "Beginner",
+        wood: "Plywood + hardwood scraps",
+        time: "1 to 2 hours",
+        note: "A simple build that actually changes your workflow. Perfect when you want a quick win.",
+        materials: [
+          "Flat plywood or MDF base",
+          "Two hardwood or plywood cleats",
+          "Wood glue",
+          "Screws or brads"
+        ],
+        cutList: [
+          "Cut base panel around 10 x 14 inches.",
+          "Cut front cleat the same width as the base.",
+          "Cut rear stop cleat the same width as the base.",
+          "Lightly chamfer exposed edges."
+        ],
+        steps: [
+          "Cut the base flat and square so it sits cleanly on your bench.",
+          "Attach one cleat under the front edge so it hooks against the bench edge.",
+          "Attach the second cleat on top at the far edge to act as a work stop.",
+          "Make sure the two cleats face opposite directions so the hook locks in use.",
+          "Glue and screw the cleats for strength.",
+          "Break sharp edges and test it with a handsaw or chisel task."
+        ],
+        finish: "Leave unfinished or add a thin coat of oil. This is a shop jig, so function matters more than polish."
+      },
+      {
+        project: "Clamp rack",
+        difficulty: "Beginner",
+        wood: "Plywood or pine",
+        time: "2 to 4 hours",
+        note: "Good practical build for cleaning up wall space and making your shop easier to use every day.",
+        materials: [
+          "3/4 inch plywood or pine board",
+          "Wall screws or lag screws",
+          "Glue",
+          "Optional French cleat strip"
+        ],
+        cutList: [
+          "Cut one back board to fit the wall area.",
+          "Cut several support blocks or fingers for your clamp style.",
+          "Cut a top rail or spacer if needed.",
+          "Cut a French cleat if you want the rack removable."
+        ],
+        steps: [
+          "Lay your clamps on the bench and measure how much spacing each one needs.",
+          "Cut the back board and mark the clamp positions clearly.",
+          "Cut support fingers or blocks slightly deeper than the clamp bar needs.",
+          "Glue and screw the supports to the back board.",
+          "Mount the rack into studs or use a strong cleat system.",
+          "Load the clamps slowly and confirm the rack does not flex or pull away."
+        ],
+        finish: "A quick coat of shellac, polyurethane, or shop oil is plenty. Labeling clamp spots can make it even more useful."
+      },
+      {
+        project: "Small wall shelf",
+        difficulty: "Beginner to intermediate",
+        wood: "Cherry or maple",
+        time: "3 to 5 hours",
+        note: "A nice project for improving layout, keeping parts square, and getting cleaner edge treatment.",
+        materials: [
+          "One board for the shelf top",
+          "Two side brackets or supports",
+          "Back cleat or mounting strip",
+          "Wood glue and screws"
+        ],
+        cutList: [
+          "Cut shelf top to final width and depth.",
+          "Cut two matching side supports.",
+          "Cut one back cleat slightly shorter than the shelf length.",
+          "Optional: cut a small front lip if storing items that may roll."
+        ],
+        steps: [
+          "Mill or sand the shelf board flat and square.",
+          "Cut the side supports to matching size so the shelf sits level.",
+          "Dry fit the parts and mark screw locations before assembly.",
+          "Glue and fasten the supports to the shelf top.",
+          "Attach the back cleat or mounting strip securely.",
+          "Sand all visible surfaces and ease the front edges.",
+          "Mount into studs or use appropriate wall anchors for the load."
+        ],
+        finish: "Use wipe-on polyurethane, shellac, or hardwax oil depending on the look you want."
+      },
+      {
+        project: "Router bit tray",
+        difficulty: "Beginner",
+        wood: "Hardwood offcuts",
+        time: "1 to 2 hours",
+        note: "Excellent scrap project and a great way to turn leftover material into something genuinely useful.",
+        materials: [
+          "Hardwood scrap for the tray body",
+          "Optional plywood base",
+          "Drill bits sized for router shanks",
+          "Finish or wax"
+        ],
+        cutList: [
+          "Cut tray blank to the size you want.",
+          "Mark a clean grid for router bit holes.",
+          "Drill 1/4 inch and/or 1/2 inch holes depending on your bits.",
+          "Optional: cut a shallow base or raised feet."
+        ],
+        steps: [
+          "Square the tray blank and decide how many bits it should hold.",
+          "Lay out the hole grid with enough spacing so bits do not touch.",
+          "Drill holes straight and deep enough to hold the shanks safely.",
+          "Chamfer or round over the top edges of the holes.",
+          "Sand the tray smooth and remove any sharp corners.",
+          "Add labels or separate zones for bit types if helpful."
+        ],
+        finish: "Use paste wax, shellac, or a light oil. Keep the finish simple so the tray does not feel sticky."
+      },
+      {
+        project: "Sanding block set",
+        difficulty: "Beginner",
+        wood: "Hardwood scraps",
+        time: "1 hour",
+        note: "Tiny project, but one you will use constantly. Good choice when you want a low-stress shop session.",
+        materials: [
+          "Hardwood scraps",
+          "Cork, leather, or thin foam for the bottom face",
+          "Spray adhesive or contact cement",
+          "Sandpaper sheets"
+        ],
+        cutList: [
+          "Cut several blocks around 2.5 x 5 inches.",
+          "Cut one narrow block for tight spaces.",
+          "Cut cork or leather pads to match each block.",
+          "Round over the top edges for comfort."
+        ],
+        steps: [
+          "Cut blocks to comfortable hand sizes from stable scrap.",
+          "Flatten the bottom face so sandpaper contacts evenly.",
+          "Round or chamfer the top edges so the block feels good in your hand.",
+          "Glue cork, leather, or foam to the bottom if you want a softer sanding face.",
+          "Trim the pad flush after the adhesive cures.",
+          "Label blocks by grit or use them with fresh paper as needed."
+        ],
+        finish: "Leave bare or apply a very light coat of wax. Avoid thick finish on the sanding face."
+      },
+      {
+        project: "Crosscut sled stop block",
+        difficulty: "Intermediate",
+        wood: "Plywood + hardwood",
+        time: "2 to 3 hours",
+        note: "Practical accuracy upgrade. Worth building if you keep repeating cuts and want more consistency.",
+        materials: [
+          "Hardwood block for the stop",
+          "Small plywood or hardwood runner if needed",
+          "Knob, bolt, or clamp hardware",
+          "Optional measuring tape strip"
+        ],
+        cutList: [
+          "Cut stop block square and tall enough to register against the fence.",
+          "Cut a relief notch so sawdust does not throw off the measurement.",
+          "Cut any runner or clamp piece to fit your sled fence.",
+          "Drill hardware holes for locking the stop in place."
+        ],
+        steps: [
+          "Cut the stop block square so it gives repeatable references.",
+          "Add a small bottom relief notch to clear sawdust near the fence.",
+          "Drill for your bolt, knob, or clamp hardware.",
+          "Fit the stop to your sled fence so it slides but does not wobble.",
+          "Test with scrap cuts and adjust until repeated pieces match.",
+          "Add a tape strip or reference mark if you want faster setup."
+        ],
+        finish: "Use wax on sliding surfaces and leave the reference face clean and square."
+      },
+      {
+        project: "Floating picture ledge",
+        difficulty: "Beginner",
+        wood: "Poplar or pine",
+        time: "2 to 3 hours",
+        note: "Great for practicing straight cuts, clean sanding, and a simple wall-mounted finish.",
+        materials: [
+          "One back board",
+          "One shelf bottom board",
+          "One thin front lip",
+          "Glue, brads, and wall fasteners"
+        ],
+        cutList: [
+          "Cut the back board to final ledge length.",
+          "Cut the bottom shelf board to the same length.",
+          "Cut the front lip strip to the same length.",
+          "Sand all parts before final assembly."
+        ],
+        steps: [
+          "Cut all three ledge pieces to matching length.",
+          "Dry fit the back, bottom, and front lip so the ledge shape is clear.",
+          "Glue and pin or clamp the bottom board to the back board.",
+          "Attach the front lip so frames cannot slide off.",
+          "Sand the corners and ease the exposed edges.",
+          "Finish the ledge, then mount it level into studs or with proper anchors."
+        ],
+        finish: "Paint works great on poplar or pine. For natural wood, use a clear wipe-on finish."
+      },
+      {
+        project: "Cutting board drying rack",
+        difficulty: "Beginner",
+        wood: "Maple scraps",
+        time: "1 to 2 hours",
+        note: "A useful companion project if you already make cutting boards or want a quick kitchen build.",
+        materials: [
+          "Maple or other hardwood scraps",
+          "Two side rails",
+          "Several dowels or divider strips",
+          "Waterproof glue"
+        ],
+        cutList: [
+          "Cut two matching side rails.",
+          "Cut several dowels or divider strips to equal length.",
+          "Cut small feet or spacers if you want airflow underneath.",
+          "Drill matching holes or cut shallow dados for dividers."
+        ],
+        steps: [
+          "Decide how many boards the rack should hold and mark divider spacing.",
+          "Cut the side rails to matching length.",
+          "Drill holes or cut slots for the dowels or divider strips.",
+          "Dry fit everything and make sure boards can lean without tipping.",
+          "Glue the dividers into one side, then add the second rail.",
+          "Sand all surfaces smooth and remove sharp edges."
+        ],
+        finish: "Use mineral oil or another kitchen-safe finish if the rack will live near food prep."
+      }
     ];
 
     function randomItem(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+    function renderList(id, items) {
+      document.getElementById(id).innerHTML = items.map(item => `<li>${item}</li>`).join("");
+    }
 
     function generateProject() {
       const pick = randomItem(projects);
@@ -913,6 +1257,10 @@
       document.getElementById("wood").textContent = pick.wood;
       document.getElementById("time").textContent = pick.time;
       document.getElementById("note").textContent = pick.note;
+      renderList("materials", pick.materials);
+      renderList("cutList", pick.cutList);
+      renderList("steps", pick.steps);
+      document.getElementById("finish").textContent = pick.finish;
     }
 
     generateProject();
