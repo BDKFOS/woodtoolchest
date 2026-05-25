@@ -420,51 +420,66 @@
 
     function renderTumbling(palette, rand, depth) {
       const boardX = 82, boardY = 78, boardW = 676, boardH = 340;
-      const size = depth > 7 ? 54 : 62;
-      const h = size * 0.58;
-      const cols = 15;
-      const rows = 10;
-      const localPieces = [];
-      const points = [];
 
-      function addPoint(px, py) { points.push([px, py]); }
+      // True tumbling-block renderer:
+      // Each visible cube is one isometric hexagon split into exactly 3 rhombus faces.
+      // There are no strokes or decorative seams; cuts are represented by hard color edges only.
+      const u = depth > 7 ? 43 : 49;        // half cube width
+      const v = u * 0.52;                  // isometric vertical unit
+      const epsilon = 0.75;                // tiny overlap prevents anti-alias hairlines between faces
+      const stepX = u * 2;
+      const stepY = v * 3;
+      const cols = Math.ceil(boardW / stepX) + 5;
+      const rows = Math.ceil(boardH / stepY) + 5;
 
+      const faceTop = woodAt(palette, 0);
+      const faceRight = woodAt(palette, 1);
+      const faceLeft = woodAt(palette, 2);
+      const pieces = [];
+
+      function pts(arr) {
+        return arr.map(p => `${p[0].toFixed(2)},${p[1].toFixed(2)}`).join(' ');
+      }
+
+      function cube(cx, cy, offset) {
+        // Hexagon points around the cube. C is where the three rhombus faces meet.
+        const T  = [cx, cy - 2*v - epsilon];
+        const UR = [cx + u + epsilon, cy - v];
+        const LR = [cx + u + epsilon, cy + v + epsilon];
+        const B  = [cx, cy + 2*v + epsilon];
+        const LL = [cx - u - epsilon, cy + v + epsilon];
+        const UL = [cx - u - epsilon, cy - v];
+        const C  = [cx, cy];
+
+        // Rotate face assignments by cube position so 4+ selected woods still appear,
+        // while the classic 3-face construction stays physically correct.
+        const topKey = woodAt(palette, offset);
+        const rightKey = woodAt(palette, offset + 1);
+        const leftKey = woodAt(palette, offset + 2);
+
+        pieces.push(`<g class="cube-unit" shape-rendering="crispEdges">`);
+        pieces.push(`<polygon points="${pts([T, UR, C, UL])}" fill="${woodColor(topKey)}"/>`);
+        pieces.push(`<polygon points="${pts([UR, LR, B, C])}" fill="${woodColor(rightKey)}"/>`);
+        pieces.push(`<polygon points="${pts([UL, C, B, LL])}" fill="${woodColor(leftKey)}"/>`);
+        pieces.push(`</g>`);
+      }
+
+      // Start outside the board so the clipped result fills edge-to-edge.
+      const startX = boardX - stepX;
+      const startY = boardY - stepY;
       for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
-          const cx = c * size * 0.86 + (r % 2) * size * 0.43;
-          const cy = r * h * 0.92;
-          const offset = r + c;
-          const keys = [
-            woodAt(palette, offset),
-            woodAt(palette, offset + 1),
-            woodAt(palette, offset + 2)
-          ];
-
-          addPoint(cx, cy);
-          addPoint(cx + size / 2, cy + h * 1.42);
-          addPoint(cx - size / 2, cy + h * 1.42);
-
-          localPieces.push(`
-            <g shape-rendering="geometricPrecision">
-              <polygon points="${cx},${cy-0.7} ${cx+size/2+0.8},${cy+h/2} ${cx},${cy+h+0.7} ${cx-size/2-0.8},${cy+h/2}" fill="${woodColor(keys[0])}"/>
-              <polygon points="${cx},${cy-0.7} ${cx+size/2+0.8},${cy+h/2} ${cx+size/2+0.8},${cy+h*1.42+0.7} ${cx},${cy+h+0.7}" fill="${woodColor(keys[1])}"/>
-              <polygon points="${cx},${cy-0.7} ${cx-size/2-0.8},${cy+h/2} ${cx-size/2-0.8},${cy+h*1.42+0.7} ${cx},${cy+h+0.7}" fill="${woodColor(keys[2])}"/>
-            </g>`);
+          const cx = startX + c * stepX + (r % 2 ? u : 0);
+          const cy = startY + r * stepY;
+          cube(cx, cy, r + c);
         }
       }
 
-      const minX = Math.min(...points.map(p => p[0]));
-      const maxX = Math.max(...points.map(p => p[0]));
-      const minY = Math.min(...points.map(p => p[1]));
-      const maxY = Math.max(...points.map(p => p[1]));
-      const patternW = maxX - minX;
-      const patternH = maxY - minY;
-      const scale = Math.min(boardW / patternW, boardH / patternH) * 1.02;
-      const tx = boardX + (boardW - patternW * scale) / 2 - minX * scale;
-      const ty = boardY + (boardH - patternH * scale) / 2 - minY * scale;
-
-      const centered = `<g transform="translate(${tx.toFixed(2)} ${ty.toFixed(2)}) scale(${scale.toFixed(4)})">${localPieces.join('')}</g>`;
-      return boardShell(centered, palette, { noFaceOverlay: true, noOuterTrim: true, boardBase: woodColor(woodAt(palette, 0)) });
+      return boardShell(pieces.join(''), palette, {
+        noFaceOverlay: true,
+        noOuterTrim: true,
+        boardBase: woodColor(faceTop)
+      });
     }
 
     function renderWoven(palette, rand, depth) {
@@ -571,13 +586,7 @@
 
       document.getElementById('swatches').innerHTML = palette.map(key => `<span class="swatch"><span class="swatch-chip" style="background:${woodColor(key)}"></span>${woods[key].label}</span>`).join('');
 
-      const buildDetails = [
-        `Finished size target: ${sizeLabel(size)}.`,
-        `Pattern type: ${patternLabel(pattern)}.`,
-        `Estimated glue-ups: ${meta.glueUps}.`,
-        is3dPattern(pattern) ? "Use test blocks first so the illusion reads correctly before full glue-up." : "Keep the strip rhythm intentional; avoid too many random widths.",
-        complexity === "beginner" ? "Best with straight, repeatable cuts and a simple finishing plan." : "Plan milling order carefully so the final board stays flat."
-      ];
+      const buildDetails = buildDetailsFor(pattern, palette, size, depth, meta, complexity);
 
       const cutList = cutListFor(pattern, palette, size, depth);
       document.getElementById('buildDetails').innerHTML = buildDetails.map(item => `<li>${item}</li>`).join('');
@@ -587,16 +596,52 @@
     function is3dPattern(pattern) { return ["tumbling", "woven", "parquet"].includes(pattern); }
     function capitalize(str) { return str.charAt(0).toUpperCase() + str.slice(1); }
 
+    function sizeSpec(size) {
+      return {
+        small: { finished: "10 × 14 in", rough: "11 × 15.5 in", length: "15.5 in" },
+        medium: { finished: "12 × 18 in", rough: "13.25 × 19.5 in", length: "19.5 in" },
+        large: { finished: "14 × 20 in", rough: "15.25 × 21.75 in", length: "21.75 in" },
+        xl: { finished: "16 × 24 in", rough: "17.25 × 26 in", length: "26 in" }
+      }[size] || { finished: sizeLabel(size), rough: "oversized by 8–10%", length: "final length + 1.5 in" };
+    }
+
+    function buildDetailsFor(pattern, palette, size, depth, meta, complexity) {
+      const spec = sizeSpec(size);
+      const woodLabels = palette.map(w => woods[w].label).join(', ');
+      if (pattern === "tumbling") {
+        const cube = depth > 7 ? "small/high-count" : "medium";
+        return [
+          `Finished size target: ${spec.finished}; rough glue-up target: about ${spec.rough} before trimming.`,
+          `Pattern type: true 3D tumbling blocks, built from repeating 60° rhombus units.`,
+          `Wood faces used in the cube pattern: ${woodLabels}. Keep each species consistent so the illusion reads cleanly.`,
+          `Suggested finished thickness: 1.25 to 1.5 in after flattening; start thicker if you expect heavy cleanup.`,
+          `Estimated glue-ups: ${meta.glueUps}. Expect test blocks, strip glue-ups, angled crosscuts, final assembly, then flattening.`,
+          `Cube scale: ${cube}. Make a small sample tile first and confirm the three-face cube illusion before full material prep.`
+        ];
+      }
+      return [
+        `Finished size target: ${spec.finished}.`,
+        `Pattern type: ${patternLabel(pattern)}.`,
+        `Estimated glue-ups: ${meta.glueUps}.`,
+        is3dPattern(pattern) ? "Use test blocks first so the illusion reads correctly before full glue-up." : "Keep the strip rhythm intentional; avoid too many random widths.",
+        complexity === "beginner" ? "Best with straight, repeatable cuts and a simple finishing plan." : "Plan milling order carefully so the final board stays flat."
+      ];
+    }
+
     function cutListFor(pattern, palette, size, depth) {
       const primary = woods[palette[0]].label;
       const secondary = woods[palette[1 % palette.length]].label;
       const accent = woods[palette[2 % palette.length]].label;
       if (pattern === "tumbling") {
         return [
-          `${primary}: diamond/rhombus pieces for top faces.`,
-          `${secondary}: matching left-face pieces, cut consistently.`,
-          `${accent}: matching right-face pieces for shadow contrast.`,
-          "Make a small 3-cube sample before committing full material."
+          `Mill all stock flat, square, and equal thickness before any angled cuts; inconsistent thickness will break the cube pattern.`,
+          `Rip three face-strip groups: ${primary} for one cube face, ${secondary} for the second face, and ${accent} for the third face. Keep widths identical.`,
+          `Cut rhombus/diamond units at a consistent 60°/120° geometry. Every piece in the cube field must match the same template.`,
+          `Dry-fit one repeat first: ${primary} top face + ${secondary} right face + ${accent} left face. The three pieces should close into one clean cube with no filler gaps.`,
+          `Batch-cut only after the sample works. Keep pieces sorted by face direction, not just by species.`,
+          `Final assembly map: repeat cube units in staggered rows; offset every other row by half a cube so the blocks interlock.`,
+          `Clamp with cauls and light even pressure. Too much side pressure can slide the rhombus pieces and distort the grid.`,
+          `Flatten gently after cure, trim to final size, ease edges, then sand through your normal cutting-board schedule.`
         ];
       }
       if (pattern === "woven") {
