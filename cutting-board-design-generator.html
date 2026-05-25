@@ -144,9 +144,9 @@
     .metric span { display: block; color: var(--muted); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.6px; margin-bottom: 5px; }
     .metric strong { font-size: 22px; color: #1f1d1b; }
     .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
-    .detail-box { background: rgba(255,250,243,.92); border: 1px solid rgba(90,62,38,.12); border-radius: 16px; padding: 16px; }
+    .detail-box { background: rgba(255,250,243,.92); border: 1px solid rgba(90,62,38,.12); border-radius: 16px; padding: 18px 20px; min-height: 170px; overflow: visible; }
     .detail-box h3 { margin: 0 0 10px; font-size: 16px; font-weight: 800; }
-    .detail-box ul { margin: 0; padding-left: 19px; color: #57514b; font-size: 14px; font-weight: 500; }
+    .detail-box ul { display: block; margin: 0; padding-left: 20px; color: #57514b; font-size: 14px; line-height: 1.55; font-weight: 500; }
     .detail-box li { margin-bottom: 7px; }
 
     .content-area { padding: 0 82px 42px; background: rgba(255,251,244,.46); border-left: 1px solid rgba(102,68,42,.08); border-right: 1px solid rgba(102,68,42,.08); border-bottom: 1px solid rgba(102,68,42,.08); border-radius: 0 0 15px 15px; }
@@ -377,7 +377,7 @@
         <ellipse cx="420" cy="444" rx="312" ry="34" fill="#000" opacity="0.22"/>
         <g filter="url(#shadow)">
           <rect x="${x+12}" y="${y+32}" width="${bw}" height="${bh}" rx="${radius}" fill="#1a100b" opacity="0.28"/>
-          <rect x="${x}" y="${y}" width="${bw}" height="${bh}" rx="${radius}" fill="#6f4b2e"/>
+          <rect x="${x}" y="${y}" width="${bw}" height="${bh}" rx="${radius}" fill="${options.boardBase || '#6f4b2e'}"/>
           <clipPath id="boardClip"><rect x="${x}" y="${y}" width="${bw}" height="${bh}" rx="${radius}"/></clipPath>
           <g clip-path="url(#boardClip)">${inner}</g>
           <rect x="${x}" y="${y}" width="${bw}" height="${bh}" rx="${radius}" fill="url(#edgeGrad)" opacity="${options.noFaceOverlay ? 0 : 0.55}" pointer-events="none"/>
@@ -422,8 +422,8 @@
       const boardX = 82, boardY = 78, boardW = 676, boardH = 340;
       const size = depth > 7 ? 54 : 62;
       const h = size * 0.58;
-      const cols = 13;
-      const rows = 9;
+      const cols = 15;
+      const rows = 10;
       const localPieces = [];
       const points = [];
 
@@ -431,8 +431,8 @@
 
       for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
-          const cx = c * size * 0.92 + (r % 2) * size * 0.46;
-          const cy = r * h * 1.03;
+          const cx = c * size * 0.86 + (r % 2) * size * 0.43;
+          const cy = r * h * 0.92;
           const offset = r + c;
           const keys = [
             woodAt(palette, offset),
@@ -445,10 +445,10 @@
           addPoint(cx - size / 2, cy + h * 1.42);
 
           localPieces.push(`
-            <g>
-              <polygon points="${cx},${cy} ${cx+size/2},${cy+h/2} ${cx},${cy+h} ${cx-size/2},${cy+h/2}" fill="${woodColor(keys[0])}"/>
-              <polygon points="${cx},${cy} ${cx+size/2},${cy+h/2} ${cx+size/2},${cy+h*1.42} ${cx},${cy+h}" fill="${woodColor(keys[1])}"/>
-              <polygon points="${cx},${cy} ${cx-size/2},${cy+h/2} ${cx-size/2},${cy+h*1.42} ${cx},${cy+h}" fill="${woodColor(keys[2])}"/>
+            <g shape-rendering="geometricPrecision">
+              <polygon points="${cx},${cy-0.7} ${cx+size/2+0.8},${cy+h/2} ${cx},${cy+h+0.7} ${cx-size/2-0.8},${cy+h/2}" fill="${woodColor(keys[0])}"/>
+              <polygon points="${cx},${cy-0.7} ${cx+size/2+0.8},${cy+h/2} ${cx+size/2+0.8},${cy+h*1.42+0.7} ${cx},${cy+h+0.7}" fill="${woodColor(keys[1])}"/>
+              <polygon points="${cx},${cy-0.7} ${cx-size/2-0.8},${cy+h/2} ${cx-size/2-0.8},${cy+h*1.42+0.7} ${cx},${cy+h+0.7}" fill="${woodColor(keys[2])}"/>
             </g>`);
         }
       }
@@ -464,7 +464,7 @@
       const ty = boardY + (boardH - patternH * scale) / 2 - minY * scale;
 
       const centered = `<g transform="translate(${tx.toFixed(2)} ${ty.toFixed(2)}) scale(${scale.toFixed(4)})">${localPieces.join('')}</g>`;
-      return boardShell(centered, palette, { noFaceOverlay: true });
+      return boardShell(centered, palette, { noFaceOverlay: true, noOuterTrim: true, boardBase: woodColor(woodAt(palette, 0)) });
     }
 
     function renderWoven(palette, rand, depth) {
@@ -552,8 +552,10 @@
       const palette = buildPalette(style, selectedWoods(), rand);
       const svg = renderPattern(pattern, palette, rand, depth);
 
-      document.getElementById('boardRender').innerHTML = svg;
-      document.getElementById('heroPreview').innerHTML = svg;
+      const boardRenderEl = document.getElementById('boardRender');
+      if (boardRenderEl) boardRenderEl.innerHTML = svg;
+      const heroPreviewEl = document.getElementById('heroPreview');
+      if (heroPreviewEl) heroPreviewEl.innerHTML = svg;
 
       const name = `${choice(namesA, rand)} ${choice(namesB, rand)}`;
       const woodLabels = palette.map(w => woods[w].label);
