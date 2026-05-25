@@ -13,9 +13,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Wood Movement Calculator | Estimate Seasonal Expansion and Contraction | WoodToolChest</title>
-  <meta name="description" content="Use this wood movement calculator to estimate seasonal expansion and contraction across board width. Pick a species, width, grain orientation, and humidity range for a practical movement estimate." />
-  <link rel="canonical" href="https://www.woodtoolchest.com/wood-movement-calculator.html" />
+  <title>Wood Project Idea Generator | Random Woodworking Ideas for Beginners and Small Shops | WoodToolChest</title>
+  <meta name="description" content="Generate random woodworking project ideas with difficulty, wood type, estimated build time, and a practical shop note. Built for beginners and small-shop woodworkers." />
+  <link rel="canonical" href="https://www.woodtoolchest.com/wood-project-idea-generator.html" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -161,14 +161,14 @@
       box-shadow: 0 16px 28px rgba(161, 94, 44, .22);
     }
 
-    .hero-shell {
+    .hero-panel {
       overflow: hidden;
       min-height: 410px;
       border: 1px solid rgba(102, 68, 42, .10);
       border-radius: 15px;
       background:
         linear-gradient(90deg, rgba(255,251,243,.98) 0%, rgba(255,251,243,.96) 38%, rgba(250,238,223,.70) 57%, rgba(246,213,178,.28) 100%),
-        url("/images/guide-woodmovement.png") center right / contain no-repeat,
+        url("/images/guide-woodproject.png") center right / contain no-repeat,
         linear-gradient(90deg, #fbf6ee, #f5d6b6);
       box-shadow: 0 19px 46px rgba(89, 61, 37, .10);
       position: relative;
@@ -429,6 +429,134 @@
       font-weight: 500;
     }
 
+    
+
+    .generator-card {
+      padding: 30px;
+      margin-bottom: 22px;
+      border: 1px solid rgba(112, 77, 48, .10);
+      border-radius: 18px;
+      background: rgba(255,253,248,.82);
+      box-shadow: var(--shadow-card);
+    }
+
+    .generator-card h2 {
+      margin-bottom: 10px;
+      font-family: var(--serif);
+      font-size: 32px;
+      line-height: 1.12;
+      letter-spacing: -.8px;
+      color: #342c26;
+    }
+
+    .generator-card p {
+      color: #625c56;
+      font-size: 15px;
+      line-height: 1.76;
+      font-weight: 500;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 18px 0 20px;
+    }
+
+    button {
+      appearance: none;
+      border: 0;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    .tool-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 24px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 800;
+      transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
+      white-space: nowrap;
+    }
+
+    .tool-button-primary {
+      color: #fff;
+      background: linear-gradient(180deg, #302f2c, #1e1d1b);
+      box-shadow: 0 16px 28px rgba(33,31,28,.20), inset 0 1px 0 rgba(255,255,255,.12);
+    }
+
+    .tool-button-secondary {
+      color: #33302d;
+      background: rgba(255,255,255,.76);
+      border: 1px solid rgba(85,58,36,.10);
+      box-shadow: 0 12px 22px rgba(72,49,30,.07);
+    }
+
+    .tool-button:hover { transform: translateY(-1px); }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 6px;
+    }
+
+    .result-item {
+      padding: 16px;
+      border: 1px solid #d8c9b8;
+      border-radius: 14px;
+      background: #fffaf3;
+    }
+
+    .result-label {
+      display: block;
+      margin-bottom: 6px;
+      color: #a2602d;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .result-value {
+      color: #221f1c;
+      font-size: 18px;
+      line-height: 1.25;
+      font-weight: 800;
+      letter-spacing: -.2px;
+    }
+
+    .project-note-box {
+      margin-top: 14px;
+      padding: 18px;
+      border-radius: 14px;
+      border: 1px solid #d8c9b8;
+      background: linear-gradient(180deg, #fffdf8, #fbf7f1);
+    }
+
+    .project-note-box h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+      font-weight: 800;
+      color: #25221f;
+    }
+
+    .project-note-box p { margin-bottom: 0; }
+
+    .idea-list { margin: 0; padding-left: 20px; }
+    .idea-list li { margin-bottom: 10px; color: #625c56; font-size: 15px; line-height: 1.68; font-weight: 500; }
+
+    @media (max-width: 640px) {
+      .result-grid { grid-template-columns: 1fr; }
+      .button-row { flex-direction: column; }
+      .tool-button { width: 100%; }
+    }
+
+
     @media (max-width: 1160px) {
       .wrap { width: min(var(--max), calc(100% - 44px)); }
       .nav-links { gap: 24px; margin-right: 12px; }
@@ -445,7 +573,7 @@
       .hero-shell {
         background:
           linear-gradient(180deg, rgba(255,251,243,.98), rgba(255,251,243,.91)),
-          url("/images/guide-workbench.png") center right / cover no-repeat;
+          url("/images/guide-woodmovement.png") center right / cover no-repeat;
       }
       .hero-content { width: 100%; max-width: 660px; padding: 38px 32px; }
       .subcard-grid, .subcard-grid.three-up, .subcard-grid.four-up, .subcard-grid.five-up { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -472,16 +600,11 @@
   
 
     .hero-shell {
-      overflow: hidden;
       min-height: 420px;
-      border: 1px solid rgba(102, 68, 42, .10);
-      border-radius: 15px;
-      position: relative;
       background:
         linear-gradient(90deg, rgba(255,251,243,.98) 0%, rgba(255,251,243,.96) 38%, rgba(250,238,223,.70) 58%, rgba(246,213,178,.28) 100%),
-        url("/images/guide-workbench.png") center right / contain no-repeat,
+        url("/images/guide-woodmovement.png") center right / contain no-repeat,
         linear-gradient(90deg, #fbf6ee, #f5d6b6);
-      box-shadow: 0 19px 46px rgba(89,61,37,.10);
     }
 
     .calculator-card {
@@ -613,6 +736,7 @@
       .calculator-head, .tool-grid { padding-left: 18px; padding-right: 18px; }
     }
 
+  
   </style>
 </head>
 <body>
@@ -640,194 +764,114 @@
     </div>
   </header>
 
-  
-
   <main class="wrap">
     <section class="hero-shell" aria-labelledby="hero-title">
       <div class="hero-content">
-        <p class="eyebrow">Interactive Tool</p>
-        <h1 class="hero-title" id="hero-title">Estimate wood movement before it <em>surprises</em> you.</h1>
-        <p class="hero-copy">Use species, grain orientation, board width, and humidity range to estimate seasonal expansion and contraction across a board.</p>
+        <p class="eyebrow">Generator Tool</p>
+        <h1 class="hero-title" id="hero-title">Wood Project Idea <em>Generator</em></h1>
+        <p class="hero-copy">Need something useful to build but do not want to overthink it? Generate a realistic woodworking project with difficulty, wood choice, estimated time, and a practical shop note.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#calculator">Use the calculator</a>
+          <a class="btn btn-primary" href="#generator">Generate an Idea</a>
           <a class="btn btn-secondary" href="/guides.html">Browse Guides</a>
         </div>
       </div>
     </section>
-  </main>
 
-  <main class="content-wrap article-shell">
-    <div class="article-main">
-      <section class="quick-card" id="quick-answer">
-        <h2>Quick answer</h2>
-        <p>Wood movement across width is normal. The wider the board, the bigger the humidity swing, and the more flat-sawn the stock is, the more movement you should expect. This calculator gives you a realistic estimate so you can build in enough allowance instead of guessing.</p>
-      </section>
+    <div class="article-shell">
+      <article class="article-main">
+        <section class="quick-card">
+          <h2>Quick answer</h2>
+          <p>Click the generator to get a random woodworking project idea you can actually build in a real shop. It is designed for beginners, hobbyists, and small-shop woodworkers who want simple project inspiration without the fluff.</p>
+        </section>
 
-      <section class="article-card calculator-card" id="calculator">
-        <div class="calculator-head">
-          <h2>Wood Movement Calculator</h2>
-          <p>Enter the board details below. The estimate updates automatically as you change the species, width, grain orientation, or humidity range.</p>
-        </div>
+        <section class="generator-card" id="generator">
+          <h2>Generate a random woodworking project</h2>
+          <p>Every click gives you a project type, suggested wood, difficulty, estimated time, and one practical build note.</p>
 
-        <div class="tool-grid">
-          <div>
-            <div class="field-grid">
-              <div class="field">
-                <label for="species">Wood species</label>
-                <select id="species">
-                  <option value="hardMaple">Hard Maple</option>
-                  <option value="blackWalnut">Black Walnut</option>
-                  <option value="cherry">Cherry</option>
-                  <option value="whiteOak">White Oak</option>
-                  <option value="redOak">Red Oak</option>
-                  <option value="ash">Ash</option>
-                  <option value="birch">Birch</option>
-                  <option value="poplar">Poplar</option>
-                  <option value="beech">Beech</option>
-                </select>
-              </div>
-
-              <div class="field">
-                <label for="orientation">Grain orientation</label>
-                <select id="orientation">
-                  <option value="flat">Flat sawn</option>
-                  <option value="rift">Rift sawn</option>
-                  <option value="quarter">Quarter sawn</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="field-grid">
-              <div class="field">
-                <label for="width">Board width (inches)</label>
-                <input id="width" type="number" min="1" max="60" step="0.125" value="12">
-                <p class="helper">Use the full width of the part that is free to move.</p>
-              </div>
-
-              <div class="field">
-                <label for="storageLocation">Storage location</label>
-                <select id="storageLocation">
-                  <option value="indoor">Indoor shop / conditioned indoor space</option>
-                  <option value="climateControlledShop">Outdoor climate-controlled shop</option>
-                  <option value="garage">Garage shop</option>
-                  <option value="basement">Basement shop</option>
-                  <option value="shed">Unconditioned shed / outdoor shop</option>
-                </select>
-                <p class="helper" id="storageHelper">Uses a typical indoor humidity range and equilibrium moisture estimate.</p>
-              </div>
-            </div>
-
-            <div class="field-grid">
-              <div class="field">
-                <label for="rhLow">Starting relative humidity (%)</label>
-                <input id="rhLow" type="number" min="20" max="85" step="1" value="35">
-                <p class="helper">Example: heated winter house.</p>
-              </div>
-
-              <div class="field">
-                <label for="rhHigh">Ending relative humidity (%)</label>
-                <input id="rhHigh" type="number" min="20" max="85" step="1" value="60">
-                <p class="helper">Example: more humid summer conditions.</p>
-              </div>
-            </div>
-
-            <div class="tip-box">
-              <strong>How this estimate works:</strong> it converts your humidity range into an estimated moisture-content change, then applies a width-movement estimate based on species shrinkage values and grain orientation.
-            </div>
+          <div class="button-row">
+            <button class="tool-button tool-button-primary" onclick="generateProject()">Generate Project Idea</button>
+            <button class="tool-button tool-button-secondary" onclick="generateProject()">Generate Again</button>
           </div>
 
-          <aside class="result-card" aria-live="polite">
-            <h3>Estimated movement</h3>
-            <div class="result-number" id="movementDisplay">0.00 in</div>
-            <p class="result-sub" id="fractionDisplay">About 0/64 in</p>
+          <div class="result-grid">
+            <div class="result-item"><span class="result-label">Project</span><div class="result-value" id="project">Cutting board</div></div>
+            <div class="result-item"><span class="result-label">Difficulty</span><div class="result-value" id="difficulty">Beginner</div></div>
+            <div class="result-item"><span class="result-label">Wood Type</span><div class="result-value" id="wood">Maple + walnut</div></div>
+            <div class="result-item"><span class="result-label">Estimated Time</span><div class="result-value" id="time">2 to 4 hours</div></div>
+          </div>
 
-            <div class="result-metrics">
-              <div class="metric"><span>Estimated moisture change</span><strong id="mcDisplay">0.0%</strong></div>
-              <div class="metric"><span>Movement direction</span><strong id="directionDisplay">Expansion</strong></div>
-              <div class="metric"><span>Species value used</span><strong id="speciesValueDisplay">Tangential</strong></div>
+          <div class="project-note-box">
+            <h3>Practical shop note</h3>
+            <p id="note">Good starter build with fast feedback and a low material commitment.</p>
+          </div>
+        </section>
+
+        <section class="article-card" id="why-use-it">
+          <h2>Why this tool is useful</h2>
+          <p>A lot of woodworking stalls out because you are caught between ten decent ideas and no clear next move. A simple randomizer helps break that loop. It is also a good way to find smaller, realistic builds that fit your current tool setup and energy level.</p>
+          <div class="tip-box"><strong>Good use case:</strong> run the generator a few times, pick the first project that sounds both useful and finishable, and build that instead of waiting for the perfect idea.</div>
+        </section>
+
+        <section class="article-card" id="project-types">
+          <h2>Project ideas you may get</h2>
+          <div class="subcard-grid">
+            <div class="subcard">
+              <h3>Beginner-friendly builds</h3>
+              <ul class="idea-list">
+                <li>cutting board</li>
+                <li>shop mallet</li>
+                <li>bench hook</li>
+                <li>sanding block set</li>
+              </ul>
             </div>
+            <div class="subcard">
+              <h3>Useful small-shop projects</h3>
+              <ul class="idea-list">
+                <li>small wall shelf</li>
+                <li>crosscut sled stop block</li>
+                <li>clamp rack</li>
+                <li>router bit tray</li>
+              </ul>
+            </div>
+          </div>
+        </section>
 
-            <div class="tip-box" id="adviceBox">Plan for some seasonal movement. Wide boards almost never stay the exact same width year-round.</div>
-            <p class="helper" id="emcDisplay">Estimated EMC: 0.0% to 0.0%</p>
-          </aside>
+        <section class="article-card" id="how-to-pick">
+          <h2>How to pick the right idea</h2>
+          <p>The best project is not always the most impressive one. Pick the idea that fits your tools, your available time, and the amount of energy you actually have for the build.</p>
+          <div class="subcard-grid three-up">
+            <div class="subcard"><h3>Keep it finishable</h3><p class="muted">A small finished project beats a big half-built project every time.</p></div>
+            <div class="subcard"><h3>Use what you have</h3><p class="muted">Choose ideas that match your current tools and wood pile.</p></div>
+            <div class="subcard"><h3>Build for use</h3><p class="muted">Shop helpers, storage, and simple home items usually pay off fastest.</p></div>
+          </div>
+        </section>
+
+        <section class="article-card">
+          <h2>Bottom line</h2>
+          <p>This tool is meant to keep you moving. You do not need the perfect project; you need one good project that matches your shop, your tools, and the amount of time you actually have.</p>
+        </section>
+      </article>
+
+      <aside class="article-sidebar" aria-label="Page navigation">
+        <div class="sidebar-stack">
+          <nav class="toc-card">
+            <p class="toc-title">On this page</p>
+            <a href="#generator">Generator</a>
+            <a href="#why-use-it">Why this tool is useful</a>
+            <a href="#project-types">Project ideas</a>
+            <a href="#how-to-pick">How to pick</a>
+          </nav>
+
+          <div class="related-card">
+            <p class="toc-title">Related</p>
+            <a href="/cutting-board-design-generator.html">Cutting Board Designer<span>Design a board visually.</span></a>
+            <a href="/how-to-flatten-a-cutting-board.html">Flatten a Cutting Board<span>Clean up glue-ups after the build.</span></a>
+            <a href="/small-workshop-layout-guide.html">Small Workshop Layout<span>Make your shop easier to build in.</span></a>
+            <a href="/workbench-height-guide.html">Workbench Height Guide<span>Set up a more comfortable workspace.</span></a>
+          </div>
         </div>
-      </section>
-
-      <section class="article-card" id="what-result-means">
-        <h2>What the result means</h2>
-        <p>This number is your estimated total change across the width of the board between the two humidity conditions you entered. It is most useful for planning joinery, panel allowance, tabletop fasteners, grooves, and captured parts.</p>
-        <div class="subcard-grid">
-          <div class="subcard"><h3>Joinery decisions</h3><p>Helps you decide when to leave room in grooves, use elongated screw holes, or avoid locking a panel too rigidly.</p></div>
-          <div class="subcard"><h3>Material expectations</h3><p>Shows why wide boards and flat-sawn panels need more allowance than narrow parts or quarter-sawn stock.</p></div>
-        </div>
-        <div class="warning-box"><strong>Important:</strong> this calculator estimates movement across width, not along length. Lengthwise movement is usually much smaller and is often negligible in comparison.</div>
-      </section>
-
-      <section class="article-card" id="how-to-use">
-        <h2>How to use this in the shop</h2>
-        <ol>
-          <li>Measure the actual width of the part that can move.</li>
-          <li>Pick the closest species and grain orientation.</li>
-          <li>Use realistic low and high humidity values for the place where the wood will live.</li>
-          <li>Build in a little more allowance than the estimate if the part is important or hard to remake.</li>
-        </ol>
-      </section>
-
-      <section class="article-card" id="when-it-matters">
-        <h2>When wood movement matters most</h2>
-        <ul>
-          <li>solid wood tabletops and side panels</li>
-          <li>frame-and-panel doors and cabinet panels</li>
-          <li>drawer bottoms and back panels</li>
-          <li>wide cutting boards and butcher-block style glue-ups</li>
-          <li>shelves or parts captured too tightly in dados or grooves</li>
-        </ul>
-        <div class="tip-box"><strong>Simple rule:</strong> the wider the part, the more important movement becomes. A little movement on a narrow strip can be ignored. The same movement on a wide panel can crack something.</div>
-      </section>
-
-      <section class="article-card" id="faq">
-        <h2>FAQ</h2>
-        <h3>Is this exact?</h3>
-        <p>No. It is a practical estimate. Real movement varies with the exact board, cut, machining, finish, local conditions, and how long the wood has actually had to acclimate.</p>
-        <h3>Why does flat-sawn wood move more?</h3>
-        <p>Because width movement lines up more closely with tangential shrinkage in flat-sawn stock, and tangential movement is usually greater than radial movement.</p>
-        <h3>Should I ignore movement on cutting boards?</h3>
-        <p>Not always. Movement matters less in some small boards, but it still matters in wide glue-ups, larger serving boards, or boards that will see strong seasonal humidity swings.</p>
-        <h3>What humidity numbers should I use?</h3>
-        <p>Use realistic low and high values for the place where the wood will live. The storage-location dropdown gives you a quick starting point, and you can still fine-tune the humidity numbers manually.</p>
-      </section>
-
-      <section class="quick-card">
-        <h2>Bottom line</h2>
-        <p>Wood movement is easy to ignore until it causes a problem. A quick estimate before glue-up or assembly is a lot easier than fixing a split panel later.</p>
-      </section>
+      </aside>
     </div>
-
-    <aside class="article-sidebar">
-      <div class="sidebar-stack">
-        <section class="toc-card">
-          <h2>On this page</h2>
-          <ul>
-            <li><a href="#quick-answer">Quick answer</a></li>
-            <li><a href="#calculator">Calculator</a></li>
-            <li><a href="#what-result-means">What the result means</a></li>
-            <li><a href="#how-to-use">How to use it</a></li>
-            <li><a href="#when-it-matters">When it matters</a></li>
-            <li><a href="#faq">FAQ</a></li>
-          </ul>
-        </section>
-
-        <section class="related-card">
-          <h2>Related guides</h2>
-          <ul>
-            <li><a href="/best-woods-for-cutting-boards.html">Best Woods for Cutting Boards</a></li>
-            <li><a href="/how-to-flatten-a-cutting-board.html">How to Flatten a Cutting Board</a></li>
-            <li><a href="/wood-project-idea-generator.html">Wood Project Idea Generator</a></li>
-            <li><a href="/small-workshop-layout-guide.html">Small Workshop Layout Guide</a></li>
-          </ul>
-        </section>
-      </div>
-    </aside>
   </main>
 
   <footer class="footer">
@@ -839,340 +883,31 @@
   </footer>
 
   <script>
+    const projects = [
+      { project: "Cutting board", difficulty: "Beginner", wood: "Maple + walnut", time: "2 to 4 hours", note: "Great starter project for glue-up, milling, sanding, and finishing without needing a huge lumber commitment." },
+      { project: "Shop mallet", difficulty: "Beginner", wood: "Maple or ash", time: "2 to 3 hours", note: "Fast build with useful shop value. Great for practicing clean joinery and shaping comfort in the handle." },
+      { project: "Bench hook", difficulty: "Beginner", wood: "Plywood + hardwood scraps", time: "1 to 2 hours", note: "A simple build that actually changes your workflow. Perfect when you want a quick win." },
+      { project: "Clamp rack", difficulty: "Beginner", wood: "Plywood or pine", time: "2 to 4 hours", note: "Good practical build for cleaning up wall space and making your shop easier to use every day." },
+      { project: "Small wall shelf", difficulty: "Beginner to intermediate", wood: "Cherry or maple", time: "3 to 5 hours", note: "A nice project for improving layout, keeping parts square, and getting cleaner edge treatment." },
+      { project: "Router bit tray", difficulty: "Beginner", wood: "Hardwood offcuts", time: "1 to 2 hours", note: "Excellent scrap project and a great way to turn leftover material into something genuinely useful." },
+      { project: "Sanding block set", difficulty: "Beginner", wood: "Hardwood scraps", time: "1 hour", note: "Tiny project, but one you will use constantly. Good choice when you want a low-stress shop session." },
+      { project: "Crosscut sled stop block", difficulty: "Intermediate", wood: "Plywood + hardwood", time: "2 to 3 hours", note: "Practical accuracy upgrade. Worth building if you keep repeating cuts and want more consistency." },
+      { project: "Floating picture ledge", difficulty: "Beginner", wood: "Poplar or pine", time: "2 to 3 hours", note: "Great for practicing straight cuts, clean sanding, and a simple wall-mounted finish." },
+      { project: "Cutting board drying rack", difficulty: "Beginner", wood: "Maple scraps", time: "1 to 2 hours", note: "A useful companion project if you already make cutting boards or want a quick kitchen build." }
+    ];
 
-    const woods = {
-      maple: { label: "Maple", base: "#d8b982", dark: "#b98e54", light: "#efd9aa" },
-      walnut: { label: "Walnut", base: "#4b2d1d", dark: "#2c1b13", light: "#73513a" },
-      cherry: { label: "Cherry", base: "#a65f3e", dark: "#743c28", light: "#c9815d" },
-      whiteOak: { label: "White Oak", base: "#b99463", dark: "#87663e", light: "#d4b987" },
-      purpleheart: { label: "Purpleheart", base: "#6c3f73", dark: "#432348", light: "#926095" },
-      padauk: { label: "Padauk", base: "#b14b25", dark: "#813015", light: "#d06b3c" }
-    };
+    function randomItem(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
 
-    const namesA = ["Midnight", "Maple", "Walnut", "Copper", "North", "Forge", "Ridge", "River", "Heritage", "Summit", "Ash", "Foundry"];
-    const namesB = ["Ridge", "Block", "Table", "Line", "Weave", "Cube", "Board", "Parquet", "Run", "Stack", "Grain", "Field"];
-    let currentSeed = Math.floor(Math.random() * 999999);
-
-    function seeded(seed) {
-      let value = seed % 2147483647;
-      if (value <= 0) value += 2147483646;
-      return function() {
-        value = value * 16807 % 2147483647;
-        return (value - 1) / 2147483646;
-      };
+    function generateProject() {
+      const pick = randomItem(projects);
+      document.getElementById("project").textContent = pick.project;
+      document.getElementById("difficulty").textContent = pick.difficulty;
+      document.getElementById("wood").textContent = pick.wood;
+      document.getElementById("time").textContent = pick.time;
+      document.getElementById("note").textContent = pick.note;
     }
 
-    function choice(arr, rand) { return arr[Math.floor(rand() * arr.length)]; }
-    function clamp(n, min, max) { return Math.max(min, Math.min(max, n)); }
-
-    function selectedPattern() {
-      const checked = document.querySelector('input[name="pattern"]:checked');
-      return checked ? checked.value : "edge";
-    }
-
-    function selectedWoods() {
-      const selected = [...document.querySelectorAll('#woodOptions input:checked')].map(input => input.value);
-      return selected.length ? selected : ["maple", "walnut", "cherry"];
-    }
-
-    function setPattern(value) {
-      const input = document.querySelector(`input[name="pattern"][value="${value}"]`);
-      if (input) input.checked = true;
-    }
-
-    function generateBoard(mode) {
-      if (mode === "3d") setPattern(Math.random() > 0.5 ? "tumbling" : "woven");
-      if (mode === "premium") document.getElementById('style').value = "luxury";
-      if (mode === "easier") {
-        document.getElementById('complexity').value = "beginner";
-        if (["tumbling", "woven", "parquet"].includes(selectedPattern())) setPattern("edge");
-      }
-      if (mode === "contrast") document.getElementById('style').value = "modern";
-
-      currentSeed = Math.floor(Math.random() * 999999);
-      renderAll(currentSeed);
-    }
-
-    function buildPalette(style, chosen, rand) {
-      let palette = chosen.slice();
-      if (style === "luxury") palette = ["walnut", "maple", "cherry"].filter(w => chosen.includes(w));
-      if (style === "modern") palette = ["maple", "walnut", "purpleheart", "padauk"].filter(w => chosen.includes(w));
-      if (style === "minimal") palette = chosen.filter(w => ["maple", "walnut", "cherry"].includes(w)).slice(0, 2);
-      if (style === "rustic") palette = ["cherry", "whiteOak", "walnut", "maple"].filter(w => chosen.includes(w));
-      if (style === "wild") palette = chosen;
-      if (palette.length < 2) palette = [...new Set([...palette, "maple", "walnut", "cherry"])].slice(0, 3);
-      return palette.sort(() => rand() - 0.5);
-    }
-
-    function textureDefs(palette) {
-      const defs = [`<defs>
-        <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="22" stdDeviation="18" flood-color="#000" flood-opacity="0.28"/></filter>
-        <linearGradient id="edgeGrad" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="rgba(255,255,255,0.30)"/><stop offset="0.52" stop-color="rgba(255,255,255,0)"/><stop offset="1" stop-color="rgba(0,0,0,0.22)"/></linearGradient>`];
-      palette.forEach(key => {
-        const w = woods[key];
-        defs.push(`<pattern id="grain-${key}" patternUnits="userSpaceOnUse" width="90" height="18" patternTransform="rotate(0)">
-          <rect width="90" height="18" fill="${w.base}"/>
-          <path d="M0 4 C18 1 28 8 45 5 S72 1 90 5" stroke="${w.light}" stroke-opacity="0.28" fill="none" stroke-width="1.2"/>
-          <path d="M0 12 C20 9 32 16 52 13 S76 9 90 12" stroke="${w.dark}" stroke-opacity="0.24" fill="none" stroke-width="1.1"/>
-          <path d="M0 8 H90" stroke="#fff" stroke-opacity="0.06"/>
-        </pattern>`);
-      });
-      defs.push(`</defs>`);
-      return defs.join('');
-    }
-
-    function boardShell(inner, palette, options = {}) {
-      const width = 840;
-      const height = 520;
-      const x = 82;
-      const y = 78;
-      const bw = 676;
-      const bh = 340;
-      const radius = 28;
-      return `<svg viewBox="0 0 ${width} ${height}" role="img" aria-label="Generated cutting board design">
-        ${textureDefs(palette)}
-        <ellipse cx="420" cy="444" rx="312" ry="34" fill="#000" opacity="0.22"/>
-        <g filter="url(#shadow)">
-          <rect x="${x+12}" y="${y+32}" width="${bw}" height="${bh}" rx="${radius}" fill="#1a100b" opacity="0.28"/>
-          <rect x="${x}" y="${y}" width="${bw}" height="${bh}" rx="${radius}" fill="#6f4b2e"/>
-          <clipPath id="boardClip"><rect x="${x}" y="${y}" width="${bw}" height="${bh}" rx="${radius}"/></clipPath>
-          <g clip-path="url(#boardClip)">${inner}</g>
-          <rect x="${x}" y="${y}" width="${bw}" height="${bh}" rx="${radius}" fill="url(#edgeGrad)" opacity="0.75" pointer-events="none"/>
-          <rect x="${x+1.5}" y="${y+1.5}" width="${bw-3}" height="${bh-3}" rx="${radius-1}" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="3"/>
-          <rect x="${x+4}" y="${y+4}" width="${bw-8}" height="${bh-8}" rx="${radius-4}" fill="none" stroke="rgba(0,0,0,0.22)" stroke-width="1"/>
-        </g>
-      </svg>`;
-    }
-
-    function renderEdge(palette, rand, depth) {
-      const x = 82, y = 78, bw = 676, bh = 340;
-      let pieces = [];
-      let cursor = x;
-      while (cursor < x + bw) {
-        const key = choice(palette, rand);
-        const strip = 24 + Math.floor(rand() * 54);
-        const actual = Math.min(strip, x + bw - cursor);
-        pieces.push(`<rect x="${cursor}" y="${y}" width="${actual}" height="${bh}" fill="url(#grain-${key})"/>
-          <rect x="${cursor}" y="${y}" width="1" height="${bh}" fill="#fff" opacity="0.18"/>
-          <rect x="${cursor+actual-1}" y="${y}" width="1" height="${bh}" fill="#000" opacity="0.16"/>`);
-        cursor += actual;
-      }
-      return boardShell(pieces.join(''), palette);
-    }
-
-    function renderEndgrain(palette, rand, depth) {
-      const x = 82, y = 78, bw = 676, bh = 340;
-      const cols = depth > 7 ? 14 : 11;
-      const rows = depth > 7 ? 7 : 6;
-      const cellW = bw / cols;
-      const cellH = bh / rows;
-      let pieces = [];
-      for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < cols; c++) {
-          const key = palette[(r + c + Math.floor(rand()*palette.length)) % palette.length];
-          const px = x + c * cellW;
-          const py = y + r * cellH;
-          pieces.push(`<rect x="${px}" y="${py}" width="${cellW+0.5}" height="${cellH+0.5}" fill="${woods[key].base}"/>
-            <circle cx="${px + cellW*0.5}" cy="${py + cellH*0.5}" r="${Math.min(cellW,cellH)*0.22}" fill="none" stroke="${woods[key].dark}" stroke-opacity="0.17" stroke-width="1.2"/>
-            <path d="M${px+4} ${py+cellH*0.28} C${px+cellW*0.38} ${py+cellH*0.04} ${px+cellW*0.64} ${py+cellH*0.58} ${px+cellW-5} ${py+cellH*0.32}" stroke="${woods[key].light}" stroke-opacity="0.26" fill="none"/>`);
-        }
-      }
-      return boardShell(pieces.join(''), palette);
-    }
-
-    function renderTumbling(palette, rand, depth) {
-      const x = 92, y = 82;
-      const size = depth > 7 ? 50 : 60;
-      const h = size * 0.58;
-      const cols = 11;
-      const rows = 8;
-      let pieces = [];
-      for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < cols; c++) {
-          const cx = x + c * size * 0.92 + (r % 2) * size * 0.46;
-          const cy = y + r * h * 0.98;
-          const keys = [palette[0], palette[1 % palette.length], palette[2 % palette.length]];
-          pieces.push(`<polygon points="${cx},${cy} ${cx+size/2},${cy+h/2} ${cx},${cy+h} ${cx-size/2},${cy+h/2}" fill="${woods[keys[0]].base}" stroke="rgba(0,0,0,0.16)" stroke-width="0.8"/>
-          <polygon points="${cx},${cy} ${cx+size/2},${cy+h/2} ${cx+size/2},${cy+h*1.42} ${cx},${cy+h}" fill="${woods[keys[1]].dark}" stroke="rgba(0,0,0,0.14)" stroke-width="0.8"/>
-          <polygon points="${cx},${cy} ${cx-size/2},${cy+h/2} ${cx-size/2},${cy+h*1.42} ${cx},${cy+h}" fill="${woods[keys[2]].light}" stroke="rgba(0,0,0,0.14)" stroke-width="0.8"/>
-          <path d="M${cx-size*0.32} ${cy+h*0.48} C${cx-size*0.1} ${cy+h*0.38} ${cx+size*0.12} ${cy+h*0.6} ${cx+size*0.33} ${cy+h*0.48}" stroke="rgba(255,255,255,0.16)" fill="none"/>`);
-        }
-      }
-      return boardShell(pieces.join(''), palette);
-    }
-
-    function renderWoven(palette, rand, depth) {
-      const x = 82, y = 78, bw = 676, bh = 340;
-      const strip = depth > 7 ? 42 : 52;
-      let pieces = [];
-      for (let i = -2; i < 18; i++) {
-        const key = palette[i % palette.length < 0 ? 0 : i % palette.length];
-        const px = x + i * strip;
-        pieces.push(`<g opacity="0.98"><rect x="${px}" y="${y-60}" width="${strip*0.56}" height="${bh+120}" fill="url(#grain-${key})" transform="rotate(38 ${px} ${y})"/>
-          <rect x="${px+strip*0.56}" y="${y-60}" width="2" height="${bh+120}" fill="#000" opacity="0.18" transform="rotate(38 ${px} ${y})"/></g>`);
-      }
-      for (let i = -5; i < 16; i++) {
-        const key = palette[(i + 1) % palette.length < 0 ? 1 % palette.length : (i + 1) % palette.length];
-        const px = x + i * strip;
-        pieces.push(`<g opacity="0.78"><rect x="${px}" y="${y-80}" width="${strip*0.42}" height="${bh+150}" fill="${woods[key].dark}" transform="rotate(-38 ${px} ${y+bh})"/>
-          <path d="M${px} ${y} H${px+strip*0.42}" stroke="rgba(255,255,255,0.22)" transform="rotate(-38 ${px} ${y+bh})"/></g>`);
-      }
-      return boardShell(pieces.join(''), palette);
-    }
-
-    function renderParquet(palette, rand, depth) {
-      const x = 82, y = 78, bw = 676, bh = 340;
-      const block = depth > 7 ? 52 : 68;
-      let pieces = [];
-      for (let row = 0; row < Math.ceil(bh / block) + 1; row++) {
-        for (let col = 0; col < Math.ceil(bw / block) + 1; col++) {
-          const key = palette[(row + col) % palette.length];
-          const px = x + col * block;
-          const py = y + row * block;
-          const rotate = (row + col) % 2 === 0 ? 0 : 90;
-          pieces.push(`<g transform="rotate(${rotate} ${px+block/2} ${py+block/2})">
-            <rect x="${px}" y="${py}" width="${block}" height="${block}" fill="url(#grain-${key})" stroke="rgba(0,0,0,0.16)" stroke-width="1"/>
-            <rect x="${px}" y="${py}" width="${block}" height="${block*0.24}" fill="rgba(255,255,255,0.08)"/>
-          </g>`);
-        }
-      }
-      return boardShell(pieces.join(''), palette);
-    }
-
-    function renderPattern(pattern, palette, rand, depth) {
-      if (pattern === "random") pattern = choice(["edge", "endgrain", "tumbling", "woven", "parquet"], rand);
-      if (pattern === "endgrain") return renderEndgrain(palette, rand, depth);
-      if (pattern === "tumbling") return renderTumbling(palette, rand, depth);
-      if (pattern === "woven") return renderWoven(palette, rand, depth);
-      if (pattern === "parquet") return renderParquet(palette, rand, depth);
-      return renderEdge(palette, rand, depth);
-    }
-
-    function patternLabel(pattern) {
-      return {
-        edge: "edge grain",
-        endgrain: "end grain",
-        tumbling: "3D tumbling block",
-        woven: "woven 3D illusion",
-        parquet: "parquet",
-        random: "surprise"
-      }[pattern] || "edge grain";
-    }
-
-    function sizeLabel(size) {
-      return {
-        small: "10 × 14 in",
-        medium: "12 × 18 in",
-        large: "14 × 20 in",
-        xl: "16 × 24 in"
-      }[size];
-    }
-
-    function renderMeta(pattern, style, palette, depth, complexity, rand) {
-      const is3d = ["tumbling", "woven", "parquet"].includes(pattern);
-      const baseDifficulty = { beginner: 2.8, intermediate: 4.8, advanced: 6.8 }[complexity] + (is3d ? 1.6 : 0) + (pattern === "endgrain" ? 1.1 : 0) + depth * 0.08;
-      const difficulty = clamp(baseDifficulty, 2.2, 9.4);
-      const looks = clamp(7.4 + palette.length * 0.25 + (is3d ? 0.7 : 0.25) + depth * 0.08 + rand() * 0.5, 7.2, 9.9);
-      const build = clamp(10.2 - difficulty * 0.62 + (complexity === "beginner" ? 0.8 : 0) - (is3d ? 0.25 : 0), 4.8, 9.6);
-      const sell = clamp(7.4 + looks * 0.18 + (style === "luxury" ? 0.55 : 0) + (is3d ? 0.35 : 0), 7.2, 9.8);
-      const glueUps = is3d ? (pattern === "tumbling" ? "3 to 5" : "2 to 4") : pattern === "endgrain" ? "2 to 3" : "1 to 2";
-      return { looks, difficulty, build, sell, glueUps };
-    }
-
-    function renderAll(seed) {
-      const rand = seeded(seed);
-      const pattern = selectedPattern();
-      const style = document.getElementById('style').value;
-      const complexity = document.getElementById('complexity').value;
-      const size = document.getElementById('size').value;
-      const depth = parseInt(document.getElementById('depth').value, 10);
-      const palette = buildPalette(style, selectedWoods(), rand);
-      const svg = renderPattern(pattern, palette, rand, depth);
-
-      document.getElementById('boardRender').innerHTML = svg;
-      document.getElementById('heroPreview').innerHTML = svg;
-
-      const name = `${choice(namesA, rand)} ${choice(namesB, rand)}`;
-      const woodLabels = palette.map(w => woods[w].label);
-      const meta = renderMeta(pattern, style, palette, depth, complexity, rand);
-
-      document.getElementById('boardName').textContent = name;
-      document.getElementById('boardSubtitle').textContent = `${capitalize(style)} ${patternLabel(pattern)} board using ${woodLabels.join(', ')}.`;
-      document.getElementById('boardBadge').textContent = meta.build >= 6.5 ? "Buildable: Yes" : "Buildable: Advanced";
-      document.getElementById('looksScore').textContent = meta.looks.toFixed(1);
-      document.getElementById('buildScore').textContent = meta.build.toFixed(1);
-      document.getElementById('difficultyScore').textContent = meta.difficulty.toFixed(1);
-      document.getElementById('sellScore').textContent = meta.sell.toFixed(1);
-
-      document.getElementById('swatches').innerHTML = palette.map(key => `<span class="swatch"><span class="swatch-chip" style="background:${woods[key].base}"></span>${woods[key].label}</span>`).join('');
-
-      const buildDetails = [
-        `Finished size target: ${sizeLabel(size)}.`,
-        `Pattern type: ${patternLabel(pattern)}.`,
-        `Estimated glue-ups: ${meta.glueUps}.`,
-        is3dPattern(pattern) ? "Use test blocks first so the illusion reads correctly before full glue-up." : "Keep the strip rhythm intentional; avoid too many random widths.",
-        complexity === "beginner" ? "Best with straight, repeatable cuts and a simple finishing plan." : "Plan milling order carefully so the final board stays flat."
-      ];
-
-      const cutList = cutListFor(pattern, palette, size, depth);
-      document.getElementById('buildDetails').innerHTML = buildDetails.map(item => `<li>${item}</li>`).join('');
-      document.getElementById('cutList').innerHTML = cutList.map(item => `<li>${item}</li>`).join('');
-    }
-
-    function is3dPattern(pattern) { return ["tumbling", "woven", "parquet"].includes(pattern); }
-    function capitalize(str) { return str.charAt(0).toUpperCase() + str.slice(1); }
-
-    function cutListFor(pattern, palette, size, depth) {
-      const primary = woods[palette[0]].label;
-      const secondary = woods[palette[1 % palette.length]].label;
-      const accent = woods[palette[2 % palette.length]].label;
-      if (pattern === "tumbling") {
-        return [
-          `${primary}: diamond/rhombus pieces for top faces.`,
-          `${secondary}: matching left-face pieces, cut consistently.`,
-          `${accent}: matching right-face pieces for shadow contrast.`,
-          "Make a small 3-cube sample before committing full material."
-        ];
-      }
-      if (pattern === "woven") {
-        return [
-          `${primary}: long diagonal strips, roughly 1 to 1.5 in wide.`,
-          `${secondary}: crossing strips, same thickness and consistent width.`,
-          `${accent}: optional thin contrast lines between woven runs.`,
-          "Dry fit the rhythm before glue; the pattern gets confusing fast."
-        ];
-      }
-      if (pattern === "endgrain") {
-        return [
-          `${primary}: primary blocks, milled square and consistent.`,
-          `${secondary}: alternating blocks or border rows.`,
-          `${accent}: small accent blocks or corner rhythm.`,
-          "Expect extra flattening after the final end-grain glue-up."
-        ];
-      }
-      if (pattern === "parquet") {
-        return [
-          `${primary}: rectangular parquet blocks.`,
-          `${secondary}: rotated blocks for directional contrast.`,
-          `${accent}: border or occasional highlight blocks.`,
-          "Keep every block identical or the layout will drift."
-        ];
-      }
-      return [
-        `${primary}: main strips, varied between 1 and 2 in wide.`,
-        `${secondary}: contrast strips, roughly 1/2 to 1 in wide.`,
-        `${accent}: thin accent strips, 1/8 to 3/8 in wide.`,
-        "Use cauls or a flat reference surface to keep the glue-up even."
-      ];
-    }
-
-    document.querySelectorAll('input, select').forEach(el => {
-      el.addEventListener('change', () => renderAll(currentSeed));
-      el.addEventListener('input', () => renderAll(currentSeed));
-    });
-
-    renderAll(currentSeed);
-  
+    generateProject();
   </script>
 </body>
 </html>
