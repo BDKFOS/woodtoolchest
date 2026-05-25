@@ -13,9 +13,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Wood Project Idea Generator | Random Woodworking Ideas for Beginners and Small Shops | WoodToolChest</title>
-  <meta name="description" content="Generate random woodworking project ideas with difficulty, wood type, estimated build time, and a practical shop note. Built for beginners and small-shop woodworkers." />
-  <link rel="canonical" href="https://www.woodtoolchest.com/wood-project-idea-generator.html" />
+  <title>Wood Movement Calculator | Estimate Seasonal Expansion and Contraction | WoodToolChest</title>
+  <meta name="description" content="Use this wood movement calculator to estimate seasonal expansion and contraction across board width. Pick a species, width, grain orientation, and humidity range for a practical movement estimate." />
+  <link rel="canonical" href="https://www.woodtoolchest.com/wood-movement-calculator.html" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -161,14 +161,14 @@
       box-shadow: 0 16px 28px rgba(161, 94, 44, .22);
     }
 
-    .hero-panel {
+    .hero-shell {
       overflow: hidden;
-      min-height: 410px;
+      min-height: 420px;
       border: 1px solid rgba(102, 68, 42, .10);
       border-radius: 15px;
       background:
-        linear-gradient(90deg, rgba(255,251,243,.98) 0%, rgba(255,251,243,.96) 38%, rgba(250,238,223,.70) 57%, rgba(246,213,178,.28) 100%),
-        url("/images/guide-woodproject.png") center right / contain no-repeat,
+        linear-gradient(90deg, rgba(255,251,243,.98) 0%, rgba(255,251,243,.96) 38%, rgba(250,238,223,.70) 58%, rgba(246,213,178,.28) 100%),
+        url("/images/guide-woodmovement.png") center right / contain no-repeat,
         linear-gradient(90deg, #fbf6ee, #f5d6b6);
       box-shadow: 0 19px 46px rgba(89, 61, 37, .10);
       position: relative;
@@ -429,184 +429,6 @@
       font-weight: 500;
     }
 
-    
-
-    .generator-card {
-      padding: 30px;
-      margin-bottom: 22px;
-      border: 1px solid rgba(112, 77, 48, .10);
-      border-radius: 18px;
-      background: rgba(255,253,248,.82);
-      box-shadow: var(--shadow-card);
-    }
-
-    .generator-card h2 {
-      margin-bottom: 10px;
-      font-family: var(--serif);
-      font-size: 32px;
-      line-height: 1.12;
-      letter-spacing: -.8px;
-      color: #342c26;
-    }
-
-    .generator-card p {
-      color: #625c56;
-      font-size: 15px;
-      line-height: 1.76;
-      font-weight: 500;
-    }
-
-    .button-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin: 18px 0 20px;
-    }
-
-    button {
-      appearance: none;
-      border: 0;
-      cursor: pointer;
-      font: inherit;
-    }
-
-    .tool-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 24px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 800;
-      transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
-      white-space: nowrap;
-    }
-
-    .tool-button-primary {
-      color: #fff;
-      background: linear-gradient(180deg, #302f2c, #1e1d1b);
-      box-shadow: 0 16px 28px rgba(33,31,28,.20), inset 0 1px 0 rgba(255,255,255,.12);
-    }
-
-    .tool-button-secondary {
-      color: #33302d;
-      background: rgba(255,255,255,.76);
-      border: 1px solid rgba(85,58,36,.10);
-      box-shadow: 0 12px 22px rgba(72,49,30,.07);
-    }
-
-    .tool-button:hover { transform: translateY(-1px); }
-
-    .result-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 6px;
-    }
-
-    .result-item {
-      padding: 16px;
-      border: 1px solid #d8c9b8;
-      border-radius: 14px;
-      background: #fffaf3;
-    }
-
-    .result-label {
-      display: block;
-      margin-bottom: 6px;
-      color: #a2602d;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .result-value {
-      color: #221f1c;
-      font-size: 18px;
-      line-height: 1.25;
-      font-weight: 800;
-      letter-spacing: -.2px;
-    }
-
-    .project-note-box {
-      margin-top: 14px;
-      padding: 18px;
-      border-radius: 14px;
-      border: 1px solid #d8c9b8;
-      background: linear-gradient(180deg, #fffdf8, #fbf7f1);
-    }
-
-    .project-note-box h3 {
-      margin: 0 0 8px;
-      font-size: 16px;
-      font-weight: 800;
-      color: #25221f;
-    }
-
-    .project-note-box p { margin-bottom: 0; }
-
-    .idea-list { margin: 0; padding-left: 20px; }
-    .idea-list li { margin-bottom: 10px; color: #625c56; font-size: 15px; line-height: 1.68; font-weight: 500; }
-
-    @media (max-width: 640px) {
-      .result-grid { grid-template-columns: 1fr; }
-      .button-row { flex-direction: column; }
-      .tool-button { width: 100%; }
-    }
-
-
-    @media (max-width: 1160px) {
-      .wrap { width: min(var(--max), calc(100% - 44px)); }
-      .nav-links { gap: 24px; margin-right: 12px; }
-      .hero-content { width: 58%; padding-left: 46px; }
-      .article-shell { grid-template-columns: 1fr; }
-      .article-sidebar { position: static; }
-    }
-
-    @media (max-width: 940px) {
-      .nav { align-items: flex-start; flex-wrap: wrap; }
-      .brand { min-width: 100%; }
-      .nav-links { order: 3; width: 100%; justify-content: flex-start; flex-wrap: wrap; margin: 8px 0 0; gap: 20px; }
-      .header-cta { margin-left: auto; }
-      .hero-shell {
-        background:
-          linear-gradient(180deg, rgba(255,251,243,.98), rgba(255,251,243,.91)),
-          url("/images/guide-woodmovement.png") center right / cover no-repeat;
-      }
-      .hero-content { width: 100%; max-width: 660px; padding: 38px 32px; }
-      .subcard-grid, .subcard-grid.three-up, .subcard-grid.four-up, .subcard-grid.five-up { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
-
-    @media (max-width: 640px) {
-      .wrap { width: min(var(--max), calc(100% - 24px)); }
-      .content-wrap { width: min(var(--content), calc(100% - 24px)); }
-      .site-header { padding: 20px 0; }
-      .brand { gap: 12px; }
-      .brand-mark { width: 62px; height: 38px; flex-basis: 62px; }
-      .brand-name { font-size: 27px; }
-      .brand-sub { font-size: 10px; letter-spacing: 2.1px; white-space: normal; }
-      .header-cta { width: 100%; }
-      .hero-title { font-size: 43px; letter-spacing: -1.5px; }
-      .hero-copy { font-size: 15px; }
-      .hero-actions { flex-direction: column; align-items: flex-start; }
-      .btn { width: 100%; }
-      .hero-content { padding: 32px 22px; }
-      .article-card, .quick-card { padding: 24px 20px; }
-      .article-card h2, .quick-card h2 { font-size: 27px; }
-      .subcard-grid, .subcard-grid.three-up, .subcard-grid.four-up, .subcard-grid.five-up { grid-template-columns: 1fr; }
-    }
-  
-
-    .hero-shell {
-      min-height: 420px;
-      background:
-        linear-gradient(90deg, rgba(255,251,243,.98) 0%, rgba(255,251,243,.96) 38%, rgba(250,238,223,.70) 58%, rgba(246,213,178,.28) 100%),
-        url("/images/guide-woodmovement.png") center right / contain no-repeat,
-        linear-gradient(90deg, #fbf6ee, #f5d6b6);
-    }
-
     .calculator-card {
       padding: 0;
       overflow: hidden;
@@ -681,9 +503,7 @@
       box-shadow: var(--shadow-card);
     }
 
-    .result-card h3 {
-      margin-bottom: 10px;
-    }
+    .result-card h3 { margin-bottom: 10px; }
 
     .result-number {
       margin-bottom: 6px;
@@ -727,16 +547,49 @@
       white-space: nowrap;
     }
 
+    @media (max-width: 1160px) {
+      .wrap { width: min(var(--max), calc(100% - 44px)); }
+      .nav-links { gap: 24px; margin-right: 12px; }
+      .hero-content { width: 58%; padding-left: 46px; }
+      .article-shell { grid-template-columns: 1fr; }
+      .article-sidebar { position: static; }
+    }
+
     @media (max-width: 940px) {
+      .nav { align-items: flex-start; flex-wrap: wrap; }
+      .brand { min-width: 100%; }
+      .nav-links { order: 3; width: 100%; justify-content: flex-start; flex-wrap: wrap; margin: 8px 0 0; gap: 20px; }
+      .header-cta { margin-left: auto; }
+      .hero-shell {
+        background:
+          linear-gradient(180deg, rgba(255,251,243,.98), rgba(255,251,243,.91)),
+          url("/images/guide-woodmovement.png") center center / cover no-repeat;
+      }
+      .hero-content { width: 100%; max-width: 660px; padding: 38px 32px; }
+      .subcard-grid, .subcard-grid.three-up, .subcard-grid.four-up, .subcard-grid.five-up { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .tool-grid, .field-grid { grid-template-columns: 1fr; }
       .result-card { position: static; }
     }
 
     @media (max-width: 640px) {
+      .wrap { width: min(var(--max), calc(100% - 24px)); }
+      .content-wrap { width: min(var(--content), calc(100% - 24px)); }
+      .site-header { padding: 20px 0; }
+      .brand { gap: 12px; }
+      .brand-mark { width: 62px; height: 38px; flex-basis: 62px; }
+      .brand-name { font-size: 27px; }
+      .brand-sub { font-size: 10px; letter-spacing: 2.1px; white-space: normal; }
+      .header-cta { width: 100%; }
+      .hero-title { font-size: 43px; letter-spacing: -1.5px; }
+      .hero-copy { font-size: 15px; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+      .btn { width: 100%; }
+      .hero-content { padding: 32px 22px; }
+      .article-card, .quick-card { padding: 24px 20px; }
+      .article-card h2, .quick-card h2 { font-size: 27px; }
+      .subcard-grid, .subcard-grid.three-up, .subcard-grid.four-up, .subcard-grid.five-up { grid-template-columns: 1fr; }
       .calculator-head, .tool-grid { padding-left: 18px; padding-right: 18px; }
     }
-
-  
   </style>
 </head>
 <body>
@@ -767,111 +620,189 @@
   <main class="wrap">
     <section class="hero-shell" aria-labelledby="hero-title">
       <div class="hero-content">
-        <p class="eyebrow">Generator Tool</p>
-        <h1 class="hero-title" id="hero-title">Wood Project Idea <em>Generator</em></h1>
-        <p class="hero-copy">Need something useful to build but do not want to overthink it? Generate a realistic woodworking project with difficulty, wood choice, estimated time, and a practical shop note.</p>
+        <p class="eyebrow">Interactive Tool</p>
+        <h1 class="hero-title" id="hero-title">Estimate wood movement before it <em>surprises</em> you.</h1>
+        <p class="hero-copy">Use species, grain orientation, board width, and humidity range to estimate seasonal expansion and contraction across a board.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#generator">Generate an Idea</a>
+          <a class="btn btn-primary" href="#calculator">Use the calculator</a>
           <a class="btn btn-secondary" href="/guides.html">Browse Guides</a>
         </div>
       </div>
     </section>
+  </main>
 
-    <div class="article-shell">
-      <article class="article-main">
-        <section class="quick-card">
-          <h2>Quick answer</h2>
-          <p>Click the generator to get a random woodworking project idea you can actually build in a real shop. It is designed for beginners, hobbyists, and small-shop woodworkers who want simple project inspiration without the fluff.</p>
-        </section>
+  <main class="content-wrap article-shell">
+    <div class="article-main">
+      <section class="quick-card" id="quick-answer">
+        <h2>Quick answer</h2>
+        <p>Wood movement across width is normal. The wider the board, the bigger the humidity swing, and the more flat-sawn the stock is, the more movement you should expect. This calculator gives you a realistic estimate so you can build in enough allowance instead of guessing.</p>
+      </section>
 
-        <section class="generator-card" id="generator">
-          <h2>Generate a random woodworking project</h2>
-          <p>Every click gives you a project type, suggested wood, difficulty, estimated time, and one practical build note.</p>
-
-          <div class="button-row">
-            <button class="tool-button tool-button-primary" onclick="generateProject()">Generate Project Idea</button>
-            <button class="tool-button tool-button-secondary" onclick="generateProject()">Generate Again</button>
-          </div>
-
-          <div class="result-grid">
-            <div class="result-item"><span class="result-label">Project</span><div class="result-value" id="project">Cutting board</div></div>
-            <div class="result-item"><span class="result-label">Difficulty</span><div class="result-value" id="difficulty">Beginner</div></div>
-            <div class="result-item"><span class="result-label">Wood Type</span><div class="result-value" id="wood">Maple + walnut</div></div>
-            <div class="result-item"><span class="result-label">Estimated Time</span><div class="result-value" id="time">2 to 4 hours</div></div>
-          </div>
-
-          <div class="project-note-box">
-            <h3>Practical shop note</h3>
-            <p id="note">Good starter build with fast feedback and a low material commitment.</p>
-          </div>
-        </section>
-
-        <section class="article-card" id="why-use-it">
-          <h2>Why this tool is useful</h2>
-          <p>A lot of woodworking stalls out because you are caught between ten decent ideas and no clear next move. A simple randomizer helps break that loop. It is also a good way to find smaller, realistic builds that fit your current tool setup and energy level.</p>
-          <div class="tip-box"><strong>Good use case:</strong> run the generator a few times, pick the first project that sounds both useful and finishable, and build that instead of waiting for the perfect idea.</div>
-        </section>
-
-        <section class="article-card" id="project-types">
-          <h2>Project ideas you may get</h2>
-          <div class="subcard-grid">
-            <div class="subcard">
-              <h3>Beginner-friendly builds</h3>
-              <ul class="idea-list">
-                <li>cutting board</li>
-                <li>shop mallet</li>
-                <li>bench hook</li>
-                <li>sanding block set</li>
-              </ul>
-            </div>
-            <div class="subcard">
-              <h3>Useful small-shop projects</h3>
-              <ul class="idea-list">
-                <li>small wall shelf</li>
-                <li>crosscut sled stop block</li>
-                <li>clamp rack</li>
-                <li>router bit tray</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section class="article-card" id="how-to-pick">
-          <h2>How to pick the right idea</h2>
-          <p>The best project is not always the most impressive one. Pick the idea that fits your tools, your available time, and the amount of energy you actually have for the build.</p>
-          <div class="subcard-grid three-up">
-            <div class="subcard"><h3>Keep it finishable</h3><p class="muted">A small finished project beats a big half-built project every time.</p></div>
-            <div class="subcard"><h3>Use what you have</h3><p class="muted">Choose ideas that match your current tools and wood pile.</p></div>
-            <div class="subcard"><h3>Build for use</h3><p class="muted">Shop helpers, storage, and simple home items usually pay off fastest.</p></div>
-          </div>
-        </section>
-
-        <section class="article-card">
-          <h2>Bottom line</h2>
-          <p>This tool is meant to keep you moving. You do not need the perfect project; you need one good project that matches your shop, your tools, and the amount of time you actually have.</p>
-        </section>
-      </article>
-
-      <aside class="article-sidebar" aria-label="Page navigation">
-        <div class="sidebar-stack">
-          <nav class="toc-card">
-            <p class="toc-title">On this page</p>
-            <a href="#generator">Generator</a>
-            <a href="#why-use-it">Why this tool is useful</a>
-            <a href="#project-types">Project ideas</a>
-            <a href="#how-to-pick">How to pick</a>
-          </nav>
-
-          <div class="related-card">
-            <p class="toc-title">Related</p>
-            <a href="/cutting-board-design-generator.html">Cutting Board Designer<span>Design a board visually.</span></a>
-            <a href="/how-to-flatten-a-cutting-board.html">Flatten a Cutting Board<span>Clean up glue-ups after the build.</span></a>
-            <a href="/small-workshop-layout-guide.html">Small Workshop Layout<span>Make your shop easier to build in.</span></a>
-            <a href="/workbench-height-guide.html">Workbench Height Guide<span>Set up a more comfortable workspace.</span></a>
-          </div>
+      <section class="article-card calculator-card" id="calculator">
+        <div class="calculator-head">
+          <h2>Wood Movement Calculator</h2>
+          <p>Enter the board details below. The estimate updates automatically as you change the species, width, grain orientation, or humidity range.</p>
         </div>
-      </aside>
+
+        <div class="tool-grid">
+          <div>
+            <div class="field-grid">
+              <div class="field">
+                <label for="species">Wood species</label>
+                <select id="species">
+                  <option value="hardMaple">Hard Maple</option>
+                  <option value="blackWalnut">Black Walnut</option>
+                  <option value="cherry">Cherry</option>
+                  <option value="whiteOak">White Oak</option>
+                  <option value="redOak">Red Oak</option>
+                  <option value="ash">Ash</option>
+                  <option value="birch">Birch</option>
+                  <option value="poplar">Poplar</option>
+                  <option value="beech">Beech</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="orientation">Grain orientation</label>
+                <select id="orientation">
+                  <option value="flat">Flat sawn</option>
+                  <option value="rift">Rift sawn</option>
+                  <option value="quarter">Quarter sawn</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field-grid">
+              <div class="field">
+                <label for="width">Board width (inches)</label>
+                <input id="width" type="number" min="1" max="60" step="0.125" value="12">
+                <p class="helper">Use the full width of the part that is free to move.</p>
+              </div>
+
+              <div class="field">
+                <label for="storageLocation">Storage location</label>
+                <select id="storageLocation">
+                  <option value="indoor">Indoor shop / conditioned indoor space</option>
+                  <option value="climateControlledShop">Outdoor climate-controlled shop</option>
+                  <option value="garage">Garage shop</option>
+                  <option value="basement">Basement shop</option>
+                  <option value="shed">Unconditioned shed / outdoor shop</option>
+                </select>
+                <p class="helper" id="storageHelper">Uses a typical indoor humidity range and equilibrium moisture estimate.</p>
+              </div>
+            </div>
+
+            <div class="field-grid">
+              <div class="field">
+                <label for="rhLow">Starting relative humidity (%)</label>
+                <input id="rhLow" type="number" min="20" max="85" step="1" value="35">
+                <p class="helper">Example: heated winter house.</p>
+              </div>
+
+              <div class="field">
+                <label for="rhHigh">Ending relative humidity (%)</label>
+                <input id="rhHigh" type="number" min="20" max="85" step="1" value="60">
+                <p class="helper">Example: more humid summer conditions.</p>
+              </div>
+            </div>
+
+            <div class="tip-box">
+              <strong>How this estimate works:</strong> it converts your humidity range into an estimated moisture-content change, then applies a width-movement estimate based on species shrinkage values and grain orientation.
+            </div>
+          </div>
+
+          <aside class="result-card" aria-live="polite">
+            <h3>Estimated movement</h3>
+            <div class="result-number" id="movementDisplay">0.00 in</div>
+            <p class="result-sub" id="fractionDisplay">About 0/64 in</p>
+
+            <div class="result-metrics">
+              <div class="metric"><span>Estimated moisture change</span><strong id="mcDisplay">0.0%</strong></div>
+              <div class="metric"><span>Movement direction</span><strong id="directionDisplay">Expansion</strong></div>
+              <div class="metric"><span>Species value used</span><strong id="speciesValueDisplay">Tangential</strong></div>
+            </div>
+
+            <div class="tip-box" id="adviceBox">Plan for some seasonal movement. Wide boards almost never stay the exact same width year-round.</div>
+            <p class="helper" id="emcDisplay">Estimated EMC: 0.0% to 0.0%</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="article-card" id="what-result-means">
+        <h2>What the result means</h2>
+        <p>This number is your estimated total change across the width of the board between the two humidity conditions you entered. It is most useful for planning joinery, panel allowance, tabletop fasteners, grooves, and captured parts.</p>
+        <div class="subcard-grid">
+          <div class="subcard"><h3>Joinery decisions</h3><p>Helps you decide when to leave room in grooves, use elongated screw holes, or avoid locking a panel too rigidly.</p></div>
+          <div class="subcard"><h3>Material expectations</h3><p>Shows why wide boards and flat-sawn panels need more allowance than narrow parts or quarter-sawn stock.</p></div>
+        </div>
+        <div class="warning-box"><strong>Important:</strong> this calculator estimates movement across width, not along length. Lengthwise movement is usually much smaller and is often negligible in comparison.</div>
+      </section>
+
+      <section class="article-card" id="how-to-use">
+        <h2>How to use this in the shop</h2>
+        <ol>
+          <li>Measure the actual width of the part that can move.</li>
+          <li>Pick the closest species and grain orientation.</li>
+          <li>Use realistic low and high humidity values for the place where the wood will live.</li>
+          <li>Build in a little more allowance than the estimate if the part is important or hard to remake.</li>
+        </ol>
+      </section>
+
+      <section class="article-card" id="when-it-matters">
+        <h2>When wood movement matters most</h2>
+        <ul>
+          <li>solid wood tabletops and side panels</li>
+          <li>frame-and-panel doors and cabinet panels</li>
+          <li>drawer bottoms and back panels</li>
+          <li>wide cutting boards and butcher-block style glue-ups</li>
+          <li>shelves or parts captured too tightly in dados or grooves</li>
+        </ul>
+        <div class="tip-box"><strong>Simple rule:</strong> the wider the part, the more important movement becomes. A little movement on a narrow strip can be ignored. The same movement on a wide panel can crack something.</div>
+      </section>
+
+      <section class="article-card" id="faq">
+        <h2>FAQ</h2>
+        <h3>Is this exact?</h3>
+        <p>No. It is a practical estimate. Real movement varies with the exact board, cut, machining, finish, local conditions, and how long the wood has actually had to acclimate.</p>
+        <h3>Why does flat-sawn wood move more?</h3>
+        <p>Because width movement lines up more closely with tangential shrinkage in flat-sawn stock, and tangential movement is usually greater than radial movement.</p>
+        <h3>Should I ignore movement on cutting boards?</h3>
+        <p>Not always. Movement matters less in some small boards, but it still matters in wide glue-ups, larger serving boards, or boards that will see strong seasonal humidity swings.</p>
+        <h3>What humidity numbers should I use?</h3>
+        <p>Use realistic low and high values for the place where the wood will live. The storage-location dropdown gives you a quick starting point, and you can still fine-tune the humidity numbers manually.</p>
+      </section>
+
+      <section class="quick-card">
+        <h2>Bottom line</h2>
+        <p>Wood movement is easy to ignore until it causes a problem. A quick estimate before glue-up or assembly is a lot easier than fixing a split panel later.</p>
+      </section>
     </div>
+
+    <aside class="article-sidebar">
+      <div class="sidebar-stack">
+        <section class="toc-card">
+          <h2>On this page</h2>
+          <ul>
+            <li><a href="#quick-answer">Quick answer</a></li>
+            <li><a href="#calculator">Calculator</a></li>
+            <li><a href="#what-result-means">What the result means</a></li>
+            <li><a href="#how-to-use">How to use it</a></li>
+            <li><a href="#when-it-matters">When it matters</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </section>
+
+        <section class="related-card">
+          <h2>Related guides</h2>
+          <ul>
+            <li><a href="/best-woods-for-cutting-boards.html">Best Woods for Cutting Boards</a></li>
+            <li><a href="/how-to-flatten-a-cutting-board.html">How to Flatten a Cutting Board</a></li>
+            <li><a href="/wood-project-idea-generator.html">Wood Project Idea Generator</a></li>
+            <li><a href="/small-workshop-layout-guide.html">Small Workshop Layout Guide</a></li>
+          </ul>
+        </section>
+      </div>
+    </aside>
   </main>
 
   <footer class="footer">
@@ -883,31 +814,119 @@
   </footer>
 
   <script>
-    const projects = [
-      { project: "Cutting board", difficulty: "Beginner", wood: "Maple + walnut", time: "2 to 4 hours", note: "Great starter project for glue-up, milling, sanding, and finishing without needing a huge lumber commitment." },
-      { project: "Shop mallet", difficulty: "Beginner", wood: "Maple or ash", time: "2 to 3 hours", note: "Fast build with useful shop value. Great for practicing clean joinery and shaping comfort in the handle." },
-      { project: "Bench hook", difficulty: "Beginner", wood: "Plywood + hardwood scraps", time: "1 to 2 hours", note: "A simple build that actually changes your workflow. Perfect when you want a quick win." },
-      { project: "Clamp rack", difficulty: "Beginner", wood: "Plywood or pine", time: "2 to 4 hours", note: "Good practical build for cleaning up wall space and making your shop easier to use every day." },
-      { project: "Small wall shelf", difficulty: "Beginner to intermediate", wood: "Cherry or maple", time: "3 to 5 hours", note: "A nice project for improving layout, keeping parts square, and getting cleaner edge treatment." },
-      { project: "Router bit tray", difficulty: "Beginner", wood: "Hardwood offcuts", time: "1 to 2 hours", note: "Excellent scrap project and a great way to turn leftover material into something genuinely useful." },
-      { project: "Sanding block set", difficulty: "Beginner", wood: "Hardwood scraps", time: "1 hour", note: "Tiny project, but one you will use constantly. Good choice when you want a low-stress shop session." },
-      { project: "Crosscut sled stop block", difficulty: "Intermediate", wood: "Plywood + hardwood", time: "2 to 3 hours", note: "Practical accuracy upgrade. Worth building if you keep repeating cuts and want more consistency." },
-      { project: "Floating picture ledge", difficulty: "Beginner", wood: "Poplar or pine", time: "2 to 3 hours", note: "Great for practicing straight cuts, clean sanding, and a simple wall-mounted finish." },
-      { project: "Cutting board drying rack", difficulty: "Beginner", wood: "Maple scraps", time: "1 to 2 hours", note: "A useful companion project if you already make cutting boards or want a quick kitchen build." }
-    ];
+    const speciesData = {
+      hardMaple: { label: "Hard Maple", radial: 0.048, tangential: 0.095 },
+      blackWalnut: { label: "Black Walnut", radial: 0.055, tangential: 0.078 },
+      cherry: { label: "Cherry", radial: 0.037, tangential: 0.071 },
+      whiteOak: { label: "White Oak", radial: 0.056, tangential: 0.105 },
+      redOak: { label: "Red Oak", radial: 0.040, tangential: 0.086 },
+      ash: { label: "Ash", radial: 0.049, tangential: 0.078 },
+      birch: { label: "Birch", radial: 0.054, tangential: 0.095 },
+      poplar: { label: "Poplar", radial: 0.046, tangential: 0.082 },
+      beech: { label: "Beech", radial: 0.055, tangential: 0.118 }
+    };
 
-    function randomItem(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+    const storageDefaults = {
+      indoor: { low: 35, high: 60, helper: "Uses a typical conditioned indoor humidity range." },
+      climateControlledShop: { low: 40, high: 55, helper: "Uses a narrower range for a controlled shop." },
+      garage: { low: 30, high: 70, helper: "Garage shops often swing more than indoor spaces." },
+      basement: { low: 45, high: 70, helper: "Basements often stay more humid, especially in summer." },
+      shed: { low: 25, high: 80, helper: "Unconditioned spaces can have the widest seasonal swing." }
+    };
 
-    function generateProject() {
-      const pick = randomItem(projects);
-      document.getElementById("project").textContent = pick.project;
-      document.getElementById("difficulty").textContent = pick.difficulty;
-      document.getElementById("wood").textContent = pick.wood;
-      document.getElementById("time").textContent = pick.time;
-      document.getElementById("note").textContent = pick.note;
+    const speciesEl = document.getElementById("species");
+    const orientationEl = document.getElementById("orientation");
+    const widthEl = document.getElementById("width");
+    const storageEl = document.getElementById("storageLocation");
+    const rhLowEl = document.getElementById("rhLow");
+    const rhHighEl = document.getElementById("rhHigh");
+    const storageHelperEl = document.getElementById("storageHelper");
+
+    const movementDisplay = document.getElementById("movementDisplay");
+    const fractionDisplay = document.getElementById("fractionDisplay");
+    const mcDisplay = document.getElementById("mcDisplay");
+    const directionDisplay = document.getElementById("directionDisplay");
+    const speciesValueDisplay = document.getElementById("speciesValueDisplay");
+    const adviceBox = document.getElementById("adviceBox");
+    const emcDisplay = document.getElementById("emcDisplay");
+
+    function clamp(value, min, max) {
+      return Math.max(min, Math.min(max, value));
     }
 
-    generateProject();
+    function estimatedEMC(relativeHumidity) {
+      const rh = clamp(Number(relativeHumidity) || 0, 0, 100);
+      return 0.0315 * rh - 0.000238 * rh * rh + 0.0000013 * rh * rh * rh;
+    }
+
+    function nearestFraction(value, denominator = 64) {
+      const whole = Math.floor(value);
+      const frac = value - whole;
+      let numerator = Math.round(frac * denominator);
+      if (numerator === denominator) {
+        return `${whole + 1}`;
+      }
+      if (numerator === 0) {
+        return `${whole}`;
+      }
+      const gcd = (a, b) => b ? gcd(b, a % b) : a;
+      const divisor = gcd(numerator, denominator);
+      numerator /= divisor;
+      denominator /= divisor;
+      return whole > 0 ? `${whole} ${numerator}/${denominator}` : `${numerator}/${denominator}`;
+    }
+
+    function orientationCoefficient(species, orientation) {
+      const data = speciesData[species] || speciesData.hardMaple;
+      if (orientation === "quarter") return { coefficient: data.radial, label: "Radial" };
+      if (orientation === "rift") return { coefficient: (data.radial + data.tangential) / 2, label: "Mixed" };
+      return { coefficient: data.tangential, label: "Tangential" };
+    }
+
+    function calculateMovement() {
+      const species = speciesEl.value;
+      const orientation = orientationEl.value;
+      const width = clamp(Number(widthEl.value) || 0, 0, 60);
+      const rhLow = clamp(Number(rhLowEl.value) || 0, 0, 100);
+      const rhHigh = clamp(Number(rhHighEl.value) || 0, 0, 100);
+      const emcLow = estimatedEMC(rhLow);
+      const emcHigh = estimatedEMC(rhHigh);
+      const mcChange = emcHigh - emcLow;
+      const absoluteMcChange = Math.abs(mcChange);
+      const { coefficient, label } = orientationCoefficient(species, orientation);
+      const movement = width * coefficient * (absoluteMcChange / 28);
+
+      movementDisplay.textContent = `${movement.toFixed(2)} in`;
+      fractionDisplay.textContent = `About ${nearestFraction(movement)} in`;
+      mcDisplay.textContent = `${absoluteMcChange.toFixed(1)}%`;
+      directionDisplay.textContent = mcChange >= 0 ? "Expansion" : "Contraction";
+      speciesValueDisplay.textContent = label;
+      emcDisplay.textContent = `Estimated EMC: ${emcLow.toFixed(1)}% to ${emcHigh.toFixed(1)}%`;
+
+      if (movement < 0.06) {
+        adviceBox.textContent = "This is a small estimate, but still worth respecting on tight joinery or captured parts.";
+      } else if (movement < 0.18) {
+        adviceBox.textContent = "Plan a little seasonal allowance. This amount can matter in grooves, panels, and wide parts.";
+      } else {
+        adviceBox.textContent = "This is enough movement to design around carefully. Avoid trapping the board rigidly across its width.";
+      }
+    }
+
+    storageEl.addEventListener("change", () => {
+      const preset = storageDefaults[storageEl.value];
+      if (!preset) return;
+      rhLowEl.value = preset.low;
+      rhHighEl.value = preset.high;
+      storageHelperEl.textContent = preset.helper;
+      calculateMovement();
+    });
+
+    [speciesEl, orientationEl, widthEl, rhLowEl, rhHighEl].forEach(input => {
+      input.addEventListener("input", calculateMovement);
+      input.addEventListener("change", calculateMovement);
+    });
+
+    calculateMovement();
   </script>
 </body>
 </html>
