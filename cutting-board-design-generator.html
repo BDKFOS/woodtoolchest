@@ -10,577 +10,276 @@
     gtag('config', 'G-G1ZT9QNFQT');
   </script>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Cutting Board Design Generator | 3D Patterns, Wood Combos & Buildable Ideas | WoodToolChest</title>
-  <meta name="description" content="Design realistic cutting boards with premium wood combinations, 3D illusion patterns, buildability scores, dimensions, cut notes, and practical shop guidance.">
-  <link rel="canonical" href="https://www.woodtoolchest.com/cutting-board-design-generator.html">
+  <title>Cutting Board Design Generator | WoodToolChest</title>
+  <meta name="description" content="Design realistic cutting boards with premium wood combinations, 3D illusion patterns, buildability scores, dimensions, cut notes, and practical shop guidance." />
+  <link rel="canonical" href="https://www.woodtoolchest.com/cutting-board-design-generator.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #f7f3ec;
-      --surface: #fffdf8;
-      --surface-2: #fbf7f1;
-      --surface-3: #f3eadf;
-      --text: #1f1a17;
-      --muted: #6b625a;
-      --line: #ddd3c7;
-      --accent: #7a4b22;
-      --accent-dark: #5f3919;
-      --accent-soft: #c89c73;
-      --dark: #251a13;
-      --dark-2: #342419;
-      --max: 1180px;
-      --radius: 20px;
-      --shadow: 0 18px 44px rgba(32, 22, 16, 0.08);
+      --bg: #f7f1e8;
+      --cream: #fbf6ee;
+      --cream-2: #fffaf3;
+      --text: #292724;
+      --muted: #68615a;
+      --line: rgba(90, 62, 38, 0.12);
+      --accent: #ad6e3c;
+      --accent-dark: #8d552a;
+      --dark: #272522;
+      --green: #587d64;
+      --blue: #477593;
+      --purple: #85589a;
+      --max: 1416px;
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "Inter", Arial, sans-serif;
+      --shadow-soft: 0 18px 50px rgba(78, 51, 29, .10);
+      --shadow-card: 0 16px 34px rgba(78, 51, 29, .08);
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(122,75,34,0.10), transparent 30%),
-        linear-gradient(180deg, #f8f3eb 0%, var(--bg) 42%, #f2eadf 100%);
       color: var(--text);
+      font-family: var(--sans);
+      background:
+        radial-gradient(circle at 14% 0%, rgba(255,255,255,.92), transparent 30%),
+        radial-gradient(circle at 86% 8%, rgba(188,130,76,.14), transparent 26%),
+        linear-gradient(180deg, #faf6ef 0%, var(--bg) 54%, #f8f2ea 100%);
       line-height: 1.65;
     }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+    .wrap { width: min(var(--max), calc(100% - 108px)); margin: 0 auto; }
 
-    a { color: var(--accent-dark); text-decoration: none; }
-    a:hover { color: var(--accent); text-decoration: underline; }
+    .site-header { padding: 31px 0 27px; }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+    .brand { display: flex; align-items: center; gap: 19px; min-width: 340px; }
+    .brand-mark { width: 82px; height: 48px; flex: 0 0 82px; object-fit: contain; filter: drop-shadow(0 7px 10px rgba(34, 24, 17, .13)); }
+    .brand-name { display: block; font-family: var(--serif); font-weight: 700; font-size: 34px; line-height: .95; letter-spacing: -1.2px; }
+    .brand-sub { display: block; margin-top: 8px; color: #a25f2b; font-size: 12px; font-weight: 800; letter-spacing: 3.7px; text-transform: uppercase; white-space: nowrap; }
+    .nav-links { display: flex; align-items: center; justify-content: center; gap: 48px; margin-left: auto; margin-right: 32px; }
+    .nav-links a { font-size: 14px; font-weight: 700; color: #171615; line-height: 1; transition: color .16s ease; }
+    .nav-links a:hover { color: var(--accent-dark); }
+    .nav-designer { display: inline-flex; align-items: center; gap: 9px; }
+    .nav-designer svg { width: 11px; height: 11px; }
+    .header-cta { display: inline-flex; align-items: center; justify-content: center; min-width: 143px; height: 47px; padding: 0 24px; border-radius: 7px; color: #fff; background: linear-gradient(180deg, #bd7a44, #a76533); font-size: 14px; font-weight: 800; box-shadow: 0 12px 24px rgba(161, 94, 44, .17); transition: transform .16s ease, box-shadow .16s ease; }
+    .header-cta:hover { transform: translateY(-1px); box-shadow: 0 16px 28px rgba(161, 94, 44, .22); }
 
-    .site-header {
-      color: #fff;
-      padding: 18px 20px;
-      background:
-        radial-gradient(circle at 18% 12%, rgba(201,148,98,0.24), transparent 28%),
-        linear-gradient(135deg, #3a291e 0%, #2b2018 54%, #221913 100%);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 8px 24px rgba(24, 17, 12, 0.18);
-    }
-
-    .site-header-inner,
-    .container,
-    .footer-inner {
-      width: min(var(--max), calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .header-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .brand-row { display: flex; align-items: center; gap: 13px; min-width: 0; }
-    .brand-mark {
-      width: 48px;
-      height: 48px;
-      border-radius: 15px;
-      display: grid;
-      place-items: center;
-      flex: 0 0 48px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.03)),
-        linear-gradient(135deg, #b77a44 0%, #8b572e 48%, #6c421f 100%);
-      border: 1px solid rgba(255,255,255,0.15);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 10px 22px rgba(0,0,0,0.16);
-    }
-
-    .brand-mark svg { display: block; }
-    .brand-text-wrap { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
-    .brand { color: #fff; font-weight: 800; font-size: 1.72rem; line-height: 1; letter-spacing: -0.03em; }
-    .brand:hover { color: #f1e4d7; text-decoration: none; }
-    .brand-sub { color: rgba(255,255,255,0.72); font-size: 0.75rem; letter-spacing: 0.10em; text-transform: uppercase; }
-
-    .main-nav { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
-    .main-nav a {
-      color: rgba(255,255,255,0.88);
-      font-weight: 700;
-      font-size: 0.92rem;
-      padding: 9px 13px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.10);
-    }
-    .main-nav a:hover { color: #fff; background: rgba(255,255,255,0.10); text-decoration: none; }
-    .main-nav .nav-cta { background: linear-gradient(180deg, #c89462, #af7340); color: #fff; }
-
-    .hero { padding: 34px 0 24px; }
-    .hero-panel {
-      position: relative;
+    .hero-shell {
       overflow: hidden;
-      border-radius: 30px;
-      padding: 34px;
+      min-height: 405px;
+      border: 1px solid rgba(102, 68, 42, .10);
+      border-radius: 15px 15px 0 0;
       background:
-        radial-gradient(circle at 88% 10%, rgba(201,148,98,0.24), transparent 26%),
-        linear-gradient(135deg, rgba(255,253,248,0.98) 0%, rgba(255,253,248,0.94) 52%, rgba(248,241,232,0.90) 100%);
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 26px;
-      align-items: center;
+        linear-gradient(90deg, rgba(255,251,243,.98) 0%, rgba(255,251,243,.96) 37%, rgba(250,238,223,.62) 54%, rgba(246,213,178,.28) 100%),
+        url("/images/hero-cutting-board.png") center right / contain no-repeat,
+        linear-gradient(90deg, #fbf6ee, #f5d6b6);
+      box-shadow: 0 19px 46px rgba(89, 61, 37, .10);
+      position: relative;
     }
+    .hero-shell::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 42% 62%, rgba(255,255,255,.55), transparent 16%), linear-gradient(180deg, rgba(255,255,255,.16), transparent 36%); pointer-events: none; }
+    .hero-content { position: relative; z-index: 1; width: 48%; padding: 35px 0 40px 82px; }
+    .eyebrow { margin: 0 0 18px; color: #a15d2a; font-size: 12px; font-weight: 800; letter-spacing: 3.2px; text-transform: uppercase; }
+    h1, h2, h3, p { margin-top: 0; }
+    .hero-title { margin-bottom: 18px; font-family: var(--serif); font-size: clamp(48px, 4.2vw, 60px); line-height: .99; letter-spacing: -2.35px; color: #292826; }
+    .hero-title em { color: #ba8050; font-style: italic; font-weight: 600; }
+    .hero-copy { max-width: 520px; margin-bottom: 29px; color: #6e6760; font-size: 16px; line-height: 1.73; font-weight: 500; }
+    .hero-actions { display: flex; align-items: center; gap: 18px; margin-bottom: 31px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 28px; border-radius: 999px; border: 0; cursor: pointer; font-size: 14px; font-weight: 800; transition: transform .16s ease, box-shadow .16s ease, background .16s ease; white-space: nowrap; }
+    .btn-primary { color: #fff; background: linear-gradient(180deg, #302f2c, #1e1d1b); box-shadow: 0 16px 28px rgba(33,31,28,.24), inset 0 1px 0 rgba(255,255,255,.12); }
+    .btn-primary:hover { transform: translateY(-1px); }
+    .btn-secondary { color: #33302d; background: rgba(255,255,255,.72); border: 1px solid rgba(85, 58, 36, .08); box-shadow: 0 12px 22px rgba(72, 49, 30, .07); }
+    .btn-secondary:hover { background: rgba(255,255,255,.93); transform: translateY(-1px); }
+    .sparkle { width: 18px; height: 18px; }
+    .proof-row { display: flex; align-items: center; gap: 36px; color: #2f2b27; font-size: 12px; font-weight: 800; }
+    .proof-item { display: inline-flex; align-items: center; gap: 11px; white-space: nowrap; }
+    .proof-icon { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 50%; border: 1px solid #ead4c0; background: rgba(255,255,255,.45); color: #b66c34; }
+    .proof-icon svg { width: 18px; height: 18px; }
 
-    .eyebrow {
-      margin: 0 0 10px;
-      color: var(--accent);
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      font-size: 0.85rem;
-    }
+    .designer-band { padding: 18px 82px 16px; text-align: center; background: rgba(255,251,244,.46); border-left: 1px solid rgba(102, 68, 42, .08); border-right: 1px solid rgba(102, 68, 42, .08); }
+    .section-eyebrow { margin: 0 0 6px; color: #a2602d; font-size: 11px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; }
+    .section-title { margin: 0; font-family: var(--serif); font-size: 30px; line-height: 1.1; letter-spacing: -.75px; color: #342c26; }
 
-    h1, h2, h3 { color: #1e1814; line-height: 1.15; margin-top: 0; }
-    h1 { font-size: clamp(2.2rem, 5vw, 4.25rem); letter-spacing: -0.065em; margin-bottom: 14px; }
-    h2 { font-size: clamp(1.55rem, 3vw, 2.15rem); letter-spacing: -0.035em; margin-bottom: 14px; }
-    h3 { font-size: 1.08rem; margin-bottom: 8px; }
-    p { margin: 0 0 18px; }
-    .intro { font-size: 1.08rem; color: #332820; max-width: 650px; }
-
-    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
-    .button, button {
-      appearance: none;
-      border: 0;
-      cursor: pointer;
-      font-family: inherit;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      min-height: 44px;
-      padding: 12px 16px;
-      border-radius: 14px;
-      font-weight: 800;
-      line-height: 1;
-      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, border-color 0.12s ease;
-    }
-    .button:hover, button:hover { transform: translateY(-1px); text-decoration: none; }
-    .button-primary, .primary-button {
-      color: #fff;
-      background: linear-gradient(180deg, #9a622f, #704118);
-      box-shadow: 0 12px 24px rgba(99, 58, 24, 0.20), inset 0 1px 0 rgba(255,255,255,0.18);
-    }
-    .button-secondary, .secondary-button {
-      background: rgba(255,255,255,0.76);
-      color: #2c2118;
-      border: 1px solid var(--line);
-    }
-
-    .proof-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
-    .proof-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 8px 11px;
-      border-radius: 999px;
-      background: #fffaf3;
-      border: 1px solid #dfd1c0;
-      color: #3b2e24;
-      font-size: 0.9rem;
-      font-weight: 700;
-    }
-
-    .hero-preview {
-      min-height: 330px;
-      border-radius: 24px;
-      border: 1px solid rgba(80,53,34,0.20);
-      background:
-        radial-gradient(circle at 50% 12%, rgba(255,255,255,0.42), transparent 24%),
-        linear-gradient(135deg, #342418, #211711);
-      padding: 22px;
-      display: grid;
-      place-items: center;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 20px 44px rgba(32, 22, 16, 0.16);
-    }
-    .hero-preview svg { width: 100%; max-width: 560px; height: auto; display: block; }
-
-    .tool-shell {
-      display: grid;
-      grid-template-columns: 360px 1fr;
-      gap: 22px;
-      align-items: start;
-      margin: 10px 0 32px;
-    }
-
-    .panel, .result-panel, .content-card {
-      background: rgba(255,253,248,0.92);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: 0 10px 28px rgba(32, 22, 16, 0.045);
-    }
-
-    .panel { padding: 20px; position: sticky; top: 18px; }
-    .result-panel { padding: 22px; }
-    .content-card { padding: 24px; margin-bottom: 22px; }
-
-    .control-section { padding: 16px 0; border-top: 1px solid var(--line); }
-    .control-section:first-of-type { border-top: 0; padding-top: 0; }
-    label, .control-title { display: block; color: #382d25; font-weight: 800; margin-bottom: 8px; font-size: 0.93rem; }
-    select, input[type="number"], input[type="range"] {
-      width: 100%;
-      font: inherit;
-      color: var(--text);
-      border: 1px solid #d6c6b4;
-      background: #fffaf3;
-      border-radius: 12px;
-      min-height: 42px;
-      padding: 9px 10px;
-      outline: none;
-    }
-    select:focus, input:focus { border-color: #b98a5e; box-shadow: 0 0 0 3px rgba(184, 124, 71, 0.14); }
-
+    .designer-shell { display: grid; grid-template-columns: 355px minmax(0, 1fr); gap: 22px; padding: 0 82px 42px; background: rgba(255,251,244,.46); border-left: 1px solid rgba(102, 68, 42, .08); border-right: 1px solid rgba(102, 68, 42, .08); }
+    .panel, .result-panel, .content-card { background: rgba(255, 253, 248, .82); border: 1px solid rgba(112, 77, 48, .10); border-radius: 18px; box-shadow: var(--shadow-card); }
+    .panel { padding: 20px; position: sticky; top: 18px; align-self: start; }
+    .panel h2, .result-panel h2, .content-card h2 { font-family: var(--serif); letter-spacing: -.6px; color: #342c26; }
+    .panel h2 { margin: 0 0 8px; font-size: 29px; }
+    .small-help { color: var(--muted); font-size: 13px; line-height: 1.55; margin: 0 0 10px; font-weight: 500; }
+    .control-section { padding: 15px 0; border-top: 1px solid rgba(90,62,38,.11); }
+    .control-section:first-of-type { border-top: 0; padding-top: 8px; }
+    label, .control-title { display: block; color: #302c28; font-weight: 800; margin-bottom: 8px; font-size: 13px; }
+    select, input[type="number"], input[type="range"] { width: 100%; color: var(--text); border: 1px solid rgba(90,62,38,.14); background: rgba(255,250,243,.96); border-radius: 12px; min-height: 42px; padding: 9px 10px; outline: none; }
+    select:focus, input:focus { border-color: rgba(173,110,60,.55); box-shadow: 0 0 0 3px rgba(173,110,60,.13); }
     .option-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    .option-card {
-      position: relative;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px;
-      border-radius: 13px;
-      border: 1px solid #d8c9b8;
-      background: #fffaf3;
-      cursor: pointer;
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: #332820;
-    }
+    .option-card { position: relative; display: flex; align-items: center; gap: 8px; padding: 10px; border-radius: 13px; border: 1px solid rgba(90,62,38,.13); background: rgba(255,250,243,.82); cursor: pointer; font-size: 12px; font-weight: 800; color: #332f2b; }
     .option-card input { accent-color: var(--accent); }
-    .option-card:has(input:checked) { border-color: #a66c38; background: #f5eadc; box-shadow: inset 0 0 0 1px rgba(166,108,56,0.08); }
-
+    .option-card:has(input:checked) { border-color: rgba(173,110,60,.52); background: #f6eadf; box-shadow: inset 0 0 0 1px rgba(173,110,60,.09); }
     .inline-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .small-help { color: var(--muted); font-size: 0.88rem; margin: 8px 0 0; }
-
-    .button-stack { display: grid; gap: 10px; margin-top: 2px; }
+    .button-stack { display: grid; gap: 10px; }
     .variant-row { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-top: 10px; }
-    .variant-row button { min-height: 39px; padding: 10px; border: 1px solid #d8c9b8; background: #fffaf3; color: #30251e; font-size: 0.85rem; }
+    .variant-row .btn { min-height: 39px; padding: 0 10px; border-radius: 999px; border: 1px solid rgba(90,62,38,.11); background: rgba(255,255,255,.70); color: #33302d; font-size: 12px; box-shadow: 0 10px 18px rgba(72,49,30,.05); }
 
-    .render-card {
-      position: relative;
-      overflow: hidden;
-      padding: 18px;
-      border-radius: 24px;
-      min-height: 470px;
-      display: grid;
-      place-items: center;
-      background:
-        radial-gradient(circle at 48% 18%, rgba(255,255,255,0.25), transparent 24%),
-        linear-gradient(135deg, #312116 0%, #211711 62%, #15100c 100%);
-      border: 1px solid rgba(80,53,34,0.22);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
-    }
-    .render-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        repeating-linear-gradient(90deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 78px),
-        radial-gradient(circle at 80% 85%, rgba(201,148,98,0.12), transparent 30%);
-      pointer-events: none;
-    }
+    .result-panel { padding: 18px; min-width: 0; }
+    .render-card { position: relative; overflow: hidden; padding: 18px; border-radius: 16px; min-height: 470px; display: grid; place-items: center; background: linear-gradient(135deg, #302f2c 0%, #1e1d1b 62%, #171615 100%); border: 1px solid rgba(85,58,36,.08); box-shadow: inset 0 1px 0 rgba(255,255,255,.12); }
+    .render-card::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 50% 10%, rgba(255,255,255,.11), transparent 22%), radial-gradient(circle at 80% 85%, rgba(189,122,68,.16), transparent 30%); pointer-events: none; }
     .board-stage { position: relative; z-index: 1; width: 100%; max-width: 760px; }
     .board-stage svg { display: block; width: 100%; height: auto; }
-
-    .result-topline {
-      display: flex;
-      align-items: start;
-      justify-content: space-between;
-      gap: 16px;
-      margin: 18px 0 16px;
-    }
-    .board-name { margin: 0 0 5px; font-size: clamp(1.45rem, 3vw, 2.25rem); letter-spacing: -0.045em; }
-    .board-subtitle { color: var(--muted); margin: 0; }
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      white-space: nowrap;
-      border-radius: 999px;
-      padding: 8px 11px;
-      background: #f2e5d6;
-      border: 1px solid #d7c3ad;
-      color: #5d3719;
-      font-weight: 800;
-      font-size: 0.85rem;
-    }
-
+    .result-topline { display: flex; align-items: start; justify-content: space-between; gap: 16px; margin: 18px 0 16px; }
+    .board-name { margin: 0 0 5px; font-family: var(--serif); font-size: clamp(32px, 3vw, 44px); line-height: 1; letter-spacing: -1.2px; color: #292826; }
+    .board-subtitle { color: var(--muted); margin: 0; font-weight: 500; }
+    .badge { display: inline-flex; align-items: center; white-space: nowrap; border-radius: 999px; padding: 9px 13px; background: #f4e8de; color: #8d552a; font-weight: 800; font-size: 12px; border: 1px solid rgba(173,110,60,.16); }
+    .swatch-row { display: flex; gap: 10px; flex-wrap: wrap; margin: 0 0 16px; }
+    .swatch { display: inline-flex; align-items: center; gap: 8px; padding: 7px 10px; border-radius: 999px; background: rgba(255,255,255,.66); border: 1px solid rgba(90,62,38,.12); font-weight: 800; font-size: 12px; }
+    .swatch-chip { width: 18px; height: 18px; border-radius: 50%; border: 1px solid rgba(0,0,0,.18); }
     .metric-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 16px 0; }
-    .metric {
-      padding: 14px;
-      border-radius: 16px;
-      background: #fffaf3;
-      border: 1px solid #d8c9b8;
-    }
-    .metric span { display: block; color: var(--muted); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 5px; }
-    .metric strong { font-size: 1.2rem; color: #241a14; }
-
+    .metric { padding: 14px; border-radius: 16px; background: rgba(255,250,243,.92); border: 1px solid rgba(90,62,38,.12); }
+    .metric span { display: block; color: var(--muted); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.6px; margin-bottom: 5px; }
+    .metric strong { font-size: 22px; color: #1f1d1b; }
     .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
-    .detail-box {
-      background: #fffaf3;
-      border: 1px solid #d8c9b8;
-      border-radius: 16px;
-      padding: 16px;
-    }
-    .detail-box ul { margin: 0; padding-left: 19px; }
+    .detail-box { background: rgba(255,250,243,.92); border: 1px solid rgba(90,62,38,.12); border-radius: 16px; padding: 16px; }
+    .detail-box h3 { margin: 0 0 10px; font-size: 16px; font-weight: 800; }
+    .detail-box ul { margin: 0; padding-left: 19px; color: #57514b; font-size: 14px; font-weight: 500; }
     .detail-box li { margin-bottom: 7px; }
 
-    .swatch-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
-    .swatch {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 10px;
-      border-radius: 999px;
-      background: #fff;
-      border: 1px solid #d8c9b8;
-      font-weight: 700;
-      font-size: 0.88rem;
-    }
-    .swatch-chip { width: 18px; height: 18px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.18); }
-
+    .content-area { padding: 0 82px 42px; background: rgba(255,251,244,.46); border-left: 1px solid rgba(102,68,42,.08); border-right: 1px solid rgba(102,68,42,.08); border-bottom: 1px solid rgba(102,68,42,.08); border-radius: 0 0 15px 15px; }
+    .content-card { padding: 24px; margin-bottom: 22px; }
+    .content-card p { color: var(--muted); font-weight: 500; }
     .section-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .mini-card { background: #fffaf3; border: 1px solid #d8c9b8; border-radius: 16px; padding: 18px; }
-    .mini-card p:last-child { margin-bottom: 0; color: var(--muted); }
+    .mini-card { background: rgba(255,250,243,.92); border: 1px solid rgba(90,62,38,.12); border-radius: 16px; padding: 18px; }
+    .mini-card h3 { margin: 0 0 8px; font-size: 16px; font-weight: 800; }
+    .mini-card p { margin-bottom: 0; font-size: 14px; }
+    .guide-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 22px; }
+    .guide-card { display:block; overflow:hidden; border-radius:18px; background:transparent; border:none; box-shadow:none; transition: transform .18s ease, box-shadow .18s ease; }
+    .guide-card:hover { transform:translateY(-2px); box-shadow:0 12px 28px rgba(52,34,20,.10); }
+    .guide-card img { display:block; width:100%; height:auto; object-fit:cover; background:none; padding:0; border-radius:18px; }
+    .guide-content { display:none; }
+    .footer { padding: 28px 0 40px; color: var(--muted); font-size: 14px; font-weight: 500; }
 
-    .related-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-    .related-links a { display: block; background: #fffaf3; border: 1px solid #d8c9b8; border-radius: 14px; padding: 15px; font-weight: 800; color: #2c221a; }
-    .related-links a span { display: block; margin-top: 5px; color: var(--muted); font-weight: 400; font-size: 0.9rem; }
-
-    .footer { margin-top: 54px; padding: 28px 20px 40px; border-top: 1px solid var(--line); background: #f3ede4; color: var(--muted); }
-    .footer p { margin-bottom: 8px; }
-
-    @media (max-width: 980px) {
-      .hero-panel, .tool-shell { grid-template-columns: 1fr; }
-      .panel { position: static; }
-      .metric-grid { grid-template-columns: 1fr 1fr; }
-      .section-grid, .detail-grid { grid-template-columns: 1fr; }
-      .hero-preview { min-height: 280px; }
+    @media (max-width: 1160px) {
+      .wrap { width: min(var(--max), calc(100% - 44px)); }
+      .nav-links { gap: 24px; margin-right: 12px; }
+      .hero-content { width: 58%; padding-left: 46px; }
+      .designer-band, .designer-shell, .content-area { padding-left: 46px; padding-right: 46px; }
     }
-
-    @media (max-width: 720px) {
-      .site-header-inner, .container, .footer-inner { width: min(var(--max), calc(100% - 24px)); }
-      .header-top { align-items: flex-start; flex-direction: column; }
-      .main-nav { justify-content: flex-start; }
-      .hero-panel, .result-panel, .content-card, .panel { padding: 18px; border-radius: 20px; }
+    @media (max-width: 980px) {
+      .nav { align-items: flex-start; flex-wrap: wrap; }
+      .brand { min-width: 100%; }
+      .nav-links { order: 3; width: 100%; justify-content: flex-start; flex-wrap: wrap; margin: 8px 0 0; gap: 20px; }
+      .header-cta { margin-left: auto; }
+      .hero-shell { background: linear-gradient(180deg, rgba(255,251,243,.98), rgba(255,251,243,.90)), url("/images/hero-cutting-board.png") center right / cover no-repeat; }
+      .hero-content { width: 100%; max-width: 640px; padding: 38px 32px; }
+      .designer-shell { grid-template-columns: 1fr; }
+      .panel { position: static; }
+      .guide-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .section-grid, .detail-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 700px) {
+      .wrap { width: min(var(--max), calc(100% - 24px)); }
+      .site-header { padding: 20px 0; }
+      .brand { gap: 12px; }
+      .brand-mark { width: 62px; height: 38px; flex-basis: 62px; }
+      .brand-name { font-size: 27px; }
+      .brand-sub { font-size: 10px; letter-spacing: 2.1px; white-space: normal; }
+      .header-cta { width: 100%; }
+      .hero-title { font-size: 43px; letter-spacing: -1.5px; }
+      .hero-copy { font-size: 15px; }
+      .hero-actions, .proof-row { flex-direction: column; align-items: flex-start; }
+      .btn { width: 100%; }
+      .designer-band, .designer-shell, .content-area { padding-left: 18px; padding-right: 18px; }
+      .hero-content { padding: 32px 22px; }
+      .option-grid, .inline-grid, .variant-row, .metric-grid, .guide-grid { grid-template-columns: 1fr; }
       .render-card { min-height: 330px; padding: 10px; }
-      .option-grid, .inline-grid, .variant-row, .metric-grid, .related-links { grid-template-columns: 1fr; }
       .result-topline { flex-direction: column; }
-      .brand { font-size: 1.45rem; }
-      .brand-sub { font-size: 0.67rem; }
     }
   </style>
 </head>
 <body>
   <header class="site-header">
-    <div class="site-header-inner">
-      <div class="header-top">
-        <div class="brand-row">
-          <div class="brand-mark" aria-hidden="true">
-            <svg width="27" height="27" viewBox="0 0 28 28" fill="none">
-              <rect x="3" y="8" width="6" height="13" rx="1.6" fill="rgba(255,255,255,0.96)"></rect>
-              <rect x="11" y="4" width="6" height="17" rx="1.6" fill="rgba(255,255,255,0.84)"></rect>
-              <rect x="19" y="10" width="6" height="11" rx="1.6" fill="rgba(255,255,255,0.68)"></rect>
-              <path d="M11 10.5H17" stroke="rgba(90,54,27,0.22)" stroke-width="1.2" stroke-linecap="round"></path>
-              <path d="M3 13.5H9" stroke="rgba(90,54,27,0.18)" stroke-width="1.2" stroke-linecap="round"></path>
-              <path d="M19 14.5H25" stroke="rgba(90,54,27,0.16)" stroke-width="1.2" stroke-linecap="round"></path>
-            </svg>
-          </div>
-          <div class="brand-text-wrap">
-            <a class="brand" href="/">WoodToolChest</a>
-            <div class="brand-sub">Practical woodworking tools and guides</div>
-          </div>
-        </div>
-
-        <nav class="main-nav" aria-label="Primary">
-          <a href="/">Home</a>
-          <a href="#designer">Designer</a>
-          <a href="#how-it-works">How It Works</a>
-          <a class="nav-cta" href="/best-woods-for-cutting-boards.html">Wood Guide</a>
-        </nav>
-      </div>
+    <div class="wrap nav">
+      <a class="brand" href="/" aria-label="WoodToolChest home">
+        <img class="brand-mark" src="/images/logo-plane.png" alt="" aria-hidden="true">
+        <span>
+          <span class="brand-name">WoodToolChest</span>
+          <span class="brand-sub">Design Tools &amp; Shop Guides</span>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a class="nav-designer" href="#designer">Designer <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="/#tools">Tools</a>
+        <a href="/#guides">Guides</a>
+        <a href="/small-workshop-layout-guide.html">Shop Setup</a>
+        <a href="/about.html">About</a>
+      </nav>
+      <a class="header-cta" href="#designer">Open Tool</a>
     </div>
   </header>
 
-  <main class="container">
-    <section class="hero">
-      <div class="hero-panel">
-        <div>
-          <p class="eyebrow">Flagship Tool</p>
-          <h1>Design a cutting board worth building.</h1>
-          <p class="intro">Generate cleaner, more realistic cutting board concepts with premium wood combinations, 3D illusion patterns, buildability scores, dimensions, and practical shop notes.</p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#designer">Open the designer</a>
-            <button class="secondary-button" type="button" onclick="generateBoard('3d')">Generate a 3D board</button>
-          </div>
-          <div class="proof-row" aria-label="Tool highlights">
-            <span class="proof-pill">🪵 3D patterns</span>
-            <span class="proof-pill">📐 Build notes</span>
-            <span class="proof-pill">⚡ No login</span>
-          </div>
+  <main class="wrap">
+    <section class="hero-shell" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <p class="eyebrow">Cutting Board Design Tool</p>
+        <h1 class="hero-title" id="hero-title">Design a board <em>worth</em> building.</h1>
+        <p class="hero-copy">Generate realistic cutting board layouts, compare wood combinations, explore 3D patterns, and get practical build notes before you head to the shop.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#designer"><svg class="sparkle" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l1.8 5.1L19 9l-5.2 1.9L12 16l-1.8-5.1L5 9l5.2-1.9L12 2z" fill="currentColor"/><path d="M18 14l.9 2.6 2.6.9-2.6.9L18 21l-.9-2.6-2.6-.9 2.6-.9L18 14z" fill="currentColor"/></svg>Open Cutting Board Designer</a>
+          <button class="btn btn-secondary" type="button" onclick="generateBoard('3d')">Generate 3D Board</button>
         </div>
-        <div class="hero-preview" aria-hidden="true">
-          <div id="heroPreview"></div>
+        <div class="proof-row" aria-label="Tool benefits">
+          <span class="proof-item"><span class="proof-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M13 2L4 14h7l-1 8 10-13h-7l0-7z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>Free to use</span>
+          <span class="proof-item"><span class="proof-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.4-2.8 8.3-7 10-4.2-1.7-7-5.6-7-10V6l7-3z" stroke="currentColor" stroke-width="1.8"/><path d="M9 12l2 2 4-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>No sign up</span>
+          <span class="proof-item"><span class="proof-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M20.4 5.6a5.1 5.1 0 0 0-7.2 0L12 6.8l-1.2-1.2a5.1 5.1 0 0 0-7.2 7.2L12 21l8.4-8.2a5.1 5.1 0 0 0 0-7.2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>Built for real projects</span>
         </div>
       </div>
     </section>
 
-    <section class="tool-shell" id="designer">
+    <section class="designer-band" id="designer">
+      <p class="section-eyebrow">Interactive Designer</p>
+      <h2 class="section-title">Choose a pattern, then generate a buildable board.</h2>
+    </section>
+
+    <section class="designer-shell">
       <aside class="panel" aria-label="Cutting board design controls">
         <h2>Board Designer</h2>
-        <p class="small-help">Choose the kind of board you want, then generate variants until something feels buildable and worth saving.</p>
-
-        <div class="control-section">
-          <span class="control-title">Pattern type</span>
-          <div class="option-grid">
-            <label class="option-card"><input type="radio" name="pattern" value="edge" checked> Edge grain</label>
-            <label class="option-card"><input type="radio" name="pattern" value="endgrain"> End grain</label>
-            <label class="option-card"><input type="radio" name="pattern" value="tumbling"> 3D cubes</label>
-            <label class="option-card"><input type="radio" name="pattern" value="woven"> Woven 3D</label>
-            <label class="option-card"><input type="radio" name="pattern" value="parquet"> Parquet</label>
-            <label class="option-card"><input type="radio" name="pattern" value="random"> Surprise me</label>
-          </div>
-        </div>
-
-        <div class="control-section">
-          <label for="style">Style direction</label>
-          <select id="style">
-            <option value="luxury">Luxury walnut-heavy</option>
-            <option value="modern">Modern high contrast</option>
-            <option value="minimal">Minimal and clean</option>
-            <option value="classic">Classic gift board</option>
-            <option value="rustic">Rustic warm tone</option>
-            <option value="wild">Bold statement board</option>
-          </select>
-        </div>
-
-        <div class="control-section">
-          <span class="control-title">Woods to include</span>
-          <div class="option-grid" id="woodOptions">
-            <label class="option-card"><input type="checkbox" value="maple" checked> Maple</label>
-            <label class="option-card"><input type="checkbox" value="walnut" checked> Walnut</label>
-            <label class="option-card"><input type="checkbox" value="cherry" checked> Cherry</label>
-            <label class="option-card"><input type="checkbox" value="whiteOak"> White oak</label>
-            <label class="option-card"><input type="checkbox" value="purpleheart"> Purpleheart</label>
-            <label class="option-card"><input type="checkbox" value="padauk"> Padauk</label>
-          </div>
-          <p class="small-help">For food-safe simplicity, maple, walnut, and cherry are usually the cleanest default choices.</p>
-        </div>
-
-        <div class="control-section">
-          <div class="inline-grid">
-            <div>
-              <label for="size">Finished size</label>
-              <select id="size">
-                <option value="small">Small 10 × 14</option>
-                <option value="medium" selected>Medium 12 × 18</option>
-                <option value="large">Large 14 × 20</option>
-                <option value="xl">XL 16 × 24</option>
-              </select>
-            </div>
-            <div>
-              <label for="complexity">Complexity</label>
-              <select id="complexity">
-                <option value="beginner">Beginner</option>
-                <option value="intermediate" selected>Intermediate</option>
-                <option value="advanced">Advanced</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        <div class="control-section">
-          <label for="depth">3D depth</label>
-          <input id="depth" type="range" min="1" max="10" value="6">
-          <p class="small-help">Subtle boards stay premium. Higher depth creates stronger optical illusion patterns.</p>
-        </div>
-
-        <div class="control-section">
-          <div class="button-stack">
-            <button class="primary-button" type="button" onclick="generateBoard()">Generate board</button>
-          </div>
-          <div class="variant-row">
-            <button type="button" onclick="generateBoard('premium')">More premium</button>
-            <button type="button" onclick="generateBoard('easier')">Easier build</button>
-            <button type="button" onclick="generateBoard('contrast')">More contrast</button>
-            <button type="button" onclick="generateBoard('3d')">More 3D</button>
-          </div>
-        </div>
+        <p class="small-help">Choose the kind of board you want, then generate variants until something feels clean, premium, and buildable.</p>
+        <div class="control-section"><span class="control-title">Pattern type</span><div class="option-grid">
+          <label class="option-card"><input type="radio" name="pattern" value="edge" checked> Edge grain</label>
+          <label class="option-card"><input type="radio" name="pattern" value="endgrain"> End grain</label>
+          <label class="option-card"><input type="radio" name="pattern" value="tumbling"> 3D cubes</label>
+          <label class="option-card"><input type="radio" name="pattern" value="woven"> Woven 3D</label>
+          <label class="option-card"><input type="radio" name="pattern" value="parquet"> Parquet</label>
+          <label class="option-card"><input type="radio" name="pattern" value="random"> Surprise me</label>
+        </div></div>
+        <div class="control-section"><label for="style">Style direction</label><select id="style"><option value="luxury">Luxury walnut-heavy</option><option value="modern">Modern high contrast</option><option value="minimal">Minimal and clean</option><option value="classic">Classic gift board</option><option value="rustic">Rustic warm tone</option><option value="wild">Bold statement board</option></select></div>
+        <div class="control-section"><span class="control-title">Woods to include</span><div class="option-grid" id="woodOptions"><label class="option-card"><input type="checkbox" value="maple" checked> Maple</label><label class="option-card"><input type="checkbox" value="walnut" checked> Walnut</label><label class="option-card"><input type="checkbox" value="cherry" checked> Cherry</label><label class="option-card"><input type="checkbox" value="whiteOak"> White oak</label><label class="option-card"><input type="checkbox" value="purpleheart"> Purpleheart</label><label class="option-card"><input type="checkbox" value="padauk"> Padauk</label></div><p class="small-help">Maple, walnut, and cherry are usually the cleanest default choices.</p></div>
+        <div class="control-section"><div class="inline-grid"><div><label for="size">Finished size</label><select id="size"><option value="small">Small 10 × 14</option><option value="medium" selected>Medium 12 × 18</option><option value="large">Large 14 × 20</option><option value="xl">XL 16 × 24</option></select></div><div><label for="complexity">Complexity</label><select id="complexity"><option value="beginner">Beginner</option><option value="intermediate" selected>Intermediate</option><option value="advanced">Advanced</option></select></div></div></div>
+        <div class="control-section"><label for="depth">3D depth</label><input id="depth" type="range" min="1" max="10" value="6"><p class="small-help">Subtle boards stay premium. Higher depth creates stronger optical illusion patterns.</p></div>
+        <div class="control-section"><div class="button-stack"><button class="btn btn-primary" type="button" onclick="generateBoard()">Generate board</button></div><div class="variant-row"><button class="btn" type="button" onclick="generateBoard('premium')">More premium</button><button class="btn" type="button" onclick="generateBoard('easier')">Easier build</button><button class="btn" type="button" onclick="generateBoard('contrast')">More contrast</button><button class="btn" type="button" onclick="generateBoard('3d')">More 3D</button></div></div>
       </aside>
 
       <section class="result-panel" aria-live="polite">
-        <div class="render-card">
-          <div class="board-stage" id="boardRender"></div>
-        </div>
-
-        <div class="result-topline">
-          <div>
-            <h2 class="board-name" id="boardName">Midnight Ridge</h2>
-            <p class="board-subtitle" id="boardSubtitle">Luxury edge grain board with walnut, maple, and cherry accents.</p>
-          </div>
-          <span class="badge" id="boardBadge">Buildable: Yes</span>
-        </div>
-
+        <div class="render-card"><div class="board-stage" id="boardRender"></div></div>
+        <div class="result-topline"><div><h2 class="board-name" id="boardName">Midnight Ridge</h2><p class="board-subtitle" id="boardSubtitle">Luxury edge grain board with walnut, maple, and cherry accents.</p></div><span class="badge" id="boardBadge">Buildable: Yes</span></div>
         <div class="swatch-row" id="swatches"></div>
-
-        <div class="metric-grid">
-          <div class="metric"><span>Looks</span><strong id="looksScore">9.1</strong></div>
-          <div class="metric"><span>Buildability</span><strong id="buildScore">8.7</strong></div>
-          <div class="metric"><span>Difficulty</span><strong id="difficultyScore">4.8</strong></div>
-          <div class="metric"><span>Sellability</span><strong id="sellScore">8.9</strong></div>
-        </div>
-
-        <div class="detail-grid">
-          <div class="detail-box">
-            <h3>Build details</h3>
-            <ul id="buildDetails"></ul>
-          </div>
-          <div class="detail-box">
-            <h3>Cut list direction</h3>
-            <ul id="cutList"></ul>
-          </div>
-        </div>
+        <div class="metric-grid"><div class="metric"><span>Looks</span><strong id="looksScore">9.1</strong></div><div class="metric"><span>Buildability</span><strong id="buildScore">8.7</strong></div><div class="metric"><span>Difficulty</span><strong id="difficultyScore">4.8</strong></div><div class="metric"><span>Sellability</span><strong id="sellScore">8.9</strong></div></div>
+        <div class="detail-grid"><div class="detail-box"><h3>Build details</h3><ul id="buildDetails"></ul></div><div class="detail-box"><h3>Cut list direction</h3><ul id="cutList"></ul></div></div>
       </section>
     </section>
 
-    <section class="content-card" id="how-it-works">
-      <h2>What this generator is trying to do</h2>
-      <p>This version is built around visual quality and practical depth. Instead of random stripes only, it creates premium-looking boards with cleaner wood rhythm, realistic grain texture, 3D illusion options, and enough build information to help you decide whether the idea is worth taking to the shop.</p>
-      <div class="section-grid">
-        <div class="mini-card">
-          <h3>Cleaner visuals</h3>
-          <p>Wood grain, shadows, bevels, seams, and more believable strip layouts make the board feel less like a flat color swatch.</p>
-        </div>
-        <div class="mini-card">
-          <h3>More depth</h3>
-          <p>Each result includes difficulty, buildability, sellability, glue-up notes, tool notes, and rough cut direction.</p>
-        </div>
-        <div class="mini-card">
-          <h3>3D patterns</h3>
-          <p>Tumbling blocks, woven illusion patterns, parquet layouts, and end-grain grids give the tool a real flagship feature.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="content-card">
-      <h2>Related cutting board guides</h2>
-      <div class="related-links">
-        <a href="/best-woods-for-cutting-boards.html">Best Woods for Cutting Boards <span>Choose safer, better-looking hardwood combinations.</span></a>
-        <a href="/how-to-flatten-a-cutting-board.html">How to Flatten a Cutting Board <span>Fix glue-up issues before sanding forever.</span></a>
-        <a href="/router-flattening-jig.html">Router Flattening Jig Guide <span>Useful for end grain, slabs, and wide boards.</span></a>
-        <a href="/wood-movement-calculator.html">Wood Movement Calculator <span>Plan seasonal movement before building.</span></a>
-      </div>
+    <section class="content-area">
+      <section class="content-card" id="how-it-works"><p class="section-eyebrow">How it works</p><h2>What this generator is trying to do</h2><p>This version is built around visual quality and practical depth. It creates premium-looking boards with cleaner wood rhythm, realistic grain texture, 3D illusion options, and enough build information to help you decide whether the idea is worth taking to the shop.</p><div class="section-grid"><div class="mini-card"><h3>Cleaner visuals</h3><p>Wood grain, shadows, bevels, seams, and believable strip layouts make the board feel less like a flat color swatch.</p></div><div class="mini-card"><h3>More depth</h3><p>Each result includes difficulty, buildability, sellability, glue-up notes, tool notes, and rough cut direction.</p></div><div class="mini-card"><h3>3D patterns</h3><p>Tumbling blocks, woven illusion patterns, parquet layouts, and end-grain grids give the tool a real flagship feature.</p></div></div></section>
+      <section class="content-card"><div class="guides-head"><div><p class="section-eyebrow">Related Guides</p><h2>Practical advice for better builds.</h2></div></div><div class="guide-grid"><a class="guide-card" href="/workbench-height-guide.html"><img src="/images/guide-workbench.png" alt="Workbench in a woodworking shop"><span class="guide-content"><h3>Workbench Height Guide</h3></span></a><a class="guide-card" href="/how-to-flatten-a-cutting-board.html"><img src="/images/guide-flatten.png" alt="Cutting board being flattened"><span class="guide-content"><h3>How to Flatten a Cutting Board</h3></span></a><a class="guide-card" href="/dust-collection-for-beginners.html"><img src="/images/guide-dust.png" alt="Dust collection hose in a woodshop"><span class="guide-content"><h3>Dust Collection for Beginners</h3></span></a><a class="guide-card" href="/small-workshop-layout-guide.html"><img src="/images/guide-shop.png" alt="Small organized woodworking shop layout"><span class="guide-content"><h3>Small Shop Layout Guide</h3></span></a></div></section>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="footer-inner">
-      <p><strong>WoodToolChest</strong> gives practical woodworking guides, shop setup advice, and tool help for real-world builds.</p>
-      <p class="muted">© 2026 WoodToolChest</p>
-    </div>
-  </footer>
+  <footer class="footer"><div class="wrap"><p><strong>WoodToolChest</strong> gives practical woodworking guides, shop setup advice, and tool help for real-world builds.</p><p>For Woodworkers, By Woodworkers.</p><p>© 2026 WoodToolChest</p></div></footer>
 
   <script>
     const woods = {
@@ -724,24 +423,53 @@
     }
 
     function renderTumbling(palette, rand, depth) {
-      const x = 92, y = 82;
-      const size = depth > 7 ? 50 : 60;
+      const boardX = 82, boardY = 78, boardW = 676, boardH = 340;
+      const size = depth > 7 ? 54 : 62;
       const h = size * 0.58;
-      const cols = 11;
-      const rows = 8;
-      let pieces = [];
+      const cols = 13;
+      const rows = 9;
+      const localPieces = [];
+      const points = [];
+
+      function addPoint(px, py) { points.push([px, py]); }
+
       for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
-          const cx = x + c * size * 0.92 + (r % 2) * size * 0.46;
-          const cy = y + r * h * 0.98;
-          const keys = [palette[0], palette[1 % palette.length], palette[2 % palette.length]];
-          pieces.push(`<polygon points="${cx},${cy} ${cx+size/2},${cy+h/2} ${cx},${cy+h} ${cx-size/2},${cy+h/2}" fill="${woods[keys[0]].base}" stroke="rgba(0,0,0,0.16)" stroke-width="0.8"/>
-          <polygon points="${cx},${cy} ${cx+size/2},${cy+h/2} ${cx+size/2},${cy+h*1.42} ${cx},${cy+h}" fill="${woods[keys[1]].dark}" stroke="rgba(0,0,0,0.14)" stroke-width="0.8"/>
-          <polygon points="${cx},${cy} ${cx-size/2},${cy+h/2} ${cx-size/2},${cy+h*1.42} ${cx},${cy+h}" fill="${woods[keys[2]].light}" stroke="rgba(0,0,0,0.14)" stroke-width="0.8"/>
-          <path d="M${cx-size*0.32} ${cy+h*0.48} C${cx-size*0.1} ${cy+h*0.38} ${cx+size*0.12} ${cy+h*0.6} ${cx+size*0.33} ${cy+h*0.48}" stroke="rgba(255,255,255,0.16)" fill="none"/>`);
+          const cx = c * size * 0.92 + (r % 2) * size * 0.46;
+          const cy = r * h * 1.03;
+          const offset = Math.floor(rand() * palette.length);
+          const keys = [
+            palette[(offset) % palette.length],
+            palette[(offset + 1) % palette.length],
+            palette[(offset + 2) % palette.length]
+          ];
+
+          addPoint(cx, cy);
+          addPoint(cx + size / 2, cy + h * 1.42);
+          addPoint(cx - size / 2, cy + h * 1.42);
+
+          localPieces.push(`
+            <g>
+              <polygon points="${cx},${cy} ${cx+size/2},${cy+h/2} ${cx},${cy+h} ${cx-size/2},${cy+h/2}" fill="${woods[keys[0]].base}" stroke="rgba(0,0,0,0.16)" stroke-width="0.8"/>
+              <polygon points="${cx},${cy} ${cx+size/2},${cy+h/2} ${cx+size/2},${cy+h*1.42} ${cx},${cy+h}" fill="${woods[keys[1]].dark}" stroke="rgba(0,0,0,0.14)" stroke-width="0.8"/>
+              <polygon points="${cx},${cy} ${cx-size/2},${cy+h/2} ${cx-size/2},${cy+h*1.42} ${cx},${cy+h}" fill="${woods[keys[2]].light}" stroke="rgba(0,0,0,0.14)" stroke-width="0.8"/>
+              <path d="M${cx-size*0.32} ${cy+h*0.48} C${cx-size*0.1} ${cy+h*0.38} ${cx+size*0.12} ${cy+h*0.6} ${cx+size*0.33} ${cy+h*0.48}" stroke="rgba(255,255,255,0.16)" fill="none"/>
+            </g>`);
         }
       }
-      return boardShell(pieces.join(''), palette);
+
+      const minX = Math.min(...points.map(p => p[0]));
+      const maxX = Math.max(...points.map(p => p[0]));
+      const minY = Math.min(...points.map(p => p[1]));
+      const maxY = Math.max(...points.map(p => p[1]));
+      const patternW = maxX - minX;
+      const patternH = maxY - minY;
+      const scale = Math.min(boardW / patternW, boardH / patternH) * 1.02;
+      const tx = boardX + (boardW - patternW * scale) / 2 - minX * scale;
+      const ty = boardY + (boardH - patternH * scale) / 2 - minY * scale;
+
+      const centered = `<g transform="translate(${tx.toFixed(2)} ${ty.toFixed(2)}) scale(${scale.toFixed(4)})">${localPieces.join('')}</g>`;
+      return boardShell(centered, palette);
     }
 
     function renderWoven(palette, rand, depth) {
@@ -916,5 +644,6 @@
 
     renderAll(currentSeed);
   </script>
+
 </body>
 </html>
