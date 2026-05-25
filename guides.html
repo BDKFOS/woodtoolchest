@@ -324,29 +324,26 @@
 
     .guide-image {
       width: 100%;
-      height: 196px;
+      height: 210px;
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       background:
-        radial-gradient(circle at 28% 18%, rgba(255,255,255,.58), transparent 30%),
+        radial-gradient(circle at 28% 18%, rgba(255,255,255,.62), transparent 30%),
         linear-gradient(135deg, #f7ecdf, #ead9c8);
-      flex: 0 0 auto;
+      border-radius: 18px 18px 0 0;
+      flex: 0 0 210px;
     }
 
     .guide-image img {
       display: block;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       object-position: center;
       border: 0;
-    }
-
-    .guide-image img[style*="display: none"] + .image-fallback,
-    .guide-image:empty::before {
-      content: "";
-      display: block;
-      width: 100%;
-      height: 100%;
+      background: transparent;
     }
 
     .guide-content {
@@ -375,7 +372,6 @@
 
     .guide-meta {
       display: inline-flex;
-      margin-top: auto;
       align-items: center;
       gap: 8px;
       color: var(--accent-dark);
@@ -559,58 +555,42 @@
 
       <div class="guide-grid">
         <a class="guide-card" href="/workbench-height-guide.html">
-          <div class="guide-image">
-            <img src="/images/guide-workbench.png" alt="Workbench in a woodworking shop" onerror="this.style.display='none'">
-          </div>
+          <span class="guide-image"><img src="/images/guide-workbench.png" alt="Workbench in a woodworking shop" onerror="this.remove()"></span>
           <span class="guide-content"><h3>Workbench Height Guide</h3><p>Choose a bench height that fits your body, tools, and actual woodworking style.</p><span class="guide-meta">Read guide →</span></span>
         </a>
 
         <a class="guide-card" href="/how-to-flatten-a-cutting-board.html">
-          <div class="guide-image">
-            <img src="/images/guide-flatten.png" alt="Cutting board being flattened" onerror="this.style.display='none'">
-          </div>
+          <span class="guide-image"><img src="/images/guide-flatten.png" alt="Cutting board being flattened" onerror="this.remove()"></span>
           <span class="guide-content"><h3>How to Flatten a Cutting Board</h3><p>Fix uneven glue-ups with routers, planers, sanding, and better flattening workflow.</p><span class="guide-meta">Read guide →</span></span>
         </a>
 
         <a class="guide-card" href="/dust-collection-for-beginners.html">
-          <div class="guide-image">
-            <img src="/images/guide-dust.png" alt="Dust collection hose in a woodshop" onerror="this.style.display='none'">
-          </div>
+          <span class="guide-image"><img src="/images/guide-dust.png" alt="Dust collection hose in a woodshop" onerror="this.remove()"></span>
           <span class="guide-content"><h3>Dust Collection for Beginners</h3><p>Understand shop vacs, dust collectors, hoses, filters, and what to upgrade first.</p><span class="guide-meta">Read guide →</span></span>
         </a>
 
         <a class="guide-card" href="/small-workshop-layout-guide.html">
-          <div class="guide-image">
-            <img src="/images/guide-shop.png" alt="Small organized woodworking shop layout" onerror="this.style.display='none'">
-          </div>
+          <span class="guide-image"><img src="/images/guide-shop.png" alt="Small organized woodworking shop layout" onerror="this.remove()"></span>
           <span class="guide-content"><h3>Small Workshop Layout Guide</h3><p>Plan a compact shop with better workflow, storage, machine placement, and open space.</p><span class="guide-meta">Read guide →</span></span>
         </a>
 
         <a class="guide-card" href="/best-woods-for-cutting-boards.html">
-          <div class="guide-image">
-            <img src="/images/guide-best-woods.png" alt="Hardwood boards for cutting board making" onerror="this.style.display='none'">
-          </div>
+          <span class="guide-image"><img src="/images/guide-best-woods.png" alt="Hardwood boards for cutting board making" onerror="this.remove()"></span>
           <span class="guide-content"><h3>Best Woods for Cutting Boards</h3><p>Compare maple, walnut, cherry, and woods to avoid for safer, better-looking boards.</p><span class="guide-meta">Read guide →</span></span>
         </a>
 
         <a class="guide-card" href="/router-flattening-jig.html">
-          <div class="guide-image">
-            <img src="/images/guide-router-jig.png" alt="Router flattening jig for woodworking" onerror="this.style.display='none'">
-          </div>
+          <span class="guide-image"><img src="/images/guide-router-jig.png" alt="Router flattening jig for woodworking" onerror="this.remove()"></span>
           <span class="guide-content"><h3>Router Flattening Jig Guide</h3><p>Build and use a simple router sled for slabs, cutting boards, and wide glue-ups.</p><span class="guide-meta">Read guide →</span></span>
         </a>
 
         <a class="guide-card" href="/how-to-prevent-tearout-when-planing.html">
-          <div class="guide-image">
-            <img src="/images/guide-tearout.png" alt="Wood surface being planed cleanly" onerror="this.style.display='none'">
-          </div>
+          <span class="guide-image"><img src="/images/guide-tearout.png" alt="Wood surface being planed cleanly" onerror="this.remove()"></span>
           <span class="guide-content"><h3>How to Prevent Tearout When Planing</h3><p>Read grain direction, adjust your planer approach, and avoid ugly torn-out surfaces.</p><span class="guide-meta">Read guide →</span></span>
         </a>
 
         <a class="guide-card" href="/cutting-board-design-generator.html">
-          <div class="guide-image">
-            <img src="/images/hero-cutting-board.png" alt="Patterned cutting board design preview" onerror="this.style.display='none'">
-          </div>
+          <span class="guide-image"><img src="/images/hero-cutting-board.png" alt="Patterned cutting board design preview" onerror="this.remove()"></span>
           <span class="guide-content"><h3>Cutting Board Design Generator</h3><p>Use the flagship designer to create cutting board ideas, wood combinations, and build plans.</p><span class="guide-meta">Open tool →</span></span>
         </a>
       </div>
