@@ -4,363 +4,10 @@
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-G1ZT9QNFQT"></script>
   <script>
-    const woods = {
-      maple: { label: "Maple", color: "#d8b982" },
-      walnut: { label: "Walnut", color: "#4b2d1d" },
-      cherry: { label: "Cherry", color: "#a65f3e" },
-      whiteOak: { label: "White Oak", color: "#b99463" },
-      purpleheart: { label: "Purpleheart", color: "#6c3f73" },
-      padauk: { label: "Padauk", color: "#b14b25" }
-    };
-
-    const styleOrders = {
-      luxury: ["walnut", "maple", "cherry", "whiteOak", "purpleheart", "padauk"],
-      modern: ["maple", "walnut", "purpleheart", "padauk", "whiteOak", "cherry"],
-      minimal: ["maple", "walnut", "cherry", "whiteOak", "purpleheart", "padauk"],
-      classic: ["maple", "walnut", "cherry", "whiteOak", "padauk", "purpleheart"],
-      rustic: ["cherry", "whiteOak", "walnut", "maple", "padauk", "purpleheart"],
-      wild: ["padauk", "purpleheart", "maple", "walnut", "cherry", "whiteOak"]
-    };
-
-    const namesA = ["Midnight", "Maple", "Walnut", "Copper", "North", "Forge", "Ridge", "River", "Heritage", "Summit", "Ash", "Foundry"];
-    const namesB = ["Ridge", "Block", "Table", "Line", "Weave", "Cube", "Board", "Parquet", "Run", "Stack", "Grain", "Field"];
-    let currentSeed = Math.floor(Math.random() * 999999);
-
-    function seeded(seed) {
-      let value = seed % 2147483647;
-      if (value <= 0) value += 2147483646;
-      return function() {
-        value = value * 16807 % 2147483647;
-        return (value - 1) / 2147483646;
-      };
-    }
-
-    function choice(arr, rand) { return arr[Math.floor(rand() * arr.length)]; }
-    function clamp(n, min, max) { return Math.max(min, Math.min(max, n)); }
-    function woodColor(key) { return woods[key].color; }
-    function woodAt(palette, index) { return palette[((index % palette.length) + palette.length) % palette.length]; }
-
-    function selectedPattern() {
-      const checked = document.querySelector('input[name="pattern"]:checked');
-      return checked ? checked.value : "edge";
-    }
-
-    function selectedWoods() {
-      const selected = [...document.querySelectorAll('#woodOptions input:checked')].map(input => input.value);
-      return selected.length ? selected : ["maple"];
-    }
-
-    function setPattern(value) {
-      const input = document.querySelector(`input[name="pattern"][value="${value}"]`);
-      if (input) input.checked = true;
-    }
-
-    function generateBoard(mode) {
-      if (mode === "3d") setPattern(Math.random() > 0.5 ? "tumbling" : "woven");
-      if (mode === "premium") document.getElementById('style').value = "luxury";
-      if (mode === "easier") {
-        document.getElementById('complexity').value = "beginner";
-        if (["tumbling", "woven", "parquet"].includes(selectedPattern())) setPattern("edge");
-      }
-      if (mode === "contrast") document.getElementById('style').value = "modern";
-      currentSeed = Math.floor(Math.random() * 999999);
-      renderAll(currentSeed);
-    }
-
-    function buildPalette(style, chosen, rand) {
-      const order = styleOrders[style] || styleOrders.classic;
-
-      /*
-        Important: this function intentionally keeps EVERY selected wood.
-        Earlier versions filtered selected woods by style and then backfilled maple/walnut/cherry,
-        which made white oak, purpleheart, and padauk disappear. The designer output now treats
-        selected woods as the source of truth and only uses style to order them.
-      */
-      return chosen.slice().sort((a, b) => {
-        const ai = order.includes(a) ? order.indexOf(a) : 999;
-        const bi = order.includes(b) ? order.indexOf(b) : 999;
-        return ai - bi;
-      });
-    }
-
-    function textureDefs(palette) {
-      return `<defs>
-        <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="22" stdDeviation="18" flood-color="#000" flood-opacity="0.28"/></filter>
-        <linearGradient id="edgeGrad" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="rgba(255,255,255,0.18)"/><stop offset="0.52" stop-color="rgba(255,255,255,0)"/><stop offset="1" stop-color="rgba(0,0,0,0.14)"/></linearGradient>
-      </defs>`;
-    }
-
-    function boardShell(inner, palette, options = {}) {
-      const width = 840;
-      const height = 520;
-      const x = 82;
-      const y = 78;
-      const bw = 676;
-      const bh = 340;
-      const radius = 28;
-      return `<svg viewBox="0 0 ${width} ${height}" role="img" aria-label="Generated cutting board design">
-        ${textureDefs(palette)}
-        <ellipse cx="420" cy="444" rx="312" ry="34" fill="#000" opacity="0.22"/>
-        <g filter="url(#shadow)">
-          <rect x="${x+12}" y="${y+32}" width="${bw}" height="${bh}" rx="${radius}" fill="#1a100b" opacity="0.28"/>
-          <rect x="${x}" y="${y}" width="${bw}" height="${bh}" rx="${radius}" fill="#6f4b2e"/>
-          <clipPath id="boardClip"><rect x="${x}" y="${y}" width="${bw}" height="${bh}" rx="${radius}"/></clipPath>
-          <g clip-path="url(#boardClip)">${inner}</g>
-          <rect x="${x}" y="${y}" width="${bw}" height="${bh}" rx="${radius}" fill="url(#edgeGrad)" opacity="0.45" pointer-events="none"/>
-          <rect x="${x+1.5}" y="${y+1.5}" width="${bw-3}" height="${bh-3}" rx="${radius-1}" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="3"/>
-          <rect x="${x+4}" y="${y+4}" width="${bw-8}" height="${bh-8}" rx="${radius-4}" fill="none" stroke="rgba(0,0,0,0.22)" stroke-width="1"/>
-        </g>
-      </svg>`;
-    }
-
-    function renderEdge(palette, rand, depth) {
-      const x = 82, y = 78, bw = 676, bh = 340;
-      const stripCount = depth > 7 ? 17 : 13;
-      const stripW = bw / stripCount;
-      let pieces = [];
-      for (let i = 0; i < stripCount; i++) {
-        const key = woodAt(palette, i);
-        const px = x + i * stripW;
-        pieces.push(`<rect x="${px}" y="${y}" width="${stripW + 0.75}" height="${bh}" fill="${woodColor(key)}"/>
-          <rect x="${px}" y="${y}" width="1" height="${bh}" fill="#000" opacity="0.10"/>`);
-      }
-      return boardShell(pieces.join(''), palette);
-    }
-
-    function renderEndgrain(palette, rand, depth) {
-      const x = 82, y = 78, bw = 676, bh = 340;
-      const cols = depth > 7 ? 14 : 11;
-      const rows = depth > 7 ? 7 : 6;
-      const cellW = bw / cols;
-      const cellH = bh / rows;
-      let pieces = [];
-      for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < cols; c++) {
-          const key = woodAt(palette, r * cols + c);
-          const px = x + c * cellW;
-          const py = y + r * cellH;
-          pieces.push(`<rect x="${px}" y="${py}" width="${cellW+0.5}" height="${cellH+0.5}" fill="${woodColor(key)}" stroke="rgba(0,0,0,0.13)" stroke-width="0.85"/>`);
-        }
-      }
-      return boardShell(pieces.join(''), palette);
-    }
-
-    function renderTumbling(palette, rand, depth) {
-      const boardX = 82, boardY = 78, boardW = 676, boardH = 340;
-      const size = depth > 7 ? 54 : 62;
-      const h = size * 0.58;
-      const cols = 13;
-      const rows = 9;
-      const localPieces = [];
-      const points = [];
-
-      function addPoint(px, py) { points.push([px, py]); }
-
-      for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < cols; c++) {
-          const cx = c * size * 0.92 + (r % 2) * size * 0.46;
-          const cy = r * h * 1.03;
-          const n = (r * cols + c) * 3;
-          const topKey = woodAt(palette, n);
-          const rightKey = woodAt(palette, n + 1);
-          const leftKey = woodAt(palette, n + 2);
-
-          addPoint(cx, cy);
-          addPoint(cx + size / 2, cy + h * 1.42);
-          addPoint(cx - size / 2, cy + h * 1.42);
-
-          localPieces.push(`
-            <g>
-              <polygon points="${cx},${cy} ${cx+size/2},${cy+h/2} ${cx},${cy+h} ${cx-size/2},${cy+h/2}" fill="${woodColor(topKey)}" stroke="rgba(0,0,0,0.15)" stroke-width="0.8"/>
-              <polygon points="${cx},${cy} ${cx+size/2},${cy+h/2} ${cx+size/2},${cy+h*1.42} ${cx},${cy+h}" fill="${woodColor(rightKey)}" stroke="rgba(0,0,0,0.15)" stroke-width="0.8"/>
-              <polygon points="${cx},${cy} ${cx-size/2},${cy+h/2} ${cx-size/2},${cy+h*1.42} ${cx},${cy+h}" fill="${woodColor(leftKey)}" stroke="rgba(0,0,0,0.15)" stroke-width="0.8"/>
-            </g>`);
-        }
-      }
-
-      const minX = Math.min(...points.map(p => p[0]));
-      const maxX = Math.max(...points.map(p => p[0]));
-      const minY = Math.min(...points.map(p => p[1]));
-      const maxY = Math.max(...points.map(p => p[1]));
-      const patternW = maxX - minX;
-      const patternH = maxY - minY;
-      const scale = Math.min(boardW / patternW, boardH / patternH) * 1.02;
-      const tx = boardX + (boardW - patternW * scale) / 2 - minX * scale;
-      const ty = boardY + (boardH - patternH * scale) / 2 - minY * scale;
-
-      const centered = `<g transform="translate(${tx.toFixed(2)} ${ty.toFixed(2)}) scale(${scale.toFixed(4)})">${localPieces.join('')}</g>`;
-      return boardShell(centered, palette);
-    }
-
-    function renderWoven(palette, rand, depth) {
-      const x = 82, y = 78, bw = 676, bh = 340;
-      const strip = depth > 7 ? 42 : 52;
-      let pieces = [];
-      for (let i = -3; i < 19; i++) {
-        const key = woodAt(palette, i + 3);
-        const px = x + i * strip;
-        pieces.push(`<g opacity="1"><rect x="${px}" y="${y-60}" width="${strip*0.56}" height="${bh+120}" fill="${woodColor(key)}" transform="rotate(38 ${px} ${y})"/>
-          <rect x="${px+strip*0.56}" y="${y-60}" width="2" height="${bh+120}" fill="#000" opacity="0.15" transform="rotate(38 ${px} ${y})"/></g>`);
-      }
-      for (let i = -5; i < 16; i++) {
-        const key = woodAt(palette, i + 7);
-        const px = x + i * strip;
-        pieces.push(`<g opacity="0.92"><rect x="${px}" y="${y-80}" width="${strip*0.42}" height="${bh+150}" fill="${woodColor(key)}" transform="rotate(-38 ${px} ${y+bh})"/></g>`);
-      }
-      return boardShell(pieces.join(''), palette);
-    }
-
-    function renderParquet(palette, rand, depth) {
-      const x = 82, y = 78, bw = 676, bh = 340;
-      const block = depth > 7 ? 52 : 68;
-      let pieces = [];
-      for (let row = 0; row < Math.ceil(bh / block) + 1; row++) {
-        for (let col = 0; col < Math.ceil(bw / block) + 1; col++) {
-          const key = woodAt(palette, row * 9 + col);
-          const px = x + col * block;
-          const py = y + row * block;
-          const rotate = (row + col) % 2 === 0 ? 0 : 90;
-          pieces.push(`<g transform="rotate(${rotate} ${px+block/2} ${py+block/2})">
-            <rect x="${px}" y="${py}" width="${block}" height="${block}" fill="${woodColor(key)}" stroke="rgba(0,0,0,0.16)" stroke-width="1"/>
-          </g>`);
-        }
-      }
-      return boardShell(pieces.join(''), palette);
-    }
-
-    function renderPattern(pattern, palette, rand, depth) {
-      if (pattern === "random") pattern = choice(["edge", "endgrain", "tumbling", "woven", "parquet"], rand);
-      if (pattern === "endgrain") return renderEndgrain(palette, rand, depth);
-      if (pattern === "tumbling") return renderTumbling(palette, rand, depth);
-      if (pattern === "woven") return renderWoven(palette, rand, depth);
-      if (pattern === "parquet") return renderParquet(palette, rand, depth);
-      return renderEdge(palette, rand, depth);
-    }
-
-    function patternLabel(pattern) {
-      return {
-        edge: "edge grain",
-        endgrain: "end grain",
-        tumbling: "3D tumbling block",
-        woven: "woven 3D illusion",
-        parquet: "parquet",
-        random: "surprise"
-      }[pattern] || "edge grain";
-    }
-
-    function sizeLabel(size) {
-      return {
-        small: "10 × 14 in",
-        medium: "12 × 18 in",
-        large: "14 × 20 in",
-        xl: "16 × 24 in"
-      }[size];
-    }
-
-    function renderMeta(pattern, style, palette, depth, complexity, rand) {
-      const is3d = ["tumbling", "woven", "parquet"].includes(pattern);
-      const baseDifficulty = { beginner: 2.8, intermediate: 4.8, advanced: 6.8 }[complexity] + (is3d ? 1.6 : 0) + (pattern === "endgrain" ? 1.1 : 0) + depth * 0.08;
-      const difficulty = clamp(baseDifficulty, 2.2, 9.4);
-      const looks = clamp(7.4 + palette.length * 0.25 + (is3d ? 0.7 : 0.25) + depth * 0.08 + rand() * 0.5, 7.2, 9.9);
-      const build = clamp(10.2 - difficulty * 0.62 + (complexity === "beginner" ? 0.8 : 0) - (is3d ? 0.25 : 0), 4.8, 9.6);
-      const sell = clamp(7.4 + looks * 0.18 + (style === "luxury" ? 0.55 : 0) + (is3d ? 0.35 : 0), 7.2, 9.8);
-      const glueUps = is3d ? (pattern === "tumbling" ? "3 to 5" : "2 to 4") : pattern === "endgrain" ? "2 to 3" : "1 to 2";
-      return { looks, difficulty, build, sell, glueUps };
-    }
-
-    function renderAll(seed) {
-      const rand = seeded(seed);
-      const pattern = selectedPattern();
-      const style = document.getElementById('style').value;
-      const complexity = document.getElementById('complexity').value;
-      const size = document.getElementById('size').value;
-      const depth = parseInt(document.getElementById('depth').value, 10);
-      const palette = buildPalette(style, selectedWoods(), rand);
-      const svg = renderPattern(pattern, palette, rand, depth);
-
-      document.getElementById('boardRender').innerHTML = svg;
-      document.getElementById('heroPreview').innerHTML = svg;
-
-      const name = `${choice(namesA, rand)} ${choice(namesB, rand)}`;
-      const woodLabels = palette.map(w => woods[w].label);
-      const meta = renderMeta(pattern, style, palette, depth, complexity, rand);
-
-      document.getElementById('boardName').textContent = name;
-      document.getElementById('boardSubtitle').textContent = `${capitalize(style)} ${patternLabel(pattern)} board using ${woodLabels.join(', ')}.`;
-      document.getElementById('boardBadge').textContent = meta.build >= 6.5 ? "Buildable: Yes" : "Buildable: Advanced";
-      document.getElementById('looksScore').textContent = meta.looks.toFixed(1);
-      document.getElementById('buildScore').textContent = meta.build.toFixed(1);
-      document.getElementById('difficultyScore').textContent = meta.difficulty.toFixed(1);
-      document.getElementById('sellScore').textContent = meta.sell.toFixed(1);
-
-      document.getElementById('swatches').innerHTML = palette.map(key => `<span class="swatch"><span class="swatch-chip" style="background:${woods[key].color}"></span>${woods[key].label}</span>`).join('');
-
-      const buildDetails = [
-        `Finished size target: ${sizeLabel(size)}.`,
-        `Pattern type: ${patternLabel(pattern)}.`,
-        `Estimated glue-ups: ${meta.glueUps}.`,
-        is3dPattern(pattern) ? "Use test blocks first so the illusion reads correctly before full glue-up." : "Keep the strip rhythm intentional; avoid too many random widths.",
-        complexity === "beginner" ? "Best with straight, repeatable cuts and a simple finishing plan." : "Plan milling order carefully so the final board stays flat."
-      ];
-
-      const cutList = cutListFor(pattern, palette, size, depth);
-      document.getElementById('buildDetails').innerHTML = buildDetails.map(item => `<li>${item}</li>`).join('');
-      document.getElementById('cutList').innerHTML = cutList.map(item => `<li>${item}</li>`).join('');
-    }
-
-    function is3dPattern(pattern) { return ["tumbling", "woven", "parquet"].includes(pattern); }
-    function capitalize(str) { return str.charAt(0).toUpperCase() + str.slice(1); }
-
-    function cutListFor(pattern, palette, size, depth) {
-      const primary = woods[woodAt(palette, 0)].label;
-      const secondary = woods[woodAt(palette, 1)].label;
-      const accent = woods[woodAt(palette, 2)].label;
-      if (pattern === "tumbling") {
-        return [
-          `${primary}: repeatable diamond/rhombus pieces for one face set.`,
-          `${secondary}: matching pieces for the second face set.`,
-          `${accent}: matching pieces for the third face set.`,
-          "Make a small 3-cube sample before committing full material."
-        ];
-      }
-      if (pattern === "woven") {
-        return [
-          `${primary}: long diagonal strips, roughly 1 to 1.5 in wide.`,
-          `${secondary}: crossing strips, same thickness and consistent width.`,
-          `${accent}: optional contrast runs between woven strips.`,
-          "Dry fit the rhythm before glue; the pattern gets confusing fast."
-        ];
-      }
-      if (pattern === "endgrain") {
-        return [
-          `${primary}: primary blocks, milled square and consistent.`,
-          `${secondary}: alternating blocks or border rows.`,
-          `${accent}: small accent blocks or corner rhythm.`,
-          "Expect extra flattening after the final end-grain glue-up."
-        ];
-      }
-      if (pattern === "parquet") {
-        return [
-          `${primary}: rectangular parquet blocks.`,
-          `${secondary}: rotated blocks for directional contrast.`,
-          `${accent}: border or occasional highlight blocks.`,
-          "Keep every block identical or the layout will drift."
-        ];
-      }
-      return [
-        `${primary}: main strips, varied between 1 and 2 in wide.`,
-        `${secondary}: contrast strips, roughly 1/2 to 1 in wide.`,
-        `${accent}: thin accent strips, 1/8 to 3/8 in wide.`,
-        "Use cauls or a flat reference surface to keep the glue-up even."
-      ];
-    }
-
-    document.querySelectorAll('input, select').forEach(el => {
-      el.addEventListener('change', () => renderAll(currentSeed));
-      el.addEventListener('input', () => renderAll(currentSeed));
-    });
-
-    renderAll(currentSeed);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-G1ZT9QNFQT');
   </script>
 
   <meta charset="UTF-8" />
@@ -636,13 +283,25 @@
 
   <script>
     const woods = {
-      maple: { label: "Maple", base: "#d8b982", dark: "#b98e54", light: "#efd9aa" },
-      walnut: { label: "Walnut", base: "#4b2d1d", dark: "#2c1b13", light: "#73513a" },
-      cherry: { label: "Cherry", base: "#a65f3e", dark: "#743c28", light: "#c9815d" },
-      whiteOak: { label: "White Oak", base: "#b99463", dark: "#87663e", light: "#d4b987" },
-      purpleheart: { label: "Purpleheart", base: "#6c3f73", dark: "#432348", light: "#926095" },
-      padauk: { label: "Padauk", base: "#b14b25", dark: "#813015", light: "#d06b3c" }
+      maple: { label: "Maple", color: "#d8b982" },
+      walnut: { label: "Walnut", color: "#4b2d1d" },
+      cherry: { label: "Cherry", color: "#a65f3e" },
+      whiteOak: { label: "White Oak", color: "#b99463" },
+      purpleheart: { label: "Purpleheart", color: "#6c3f73" },
+      padauk: { label: "Padauk", color: "#b14b25" }
     };
+
+    const styleOrders = {
+      luxury: ["walnut", "maple", "cherry", "whiteOak", "purpleheart", "padauk"],
+      modern: ["maple", "walnut", "purpleheart", "padauk", "whiteOak", "cherry"],
+      minimal: ["maple", "walnut", "cherry", "whiteOak", "purpleheart", "padauk"],
+      classic: ["maple", "walnut", "cherry", "whiteOak", "padauk", "purpleheart"],
+      rustic: ["cherry", "whiteOak", "walnut", "maple", "padauk", "purpleheart"],
+      wild: ["padauk", "purpleheart", "maple", "walnut", "cherry", "whiteOak"]
+    };
+
+    function woodColor(key) { return woods[key].color; }
+    function woodAt(palette, index) { return palette[((index % palette.length) + palette.length) % palette.length]; }
 
     const namesA = ["Midnight", "Maple", "Walnut", "Copper", "North", "Forge", "Ridge", "River", "Heritage", "Summit", "Ash", "Foundry"];
     const namesB = ["Ridge", "Block", "Table", "Line", "Weave", "Cube", "Board", "Parquet", "Run", "Stack", "Grain", "Field"];
@@ -667,7 +326,7 @@
 
     function selectedWoods() {
       const selected = [...document.querySelectorAll('#woodOptions input:checked')].map(input => input.value);
-      return selected.length ? selected : ["maple", "walnut", "cherry"];
+      return selected.length ? selected : ["maple"];
     }
 
     function setPattern(value) {
@@ -689,31 +348,20 @@
     }
 
     function buildPalette(style, chosen, rand) {
-      let palette = chosen.slice();
-      if (style === "luxury") palette = ["walnut", "maple", "cherry"].filter(w => chosen.includes(w));
-      if (style === "modern") palette = ["maple", "walnut", "purpleheart", "padauk"].filter(w => chosen.includes(w));
-      if (style === "minimal") palette = chosen.filter(w => ["maple", "walnut", "cherry"].includes(w)).slice(0, 2);
-      if (style === "rustic") palette = ["cherry", "whiteOak", "walnut", "maple"].filter(w => chosen.includes(w));
-      if (style === "wild") palette = chosen;
-      if (palette.length < 2) palette = [...new Set([...palette, "maple", "walnut", "cherry"])].slice(0, 3);
-      return palette.sort(() => rand() - 0.5);
+      const order = styleOrders[style] || styleOrders.classic;
+      const uniqueChosen = [...new Set(chosen.length ? chosen : ["maple"] )];
+      return uniqueChosen.slice().sort((a, b) => {
+        const ai = order.includes(a) ? order.indexOf(a) : 999;
+        const bi = order.includes(b) ? order.indexOf(b) : 999;
+        return ai - bi;
+      });
     }
 
     function textureDefs(palette) {
-      const defs = [`<defs>
+      return `<defs>
         <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="22" stdDeviation="18" flood-color="#000" flood-opacity="0.28"/></filter>
-        <linearGradient id="edgeGrad" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="rgba(255,255,255,0.30)"/><stop offset="0.52" stop-color="rgba(255,255,255,0)"/><stop offset="1" stop-color="rgba(0,0,0,0.22)"/></linearGradient>`];
-      palette.forEach(key => {
-        const w = woods[key];
-        defs.push(`<pattern id="grain-${key}" patternUnits="userSpaceOnUse" width="90" height="18" patternTransform="rotate(0)">
-          <rect width="90" height="18" fill="${w.base}"/>
-          <path d="M0 4 C18 1 28 8 45 5 S72 1 90 5" stroke="${w.light}" stroke-opacity="0.28" fill="none" stroke-width="1.2"/>
-          <path d="M0 12 C20 9 32 16 52 13 S76 9 90 12" stroke="${w.dark}" stroke-opacity="0.24" fill="none" stroke-width="1.1"/>
-          <path d="M0 8 H90" stroke="#fff" stroke-opacity="0.06"/>
-        </pattern>`);
-      });
-      defs.push(`</defs>`);
-      return defs.join('');
+        <linearGradient id="edgeGrad" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="rgba(255,255,255,0.18)"/><stop offset="0.52" stop-color="rgba(255,255,255,0)"/><stop offset="1" stop-color="rgba(0,0,0,0.16)"/></linearGradient>
+      </defs>`;
     }
 
     function boardShell(inner, palette, options = {}) {
@@ -732,9 +380,8 @@
           <rect x="${x}" y="${y}" width="${bw}" height="${bh}" rx="${radius}" fill="#6f4b2e"/>
           <clipPath id="boardClip"><rect x="${x}" y="${y}" width="${bw}" height="${bh}" rx="${radius}"/></clipPath>
           <g clip-path="url(#boardClip)">${inner}</g>
-          <rect x="${x}" y="${y}" width="${bw}" height="${bh}" rx="${radius}" fill="url(#edgeGrad)" opacity="0.75" pointer-events="none"/>
-          <rect x="${x+1.5}" y="${y+1.5}" width="${bw-3}" height="${bh-3}" rx="${radius-1}" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="3"/>
-          <rect x="${x+4}" y="${y+4}" width="${bw-8}" height="${bh-8}" rx="${radius-4}" fill="none" stroke="rgba(0,0,0,0.22)" stroke-width="1"/>
+          <rect x="${x}" y="${y}" width="${bw}" height="${bh}" rx="${radius}" fill="url(#edgeGrad)" opacity="${options.noFaceOverlay ? 0 : 0.55}" pointer-events="none"/>
+          ${options.noOuterTrim ? "" : `<rect x="${x+1.5}" y="${y+1.5}" width="${bw-3}" height="${bh-3}" rx="${radius-1}" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="3"/><rect x="${x+4}" y="${y+4}" width="${bw-8}" height="${bh-8}" rx="${radius-4}" fill="none" stroke="rgba(0,0,0,0.22)" stroke-width="1"/>`}
         </g>
       </svg>`;
     }
@@ -747,9 +394,7 @@
         const key = choice(palette, rand);
         const strip = 24 + Math.floor(rand() * 54);
         const actual = Math.min(strip, x + bw - cursor);
-        pieces.push(`<rect x="${cursor}" y="${y}" width="${actual}" height="${bh}" fill="url(#grain-${key})"/>
-          <rect x="${cursor}" y="${y}" width="1" height="${bh}" fill="#fff" opacity="0.18"/>
-          <rect x="${cursor+actual-1}" y="${y}" width="1" height="${bh}" fill="#000" opacity="0.16"/>`);
+        pieces.push(`<rect x="${cursor}" y="${y}" width="${actual}" height="${bh}" fill="${woodColor(key)}"/>`);
         cursor += actual;
       }
       return boardShell(pieces.join(''), palette);
@@ -767,9 +412,7 @@
           const key = palette[(r + c + Math.floor(rand()*palette.length)) % palette.length];
           const px = x + c * cellW;
           const py = y + r * cellH;
-          pieces.push(`<rect x="${px}" y="${py}" width="${cellW+0.5}" height="${cellH+0.5}" fill="${woods[key].base}"/>
-            <circle cx="${px + cellW*0.5}" cy="${py + cellH*0.5}" r="${Math.min(cellW,cellH)*0.22}" fill="none" stroke="${woods[key].dark}" stroke-opacity="0.17" stroke-width="1.2"/>
-            <path d="M${px+4} ${py+cellH*0.28} C${px+cellW*0.38} ${py+cellH*0.04} ${px+cellW*0.64} ${py+cellH*0.58} ${px+cellW-5} ${py+cellH*0.32}" stroke="${woods[key].light}" stroke-opacity="0.26" fill="none"/>`);
+          pieces.push(`<rect x="${px}" y="${py}" width="${cellW+0.5}" height="${cellH+0.5}" fill="${woodColor(key)}"/>`);
         }
       }
       return boardShell(pieces.join(''), palette);
@@ -790,11 +433,11 @@
         for (let c = 0; c < cols; c++) {
           const cx = c * size * 0.92 + (r % 2) * size * 0.46;
           const cy = r * h * 1.03;
-          const offset = Math.floor(rand() * palette.length);
+          const offset = r + c;
           const keys = [
-            palette[(offset) % palette.length],
-            palette[(offset + 1) % palette.length],
-            palette[(offset + 2) % palette.length]
+            woodAt(palette, offset),
+            woodAt(palette, offset + 1),
+            woodAt(palette, offset + 2)
           ];
 
           addPoint(cx, cy);
@@ -803,10 +446,9 @@
 
           localPieces.push(`
             <g>
-              <polygon points="${cx},${cy} ${cx+size/2},${cy+h/2} ${cx},${cy+h} ${cx-size/2},${cy+h/2}" fill="${woods[keys[0]].base}" stroke="rgba(0,0,0,0.16)" stroke-width="0.8"/>
-              <polygon points="${cx},${cy} ${cx+size/2},${cy+h/2} ${cx+size/2},${cy+h*1.42} ${cx},${cy+h}" fill="${woods[keys[1]].dark}" stroke="rgba(0,0,0,0.14)" stroke-width="0.8"/>
-              <polygon points="${cx},${cy} ${cx-size/2},${cy+h/2} ${cx-size/2},${cy+h*1.42} ${cx},${cy+h}" fill="${woods[keys[2]].light}" stroke="rgba(0,0,0,0.14)" stroke-width="0.8"/>
-              <path d="M${cx-size*0.32} ${cy+h*0.48} C${cx-size*0.1} ${cy+h*0.38} ${cx+size*0.12} ${cy+h*0.6} ${cx+size*0.33} ${cy+h*0.48}" stroke="rgba(255,255,255,0.16)" fill="none"/>
+              <polygon points="${cx},${cy} ${cx+size/2},${cy+h/2} ${cx},${cy+h} ${cx-size/2},${cy+h/2}" fill="${woodColor(keys[0])}"/>
+              <polygon points="${cx},${cy} ${cx+size/2},${cy+h/2} ${cx+size/2},${cy+h*1.42} ${cx},${cy+h}" fill="${woodColor(keys[1])}"/>
+              <polygon points="${cx},${cy} ${cx-size/2},${cy+h/2} ${cx-size/2},${cy+h*1.42} ${cx},${cy+h}" fill="${woodColor(keys[2])}"/>
             </g>`);
         }
       }
@@ -822,7 +464,7 @@
       const ty = boardY + (boardH - patternH * scale) / 2 - minY * scale;
 
       const centered = `<g transform="translate(${tx.toFixed(2)} ${ty.toFixed(2)}) scale(${scale.toFixed(4)})">${localPieces.join('')}</g>`;
-      return boardShell(centered, palette);
+      return boardShell(centered, palette, { noFaceOverlay: true });
     }
 
     function renderWoven(palette, rand, depth) {
@@ -832,14 +474,12 @@
       for (let i = -2; i < 18; i++) {
         const key = palette[i % palette.length < 0 ? 0 : i % palette.length];
         const px = x + i * strip;
-        pieces.push(`<g opacity="0.98"><rect x="${px}" y="${y-60}" width="${strip*0.56}" height="${bh+120}" fill="url(#grain-${key})" transform="rotate(38 ${px} ${y})"/>
-          <rect x="${px+strip*0.56}" y="${y-60}" width="2" height="${bh+120}" fill="#000" opacity="0.18" transform="rotate(38 ${px} ${y})"/></g>`);
+        pieces.push(`<g opacity="0.98"><rect x="${px}" y="${y-60}" width="${strip*0.56}" height="${bh+120}" fill="${woodColor(key)}" transform="rotate(38 ${px} ${y})"/></g>`);
       }
       for (let i = -5; i < 16; i++) {
         const key = palette[(i + 1) % palette.length < 0 ? 1 % palette.length : (i + 1) % palette.length];
         const px = x + i * strip;
-        pieces.push(`<g opacity="0.78"><rect x="${px}" y="${y-80}" width="${strip*0.42}" height="${bh+150}" fill="${woods[key].dark}" transform="rotate(-38 ${px} ${y+bh})"/>
-          <path d="M${px} ${y} H${px+strip*0.42}" stroke="rgba(255,255,255,0.22)" transform="rotate(-38 ${px} ${y+bh})"/></g>`);
+        pieces.push(`<g opacity="0.78"><rect x="${px}" y="${y-80}" width="${strip*0.42}" height="${bh+150}" fill="${woodColor(key)}" transform="rotate(-38 ${px} ${y+bh})"/></g>`);
       }
       return boardShell(pieces.join(''), palette);
     }
@@ -855,8 +495,7 @@
           const py = y + row * block;
           const rotate = (row + col) % 2 === 0 ? 0 : 90;
           pieces.push(`<g transform="rotate(${rotate} ${px+block/2} ${py+block/2})">
-            <rect x="${px}" y="${py}" width="${block}" height="${block}" fill="url(#grain-${key})" stroke="rgba(0,0,0,0.16)" stroke-width="1"/>
-            <rect x="${px}" y="${py}" width="${block}" height="${block*0.24}" fill="rgba(255,255,255,0.08)"/>
+            <rect x="${px}" y="${py}" width="${block}" height="${block}" fill="${woodColor(key)}"/>
           </g>`);
         }
       }
@@ -928,7 +567,7 @@
       document.getElementById('difficultyScore').textContent = meta.difficulty.toFixed(1);
       document.getElementById('sellScore').textContent = meta.sell.toFixed(1);
 
-      document.getElementById('swatches').innerHTML = palette.map(key => `<span class="swatch"><span class="swatch-chip" style="background:${woods[key].base}"></span>${woods[key].label}</span>`).join('');
+      document.getElementById('swatches').innerHTML = palette.map(key => `<span class="swatch"><span class="swatch-chip" style="background:${woodColor(key)}"></span>${woods[key].label}</span>`).join('');
 
       const buildDetails = [
         `Finished size target: ${sizeLabel(size)}.`,
