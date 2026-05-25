@@ -82,10 +82,11 @@
     }
 
     .brand-mark {
-      width: 82px;
-      height: 48px;
-      flex: 0 0 82px;
+      width: 92px;
+      height: 58px;
+      flex: 0 0 92px;
       object-fit: contain;
+      object-position: center;
       filter: drop-shadow(0 7px 10px rgba(34, 24, 17, .13));
     }
 
@@ -159,12 +160,12 @@
 
     .hero-shell {
       overflow: hidden;
-      min-height: 435px;
+      min-height: 465px;
       border: 1px solid rgba(102, 68, 42, .10);
       border-radius: 15px;
       background:
         linear-gradient(90deg, rgba(255,251,243,.98) 0%, rgba(255,251,243,.96) 37%, rgba(250,238,223,.62) 54%, rgba(246,213,178,.28) 100%),
-        url("/images/hero-cutting-board.png") center right / contain no-repeat,
+        url("assets/hero-cutting-board.png") center right / contain no-repeat,
         linear-gradient(90deg, #fbf6ee, #f5d6b6);
       box-shadow: 0 19px 46px rgba(89, 61, 37, .10);
       position: relative;
@@ -184,7 +185,7 @@
       position: relative;
       z-index: 1;
       width: 46%;
-      padding: 35px 0 0 82px;
+      padding: 35px 0 40px 82px;
     }
 
     .eyebrow {
@@ -434,55 +435,72 @@
       position: relative;
       min-height: 144px;
       overflow: hidden;
-      border-radius: 10px;
-      box-shadow: 0 18px 34px rgba(52, 34, 20, .13);
-      background: #2b2119;
+      border-radius: 12px;
+      border: 1px solid rgba(112, 77, 48, .12);
+      box-shadow: 0 16px 34px rgba(78, 51, 29, .08);
+      background:
+        radial-gradient(circle at 84% 18%, rgba(173,110,60,.18), transparent 34%),
+        linear-gradient(135deg, rgba(255,253,248,.94), rgba(247,237,224,.82));
       isolation: isolate;
-      transition: transform .18s ease, box-shadow .18s ease;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
     }
 
     .guide-card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 25px 45px rgba(52, 34, 20, .18);
+      box-shadow: 0 24px 46px rgba(78, 51, 29, .13);
+      border-color: rgba(173, 110, 60, .26);
     }
 
-    .guide-card img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transform: scale(1.03);
-      z-index: -2;
-    }
+    .guide-card img { display: none; }
 
     .guide-card::before {
       content: "";
       position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, rgba(17,13,10,.78), rgba(17,13,10,.32) 56%, rgba(17,13,10,.12));
+      right: -34px;
+      top: -42px;
+      width: 128px;
+      height: 128px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.56);
+      border: 1px solid rgba(112, 77, 48, .08);
       z-index: -1;
     }
 
+    .guide-card::after {
+      content: "→";
+      position: absolute;
+      right: 18px;
+      bottom: 16px;
+      color: #a2602d;
+      font-size: 18px;
+      font-weight: 800;
+      opacity: .82;
+    }
+
     .guide-content {
-      padding: 19px 18px;
-      color: #fff;
+      display: flex;
+      min-height: 144px;
+      padding: 20px 20px 18px;
+      color: #2b2723;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .guide-content h3 {
-      max-width: 190px;
-      margin: 0 0 12px;
-      color: #fff;
-      font-size: 18px;
-      line-height: 1.28;
-      letter-spacing: -.4px;
+      max-width: 220px;
+      margin: 0 0 14px;
+      color: #2b2723;
+      font-size: 19px;
+      line-height: 1.22;
+      letter-spacing: -.45px;
     }
 
     .guide-content p {
       margin: 0;
-      color: rgba(255,255,255,.95);
+      color: #a2602d;
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 800;
+      letter-spacing: .2px;
     }
 
     @media (max-width: 1160px) {
@@ -500,9 +518,9 @@
       .hero-shell {
         background:
           linear-gradient(180deg, rgba(255,251,243,.98), rgba(255,251,243,.90)),
-          url("/images/hero-cutting-board.png") center right / cover no-repeat;
+          url("assets/hero-cutting-board.png") center right / cover no-repeat;
       }
-      .hero-content { width: 100%; max-width: 620px; padding: 38px 32px; }
+      .hero-content { width: 100%; max-width: 620px; padding: 38px 32px 44px; }
       .tool-grid, .guide-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .tool-grid, .guides { padding-left: 32px; padding-right: 32px; }
     }
@@ -511,7 +529,7 @@
       .wrap { width: min(var(--max), calc(100% - 24px)); }
       .site-header { padding: 20px 0; }
       .brand { gap: 12px; }
-      .brand-mark { width: 62px; height: 38px; flex-basis: 62px; }
+      .brand-mark { width: 74px; height: 48px; flex-basis: 74px; }
       .brand-name { font-size: 27px; }
       .brand-sub { font-size: 10px; letter-spacing: 2.1px; white-space: normal; }
       .header-cta { width: 100%; }
@@ -521,7 +539,7 @@
       .btn { width: 100%; }
       .tool-grid, .guide-grid { grid-template-columns: 1fr; }
       .tool-grid, .guides { padding-left: 18px; padding-right: 18px; }
-      .hero-content { padding: 32px 22px; }
+      .hero-content { padding: 32px 22px 42px; }
     }
   </style>
 </head>
@@ -529,7 +547,7 @@
   <header class="site-header">
     <div class="wrap nav">
       <a class="brand" href="/" aria-label="WoodToolChest home">
-        <img class="brand-mark" src="/images/logo-plane.png" alt="" aria-hidden="true">
+        <img class="brand-mark" src="assets/logo-plane.png" alt="" aria-hidden="true">
         <span>
           <span class="brand-name">WoodToolChest</span>
           <span class="brand-sub">Design Tools &amp; Shop Guides</span>
@@ -619,19 +637,15 @@
 
       <div class="guide-grid">
         <a class="guide-card" href="/workbench-height-guide.html">
-          <img src="/images/guide-workbench.png" alt="Workbench in a woodworking shop">
           <span class="guide-content"><h3>Workbench Height Guide</h3><p>8 min read</p></span>
         </a>
         <a class="guide-card" href="/how-to-flatten-a-cutting-board.html">
-          <img src="/images/guide-flatten.png" alt="Cutting board being flattened">
           <span class="guide-content"><h3>How to Flatten a Cutting Board</h3><p>9 min read</p></span>
         </a>
         <a class="guide-card" href="/dust-collection-for-beginners.html">
-          <img src="/images/guide-dust.png" alt="Dust collection hose in a woodshop">
           <span class="guide-content"><h3>Dust Collection for Beginners</h3><p>11 min read</p></span>
         </a>
         <a class="guide-card" href="/small-workshop-layout-guide.html">
-          <img src="/images/guide-shop.png" alt="Small organized woodworking shop layout">
           <span class="guide-content"><h3>Small Shop Layout Guide</h3><p>10 min read</p></span>
         </a>
       </div>
