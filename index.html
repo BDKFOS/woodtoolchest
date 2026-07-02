@@ -17,6 +17,15 @@
   <meta name="description" content="Design better cutting boards, explore practical woodworking tools, and read shop guides made for real woodworkers." />
   <link rel="canonical" href="https://www.woodtoolchest.com/" />
 
+  <!-- Favicons -->
+  <link rel="icon" href="/images/favicon.ico" sizes="any">
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <meta name="theme-color" content="#7a4b22">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
@@ -474,6 +483,69 @@ display:none;
 .guide-content{
 display:none;
 }
+
+.troubleshoot-section {
+  margin-top: 28px;
+  padding-top: 26px;
+  border-top: 1px solid rgba(102, 68, 42, .10);
+}
+
+.troubleshoot-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 14px;
+}
+
+.troubleshoot-card {
+  display: block;
+  min-height: 158px;
+  padding: 22px;
+  border: 1px solid rgba(112, 77, 48, .10);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at top right, rgba(173, 110, 60, .12), transparent 34%),
+    rgba(255, 253, 248, .82);
+  box-shadow: var(--shadow-card);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+
+.troubleshoot-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 42px rgba(78, 51, 29, .11);
+  border-color: rgba(173, 110, 60, .28);
+}
+
+.troubleshoot-kicker {
+  display: block;
+  margin-bottom: 9px;
+  color: #a2602d;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+}
+
+.troubleshoot-card h3 {
+  margin: 0 0 9px;
+  color: #25221f;
+  font-size: 19px;
+  line-height: 1.22;
+  font-weight: 800;
+  letter-spacing: -.3px;
+}
+
+.troubleshoot-card p {
+  margin: 0 0 14px;
+  color: #716b66;
+  font-size: 14px;
+  line-height: 1.58;
+  font-weight: 500;
+}
+
+.troubleshoot-card .text-link {
+  margin-top: 0;
+}
     @media (max-width: 1160px) {
       .wrap { width: min(var(--max), calc(100% - 44px)); }
       .nav-links { gap: 24px; margin-right: 12px; }
@@ -492,7 +564,7 @@ display:none;
           url("/images/hero-cutting-board.png") center right / cover no-repeat;
       }
       .hero-content { width: 100%; max-width: 620px; padding: 38px 32px; }
-      .tool-grid, .guide-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .tool-grid, .guide-grid, .troubleshoot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .tool-grid, .guides { padding-left: 32px; padding-right: 32px; }
     }
 
@@ -508,7 +580,7 @@ display:none;
       .hero-copy { font-size: 15px; }
       .hero-actions, .proof-row, .guides-head { flex-direction: column; align-items: flex-start; }
       .btn { width: 100%; }
-      .tool-grid, .guide-grid { grid-template-columns: 1fr; }
+      .tool-grid, .guide-grid, .troubleshoot-grid { grid-template-columns: 1fr; }
       .tool-grid, .guides { padding-left: 18px; padding-right: 18px; }
       .hero-content { padding: 32px 22px; }
     }
@@ -623,6 +695,27 @@ display:none;
           <img src="/images/guide-smallshop.png" alt="Small organized woodworking shop layout">
           <span class="guide-content"><h3>Small Shop Layout Guide</h3><p>10 min read</p></span>
         </a>
+      </div>
+
+      <div class="troubleshoot-section" aria-label="Woodworking troubleshooting guides">
+        <p class="section-eyebrow">Shop Troubleshooting</p>
+        <h2 class="section-title">Fix the problems that show up mid-build.</h2>
+
+        <div class="troubleshoot-grid">
+          <a class="troubleshoot-card" href="/how-to-reduce-planer-snipe.html">
+            <span class="troubleshoot-kicker">Planer setup</span>
+            <h3>How to Reduce Planer Snipe</h3>
+            <p>Figure out why your planer is cutting deeper at the ends and fix it with better support, lighter passes, and smarter setup.</p>
+            <span class="text-link">Read Guide&nbsp; →</span>
+          </a>
+
+          <a class="troubleshoot-card" href="/how-to-prevent-tearout-when-planing.html">
+            <span class="troubleshoot-kicker">Milling help</span>
+            <h3>How to Prevent Tearout When Planing</h3>
+            <p>Read the grain, adjust your feed direction, and avoid torn-out surfaces before they ruin a board.</p>
+            <span class="text-link">Read Guide&nbsp; →</span>
+          </a>
+        </div>
       </div>
     </section>
   </main>
